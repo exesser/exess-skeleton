@@ -1,0 +1,28 @@
+/*
+  Style overrides for json editor
+
+  CSS selectors below had to be that "complex" in order
+  to be more specific than the ones from "main.css".
+*/
+div[ng-jsoneditor] div.jsoneditor {
+  width: 100%;
+  height: 800px;
+
+  table,
+  table.tree {
+    width: auto;
+    white-space: normal;
+
+    tr {
+      td {
+        padding: 0;
+        border: none;
+        vertical-align: top;
+      }
+    }
+  }
+
+  .menu {
+    display: none;
+  }
+}

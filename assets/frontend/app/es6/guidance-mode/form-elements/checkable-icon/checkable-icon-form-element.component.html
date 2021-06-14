@@ -1,0 +1,9 @@
+<label class="input__checkbox">
+  <input
+    id="{{ ::checkableIconFormElementController.elementId }}"
+    type="checkbox"
+    ng-model="checkableIconFormElementController.internalModelValue"
+    ng-change="checkableIconFormElementController.internalModelValueChanged()"
+    ng-disabled="checkableIconFormElementController.fieldIsDisabled() || checkableIconFormElementController.isReadonly">
+  <span class="{{ checkableIconFormElementController.iconClass }}"></span>
+</label>

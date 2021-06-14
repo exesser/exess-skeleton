@@ -1,0 +1,12 @@
+<div class="col-1-2 row-1-1 dashboard__item center">
+  <div class="inner">
+    <div class="button-group">
+      <a class="button button-aqua is-rounded has-label"
+         ng-repeat="button in dashboardButtonGroupItemController.buttons"
+         ng-click="dashboardButtonGroupItemController.buttonClicked(button)">
+        <div><span>{{ button.amount }}</span></div>
+        <p>{{ button.label }}</p>
+      </a>
+    </div>
+  </div>
+</div>

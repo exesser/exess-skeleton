@@ -1,0 +1,13 @@
+<label class="input__toggle">
+  {{ toggleFormElementController.label }}
+  <input
+    id="{{ ::toggleFormElementController.elementId }}"
+    type="checkbox"
+    autotest-value="{{toggleFormElementController.internalModelValue}}"
+    ng-model="toggleFormElementController.internalModelValue"
+    ng-change="toggleFormElementController.internalModelValueChanged()"
+    ng-disabled="toggleFormElementController.fieldIsDisabled() || toggleFormElementController.isReadonly">
+  <span class="icon toggle"></span>
+  <span class="icon-checkmark"></span>
+  <span class="icon-cross"></span>
+</label>

@@ -1,0 +1,26 @@
+<div class="container has-default-margins">
+  <div class="col-1-1">
+    <div class="row-">
+      <div class="col-1-2">
+        <div class="input label-inline">
+          <label>Select base record</label>
+          <div>
+            <select
+              ng-model="crudConfigHelperController.selectedRecordName"
+              ng-options="option as option for option in crudConfigHelperController.getRecordsName()"
+            ></select>
+            <span class="icon-arrow-down"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-1-1">
+    <div class="row-" ng-if="crudConfigHelperController.showSelectedRecord()">
+      <crud-config-helper-record
+        record-name="crudConfigHelperController.selectedRecordName"
+        prefix=""></crud-config-helper-record>
+    </div>
+  </div>
+</div>

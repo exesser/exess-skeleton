@@ -1,0 +1,117 @@
+{
+    "recordName": "ExEss\\Cms\\Entity\\FilterField",
+    "relations": [
+        {
+            "name": "groups",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\FilterFieldGroup"
+        },
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "securityGroups",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\SecurityGroup"
+        }
+    ],
+    "fields": [
+        {
+            "name": "label",
+            "type": "string"
+        },
+        {
+            "name": "operator",
+            "type": "string"
+        },
+        {
+            "name": "fieldKey",
+            "type": "string"
+        },
+        {
+            "name": "fieldSql",
+            "type": "text"
+        },
+        {
+            "name": "fieldOptions",
+            "type": "json"
+        },
+        {
+            "name": "fieldOptionsEnumKey",
+            "type": "string"
+        },
+        {
+            "name": "sort",
+            "type": "string"
+        },
+        {
+            "name": "type",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "bool",
+                    "value": "Checkbox"
+                },
+                {
+                    "key": "varchar",
+                    "value": "Input"
+                },
+                {
+                    "key": "enum",
+                    "value": "Select"
+                },
+                {
+                    "key": "radioGroup",
+                    "value": "Radio Group"
+                },
+                {
+                    "key": "date",
+                    "value": "Date"
+                },
+                {
+                    "key": "datetime",
+                    "value": "Date Time"
+                },
+                {
+                    "key": "checkboxGroup",
+                    "value": "Checkbox Group"
+                },
+                {
+                    "key": "toggleGroup",
+                    "value": "Toggle Group"
+                },
+                {
+                    "key": "selectWithSearch",
+                    "value": "Select With Search"
+                }
+            ]
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

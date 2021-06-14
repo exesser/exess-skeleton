@@ -1,0 +1,19 @@
+{
+  "_description": "Expand the field",
+  "givenModel": {
+    "toExpand": [],
+    "SecurityGroups|id" : "2c527afa-b7d3-15c2-929c-580dba396789"
+  },
+  "givenAction": {
+    "event": "INIT"
+  },
+  "expectedOnModel": {
+    "toExpand": [
+      {
+        "key": "244fc047-542f-7374-6793-571617651fb9",
+        "label": "Sales extern group"
+      }
+    ],
+    "SecurityGroups|id" : "2c527afa-b7d3-15c2-929c-580dba396789"
+  }
+}

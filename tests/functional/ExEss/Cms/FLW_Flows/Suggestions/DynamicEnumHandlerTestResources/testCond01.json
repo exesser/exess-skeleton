@@ -1,0 +1,32 @@
+{
+  "_description": "basic case",
+  "givenModel": {
+    "dwp|alreadysigned" : true
+  },
+  "givenAction": {
+    "event": "INIT"
+  },
+  "enumValue": [
+    {
+      "condition": "model['dwp|alreadysigned']",
+      "values": [
+        {
+          "key": "HAS_SIGNED",
+          "value": "Has signed",
+          "default": true
+        }
+      ]
+    },
+    {
+      "condition": "default",
+      "values": [
+        {
+          "key": "NONE",
+          "value": "Does not want to sign yet",
+          "default": true
+        }
+      ]
+    }
+  ]
+}
+

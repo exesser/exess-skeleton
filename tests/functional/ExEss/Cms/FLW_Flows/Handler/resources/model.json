@@ -1,0 +1,7 @@
+{
+  "recordTypeOfRecordId": "ExEss\\Cms\\Entity\\ListDynamic",
+  "baseModule": "ExEss\\Cms\\Entity\\ListDynamic",
+  "description": "bla blah",
+  "cellLinks|order": 10,
+  "cellLinks|cell|line1": "line 1 expression"
+}

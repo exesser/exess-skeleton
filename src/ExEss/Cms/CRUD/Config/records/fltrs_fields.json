@@ -1,0 +1,20 @@
+{
+  "fltrs_fields": [
+    {
+      "id": "17e6dccb-e2e3-e5c2-a3c4-5c265b411b06",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_records_filter_name",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "label_c": "Name",
+      "operator": "LIKE",
+      "field_key_c": "name",
+      "field_sql_c": null,
+      "field_options_c": null,
+      "field_options_enum_key_c": null,
+      "sort_c": "10",
+      "type_c": "varchar"
+    }
+  ]
+}

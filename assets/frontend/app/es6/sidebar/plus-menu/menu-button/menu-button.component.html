@@ -1,0 +1,16 @@
+<labeled-accordion-wrapper ng-if="menuButtonController.button.buttonGroup == true" label="{{menuButtonController.button.label}}" icon="{{menuButtonController.button.icon}}">
+  <ul>
+    <menu-button
+      ng-repeat="subButton in menuButtonController.button.buttons"
+      button="subButton">
+    </menu-button>
+  </ul>
+</labeled-accordion-wrapper>
+<ul ng-if="menuButtonController.button.buttonGroup == false">
+  <menu-link
+    action="menuButtonController.button.action"
+    clickable="menuButtonController.button.enabled"
+    label="{{ menuButtonController.button.label }}"
+    icon="{{ menuButtonController.button.icon }}">
+  </menu-link>
+</ul>

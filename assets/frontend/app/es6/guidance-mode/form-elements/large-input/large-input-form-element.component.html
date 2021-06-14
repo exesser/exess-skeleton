@@ -1,0 +1,28 @@
+<div
+  ng-if="largeInputFormElementController.isReadonly === false"
+  class="input size-extra-large auto-complete"
+  ng-class="{ 'editable-input': !largeInputFormElementController.hasBorder }">
+
+  <label>
+    <resizing-input
+      field-id="{{ largeInputFormElementController.id }}"
+      ng-model="largeInputFormElementController.internalModelValue"
+      ng-change="largeInputFormElementController.internalModelValueChanged()"
+      placeholder="{{largeInputFormElementController.label}}"
+      is-disabled="largeInputFormElementController.fieldIsDisabled()"
+      is-readonly="false">
+    </resizing-input>
+  </label>
+
+  <autocomplete
+    for-elements="largeInputFormElementController.autoCompleteElementIds"
+    suggestion-clicked="largeInputFormElementController.suggestionClicked(suggestion)"
+    suggestions="largeInputFormElementController.suggestions"
+    suggestion-left-text-property="label"
+    suggestion-right-text-property="labelAddition">
+  </autocomplete>
+</div>
+
+<div class="non-editable-input" ng-if="largeInputFormElementController.isReadonly === true">
+  <strong id="{{ ::largeInputFormElementController.elementId }}">{{ largeInputFormElementController.internalModelValue }}</strong>
+</div>

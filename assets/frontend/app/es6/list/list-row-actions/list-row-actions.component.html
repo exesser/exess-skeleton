@@ -1,0 +1,12 @@
+<div>
+  <list-row-action
+    ng-repeat="button in listRowActionsController.buttons"
+    action="button.action"
+    icon="{{ button.icon }}"
+    label="{{ button.label }}"
+    clickable="button.enabled">
+  </list-row-action>
+  <a class="close-actions icon-close"
+     ng-click="listRowActionsController.closeClicked()">
+  </a>
+</div>

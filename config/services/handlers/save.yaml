@@ -1,0 +1,40 @@
+services:
+  _defaults:
+    public: true
+
+  ExEss\Cms\FLW_Flows\SaveFlow:
+    arguments:
+      - '@service_container'
+      -
+        # pre processors: before fatentity are saved
+        - ExEss\Cms\CRUD\Handlers\SaveHandlers\RecordTypeHandler
+        - ExEss\Cms\CRUD\Handlers\SaveHandlers\SaveSelectWithSearchHandler
+        # here add a class
+        - ExEss\Cms\FLW_Flows\Handler\ModelConverter # converts model to a more readable format
+        # convert the input to fat entities
+        - ExEss\Cms\FLW_Flows\Handler\DataConverter
+        # post processors: after the fatentity are saved
+        - ExEss\Cms\CRUD\Handlers\SaveHandlers\SaveRelationHandler
+
+  ExEss\Cms\FLW_Flows\MultiLineFlowSaver:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\FLW_Flows\SaveFlow'
+
+  # Handlers
+  ExEss\Cms\FLW_Flows\Handler\DataConverter:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
+  ExEss\Cms\FLW_Flows\Handler\ModelConverter:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
+  # Config handlers
+  ExEss\Cms\CRUD\Handlers\SaveHandlers\SaveSelectWithSearchHandler: ~
+  ExEss\Cms\CRUD\Handlers\SaveHandlers\RecordTypeHandler: ~
+
+  ExEss\Cms\CRUD\Handlers\SaveHandlers\SaveRelationHandler:
+    arguments:
+      - '@doctrine.orm.entity_manager'

@@ -1,0 +1,100 @@
+services:
+  _defaults:
+    public: true
+
+  ExEss\Cms\FLW_Flows\Suggestions\DynamicEnumHandler:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\FLW_Flows\EnumRecordFactory'
+      - '@ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder'
+    tags:
+      - { name: 'suggestions', priority: 750 }
+
+  ExEss\Cms\FLW_Flows\Suggestions\DefaultValueHandler:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\FLW_Flows\DefaultValueService'
+    tags:
+      - { name: 'suggestions', priority: 620 }
+
+  ExEss\Cms\FLW_Flows\Suggestions\AutoSelectSuggestionHandler:
+    lazy: true
+    arguments:
+      - '@doctrine.orm.entity_manager'
+    tags:
+      - { name: 'suggestions', priority: 110 } # one last time
+
+  ExEss\Cms\FLW_Flows\Suggestions\IbanFormatterSuggestionHandler:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\FieldFormatter\IbanFormatter'
+    tags:
+      - { name: 'suggestions', priority: 270 }
+      - { name: 'pre-validation-suggestion', priority:  130 }       # Format IBAN on confirm
+
+  ExEss\Cms\FLW_Flows\Suggestions\AutoExpandSelectWithSearch:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+    tags:
+      - { name: 'suggestions', priority: 200 }
+
+  ExEss\Cms\FLW_Flows\Suggestions\AutoSelectWithSearchSuggestionHandler:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+    tags:
+      - { name: 'suggestions', priority:  100 }
+
+  ExEss\Cms\CRUD\Suggestions\RecordFieldSuggestion:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@ExEss\Cms\CRUD\Factory\FieldFactory'
+      - '@ExEss\Cms\CRUD\Helpers\SecurityService'
+    tags:
+      - { name: 'suggestions', priority:  50 }
+
+  ExEss\Cms\CRUD\Suggestions\RecordTypeSuggestion:
+    lazy: true
+    tags:
+      - { name: 'suggestions', priority: 20 }
+
+  ExEss\Cms\CRUD\Suggestions\RecordRelationSuggestion:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\Manager\AssociationManager'
+      - '@ExEss\Cms\CRUD\Helpers\SecurityService'
+    tags:
+      - { name: 'suggestions', priority:  10 }
+
+  ExEss\Cms\FLW_Flows\Suggestions\SelectWithSearchLabelHandler:
+    lazy: true
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+    tags:
+      - { name: 'suggestions', priority: -1 }
+
+  ### PRE VALIDATION SUGGESTIONS
+
+  ExEss\Cms\FLW_Flows\Suggestions\OverrideDefaultHandler:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\FLW_Flows\Field'
+      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
+    tags:
+      - { name: 'pre-validation-suggestion', priority:  330 } # Should go first, can update the model
+
+  ExEss\Cms\FLW_Flows\Suggestions\FieldFormattingHandler:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\FieldFormatter\VatNumberFormatter'
+      - '@ExEss\Cms\FieldFormatter\PhoneNumberFormatter'
+    tags:
+      - { name: 'pre-validation-suggestion', priority:  300 }
+
+  ExEss\Cms\CRUD\Factory\FieldFactory:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@ExEss\Cms\FLW_Flows\EnumRecordFactory'
+      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'

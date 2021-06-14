@@ -1,0 +1,21 @@
+// Import the style-guide's css.
+@import "../styleguide/_m";
+@import "../styleguide/_mq";
+
+// Import styles written by development team.
+@import "_cfpLoadingBar.scss";
+@import "_ignoreAnimation.scss";
+@import "_bugOverlapTextarea.scss";
+@import "_bugs.scss";
+@import "_crud.scss";
+@import "_drawPad.scss";
+
+// font awesome for textAngular
+$fa-font-path: "../fonts" !default;
+@import "../../bower_components/font-awesome/web-fonts-with-css/scss/fa-brands.scss";
+@import "../../bower_components/font-awesome/web-fonts-with-css/scss/fa-regular.scss";
+@import "../../bower_components/font-awesome/web-fonts-with-css/scss/fa-solid.scss";
+@import "../../bower_components/font-awesome/web-fonts-with-css/scss/fontawesome.scss";
+@import "_textAngular.scss";
+@import "_jsonEditor.scss";
+@import "_progressBar.scss";

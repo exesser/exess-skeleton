@@ -1,0 +1,9 @@
+<google-tag-manager ng-if="dwpAppController.pushGTM()"></google-tag-manager>
+
+<div ui-view="modal"></div>
+
+<div class="wrapper ignore-animation" ui-view="main-content"></div>
+
+<div ui-view="focus-mode"></div>
+
+<sidebar ng-if="dwpAppController.showSidebar()"></sidebar>

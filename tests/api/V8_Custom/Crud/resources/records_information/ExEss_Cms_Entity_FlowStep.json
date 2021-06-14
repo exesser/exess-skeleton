@@ -1,0 +1,83 @@
+{
+    "recordName": "ExEss\\Cms\\Entity\\FlowStep",
+    "relations": [
+        {
+            "name": "fields",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\FlowField"
+        },
+        {
+            "name": "properties",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\Property"
+        },
+        {
+            "name": "stepLinks",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\FlowStepLink"
+        },
+        {
+            "name": "gridTemplate",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\GridTemplate"
+        },
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        }
+    ],
+    "fields": [
+        {
+            "name": "type",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "DEFAULT",
+                    "value": "Default"
+                }
+            ]
+        },
+        {
+            "name": "jsonFields",
+            "type": "json"
+        },
+        {
+            "name": "key",
+            "type": "string"
+        },
+        {
+            "name": "isCard",
+            "type": "boolean"
+        },
+        {
+            "name": "label",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

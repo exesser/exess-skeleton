@@ -1,0 +1,13 @@
+{
+  "processId": "{{process_instance_id}}",
+  "ean": "{{ean}}",
+  "supplier": null,
+  "parentProcessId": null,
+  "energycommProcess": "ACTIVATION_REQUEST",
+  "cancelContext": "contractLineContext",
+  "orderCancellation": false,
+  "serviceComponent": "DEFAULT",
+  "unlock": false,
+  "effectiveDate": null,
+  "crmBusinessProcessId": null
+}

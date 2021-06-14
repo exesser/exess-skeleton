@@ -1,0 +1,50 @@
+{
+  "list_dynamic_list": [
+    {
+      "id": "28ee4a16-8858-4295-85c5-5bb4b82a0387",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "CrudAllBeans",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "display_footer": false,
+      "base_object": "CrudAllBeans",
+      "items_per_page": "999",
+      "filters_have_changed": false,
+      "combined": false,
+      "responsive": false,
+      "external_object_id": "7ad938b0-daa4-10fc-2528-5bb4b8d11260"
+    },
+    {
+      "id": "d175e383-5774-8599-bfb5-5bc5fadd8718",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_relations_list",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "display_footer": true,
+      "items_per_page": "30",
+      "fix_pagination": 0,
+      "filters_have_changed": false,
+      "combined": false,
+      "responsive": false,
+      "quick_search": true,
+      "external_object_id": "cffe467e-6a4c-15e5-3d37-5bc6f75543fd",
+      "top_bar_id": "5136efaa-1902-1d51-e2c9-5bd6f947f439"
+    },
+    {
+      "id": "dc13f1b7-1873-c881-426f-5bb4ce82e7f3",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "CrudRecordsList",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "display_footer": true,
+      "items_per_page": "100",
+      "filters_have_changed": false,
+      "combined": false,
+      "responsive": false,
+      "quick_search": true,
+      "filter_id": "72432981-1bb3-6b45-ffc7-5c26563b44c8",
+      "external_object_id": "43f3e22c-76fe-3107-9fb2-5bb4d681df57",
+      "top_bar_id": "871ddfb9-d946-1516-2b17-5bfc8fc729c9"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+    "recordName": "ExEss\\Cms\\Entity\\DashboardMenu",
+    "relations": [
+        {
+            "name": "groups",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\DashboardMenuActionGroup"
+        },
+        {
+            "name": "actions",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\DashboardMenuAction"
+        },
+        {
+            "name": "dashboards",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\Dashboard"
+        },
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "securityGroups",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\SecurityGroup"
+        }
+    ],
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

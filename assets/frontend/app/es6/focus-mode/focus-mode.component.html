@@ -1,0 +1,9 @@
+<focus-mode-content title="{{ focusModeController.title }}"
+                    back-arrow-clicked="focusModeController.backArrowClicked()"
+                    show-top-arrow="true"
+                    top-arrow-clicked="focusModeController.topArrowClicked()">
+  <gridlr
+    ng-if="focusModeController.loading === false"
+    definition="focusModeController.grid">
+  </gridlr>
+</focus-mode-content>

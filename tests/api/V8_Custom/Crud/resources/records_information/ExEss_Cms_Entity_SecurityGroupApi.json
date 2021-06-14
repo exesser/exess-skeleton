@@ -1,0 +1,76 @@
+{
+    "recordName": "ExEss\\Cms\\Entity\\SecurityGroupApi",
+    "relations": [
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "securityGroups",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\SecurityGroup"
+        }
+    ],
+    "fields": [
+        {
+            "name": "httpMethod",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "GET",
+                    "value": "GET"
+                },
+                {
+                    "key": "POST",
+                    "value": "POST"
+                },
+                {
+                    "key": "PUT",
+                    "value": "PUT"
+                },
+                {
+                    "key": "DELETE",
+                    "value": "DELETE"
+                },
+                {
+                    "key": "PATCH",
+                    "value": "PATCH"
+                }
+            ]
+        },
+        {
+            "name": "route",
+            "type": "string"
+        },
+        {
+            "name": "allowedGroupTypes",
+            "type": "text"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+<div class="pagination">
+  <small ng-bind-html="paginationController.text"></small>
+  <ul ng-if="paginationController.totalPages > 1">
+    <li class="pagination__prev" ng-if="paginationController.currentPage !== 1">
+      <a ng-click="paginationController.onPageChanged(paginationController.currentPage - 1)">
+        <span class="icon-arrow-left"></span>
+      </a>
+    </li>
+
+    <li id="first-page" ng-if="paginationController.currentPage - 4 > 0">
+      <a ng-click="paginationController.onPageChanged(1)">
+        1
+      </a>
+    </li>
+
+    <li id="prev-dots" ng-if="paginationController.currentPage - 5 > 0">
+      …
+    </li>
+
+    <li id="prev-page-3" ng-if="paginationController.currentPage - 3 > 0">
+      <a ng-click="paginationController.onPageChanged(paginationController.currentPage - 3)">
+        {{ paginationController.currentPage - 3 }}
+      </a>
+    </li>
+
+    <li id="prev-page-2" ng-if="paginationController.currentPage - 2 > 0">
+      <a ng-click="paginationController.onPageChanged(paginationController.currentPage - 2)">
+        {{ paginationController.currentPage - 2 }}
+      </a>
+    </li>
+
+    <li id="prev-page-1" ng-if="paginationController.currentPage - 1 > 0">
+      <a ng-click="paginationController.onPageChanged(paginationController.currentPage - 1)">
+        {{ paginationController.currentPage - 1 }}
+      </a>
+    </li>
+
+    <li id="current-page" class="is-active">
+      <a>{{ paginationController.currentPage }}</a>
+    </li>
+
+    <li id="next-page-1" ng-if="paginationController.currentPage + 1 <= paginationController.totalPages">
+      <a ng-click="paginationController.onPageChanged(paginationController.currentPage + 1)">
+        {{ paginationController.currentPage + 1 }}
+      </a>
+    </li>
+
+    <li id="next-page-2" ng-if="paginationController.currentPage + 2 <= paginationController.totalPages">
+      <a ng-click="paginationController.onPageChanged(paginationController.currentPage + 2)">
+        {{ paginationController.currentPage + 2 }}
+      </a>
+    </li>
+
+    <li id="next-page-3" ng-if="paginationController.currentPage + 3 <= paginationController.totalPages">
+      <a ng-click="paginationController.onPageChanged(paginationController.currentPage + 3)">
+        {{ paginationController.currentPage + 3 }}
+      </a>
+    </li>
+
+    <li id="next-dots" ng-if="paginationController.currentPage + 5 <= paginationController.totalPages">
+      …
+    </li>
+
+    <li id="last-page" ng-if="paginationController.currentPage + 4 <= paginationController.totalPages">
+      <a ng-click="paginationController.onPageChanged(paginationController.totalPages)">
+        {{ paginationController.totalPages }}
+      </a>
+    </li>
+
+    <li class="pagination__next" ng-if="paginationController.currentPage < paginationController.totalPages">
+      <a ng-click="paginationController.onPageChanged(paginationController.currentPage + 1)">
+        <span class="icon-arrow-right"></span>
+      </a>
+    </li>
+  </ul>
+</div>

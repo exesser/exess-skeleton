@@ -1,0 +1,30 @@
+<div
+  ng-if="drawPadFormElementController.fieldIsDisabledOrReadOnly() === false">
+  <signature-pad
+    id="{{ ::drawPadFormElementController.elementId }}"
+    accept="drawPadFormElementController.getDrawing"
+    clear="drawPadFormElementController.clear"
+    height="{{ drawPadFormElementController.height }}"
+    width="{{ drawPadFormElementController.width }}"
+    dataurl="drawPadFormElementController.internalModelValue"
+    on-drawing="drawPadFormElementController.onDrawing()">
+  </signature-pad>
+
+  <a ng-click="drawPadFormElementController.clearDrawing()"
+     ng-show="drawPadFormElementController.internalModelValue !== ''"
+     translate>
+    DRAW_PAD.CLEAR
+  </a>
+
+  <a ng-click="drawPadFormElementController.resetDrawing()"
+     ng-show="drawPadFormElementController.originalData !== drawPadFormElementController.internalModelValue && drawPadFormElementController.originalData !== ''"
+     translate>
+    DRAW_PAD.RESET
+  </a>
+</div>
+
+<div class="signature"
+  ng-if="drawPadFormElementController.fieldIsDisabledOrReadOnly() === true"
+  style="height: {{ drawPadFormElementController.height }}px; width: {{ drawPadFormElementController.width }}px; ">
+  <img id="{{ ::drawPadFormElementController.elementId }}" ng-src="{{drawPadFormElementController.internalModelValue}}">
+</div>

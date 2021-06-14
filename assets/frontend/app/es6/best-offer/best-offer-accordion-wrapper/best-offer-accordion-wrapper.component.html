@@ -1,0 +1,16 @@
+<div class="m-collapsable">
+  <a
+    class="m-collapsable__header"
+    ng-click="bestOfferAccordionWrapperController.toggle()">
+    {{bestOfferAccordionWrapperController.label}}
+    <span
+      class="m-collapsable__arrow"
+      ng-class="{ 'icon-arrow-down': bestOfferAccordionWrapperController.isOpen === false, 'icon-arrow-up': bestOfferAccordionWrapperController.isOpen }">
+    </span>
+  </a>
+</div>
+
+<div ng-show="bestOfferAccordionWrapperController.isOpen">
+  <div ng-transclude></div>
+</div>
+

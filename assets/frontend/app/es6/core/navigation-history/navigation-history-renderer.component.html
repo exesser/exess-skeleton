@@ -1,0 +1,35 @@
+<div>
+  <label class="input__toggle">
+    Show edit icon
+  <input
+    type="checkbox"
+    ng-model="navigationHistoryRendererController.showEditIcon"
+    ng-change="navigationHistoryRendererController.showEditIconChanged()"
+  >
+  <span class="icon toggle"></span>
+  <span class="icon-checkmark"></span>
+  <span class="icon-cross"></span>
+  </label>
+</div>
+
+
+<div ng-show="navigationHistoryRendererController.showNavigation()">
+  <div class="heading aqua">
+    <h5>Navigation history</h5>
+    <a class="button" ng-click="navigationHistoryRendererController.toggleDisplayHistory()">
+     <span
+       class="m-collapsable__arrow"
+       ng-class="{ 'icon-arrow-down': navigationHistoryRendererController.isOpen === false, 'icon-arrow-up': navigationHistoryRendererController.isOpen }">
+    </span>
+    </a>
+  </div>
+
+  <div class="navigation-history-container" ng-show="navigationHistoryRendererController.isOpen">
+    <navigation-history-action
+      class="navigation-history"
+      ng-repeat="action in navigationHistoryRendererController.actions"
+      action="action">
+    </navigation-history-action>
+  </div>
+</div>
+

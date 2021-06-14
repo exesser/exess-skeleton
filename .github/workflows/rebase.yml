@@ -1,0 +1,23 @@
+name: ExessCMS rebase
+
+on:
+  issue_comment:
+    types: [ created, edited ]
+
+jobs:
+  rebase:
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/rebase') }}
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the latest code
+        uses: actions/checkout@v2
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Automatic Rebase
+        uses: cirrus-actions/rebase@1.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

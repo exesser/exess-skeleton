@@ -1,0 +1,52 @@
+actor: Tester
+params:
+    - .env
+    - .env.test
+    - .env.test.local
+paths:
+    tests: tests
+    data: tests/_data
+    support: tests/_support
+    output: tests/_output
+    envs: tests/_envs
+bootstrap: _bootstrap.php
+settings:
+    colors: true
+    memory_limit: -1
+    admin_user: superadmin
+    backup_globals: false
+    lint: false
+extensions:
+    enabled
+        - Codeception\Extension\RunFailed
+coverage:
+    enabled: true
+    whitelist:
+        include:
+            - Api/*.php
+            - include/*.php
+            - vardefs/*.php
+            - src/*.php
+        exclude:
+            - var/*
+            - tests/*
+            - vendor/*
+
+modules:
+    config:
+        ExEss\Cms\Test\Codeception\Module\Db:
+            dsn: 'mysql:host=%DBCONFIG_DB_HOST_NAME%;dbname=%DBCONFIG_DB_NAME%;charset=utf8'
+            user: '%DBCONFIG_DB_USER_NAME%'
+            password: '%DBCONFIG_DB_PASSWORD%'
+            # populate: whether the the dump should be loaded before the test suite is started
+            populate: '%CODECEPTION_DB_POPULATE%'
+            populator: 'APP_ENV=test php bin/robo db:load-test-dump'
+            # whether the dump should be reloaded before each test
+            cleanup: false
+            reconnect: true
+        ExEss\Cms\Test\Codeception\Module\Vcr:
+            cassettePath: 'tests/_vcr'
+            # record: record all calls to external systems
+            record: '%CODECEPTION_VCR_RECORD%'
+            # playback: playback previously recorded calls
+            playback: '%CODECEPTION_VCR_PLAYBACK%'

@@ -1,0 +1,38 @@
+<div ng-if="embeddedGuidanceController.guidanceHasBeenLoaded">
+  <div>
+    <div>
+      <div class="form__header">
+        <a class="button"
+           ng-show="embeddedGuidanceController.showPrimaryButton"
+           ng-click="embeddedGuidanceController.primaryButtonClicked()"
+           ng-disabled="embeddedGuidanceController.primaryButtonIsDisabled()">{{ embeddedGuidanceController.primaryButtonTitle }}</a>
+
+        <h1 ng-if="embeddedGuidanceController.bigTitle">
+          {{ embeddedGuidanceController.titleExpression | interpolate:embeddedGuidanceController.guidanceMode.model:embeddedGuidanceController.defaultTitle }}
+        </h1>
+
+        <h2 ng-if="!embeddedGuidanceController.bigTitle">
+          {{ embeddedGuidanceController.titleExpression | interpolate:embeddedGuidanceController.guidanceMode.model:embeddedGuidanceController.defaultTitle }}
+        </h2>
+      </div>
+      <div class="form__group" ng-hide="embeddedGuidanceController.loading">
+        <div class="grid" style="margin: 0; padding: 0;">
+          <guidance
+            guidance-data="embeddedGuidanceController.guidanceMode"
+            guidance-form-observer="embeddedGuidanceController.guidanceFormObserver"
+            flow-id="{{ embeddedGuidanceController.flowId }}"
+            record-id="{{ embeddedGuidanceController.recordId }}"
+            inform-progress-bar-observer="false"
+            enable-guidance-recovery="embeddedGuidanceController.enableNavigateAwayGuard"
+            enable-navigate-away-guard="embeddedGuidanceController.enableNavigateAwayGuard">
+          </guidance>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-show="embeddedGuidanceController.loading || !embeddedGuidanceController.guidanceHasBeenLoaded" class="badge badge-position loading">
+  <img src="images/loading@2x.gif"/>
+  <h5 class="pink">{{ embeddedGuidanceController.guidanceMode.guidance.loadingMessage }}</h5>
+</div>

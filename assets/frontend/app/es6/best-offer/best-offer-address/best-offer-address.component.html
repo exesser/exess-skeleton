@@ -1,0 +1,233 @@
+<div class="grid">
+
+  <div class="col-1-1" ng-repeat="product in bestOfferAddressController.products">
+    <div class="view__list is-compact">
+
+      <div class="list__header list__row">
+        <h2 class="blue">{{"BEST_OFFER.PRODUCT_TYPE." + product.productType | translate}}</h2>
+        <div class="grid has-default-margins">
+          <div ng-repeat="col in product.metaData" class="col-1-2">
+            <div ng-repeat="property in col" class="input label-inline">
+              <label>{{property.label}}</label>
+              <a ng-if="property.action" ng-click="bestOfferAddressController.action(property.action)">
+                {{property.value}}
+              </a>
+              <div ng-if="!property.action"><strong>{{property.value}}</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table class="list__content">
+        <tr class="list__divider">
+          <td colspan="999" translate>BEST_OFFER.LIST_TITLE.CURRENT_PRODUCT</td>
+        </tr>
+
+        <tr class="list__column-headers">
+          <th class="list__cell" translate>BEST_OFFER.LIST_HEADER.PACKAGE</th>
+          <th class="list__cell" translate>BEST_OFFER.LIST_HEADER.PRODUCT</th>
+          <th class="list__cell" colspan="3" translate>BEST_OFFER.LIST_HEADER.PRICE_PER_YEAR</th>
+        </tr>
+
+        <tr class="list__row">
+          <td class="list__cell cell__text">
+            <a
+              ng-if="product.packageAction"
+              ng-click="bestOfferAddressController.action(product.packageAction)">
+              {{product.package}}
+            </a>
+            <span ng-if="!product.packageAction">{{product.package}}</span>
+          </td>
+          <td class="list__cell cell__text">
+            <a ng-click="bestOfferAddressController.action(product.productAction)">
+              {{product.product}}
+            </a>
+          </td>
+          <td class="list__cell cell__text cell__noWrap">
+            {{product.pricePerYear | formatNumber}}
+            € / <span translate>BEST_OFFER.PRICE.YEAR</span>
+            <span class="cell__noWrap">{{ bestOfferAddressController.getVatText(product.inclVat) }}</span>
+            <table class="list__content bdt-table">
+              <tr ng-repeat="price in product.priceInfo">
+                <td>{{ price.label }}</td>
+                <td>{{ price.value }}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr class="list__divider">
+          <td colspan="999">
+            <spam translate>BEST_OFFER.LIST_TITLE.OFFERS</spam>
+            ({{product.offers.length}})
+          </td>
+        </tr>
+
+        <tr class="list__column-headers" ng-if="product.offers.length > 0">
+          <th class="list__cell" translate>BEST_OFFER.LIST_HEADER.PACKAGE</th>
+          <th class="list__cell" translate>BEST_OFFER.LIST_HEADER.PRODUCT</th>
+          <th class="list__cell" translate>BEST_OFFER.LIST_HEADER.PRICE_PER_YEAR</th>
+          <th class="list__cell" translate>BEST_OFFER.LIST_HEADER.SAVINGS</th>
+          <th></th>
+        </tr>
+
+        <tr class="list__row" ng-repeat="offer in product.offers">
+          <td class="list__cell cell__text">
+            <a
+              ng-if="offer.packageAction"
+              ng-click="bestOfferAddressController.action(offer.packageAction)">
+              {{offer.package}}
+            </a>
+            <span ng-if="!offer.packageAction">{{offer.package}}</span>
+            <div ng-repeat="property in offer.packageProperties track by $index">{{property}}</div>
+          </td>
+
+          <td class="list__cell cell__text">
+            <a ng-click="bestOfferAddressController.action(offer.productAction)">
+              {{offer.product}}
+            </a>
+            <div ng-repeat="property in offer.packageProductProperties track by $index">{{property}}</div>
+          </td>
+          <td class="list__cell cell__text cell__noWrap">
+            {{offer.pricePerYear | formatNumber }}
+            € / <span translate>BEST_OFFER.PRICE.YEAR</span>
+            <span class="cell__noWrap">{{ bestOfferAddressController.getVatText(offer.inclVat) }}</span>
+            <div>
+              <table class="list__content bdt-table">
+                <tr ng-repeat="price in offer.priceInfo">
+                  <td>{{ price.label }}</td>
+                  <td>{{ price.value }}</td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td class="list__cell cell__text" ng-class="{'bdt-green-text': offer.savings > 0,'bdt-pink-text': offer.savings < 0 }">
+            {{offer.savings | formatNumber}}
+            € / <span translate>BEST_OFFER.PRICE.YEAR</span>
+            <span class="cell__noWrap">{{ bestOfferAddressController.getVatText(offer.inclVat) }}</span>
+          </td>
+          <td class="list__cell cell__text">
+            <label class="input__checkbox" ng-disabled="bestOfferAddressController.disableOffers(offer.id)">
+              <input
+                type="checkbox"
+                ng-disabled="bestOfferAddressController.disableOffers(offer.id)"
+                ng-checked="bestOfferAddressController.offerIsSelected(offer.id)"
+                ng-click="bestOfferAddressController.selectOffer(product.productType, offer.id)">
+              <span class="icon-checkmark"></span>
+              <span ng-if="bestOfferAddressController.offerIsSelected(offer.id)" translate>
+              BEST_OFFER.CHECKBOX.SELECTED
+            </span>
+              <span
+                ng-if="!bestOfferAddressController.offerIsSelected(offer.id)" translate>
+              BEST_OFFER.CHECKBOX.NOT_SELECTED
+            </span>
+            </label>
+          </td>
+        </tr>
+        <tr class="list__row" ng-if="product.otherProductChangeAction">
+          <td colspan="5">
+            <a ng-click="bestOfferAddressController.action(product.otherProductChangeAction)" translate>
+              BEST_OFFER.LINK.OTHER_PRODUCT_CHANGE
+            </a>
+          </td>
+        </tr>
+
+        <tr class="list__divider">
+          <td colspan="999">
+            <spam translate>BEST_OFFER.LIST_TITLE.DISCOUNTS</spam>
+            ({{product.discounts.length}})
+          </td>
+        </tr>
+
+        <tr class="list__column-headers" ng-if="product.discounts.length > 0">
+          <th class="list__cell" colspan="2" translate>BEST_OFFER.LIST_HEADER.DISCOUNT_CODE</th>
+          <th class="list__cell" colspan="3" translate>BEST_OFFER.LIST_HEADER.DISCOUNT</th>
+        </tr>
+
+        <tr class="list__row" ng-repeat="discount in product.discounts">
+          <td class="list__cell cell__text" colspan="2">{{discount.name}}</td>
+          <td class="list__cell cell__text" colspan="2">
+            <div ng-repeat="rate in discount.rates track by $index">{{rate}}</div>
+          </td>
+
+          <td class="list__cell cell__text">
+            <label class="input__checkbox" ng-disabled="bestOfferAddressController.disableDiscounts()">
+              <input
+                type="checkbox"
+                ng-disabled="bestOfferAddressController.disableDiscounts()"
+                ng-checked="bestOfferAddressController.discountIsSelected(discount.id)"
+                ng-click="bestOfferAddressController.selectDiscount(product.productType, discount.id)">
+              <span class="icon-checkmark"></span>
+              <span
+                ng-if="bestOfferAddressController.discountIsSelected(discount.id)" translate>
+              BEST_OFFER.CHECKBOX.SELECTED
+            </span>
+              <span
+                ng-if="!bestOfferAddressController.discountIsSelected(discount.id)" translate>
+              BEST_OFFER.CHECKBOX.NOT_SELECTED
+            </span>
+            </label>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <br>
+  </div>
+
+  <div class="col-" ng-if="bestOfferAddressController.shouldDisplayOfferFooter()">
+    <div class="m-summary">
+      <div class="m-summary__item m-summary__item--highlight col-1-3">
+        <p translate>BEST_OFFER.FOOTER.CURRENT_PRICE</p>
+        <b>
+          {{ bestOfferAddressController.getCurrentPriceBaseOnOffers() | formatNumber}}
+          € / <span translate>BEST_OFFER.PRICE.YEAR</span>
+          <span class="cell__noWrap">{{ bestOfferAddressController.getVatText(bestOfferAddressController.inclVat)}}</span>
+        </b>
+      </div>
+      <div class="m-summary__item col-1-3">
+        <p translate>BEST_OFFER.FOOTER.NEW_PRICE</p>
+        <b>
+          {{ bestOfferAddressController.newValue | formatNumber}}
+          € / <span translate>BEST_OFFER.PRICE.YEAR</span>
+          <span class="cell__noWrap">{{ bestOfferAddressController.getVatText(bestOfferAddressController.inclVat) }}</span>
+        </b>
+      </div>
+      <div
+        class="m-summary__item col-1-3">
+        <p translate>BEST_OFFER.FOOTER.SAVINGS</p>
+        <b>
+          {{ bestOfferAddressController.getSavings() | formatNumber}}
+          € / <span translate>BEST_OFFER.PRICE.YEAR</span>
+          <span class="cell__noWrap">{{ bestOfferAddressController.getVatText(bestOfferAddressController.inclVat) }}</span>
+        </b>
+      </div>
+    </div>
+
+    <br/>
+    <button class="button right" ng-click="bestOfferAddressController.onChooseBestOffer()" translate>
+      BEST_OFFER.BUTTON.CHOOSE_BEST_OFFER
+    </button>
+  </div>
+
+  <div class="col-" ng-if="bestOfferAddressController.shouldDisplayDiscountsFooter()">
+    <div class="m-summary">
+      <div class="m-summary__item m-summary__item--highlight col-1-3">
+        <p translate>BEST_OFFER.FOOTER.CURRENT_PRICE</p>
+        <b>{{ bestOfferAddressController.getCurrentPriceBaseOnDiscounts() | formatNumber}} € / <span
+          translate>BEST_OFFER.PRICE.YEAR</span> </b>
+      </div>
+      <div
+        ng-repeat="discount in bestOfferAddressController.getSelectedDiscounts()"
+        class="m-summary__item col-1-3">
+        <p>{{"BEST_OFFER.PRODUCT_TYPE." + discount.productType | translate}}</p>
+        <b>{{discount.name}}</b>
+      </div>
+    </div>
+
+    <br/>
+    <button class="button right" ng-click="bestOfferAddressController.onChooseBestDiscounts()" translate>
+      BEST_OFFER.BUTTON.CHOOSE_DISCOUNTS
+    </button>
+  </div>
+</div>

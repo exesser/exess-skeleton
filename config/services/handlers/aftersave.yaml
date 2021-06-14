@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    public: true
+
+  ExEss\Cms\FLW_Flows\AfterSave\Handler\AfterSaveHandlerQueue:
+    class: ExEss\Cms\FLW_Flows\AfterSave\Handler\AfterSaveHandlerQueue
+    arguments:
+      - !tagged_iterator handler.aftersave
+
+  # Handlers - the higher the priority, the higher in the iterator of handlers

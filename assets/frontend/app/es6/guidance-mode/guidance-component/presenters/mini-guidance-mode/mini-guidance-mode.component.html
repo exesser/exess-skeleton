@@ -1,0 +1,35 @@
+<div ng-if="miniGuidanceModeController.loading === false">
+  <div class="sidebar__header">{{ miniGuidanceModeController.guidanceData.title }}</div>
+
+  <guidance
+    ng-if="miniGuidanceModeController.miniGuidanceCanBeOpened() && miniGuidanceModeController.guidanceFormObserver"
+    guidance-data="miniGuidanceModeController.guidanceData"
+    guidance-form-observer="miniGuidanceModeController.guidanceFormObserver"
+    flow-id="{{ miniGuidanceModeController.guidanceData.flowId }}"
+    record-id="{{ miniGuidanceModeController.guidanceData.recordId }}"
+    inform-progress-bar-observer="false"
+    enable-navigate-away-guard="false">
+  </guidance>
+
+  <div class="form__footer">
+    <button
+      ng-disabled="miniGuidanceModeController.confirmIsDisabled()"
+      ng-click="miniGuidanceModeController.confirm()"
+      class="button"
+      translate>SAVE
+    </button>
+
+    <button
+      ng-click="miniGuidanceModeController.cancel()"
+      class="button-light"
+      translate>CANCEL
+    </button>
+  </div>
+</div>
+
+<div class="form__footer" ng-if="miniGuidanceModeController.loading">
+  <div class="badge badge-position loading">
+    <img src="images/loading-dark@2x.gif"/>
+    <h5 class="pink" translate>LOADING</h5>
+  </div>
+</div>

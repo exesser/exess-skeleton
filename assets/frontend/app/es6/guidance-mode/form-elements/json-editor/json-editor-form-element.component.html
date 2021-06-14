@@ -1,0 +1,15 @@
+<div ng-if="jsonEditorFormElementController.isReadonly === false">
+  <!-- we are using ng-readonly and not ng-disabled because when we disable the field we lose the focus -->
+  <div ng-jsoneditor="jsonEditorFormElementController.editorLoaded"
+       id="{{ ::jsonEditorFormElementController.elementId }}"
+       ng-model="jsonEditorFormElementController.newInternalModelValue"
+       ng-readonly="jsonEditorFormElementController.fieldIsDisabled()"
+       options="jsonEditorFormElementController.componentOptions"></div>
+</div>
+
+<div class="non-editable-input" ng-if="jsonEditorFormElementController.isReadonly === true">
+  <strong id="{{ ::jsonEditorFormElementController.elementId }}">
+    <pre>{{ jsonEditorFormElementController.getInternalModelValue() | json}}</pre>
+  </strong>
+</div>
+

@@ -1,0 +1,24 @@
+<div class="btn-group dropdown insert-table">
+
+  <button type="button" class="btn"
+          ng-click="wysiwygInsertTableButtonController.settings.showTable = !wysiwygInsertTableButtonController.settings.showTable"
+          ng-disabled="isDisabled()">
+    <i class="fa fa-table"></i>
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <ul ng-show="wysiwygInsertTableButtonController.settings.showTable">
+    <li>
+      <table>
+        <tr ng-repeat="row in wysiwygInsertTableButtonController.settings.buttonRows track by $index">
+          <td
+            ng-repeat="col in wysiwygInsertTableButtonController.settings.buttonCols track by $index"
+            ng-mouseover="wysiwygInsertTableButtonController.hoverIn(row, col)"
+            ng-mouseleave="wysiwygInsertTableButtonController.hoverOut()"
+            ng-class="{'pink': wysiwygInsertTableButtonController.cellIsActive(row, col) }"
+            ng-click="wysiwygInsertTableButtonController.addTable(row, col)"
+          ></td>
+        </tr>
+      </table>
+    </li>
+  </ul>
+</div>

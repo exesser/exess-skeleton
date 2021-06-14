@@ -1,0 +1,129 @@
+{
+  "flw_guidancefields":
+  [
+    {
+      "id": "my-guidance-field",
+      "name": "Quote - account select with search",
+      "date_entered": "2016-11-10 15:50:06",
+      "date_modified": "2016-11-28 16:21:42",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "field_id": "userId",
+      "field_label": "Account",
+      "field_default": null,
+      "field_type": "selectWithSearch",
+      "field_generatebyserver": 1,
+      "field_module": "Users",
+      "field_modulefield": null,
+      "field_generatetype": null,
+      "field_hideexpression": null,
+      "field_disableexpression": null,
+      "field_multiple": null,
+      "field_fieldgroup": "r1c1",
+      "field_order": 200,
+      "field_hasborder": 1,
+      "field_address_type": null,
+      "field_enum_values": null,
+      "field_fieldexpression": null,
+      "field_upload_validation": null,
+      "field_custom": "{ \"plusButtonTitle\": \"Select account\",\"modalTitle\": \"Select account\",\"selectedResultsTitle\": \"Selected account\",\"datasourceName\": \"Accounts\",\"multiple\": false, \"required\": true}",
+      "field_overwrite_value": null,
+      "field_action_json": "{}",
+      "field_orientation": null,
+      "field_read_only": 0,
+      "required_c": 0,
+      "field_no_backend_interaction": 0,
+      "field_valueexpression": null
+    }
+  ],
+  "grid_gridtemplates":
+  [
+    {
+      "id": "repeatable-embedded-guidance",
+      "name": "RR",
+      "date_entered": "2017-03-09 09:51:15",
+      "date_modified": "2017-03-09 13:32:26",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "key_c": "repeatable-embedded-guidance-key",
+      "json_fields_c": "{\n  \"columns\": [\n    {\n      \"size\": \"1-4\",\n      \"hasMargin\": false,\n      \"cssClasses\": [\n        \"progressbar\"\n      ],\n      \"rows\": [\n        {\n          \"size\": \"1-1\",\n          \"type\": \"progressBar\",\n          \"options\": {\n            \"title\": \"Kitchen Sink\"\n          }\n        }\n      ]\n    },\n    {\n      \"size\": \"3-4\",\n      \"cssClasses\": [\n        \"guidance\"\n      ],\n      \"hasMargin\": false,\n      \"rows\": [\n        {\n          \"size\": \"1-1\",\n          \"type\": \"centeredGuidanceGrid\",\n          \"options\": {\n            \"grid\": {\n              \"columns\": [\n                {\n                  \"size\": \"1-1\",\n                  \"rows\": [\n                    {\n                      \"size\": \"1-4\",\n                      \"type\": \"titleContainingGrid\",\n                      \"cssClasses\": [\n                        \"card\"\n                      ],\n                      \"options\": {\n                        \"titleExpression\": \"%title_row1%\",\n                        \"grid\": {\n                          \"cssClasses\": [\n                            \"has-default-margins\"\n                          ],\n                          \"columns\": [\n                            {\n                              \"size\": \"1-2\",\n                              \"rows\": [\n                                {\n                                  \"size\": \"1-1\",\n                                  \"type\": \"basicFormlyForm\",\n                                  \"options\": {\n                                    \"formKey\": \"r1c1\"\n                                  }\n                                }\n                              ]\n                            },\n                            {\n                              \"size\": \"1-2\",\n                              \"rows\": [\n                                {\n                                  \"size\": \"1-1\",\n                                  \"type\": \"basicFormlyForm\",\n                                  \"options\": {\n                                    \"formKey\": \"r1c2\"\n                                  }\n                                }\n                              ]\n                            }\n                          ]\n                        }\n                      }\n                    },\n                    {\n                      \"size\": \"1-4\",\n                      \"type\": \"titleContainingGrid\",\n                      \"cssClasses\": [\n                        \"card\"\n                      ],\n                      \"options\": {\n                        \"titleExpression\": \"%title_row2%\",\n                        \"grid\": {\n                          \"cssClasses\": [\n                            \"has-default-margins\"\n                          ],\n                          \"columns\": [\n                            {\n                              \"size\": \"1-2\",\n                              \"rows\": [\n                                {\n                                  \"size\": \"1-1\",\n                                  \"type\": \"basicFormlyForm\",\n                                  \"options\": {\n                                    \"formKey\": \"r2c1\"\n                                  }\n                                }\n                              ]\n                            },\n                            {\n                              \"size\": \"1-2\",\n                              \"rows\": [\n                                {\n                                  \"size\": \"1-1\",\n                                  \"type\": \"basicFormlyForm\",\n                                  \"options\": {\n                                    \"formKey\": \"r2c2\"\n                                  }\n                                }\n                              ]\n                            }\n                          ]\n                        }\n                      }\n                    },\n                    {\n                      \"size\": \"1-4\",\n                      \"type\": \"embeddedGuidance\",\n                      \"options\": {\n                        \"repeatsBy\": \"userId\",\n                        \"recordType\": \"Accounts\",\n                        \"flowId\": \"my-child-flow-key\",\n                        \"recordId\": \"%recordId%\",\n                        \"showPrimaryButton\": false,\n                        \"titleExpression\": \"repeat\",\n                        \"modelKey\": \"packageProduct\",\n                        \"modelId\": \"%recordId%\",\n                        \"guidanceParams\": {\n                          \"model\": {\n                            \"id\": \"%repeatsBy|id%\",\n                            \"name\": \"%repeatsBy|not-existing%\"\n                          }\n                        }\n                      }\n                    }\n                  ]\n                }\n              ]\n            }\n          }\n        }\n      ]\n    }\n  ]\n}"
+    }
+  ],
+  "flw_flowsteps":
+  [
+    {
+      "id": "my-flowstep",
+      "name": "does not matter",
+      "date_entered": "2016-07-05 14:32:52",
+      "date_modified": "2016-09-27 12:35:49",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "type_c": "DEFAULT",
+      "json_fields_c": null,
+      "key_c": "my-flowstep-key",
+      "is_card_c": 0,
+      "label_c": null,
+      "grid_template_id": "repeatable-embedded-guidance"
+    }
+  ],
+  "flw_guidancefields_flw_flowsteps_c":
+  [
+    {
+      "flow_field_id": "my-guidance-field",
+      "flow_step_id": "my-flowstep"
+    }
+  ],
+  "flw_flows":
+  [
+    {
+      "id": "my-flow",
+      "name": "Modal - Start mediationrun",
+      "date_entered": "2016-11-07 15:39:48",
+      "date_modified": "2017-03-02 10:17:05",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "key_c": "my-flow-key",
+      "type_c": "STANDARD",
+      "base_object_c": null,
+      "loading_message_c": null,
+      "label_c": "1",
+      "error_message": null,
+      "external": 0
+    },
+    {
+      "id": "my-child-flow",
+      "name": "Modal - Start mediationrun",
+      "date_entered": "2016-11-07 15:39:48",
+      "date_modified": "2017-03-02 10:17:05",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "key_c": "my-child-flow-key",
+      "type_c": "STANDARD",
+      "base_object_c": null,
+      "loading_message_c": null,
+      "label_c": "1",
+      "error_message": null,
+      "external": 0
+    }
+  ],
+  "flw_flowstepslink":
+  [
+    {
+      "id": "my-flowstep-link",
+      "name": "CO4L1s1",
+      "date_entered": "2016-03-10 15:55:54",
+      "date_modified": "2016-03-10 15:56:41",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "order_c": -1,
+      "flow_id": "my-flow",
+      "flow_step_id": "my-flowstep"
+    }
+  ]
+}

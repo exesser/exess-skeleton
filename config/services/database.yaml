@@ -1,0 +1,16 @@
+parameters:
+  database_host: '%env(string:DBCONFIG_DB_HOST_NAME)%'
+  database_name: '%env(string:DBCONFIG_DB_NAME)%'
+  database_user: '%env(string:DBCONFIG_DB_USER_NAME)%'
+  database_password: '%env(string:DBCONFIG_DB_PASSWORD)%'
+
+services:
+  _defaults:
+    public: true
+
+  PDO:
+    class: PDO
+    arguments:
+      - 'mysql:dbname=%database_name%;host=%database_host%'
+      - '%database_user%'
+      - '%database_password%'

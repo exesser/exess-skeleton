@@ -1,0 +1,13 @@
+<ul
+  class="suggestions"
+  ng-class="{ 'above-field': autocompleteController.shouldRenderAbove() }"
+  ng-show="autocompleteController.suggestions.length > 0 && autocompleteController.showSuggestion">
+
+  <li ng-repeat="suggestion in autocompleteController.suggestions"
+      ng-click="autocompleteController.onSuggestionClicked(suggestion)">
+    <a ng-class="{ 'is-active': $index === autocompleteController.selectedSuggestionIndex }">
+      <b>{{ suggestion[autocompleteController.suggestionLeftTextProperty] }}</b>
+      <small>{{ suggestion[autocompleteController.suggestionRightTextProperty] }}</small>
+    </a>
+  </li>
+</ul>

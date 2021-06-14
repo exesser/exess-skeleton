@@ -1,0 +1,76 @@
+<div class="heading aqua"><h5>{{crudConfigHelperRecordController.recordName}}</h5></div>
+
+<div class="crud-record-container">
+  <div class="col-1-1">
+    <div class="col-1-2">
+      <div class="input">
+        <label>Select relation</label>
+        <div>
+          <select
+            ng-model="crudConfigHelperRecordController.selectedRelation"
+            ng-options="option.name as ('[' + option.record + '] ' + option.name) for option in crudConfigHelperRecordController.getRelations()"
+            ng-change="crudConfigHelperRecordController.relationChanged()"
+          ></select>
+          <span class="icon-arrow-down"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1-2">
+      <div class="input">
+        <label>Select field</label>
+        <div>
+          <select
+            ng-model="crudConfigHelperRecordController.selectedField"
+            ng-options="option.name as option.name for option in crudConfigHelperRecordController.getFields()"
+            ng-change="crudConfigHelperRecordController.fieldChanged()"
+          ></select>
+          <span class="icon-arrow-down"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-1-1" ng-if="crudConfigHelperRecordController.selectedRelation !== null">
+    <div class="col-1-4">
+      <button class="button" ng-click="crudConfigHelperRecordController.addFilters()">Add Filter</button>
+      <br><br>
+      <small class="tooltip-up is-information">Add filter for selected relation</small>
+    </div>
+
+    <div class="col-3-4">
+
+      <div class="action-list crud-record-filters">
+        <ul>
+          <li ng-repeat="filter in crudConfigHelperRecordController.relationFilters track by $index">
+            <div class="crud-config-helper-filter-field">
+              <crud-config-helper-filter-field
+                filter-expression="filter.expression"
+                fields="crudConfigHelperRecordController.getRelationFields()"
+              ></crud-config-helper-filter-field>
+            </div>
+            <a class="action-delete" ng-click="crudConfigHelperRecordController.removeFilter(filter)">
+              <span class="icon-close"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-1-1" ng-if="crudConfigHelperRecordController.showSelectedRecord()">
+  <div class="row-">
+    <crud-config-helper-record
+      record-name="crudConfigHelperRecordController.getSelectedRecordName()"
+      prefix="{{crudConfigHelperRecordController.getPrefix()}}"></crud-config-helper-record>
+  </div>
+</div>
+
+<div class="col-1-1" ng-show="crudConfigHelperRecordController.getCompiledId() !== ''">
+  <div class="alert is-success">
+    <p class="icon-edit">{{crudConfigHelperRecordController.getCompiledId()}}</p>
+  </div>
+</div>
+

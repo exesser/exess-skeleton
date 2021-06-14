@@ -1,0 +1,14 @@
+<div class="input">
+  <div>
+    <select ng-options="dropdownOption.label for dropdownOption in listDropdownCellController.dropdownOptions"
+            name="input-selected"
+            id="input-select"
+            class="has-no-value"
+            ng-model="listDropdownCellController.selected"
+            ng-init="selected='dropdownOption'"
+            ng-change="listDropdownCellController.navigate(listDropdownCellController.selected)">
+      <option value="" disabled selected>{{listDropdownCellController.defaultOption}}</option>
+    </select>
+    <span class="icon-arrow-down"></span>
+  </div>
+</div>

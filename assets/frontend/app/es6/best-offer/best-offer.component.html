@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="col-1-2" ng-show="bestOfferController.accountLabel !== ''">
+    <div class="a-customer-type a-customer-type--{{bestOfferController.accountLabel | lowercase}}">
+      <small class="tooltip-left is-dark">{{bestOfferController.accountLabel}} account</small>
+    </div>
+  </div>
+  <div class="col-1-2" ng-bind-html="bestOfferController.scripting">
+  </div>
+
+  <br clear="all">
+</div>
+
+<best-offer-accordion-wrapper
+  ng-repeat="address in bestOfferController.addresses"
+  is-open="bestOfferController.addresses.length === 1"
+  label="{{ address.address }}">
+  <best-offer-address address="address"></best-offer-address>
+</best-offer-accordion-wrapper>

@@ -1,0 +1,20 @@
+{
+    "recordName": "ExEss\\Cms\\Entity\\UserLogin",
+    "relations": [
+        {
+            "name": "id",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        }
+    ],
+    "fields": [
+        {
+            "name": "lastLogin",
+            "type": "datetime"
+        },
+        {
+            "name": "jwt",
+            "type": "text"
+        }
+    ]
+}

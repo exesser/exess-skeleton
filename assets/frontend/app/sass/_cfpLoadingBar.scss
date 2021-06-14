@@ -1,0 +1,7 @@
+#loading-bar .bar {
+  position: absolute;
+  top: 0px;
+  height: 4px;
+  z-index: 9000; // Its over 9000!!!!!
+  background-color: #00AECE;
+}

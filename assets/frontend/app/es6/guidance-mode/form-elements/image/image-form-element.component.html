@@ -1,0 +1,9 @@
+<div class="m-banner" style="background-image:url('{{ imageFormElementController.imageUrl | interpolate:imageFormElementController.fullModel:'' }}')">
+  <blockquote ng-if="imageFormElementController.text">
+    {{ imageFormElementController.text | interpolate:imageFormElementController.fullModel:'' }}
+  </blockquote>
+
+  <a class="button-aqua" ng-if="imageFormElementController.action" ng-click="imageFormElementController.callAction()">
+    {{ imageFormElementController.actionText | interpolate:imageFormElementController.fullModel:'' }}
+  </a>
+</div>

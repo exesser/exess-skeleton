@@ -1,0 +1,54 @@
+<div
+  ng-if="datepickerFormElementController.isReadonly === false"
+  ng-class="{'editable-datepicker': !datepickerFormElementController.hasBorder}">
+
+  <div class="input__with-button" ng-if="datepickerFormElementController.fieldIsDisabled() !== true">
+    <span class="button"
+          ng-click="datepickerFormElementController.openPikaday()">
+      <span class="icon-kalender"></span>
+    </span>
+
+    <div class="input-holder">
+      <input
+        id="{{ ::datepickerFormElementController.elementId }}"
+        type="text"
+        class="date-picker"
+        ng-model="datepickerFormElementController.userInputDate"
+        ng-keyup="datepickerFormElementController.parseDate($event)"
+        pikaday="datepickerFormElementController.pikadayDate"
+        on-select="datepickerFormElementController.pikaDateChanged(date)"
+        on-open="datepickerFormElementController.pikaDayOpened()"
+        position="{{ datepickerFormElementController.pikaDayPosition() }}"
+        placeholder="dd/mm/yyyy"
+        format="DD/MM/YYYY"
+        year-range="70"
+        first-day="1"
+        i18n="{{ datepickerFormElementController.language }}" />
+      <input
+        id="{{ ::datepickerFormElementController.id | kebabCase }}-time-field"
+        ng-if="datepickerFormElementController.hasTime"
+        placeholder="hh:mm"
+        ng-model="datepickerFormElementController.userInputTime"
+        ng-keyup="datepickerFormElementController.parseTime($event)"
+        type="text" />
+    </div>
+  </div>
+
+  <div class="input__with-button" ng-if="datepickerFormElementController.fieldIsDisabled() === true">
+    <span class="button" disabled="disabled">
+      <span class="icon-kalender"></span>
+    </span>
+
+    <div class="input-holder">
+      <input
+        id="{{ ::datepickerFormElementController.elementId }}"
+        type="text"
+        value="{{ datepickerFormElementController.userStringValue() }}"
+        disabled="disabled" />
+    </div>
+  </div>
+</div>
+
+<div class="non-editable-input" ng-if="datepickerFormElementController.isReadonly === true">
+  <strong id="{{ ::datepickerFormElementController.elementId }}">{{ datepickerFormElementController.userStringValue() }}</strong>
+</div>

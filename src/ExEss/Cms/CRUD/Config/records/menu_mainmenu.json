@@ -1,0 +1,14 @@
+{
+  "menu_mainmenu": [
+    {
+      "id": "ccd9c8b2-68a7-8578-f2e3-5bb4b67b5807",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "start",
+      "created_by": "1",
+      "params_c": "{\r\n  \"mainMenuKey\": \"start\",\r\n  \"dashboardId\": \"CrudAllBeans\",\r\n  \"recordId\": \"\",\r\n  \"recordType\": \"\"\r\n}",
+      "display_order_c": "9999",
+      "link_c": "dashboard",
+      "icon_c": "icon-add"
+    }
+  ]
+}

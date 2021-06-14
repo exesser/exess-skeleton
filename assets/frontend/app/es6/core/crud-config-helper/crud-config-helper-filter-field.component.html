@@ -1,0 +1,42 @@
+<div class="col-1-1">
+
+  <div class="col-1-2">
+    <div class="input">
+      <label>Select field</label>
+      <div>
+        <select
+          ng-model="crudConfigHelperFilterFieldController.filterField"
+          ng-options="option.name as (option.name + ' [' + option.type + ']') for option in crudConfigHelperFilterFieldController.getSortedFields()"
+          ng-change="crudConfigHelperFilterFieldController.fieldChanged()"
+        ></select>
+        <span class="icon-arrow-down"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-1-2" ng-if="crudConfigHelperFilterFieldController.enum !== null">
+    <div class="input">
+      <label>Select value</label>
+      <div>
+        <select
+          ng-model="crudConfigHelperFilterFieldController.filterValue"
+          ng-options="option.key as option.value for option in crudConfigHelperFilterFieldController.enum"
+          ng-change="crudConfigHelperFilterFieldController.generateExpression()"
+        ></select>
+        <span class="icon-arrow-down"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-1-2" ng-if="crudConfigHelperFilterFieldController.enum === null">
+    <div class="input">
+      <label>Input value</label>
+      <div>
+        <input
+          ng-model="crudConfigHelperFilterFieldController.filterValue"
+          ng-change="crudConfigHelperFilterFieldController.generateExpression()"
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+{
+  "HELLO_WORLD": "Hello world",
+
+  "EXAMPLE_FORM": "This is an example form",
+  "FIRST_NAME": "First name",
+  "NEXT": "Next",
+  "SAVE": "Save",
+  "FINISH": "Finish",
+  "CONFIRM": "Confirm",
+  "SUBMIT": "Submit",
+  "SHOW_MORE": "show more",
+  "CANCEL": "Cancel",
+  "SEARCH": "DWP SEARCH",
+  "LOADING": "Loading",
+
+  "LOGIN.HEADER": "Welcome to NOVA",
+  "LOGIN.USERNAME": "Username",
+  "LOGIN.USERNAME.PLACEHOLDER": "Please enter you username",
+  "LOGIN.PASSWORD": "Password",
+  "LOGIN.PASSWORD.PLACEHOLDER": "Please enter your password",
+  "LOGIN.SUBMIT": "Login",
+  "LOGIN.ERROR": "Username and password are incorrect",
+
+  "LOGOUT.LOGOUT": "Logout",
+
+  "COMPANY": "Company",
+  "AVAILABLE_COMMODITIES": "Available commodity connections:",
+  "VAT": "VAT",
+  "CONTACT_PERSON": "Contact Person",
+  "PREFERRED_CONTACT_TIME": "PREFERRED CONTACT TIME",
+
+  "OPPORTUNITIES" : "OPPORTUNITIES",
+  "NO_OPPORTUNITIES_DEFINED" : "-no opportunities defined -",
+
+  "EAN" : "EAN",
+  "CONTACT" : "Contact",
+  "AROUND" : "around",
+
+  "QUOTES" : "QUOTES",
+  "NO_QUOTES_DEFINED" : "-no quotes defined -",
+
+  "ADD" : "add",
+  "SHOW_ALL": "Show All",
+
+  "SAVING_LEAD" : "Saving Lead",
+  "CALCULATING" : "Calculating",
+
+  "PRICE_CALCULATION.TITLE": "Price Calculation",
+  "PRICE_CALCULATION.CALCULATE": "Calculate",
+  "PRICE_CALCULATION.ADD_YEAR": "Add year",
+  "PRICE_CALCULATION.RESET": "Reset",
+
+  "PRICE_OVERVIEW.TITLE": "Price Overview",
+
+  "VALID_UNTIL": "Valid until",
+  "PRICED": "Priced",
+
+  "SAVING_OPPORTUNITIES" : "Saving Opportunities",
+
+  "LIST.SORT_BY": "Sort by",
+  "LIST.EXPORT_TO_CSV": "EXPORT TO CSV",
+  "LIST.EMPTY_HEADER": "no entries in this list",
+  "LIST.EMPTY_MESSAGE": "It seems like this list is still empty.",
+  "LIST.LOADING_HEADER": "Loading list...",
+  "LIST.QUICK_SEARCH": "Search...",
+
+  "MESSAGE_REQUIRED": "You must fill in {{label}}.",
+  "MESSAGE_MINLENGTH": "{{label}} must be longer than {{minlength}} characters.",
+  "MESSAGE_MAXLENGTH": "{{label}} must be smaller than {{maxlength}} characters.",
+  "MESSAGE_PATTERN": "{{label}} must match the following pattern: '{{pattern}}'.",
+  "MESSAGE_DATE_FORMAT_ERROR": "{{label}} has an incorrect date format. Correct format is: 'dd/mm/yyyy'.",
+  "MESSAGE_TIME_FORMAT_ERROR": "{{label}} has an incorrect time format. Correct format is: 'hh:mm'.",
+
+  "MONTHS": "MONTHS",
+
+  "FILTERS.FILTERS": "Filters",
+  "FILTERS.SAVE": "save",
+  "FILTERS.RESET": "reset",
+
+  "SIDEBAR.PLUS_MENU.TITLE": "Let's get started",
+  "SIDEBAR.FILTERS.TITLE": "Filters",
+
+  "UPLOAD.PLACEHOLDER": "Select your file",
+  "UPLOAD.UPLOADING": "Uploading",
+
+  "NAVIGATE_AWAY_WARNING": "Are you sure you want to navigate away?",
+  "NAVIGATE_AWAY_WARNING_DATA_LOSS": "The 'form' you are working on has not been saved, are you sure you want to navigate away?",
+
+  "HASHTAG_TEXT_ADD_TAG": "Add tag",
+
+  "PAGINATION_TEXT": "showing rows <b>{{start}} to {{end}}</b> from {{total}} results",
+  "PAGINATION_TEXT_NO_TOTAL": "showing rows <b>{{start}} to {{end}}</b>",
+  "SELECT_WITH_SEARCH.SHOW_MORE": "... show {{ amount }} more",
+  "SELECT_WITH_SEARCH.SHOW_LESS": "show less",
+
+  "ADDRESS.RESET": "reset",
+  "LANGUAGE": "-- Language --",
+
+  "BEST_OFFER.BUTTON.CHOOSE_BEST_OFFER": "Choose best offer",
+  "BEST_OFFER.BUTTON.CHOOSE_DISCOUNTS": "Choose discounts",
+  "BEST_OFFER.CHECKBOX.NOT_SELECTED": "Not selected",
+  "BEST_OFFER.CHECKBOX.SELECTED": "Selected",
+  "BEST_OFFER.FOOTER.CURRENT_PRICE": "Current price",
+  "BEST_OFFER.FOOTER.NEW_PRICE": "New price",
+  "BEST_OFFER.FOOTER.SAVINGS": "Savings",
+  "BEST_OFFER.LINK.OTHER_PRODUCT_CHANGE": "Other product change",
+  "BEST_OFFER.LIST_HEADER.DISCOUNT": "Discount",
+  "BEST_OFFER.LIST_HEADER.DISCOUNT_CODE": "Discount code",
+  "BEST_OFFER.LIST_HEADER.PACKAGE": "Package",
+  "BEST_OFFER.LIST_HEADER.PRICE_PER_YEAR": "Price per year",
+  "BEST_OFFER.LIST_HEADER.PRODUCT": "Product",
+  "BEST_OFFER.LIST_HEADER.SAVINGS": "Savings",
+  "BEST_OFFER.LIST_TITLE.CURRENT_PRODUCT": "Current product",
+  "BEST_OFFER.LIST_TITLE.DISCOUNTS": "Discounts",
+  "BEST_OFFER.LIST_TITLE.OFFERS": "offers",
+  "BEST_OFFER.PRICE.EXCL_VAT": "excl. VAT",
+  "BEST_OFFER.PRICE.INCL_VAT": "incl. VAT",
+  "BEST_OFFER.PRICE.YEAR": "year",
+  "BEST_OFFER.PRODUCT_TYPE.ELEC": "Electricity",
+  "BEST_OFFER.PRODUCT_TYPE.GAS": "Gas",
+
+  "DRAW_PAD.RESET": "reset",
+  "DRAW_PAD.CLEAR": "clear",
+
+  "SUGGESTION_CHANGE": "The selected suggestion also changed the following fields: {{diff}} are you sure you chose the right suggestion?",
+
+  "MAX_FILE_SIZE_ERROR": "File size should be smaller then {{max_file_size}}MB"
+}

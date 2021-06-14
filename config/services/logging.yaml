@@ -1,0 +1,40 @@
+parameters:
+    env(LOGGER_TAG): 'local.crm'
+    logger_tag: '%env(string:LOGGER_TAG)%'
+
+services:
+    monolog.formatter.dashed:
+        class: Monolog\Formatter\LineFormatter
+        arguments:
+            - !php/const ExEss\Cms\Logger\Logger::LOGGER
+            - "Y-m-d H:i:s.u"
+
+    Monolog\Processor\WebProcessor:
+      class: Monolog\Processor\WebProcessor
+      tags:
+        - { name: monolog.processor }
+
+    Monolog\Processor\ProcessIdProcessor:
+        class: Monolog\Processor\ProcessIdProcessor
+        tags:
+            - { name: monolog.processor }
+
+    ExEss\Cms\Component\Logger\Processor\EnvironmentProcessor:
+        class: ExEss\Cms\Component\Logger\Processor\EnvironmentProcessor
+        arguments:  ['%logger_tag%']
+        tags:
+            - { name: monolog.processor }
+
+    ExEss\Cms\Logger\Processor\NeededHeadersProcessor:
+        class: ExEss\Cms\Logger\Processor\NeededHeadersProcessor
+        arguments:
+            - '@ExEss\Cms\Component\Session\Headers'
+            - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+        tags:
+            - { name: monolog.processor }
+
+    ExEss\Cms\Component\Logger\Processor\XLogIdProcessor:
+        class: ExEss\Cms\Component\Logger\Processor\XLogIdProcessor
+        arguments:  ['@ExEss\Cms\Component\Session\Headers']
+        tags:
+            - { name: monolog.processor }

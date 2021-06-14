@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    public: true
+
+  ExEss\Cms\FLW_Flows\Action\BackendCommandExecutor:
+    arguments:
+      - !tagged { tag: 'backend.command', index_by: 'alias' }
+
+  ExEss\Cms\FLW_Flows\Action\BackendCommand\ClearCacheCommand:
+    arguments:
+      - '@ExEss\Cms\Cache\CacheAdapterFactory'
+      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
+    tags: [{ name: 'backend.command', alias: 'clearCacheCommand' }]
+
+  ExEss\Cms\CRUD\BackendCommand\CrudDeleteRelationshipCommand:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+    tags: [{ name: 'backend.command', alias: 'crudDeleteRelationship' }]
+

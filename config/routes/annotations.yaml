@@ -1,0 +1,7 @@
+controllers:
+  resource: ../../src/ExEss/Cms/Controller/
+  type: annotation
+
+kernel:
+  resource: ../../src/ExEss/Cms/Kernel.php
+  type: annotation

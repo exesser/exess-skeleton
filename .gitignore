@@ -1,0 +1,47 @@
+# Custom configuration should also be ignored.
+vagrantpath
+
+# PhpStorm - VSCode
+.vscode/
+.idea/
+.run/
+
+# Operating system specific items
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+#xdebug
+webgrind
+
+dev/database/releases/translations/x-businessTranslations.sql.done*
+tests/_output/*
+
+public/dwp
+dev/bin
+
+dev/data/config-changes
+
+src/LightEntity/*
+!src/LightEntity/Properties
+src/ExternalApi/*
+dev/phpcs/windowsvagrantpath
+.tmp_staging
+public/Api/open-api.yml
+
+/bin/*
+!/bin/nova
+!/bin/nova.php
+!/bin/console
+
+# Shared package
+config/phpcs*
+!config/phpcs.custom.xml
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.*.local
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+

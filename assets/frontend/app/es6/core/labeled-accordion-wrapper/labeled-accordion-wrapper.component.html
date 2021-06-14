@@ -1,0 +1,10 @@
+<a class="icon-arrow-down accordion-button"
+   ng-click="labeledAccordionWrapperController.toggle()"
+   ng-class="{ 'is-active': labeledAccordionWrapperController.isOpen }">
+  <span class="{{labeledAccordionWrapperController.icon}}"></span>
+  <span>{{ labeledAccordionWrapperController.label }}</span>
+</a>
+<div class="content"
+     ng-class="{ 'is-open': labeledAccordionWrapperController.isOpen }">
+  <div ng-transclude></div>
+</div>

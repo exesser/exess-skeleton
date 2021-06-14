@@ -1,0 +1,49 @@
+.navigation-history-container {
+  margin: 10px;
+
+  .navigation-history {
+    width: 49%;
+    min-width: 400px;
+    display: inline-block;
+  }
+}
+
+.crud-record-container {
+  background-color: #f7f9fb;
+  margin-bottom: 40px;
+  display: grid;
+
+  .crud-record-filters {
+    li {
+      display: flow-root;
+
+      .crud-config-helper-filter-field {
+        width: calc(100% - 25px);
+      }
+
+      .action-delete {
+        margin-top: 35px;
+      }
+    }
+  }
+}
+
+.crud-edit-icon-container {
+  display: block;
+  position: relative;
+}
+
+.crud-edit-icon {
+  display: block;
+  position: absolute;
+  padding: 10px;
+  left: -50px;
+  top: -30px;
+  font-size: 32px;
+  z-index: 200;
+
+  a {
+    text-decoration: none;
+  }
+}
+

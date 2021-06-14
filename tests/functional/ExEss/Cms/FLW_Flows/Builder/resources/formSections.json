@@ -1,0 +1,74 @@
+{
+    "guid": "a2cf86a9-f574-a2cb-b092-58989cefd16b",
+    "required": false,
+    "id": "sign_channel_c",
+    "label": "Sign channel",
+    "default": null,
+    "type": "enum",
+    "auto_select_suggestions": false,
+    "module": "User",
+    "moduleField": "status",
+    "hideExpression": "model['dwp|customer_wants_to_sign']  === false || model['quote_type_c'] == 'MOVE'",
+    "hasBorder": true,
+    "readonly": false,
+    "noBackendInteraction": false,
+    "generateByServer": false,
+    "enumValues": [
+        {
+            "condition": "model['dwp|alreadysigned'] === true ",
+            "values": [
+                {
+                    "key": "PAPER",
+                    "value": "Paper",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "condition": "model['dwp|customer_wants_to_sign'] === false ",
+            "values": [
+                {
+                    "key": "PAPER",
+                    "value": "Paper",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "condition": "model['sales_channel_id'] === '3870fc89-07cb-c636-94c6-58ac5d855546' | model['sales_channel_id'] === 'f3720656-c5d1-8858-949d-59d5342b4e5b'",
+            "values": [
+                {
+                    "key": "ONLINE",
+                    "value": "Online"
+                },
+                {
+                    "key": "PAPER",
+                    "value": "Paper"
+                },
+                {
+                    "key": "TABLET",
+                    "value": "Tablet",
+                    "default": true,
+                    "overwriteDefault": true
+                }
+            ]
+        },
+        {
+            "condition": "default",
+            "values": [
+                {
+                    "key": "ONLINE",
+                    "value": "Online"
+                },
+                {
+                    "key": "PAPER",
+                    "value": "Paper"
+                },
+                {
+                    "key": "TABLET",
+                    "value": "Tablet"
+                }
+            ]
+        }
+    ]
+}

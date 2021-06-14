@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+CUSTOM TILES FOR IE11 ////////////////////////////////////////////////
+- http://stackoverflow.com/a/18304009
+- http://msdn.microsoft.com/en-us/library/ie/dn455106(v=vs.85).aspx
+- http://msdn.microsoft.com/en-us/library/ie/dn255024(v=vs.85).aspx
+
+Max image size: 1024x1024, 200kb
+-->
+<browserconfig>
+	<msapplication>
+		<tile>
+			<square70x70logo src="tile.jpg"/>
+			<square150x150logo src="tile.jpg"/>
+			<wide310x150logo src="tile-large.jpg"/>
+			<square310x310logo src="tile.jpg"/>
+		</tile>
+	</msapplication>
+</browserconfig>

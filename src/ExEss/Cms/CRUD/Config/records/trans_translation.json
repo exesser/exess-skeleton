@@ -1,0 +1,308 @@
+{
+  "trans_translation": [
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111119",
+      "name": "ConditionalMessage",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Conditional Message",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-211111111110",
+      "name": "ExEss\\\\Cms\\\\Entity\\\\User",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "User",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111110",
+      "name": "CONF_Defaults",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Conf Defaults",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111121",
+      "name": "ExEss\\\\Cms\\\\Entity\\\\Dashboard",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Dashboard",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111122",
+      "name": "DASH_DashboardMenu",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Dashboard Menu",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111123",
+      "name": "DASH_DashboardMenuActionGroup",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Dashboard Menu Action Group",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111124",
+      "name": "DASH_DashboardProperties",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Dashboard Properties",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111125",
+      "name": "DASH_MenuActions",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Dashboard Menu Actions",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111126",
+      "name": "FE_SelectWithSearch",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Select With Search",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111127",
+      "name": "FIND_Search",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Find Search",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111128",
+      "name": "FLTRS_Fields",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Filters Fields",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111129",
+      "name": "FLTRS_FieldsGroup",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Filters FieldsGroup",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111130",
+      "name": "FLTRS_Filters",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Filters",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111131",
+      "name": "ExEss\\\\Cms\\\\Entity\\\\FlowAction",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Flow Actions",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111132",
+      "name": "FLW_Flows",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Flows",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111133",
+      "name": "FLW_FlowStepProperties",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Flow Step Properties",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111134",
+      "name": "FLW_FlowSteps",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Flow Steps",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111135",
+      "name": "FLW_FlowStepsLink",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Flow Steps Link",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111136",
+      "name": "FLW_GuidanceFields",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Flow Guidance Fields",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111137",
+      "name": "FLW_GuidanceFieldValidators",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Flow Guidance Field Validators",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111138",
+      "name": "GRID_GridTemplates",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Grid GridTemplates",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111139",
+      "name": "GRID_Panels",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Grid Panels",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111140",
+      "name": "LIST_Cell",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "List Cell",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111141",
+      "name": "LIST_Cells",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "List Cells",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111142",
+      "name": "LIST_dynamic_list",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "List Dynamic List",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111143",
+      "name": "LIST_external_object",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "List External Object",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111144",
+      "name": "LIST_external_object_linkfields",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "List External Object Linkfields",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111145",
+      "name": "LIST_row_action",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "List Row Action",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111146",
+      "name": "LIST_row_bar",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "List Row Bar",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111147",
+      "name": "LIST_sorting_options",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "List Sorting Options",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111148",
+      "name": "LIST_topbar",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "List Topbar",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111149",
+      "name": "LIST_top_action",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "List Top Action",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111150",
+      "name": "menu_MainMenu",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Main Menu",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111169",
+      "name": "SecurityGroup_API",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Security Group API",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111170",
+      "name": "TRANS_Translation",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Translation",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111171",
+      "name": "ACLRole",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "ACL Role",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111172",
+      "name": "SecurityGroup",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "Security Group",
+      "domain": "module"
+    },
+    {
+      "id": "5e8b801e-3e63-6967-60c2-111111111173",
+      "name": "ACLAction",
+      "created_by": 1,
+      "locale": "en_BE",
+      "translation": "ACL Action",
+      "domain": "module"
+    }
+  ]
+}

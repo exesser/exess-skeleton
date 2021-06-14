@@ -1,0 +1,48 @@
+<div class="main">
+  <div class="top"
+       ng-class="{'mobile-menu': dashboardController.showMobileMenu(), 'hide-menu': dashboardController.hideMenu}">
+    <a class="home" href="#">
+      <span class="icon-nova"></span>
+    </a>
+
+    <input type="checkbox" name="top-menu-toggle"/>
+    <div class="top-menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="top-menu">
+      <sub-menu is-loaded="dashboardController.subMenuIsLoaded"></sub-menu>
+    </div>
+    <div class="top-form">
+      <top-actions></top-actions>
+      <div>
+        <top-search></top-search>
+      </div>
+    </div>
+  </div>
+  <nav class="nav">
+    <div>
+      <main-menu></main-menu>
+    </div>
+    <logout location="menu"></logout>
+  </nav>
+  <div class="main-content">
+    <!--
+     The flash messages need to be rendered as the first elements in the grid.
+     Because the grid is rendered dynamically, we wrap it inside another grid that we CAN control.
+    -->
+    <div class="grid">
+      <flash-message-renderer></flash-message-renderer>
+      <div class="col-1-1">
+        <div class="row-1-1">
+          <gridlr
+            ng-if="dashboardController.loading === false"
+            definition="dashboardController.grid">
+          </gridlr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

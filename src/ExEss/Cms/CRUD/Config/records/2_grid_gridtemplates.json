@@ -1,0 +1,112 @@
+{
+  "grid_gridtemplates": [
+    {
+      "id": "f31ebad4-2d28-7eb6-a881-599eb9f70525",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "DB_1_List",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "db_1_list",
+      "json_fields_c": "{\r\n  \"columns\": [\r\n    {\r\n      \"size\": \"1-1\",\r\n      \"hasMargin\": false,\r\n      \"rows\": [\r\n        {\r\n          \"size\": \"1-1\",\r\n          \"type\": \"list\",\r\n          \"options\": {\r\n            \"listKey\": \"%listKey%\",\r\n            \"recordType\": \"%recordType%\"\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+    },
+    {
+      "id": "3e5ccbef-538a-8181-0f37-5891f3fa0bc0",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "guidance_r1c1",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "guidance_r1c1",
+      "json_fields_c": "{\r\n  \"columns\": [\r\n    {\r\n      \"size\": \"1-4\",\r\n      \"hasMargin\": false,\r\n      \"cssClasses\": [\r\n        \"progressbar\"\r\n      ],\r\n      \"rows\": [\r\n        {\r\n          \"size\": \"1-1\",\r\n          \"type\": \"progressBar\",\r\n          \"options\": {\r\n            \"title\": \"Kitchen Sink\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"size\": \"3-4\",\r\n      \"cssClasses\": [\r\n        \"guidance\"\r\n      ],\r\n      \"hasMargin\": false,\r\n      \"rows\": [\r\n        {\r\n          \"size\": \"1-1\",\r\n          \"type\": \"centeredGuidanceGrid\",\r\n          \"options\": {\r\n            \"grid\": {\r\n              \"columns\": [\r\n                {\r\n                  \"size\": \"1-1\",\r\n                  \"rows\": [\r\n                    {\r\n                      \"size\": \"\",\r\n                      \"type\": \"titleContainingGrid\",\r\n                      \"cssClasses\": [\r\n                        \"card\"\r\n                      ],\r\n                      \"options\": {\r\n                        \"grid\": {\r\n                          \"cssClasses\": [\r\n                            \"has-default-margins\"\r\n                          ],\r\n                          \"columns\": [\r\n                            {\r\n                              \"size\": \"1-1\",\r\n                              \"rows\": [\r\n                                {\r\n                                  \"size\": \"1-1\",\r\n                                  \"type\": \"basicFormlyForm\",\r\n                                  \"options\": {\r\n                                    \"formKey\": \"r1c1\"\r\n                                  }\r\n                                }\r\n                              ]\r\n                            }\r\n                          ]\r\n                        }\r\n                      }\r\n                    }\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+    },
+    {
+      "id": "3f8cb012-0afd-f7f4-2cf3-5a5f14524e74",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "embedded_guidance_list1",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "embedded_list1",
+      "json_fields_c": "{\r\n  \"columns\": [\r\n    {\r\n      \"size\": \"1-1\",\r\n      \"rows\": [\r\n        {\r\n          \"size\": \"\",\r\n          \"type\": \"list\",\r\n          \"options\": {\r\n            \"listKey\": \"%list_1%\",\r\n            \"params\": {\r\n              \"recordId\": \"%recordId%\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+    },
+    {
+      "id": "793d3697-9e5d-76cc-c38d-5bb5e317253a",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_DB_1_guidance_1_list",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "crud_db_1_guidance_1_list",
+      "json_fields_c": "{\"columns\":[{\"size\":\"1-1\",\"cssClasses\":[\"guidance\"],\"rows\":[{\"cssClasses\":[\"card\"],\"size\":\"\",\"type\":\"navigationHistoryRenderer\"},{\"size\":\"\",\"type\":\"embeddedGuidance\",\"cssClasses\":[\"card\"],\"options\":{\"recordType\":\"%recordType%\",\"flowId\":\"%flowId%\",\"recordId\":\"%recordId%\",\"titleExpression\":\"{%dwp|recordTypeTranslated%}\"}}]}]}"
+    },
+    {
+      "id": "7e3255fd-f26e-5885-5fad-5bd30e1db380",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_edit",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "crud_edit",
+      "json_fields_c": "{\"columns\":[{\"size\":\"4-4\",\"cssClasses\":[\"guidance\"],\"hasMargin\":false,\"rows\":[{\"cssClasses\":[\"card\"],\"size\":\"\",\"type\":\"navigationHistoryRenderer\"},{\"size\":\"1-1\",\"type\":\"centeredGuidanceGrid\",\"options\":{\"grid\":{\"columns\":[{\"size\":\"1-1\",\"rows\":[{\"size\":\"1-2\",\"type\":\"titleContainingGrid\",\"cssClasses\":[\"card\"],\"options\":{\"titleExpression\":\"{%name%}\",\"grid\":{\"cssClasses\":[\"has-default-margins\"],\"columns\":[{\"size\":\"1-2\",\"rows\":[{\"size\":\"\",\"type\":\"basicFormlyForm\",\"options\":{\"formKey\":\"r1c1\"}}]},{\"size\":\"1-2\",\"rows\":[{\"size\":\"\",\"type\":\"basicFormlyForm\",\"options\":{\"formKey\":\"r1c2\"}}]}]}}}]}]}}}]}]}"
+    },
+    {
+      "id": "8d010ca7-d069-27f0-cb5c-5bc6f8170e25",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_relations_list",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "crud_relations_list",
+      "json_fields_c": "{\"columns\":[{\"size\":\"1-1\",\"rows\":[{\"size\":\"1-1\",\"type\":\"basicFormlyForm\",\"options\":{\"formKey\":\"r1c1\"}},{\"size\":\"\",\"type\":\"list\",\"options\":{\"listKey\":\"%list_1%\",\"params\":{\"relationName\":\"%dwp|rowOptions|modelId%\", \"parentId\":\"%dwp|parentId%\",\"parentType\":\"%dwp|parentType%\", \"recordType\":\"%dwp|recordType%\",\"dwp|relationName\":\"%dwp|rowOptions|modelId%\", \"uniqueListKey\": \"%list_1%::%dwp|rowOptions|modelId%\", \"extraActionData\": {\"recordType\":\"%dwp|recordType%\", \"relationName\":\"%dwp|rowOptions|modelId%\", \"parentId\":\"%dwp|parentId%\",\"parentType\":\"%dwp|parentType%\"}}}}]}]}"
+    },
+    {
+      "id": "9e3c3111-49bb-5cfa-226f-5bc5f683ed25",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_repeatable",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "crud_repeatable",
+      "json_fields_c": "{\"columns\":[{\"size\":\"1-1\",\"rows\":[{\"size\":\"crud-card\",\"type\":\"titleContainingGrid\",\"cssClasses\":[\"card\", \"word-break\"],\"options\":{\"titleExpression\":\"{%name%}\",\"grid\":{\"cssClasses\":[\"has-default-margins\"],\"columns\":[{\"size\":\"1-2\",\"rows\":[{\"size\":\"\",\"type\":\"basicFormlyForm\",\"options\":{\"formKey\":\"r1c1\"}}]},{\"size\":\"1-2\",\"rows\":[{\"size\":\"\",\"type\":\"basicFormlyForm\",\"options\":{\"formKey\":\"r1c2\"}}]}]}}},{\"size\":\"crud-card\",\"type\":\"embeddedGuidance\",\"options\":{\"repeatsBy\":\"dwp|dynamicRelation\",\"flowId\":\"CrudRepeatableList\",\"showPrimaryButton\":false,\"titleExpression\":\"{%dwp|relatedRecordTypeTranslated%} ({%dwp|relationName%})\",\"modelKey\":\"Reading\",\"guidanceParams\":{\"model\":{\"dwp|parentId\":\"id\",\"dwp|parentType\":\"recordTypeOfRecordId\"}}}}]}]}"
+    },
+    {
+      "id": "c9860c8c-9d9a-1942-48e0-5759d0549517",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "Modal simple text and form",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "modal_text_form",
+      "json_fields_c": "{\"cssClasses\":[\"cols\"],\"columns\":[{\"size\":\"1-1\",\"hasMargin\":false,\"rows\":[{\"size\":\"\",\"type\":\"paragraph\",\"options\":{\"text\":\"%text%\"}},{\"size\":\"\",\"type\":\"basicFormlyForm\",\"options\":{\"formKey\":\"r1c1\"}}]}]}"
+    },
+    {
+      "id": "c9860c8c-9d9a-1942-48e0-5759d0549518",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "Modal crud config info",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "modal_text_form",
+      "json_fields_c": "{\"cssClasses\":[\"cols\"],\"columns\":[{\"size\":\"1-1\",\"hasMargin\":false,\"rows\":[{\"size\":\"\",\"type\":\"crudConfigHelper\"}]}]}"
+    },
+    {
+      "id": "d785a19c-8363-492a-281f-5bb4b5933be1",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_DB_1_List",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "crud_db_1_list",
+      "json_fields_c": "{\r\n  \"columns\": [\r\n    {\r\n      \"size\": \"1-1\",\r\n      \"hasMargin\": false,\r\n      \"rows\": [{\"cssClasses\":[\"card\"],\"size\":\"\",\"type\":\"navigationHistoryRenderer\"},\r\n        {\r\n          \"size\": \"1-1\",\r\n          \"type\": \"list\",\r\n          \"options\": {\r\n            \"listKey\": \"%listKey%\",\r\n            \"params\": {\r\n              \"recordType\": \"%recordType%\"\r\n, \"uniqueListKey\": \"%listKey%::%recordType%\"            }\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+    },
+    {
+      "id": "d785a19c-8363-492a-281f-5bb4b5933be2",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_config_helper",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "crud_config_helper",
+      "json_fields_c": "{\"columns\": [{\"size\": \"1-1\", \"hasMargin\": false, \"rows\": [{\"cssClasses\": [\"card\"], \"size\": \"\", \"type\": \"crudConfigHelper\"}]}]}"
+    },
+    {
+      "id": "d785a19c-8363-492a-281f-5bb4b5933be3",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_DB_any_List",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "key_c": "crud_db_any_list",
+      "json_fields_c": "{\r\n  \"columns\": [\r\n    {\r\n      \"size\": \"1-1\",\r\n      \"hasMargin\": false,\r\n      \"rows\": [{\"cssClasses\":[\"card\"],\"size\":\"\",\"type\":\"navigationHistoryRenderer\"},\r\n        {\r\n          \"size\": \"1-1\",\r\n          \"type\": \"list\",\r\n          \"options\": {\r\n            \"listKey\": \"%query%\",\r\n            \"params\": {\r\n              \"recordType\": \"%recordType%\"\r\n,\"recordId\": \"%recordId%\"\r\n, \"uniqueListKey\": \"%query%::%recordType%\"            }\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+    }
+  ]
+}

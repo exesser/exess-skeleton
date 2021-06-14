@@ -1,0 +1,48 @@
+name: ExessCMS pull-request build
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: docker-compose -f docker-compose.build.yml pull
+      - run: docker-compose -f docker-compose.frontend.yml pull
+
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+        with:
+          key: exesscms-pr-build-cache-{hash}
+          restore-keys: exesscms-pr-build-cache-
+
+      - name: Setup docker containers
+        run: docker-compose -f docker-compose.build.yml up -d --build
+
+      - name: Copy .env
+        run: docker-compose exec -T php touch .env.test.local
+
+      - name: Validate composer.json and composer.lock
+        run: docker-compose exec -T php composer validate
+
+      - name: Install dependencies
+        run: docker-compose exec -T php composer install --prefer-dist --no-progress
+
+      - name: Run lint check
+        run: docker-compose exec -T php composer run lint
+
+      - name: Run test suite
+        run: docker-compose exec -T php composer run test
+
+      - run: docker-compose -f docker-compose.build.yml down --remove-orphans
+
+      - name: Setup frontend docker containers
+        run: docker-compose -f docker-compose.frontend.yml up -d --build
+
+      - name: Run frontend tests
+        run: docker-compose exec -T node npm test

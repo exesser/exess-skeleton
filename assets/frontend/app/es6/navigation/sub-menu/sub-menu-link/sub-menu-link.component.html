@@ -1,0 +1,6 @@
+<a id="{{ ::submenuLinkController.key | kebabCase }}-link"
+   ng-click="submenuLinkController.linkClicked(submenuLinkController.linkTo)"
+   dwp-ctrl-click="submenuLinkController.linkClicked(submenuLinkController.linkTo, true)"
+   ng-class="{'active': submenuLinkController.active }">
+  {{submenuLinkController.label}}
+</a>
