@@ -1,0 +1,128 @@
+{
+  "HELLO_WORLD": "Dag wereld",
+
+  "EXAMPLE_FORM": "Dit is een voorbeeldformulier",
+  "FIRST_NAME": "Voornaam",
+  "NEXT": "Volgende",
+  "SAVE": "Opslaan",
+  "FINISH": "Afronden",
+  "CONFIRM": "Bevestigen",
+  "SUBMIT": "Verzenden",
+  "SHOW_MORE": "toon meer",
+  "CANCEL": "Annuleren",
+  "SEARCH": "DWP ZOEKEN",
+  "LOADING": "Laden",
+
+  "LOGIN.HEADER": "Welkom op NOVA",
+  "LOGIN.USERNAME": "Username",
+  "LOGIN.USERNAME.PLACEHOLDER": "Geef aub jouw username in",
+  "LOGIN.PASSWORD": "Wachtwoord",
+  "LOGIN.PASSWORD.PLACEHOLDER": "Geef aub jouw wachtwoord in",
+  "LOGIN.SUBMIT": "Log in",
+  "LOGIN.ERROR": "Username en wachtwoord zijn incorrect",
+
+  "LOGOUT.LOGOUT": "Uitloggen",
+
+  "COMPANY": "Bedrijf",
+  "AVAILABLE_COMMODITIES": "Beschikbare commodity verbindingen:",
+  "VAT": "BTW",
+  "CONTACT_PERSON": "Contactpersoon",
+  "PREFERRED_CONTACT_TIME": "VOORKEURS CONTACT TIJDSTIP",
+
+  "OPPORTUNITIES" : "OPPORTUNITEITEN",
+  "NO_OPPORTUNITIES_DEFINED" : "-geen opportuniteiten gedefinieerd -",
+
+  "EAN" : "EAN",
+  "CONTACT" : "Contact",
+  "AROUND" : "rond",
+
+  "QUOTES" : "QUOTES",
+  "NO_QUOTES_DEFINED" : "-geen quotes gedefinieerd -",
+
+  "ADD" : "toevoegen",
+  "SHOW_ALL": "Toon alles",
+
+  "SAVING_LEAD" : "Lead aan het opslaan",
+  "CALCULATING" : "Aan het berekenen",
+
+  "PRICE_CALCULATION.TITLE": "Prijsberekening",
+  "PRICE_CALCULATION.CALCULATE": "Bereken",
+  "PRICE_CALCULATION.ADD_YEAR": "Jaar toevoegen",
+  "PRICE_CALCULATION.RESET": "Reset",
+
+  "PRICE_OVERVIEW.TITLE": "Prijs overzicht",
+
+  "VALID_UNTIL": "Geldig tot",
+  "PRICED": "Geprijsd",
+
+  "SAVING_OPPORTUNITIES" : "Opportuniteiten aan het opslaan",
+
+  "LIST.SORT_BY": "Sorteer",
+  "LIST.EXPORT_TO_CSV": "EXPORTEREN NAAR CSV",
+  "LIST.EMPTY_HEADER": "geen items in deze lijst",
+  "LIST.EMPTY_MESSAGE": "Deze lijst lijkt leeg te zijn.",
+  "LIST.LOADING_HEADER": "Lijst aan het laden...",
+  "LIST.QUICK_SEARCH": "Zoeken...",
+
+  "MESSAGE_REQUIRED": "Je moet {{label}} invullen.",
+  "MESSAGE_MINLENGTH": "{{label}} moet langer zijn dan {{minlength}} characters.",
+  "MESSAGE_MAXLENGTH": "{{label}} moet korter zijn dan {{maxlength}} characters.",
+  "MESSAGE_PATTERN": "{{label}} moet overeenkomen met het volgende patroon: '{{pattern}}'.",
+  "MESSAGE_DATE_FORMAT_ERROR": "{{label}} heeft een fout datumformaat. Correcte formaat is: 'dd/mm/yyyy'.",
+  "MESSAGE_TIME_FORMAT_ERROR": "{{label}} heeft een fout tijdsformaat. Correcte formaat is: 'hh:mm'.",
+
+  "MONTHS": "MAANDEN",
+
+  "FILTERS.FILTERS": "Filters",
+  "FILTERS.SAVE": "opslaan",
+  "FILTERS.RESET": "reset",
+
+  "SIDEBAR.PLUS_MENU.TITLE": "We vliegen erin!",
+  "SIDEBAR.FILTERS.TITLE": "Filters",
+
+  "UPLOAD.PLACEHOLDER": "Selecteer jouw bestand",
+  "UPLOAD.UPLOADING": "Aan het opladen",
+
+  "NAVIGATE_AWAY_WARNING": "Ben je zeker dat je de pagina wil verlaten?",
+  "NAVIGATE_AWAY_WARNING_DATA_LOSS": "Het formulier waar je mee bezig bent is nog niet opgeslagen, ben je zeker dat je de pagina wil verlaten?",
+
+  "HASHTAG_TEXT_ADD_TAG": "Tag toevoegen",
+
+  "PAGINATION_TEXT": "rij <b>{{start}} tot {{end}}</b> van {{total}} resultaten",
+  "PAGINATION_TEXT_NO_TOTAL": "rij <b>{{start}} tot {{end}}</b>",
+  "SELECT_WITH_SEARCH.SHOW_MORE": "... toon {{ amount }} meer",
+  "SELECT_WITH_SEARCH.SHOW_LESS": "toon minder",
+
+  "ADDRESS.RESET": "reset",
+  "LANGUAGE": "-- Taal --",
+
+  "BEST_OFFER.BUTTON.CHOOSE_BEST_OFFER": "Selecteer best offer",
+  "BEST_OFFER.BUTTON.CHOOSE_DISCOUNTS": "Selecteer korting",
+  "BEST_OFFER.CHECKBOX.NOT_SELECTED": "Niet gekozen",
+  "BEST_OFFER.CHECKBOX.SELECTED": "Gekozen",
+  "BEST_OFFER.FOOTER.CURRENT_PRICE": "Huidige prijs",
+  "BEST_OFFER.FOOTER.NEW_PRICE": "Nieuwe prijs",
+  "BEST_OFFER.FOOTER.SAVINGS": "Besparing",
+  "BEST_OFFER.LINK.OTHER_PRODUCT_CHANGE": "Andere product wijziging",
+  "BEST_OFFER.LIST_HEADER.DISCOUNT": "Korting",
+  "BEST_OFFER.LIST_HEADER.DISCOUNT_CODE": "Kortingscode",
+  "BEST_OFFER.LIST_HEADER.PACKAGE": "Pakket",
+  "BEST_OFFER.LIST_HEADER.PRICE_PER_YEAR": "Prijs per jaar",
+  "BEST_OFFER.LIST_HEADER.PRODUCT": "Product",
+  "BEST_OFFER.LIST_HEADER.SAVINGS": "Besparing",
+  "BEST_OFFER.LIST_TITLE.CURRENT_PRODUCT": "Huidig product",
+  "BEST_OFFER.LIST_TITLE.DISCOUNTS": "Kortingen",
+  "BEST_OFFER.LIST_TITLE.OFFERS": "Offers",
+  "BEST_OFFER.PRICE.EXCL_VAT": "excl. BTW",
+  "BEST_OFFER.PRICE.INCL_VAT": "incl. BTW",
+  "BEST_OFFER.PRICE.YEAR": "jaar",
+  "BEST_OFFER.PRODUCT_TYPE.ELEC": "Elektriciteit",
+  "BEST_OFFER.PRODUCT_TYPE.GAS": "Gas",
+
+  "DRAW_PAD.RESET": "reset",
+  "DRAW_PAD.CLEAR": "verwijderen",
+
+  "SUGGESTION_CHANGE": "De gekozen suggestie heeft ook de volgende velden aangepast: {{diff}} Ben je zeker dat je de juiste hebt gekozen?",
+
+  "MAX_FILE_SIZE_ERROR": "Het bestand dat u oplaadt, mag niet groter zijn dan {{max_file_size}}MB"
+}

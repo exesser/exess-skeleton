@@ -1,0 +1,69 @@
+{
+    "recordName": "ExEss\\Cms\\Entity\\SelectWithSearch",
+    "relations": [
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        }
+    ],
+    "fields": [
+        {
+            "name": "baseObject",
+            "type": "string"
+        },
+        {
+            "name": "filters",
+            "type": "text"
+        },
+        {
+            "name": "itemsOnPage",
+            "type": "integer"
+        },
+        {
+            "name": "orderBy",
+            "type": "string"
+        },
+        {
+            "name": "optionLabel",
+            "type": "string"
+        },
+        {
+            "name": "filterString",
+            "type": "string"
+        },
+        {
+            "name": "optionKey",
+            "type": "string"
+        },
+        {
+            "name": "needsQuery",
+            "type": "boolean"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

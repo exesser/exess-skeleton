@@ -1,0 +1,69 @@
+#!/bin/bash
+# Runs PHPCS on docker
+
+. "$(dirname -- "$0")/canonicalize_filename.sh"
+
+# Absolute path to this script, e.g. /home/user/bin/foo.sh
+SCRIPT="$(canonicalize_filename "$0")"
+
+# Absolute path this script is in, thus /home/user/bin
+SCRIPTPATH="$(dirname -- "$SCRIPT")"
+
+# PHP Application Directory
+# The full path to your PHP application
+applicationDirectory='/exesscms-api'
+
+codingStandard="config/phpcs.xml"
+
+# PHPCS Location
+# The full path to PHPCS on your Vagrant box
+# This is not necessary if phpcs is installed globally
+# Can also reference it within your application directory (recommended)
+phpcsPath="bin/phpcs"
+###############################################
+
+# First grab the staged files
+stagedFiles=()
+while read file
+do
+    stagedFiles+=("${applicationDirectory}/${file}")
+done < <(git diff --cached --name-only --diff-filter=AM)
+
+# Second construct the phpcs command.
+command=$(echo "${phpcsPath} --report=full --standard=${codingStandard} ${stagedFiles[@]}")
+
+# Third get SSH config from Vagrant
+# This is done because sometimes vagrant ssh -c can be wonky
+
+# Fourth run the SSH command and capture the results
+results=$(docker-compose exec -T php $command)
+# Fifth setup blocking for git commit
+# This is not the ideal way to do this, but we're going to use
+# regular expressions to determine success.
+
+# You may need to modify this line depending on your phpcs settings.
+foundErrors=$(grep -o "FOUND [0-9]* ERROR" <<< ${results})
+returnCode=0 # RC 0 will let the commit pass
+echo "$foundErrors"
+
+if [ "$foundErrors" != '' ]
+then
+    echo "${results}"
+
+    phpcbfPath="bin/phpcbf"
+    command=$(echo "${phpcbfPath} --report=full --standard=${codingStandard} ${stagedFiles[@]}")
+
+    # Allows us to read user input below, assigns stdin to keyboard
+    exec < /dev/tty
+
+    echo "PHPCS found some errors, try to fix automatically? [N/y]"
+    read yn
+    if [ "$yn" == "y" ]; then
+        results=$(docker-compose exec -T php $command)
+        echo "don't forget to add these fixes to git before commiting again!"
+    else
+        echo "go fix them manually then..."
+    fi
+    returnCode+=1
+fi
+exit $returnCode

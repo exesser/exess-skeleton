@@ -1,0 +1,82 @@
+<section class="view__modal">
+  <div class="modal__container modal__wide">
+    <div class="modal__header">
+      <h5>{{ selectWithSearchModalController.modalTitle }}</h5>
+      <a href=""
+         class="button"
+         ng-disabled="selectWithSearchModalController.errorMessages.length > 0"
+         ng-click="selectWithSearchModalController.confirmCallback()" translate>SUBMIT</a>
+    </div>
+    <div class="modal__content">
+      <div class="cols">
+
+        <!-- Modal content -->
+        <div class="multi-select">
+
+          <div class="multi-select__search">
+            <div class="input">
+              <div class="input__with-button">
+                <input
+                  type="submit"
+                  class="button button-dark"
+                  ng-click="selectWithSearchModalController.search()"
+                  value="Search"/>
+                <div class="input-holder">
+                  <input
+                    type="text"
+                    name="search-input"
+                    id="search-input"
+                    ng-model="selectWithSearchModalController.query"
+                    ng-keyup="selectWithSearchModalController.onKeyUp($event)"
+                    autofocus=""
+                    placeholder="Search..."/>
+                  <a class="icon-close"
+                     ng-click="selectWithSearchModalController.clearQuery()"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="multi-select__results">
+            <h5>{{ selectWithSearchModalController.selectedResultsTitle }}</h5>
+
+            <!-- Selected elements -->
+            <ul class="jq-selected-results">
+              <li ng-repeat="result in selectWithSearchModalController.selectedResults">
+                <div class="input">
+                  <label class="input__checkbox active">
+                    <input type="checkbox" checked
+                           ng-click="selectWithSearchModalController.deselectItem(result)"/>
+                    <span class="icon-checkmark"></span>
+                    {{ result.label }}
+                  </label>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Non-selected elements -->
+            <ul class="jq-non-selected-results">
+              <li ng-repeat="result in selectWithSearchModalController.nonSelectedResults">
+                <div class="input">
+                  <label class="input__checkbox">
+                    <input type="checkbox" ng-click="selectWithSearchModalController.selectItem(result)"/>
+                    <span class="icon-checkmark"></span>
+                    {{ result.label }}
+                  </label>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+
+          <pagination
+            total-pages="selectWithSearchModalController.searchResults.pagination.pages"
+            current-page="selectWithSearchModalController.searchResults.pagination.page"
+            page-size="selectWithSearchModalController.searchResults.pagination.pageSize"
+            total-results="selectWithSearchModalController.searchResults.pagination.total"
+            page-changed="selectWithSearchModalController.setPage(page)">
+          </pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

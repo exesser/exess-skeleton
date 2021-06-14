@@ -1,0 +1,337 @@
+{
+    "recordName": "ExEss\\Cms\\Entity\\Validator",
+    "relations": [
+        {
+            "name": "conditionalMessages",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\ConditionalMessage"
+        },
+        {
+            "name": "panels",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\GridPanel"
+        },
+        {
+            "name": "fields",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\FlowField"
+        },
+        {
+            "name": "children",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\Validator"
+        },
+        {
+            "name": "parents",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\Validator"
+        },
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "securityGroups",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\SecurityGroup"
+        }
+    ],
+    "fields": [
+        {
+            "name": "value",
+            "type": "text"
+        },
+        {
+            "name": "type",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "bool",
+                    "value": "bool"
+                },
+                {
+                    "key": "float",
+                    "value": "float"
+                },
+                {
+                    "key": "double",
+                    "value": "double"
+                },
+                {
+                    "key": "int",
+                    "value": "int"
+                },
+                {
+                    "key": "long",
+                    "value": "long"
+                },
+                {
+                    "key": "numeric",
+                    "value": "numeric"
+                },
+                {
+                    "key": "real",
+                    "value": "real"
+                },
+                {
+                    "key": "scalar",
+                    "value": "scalar"
+                },
+                {
+                    "key": "alnum",
+                    "value": "alnum"
+                },
+                {
+                    "key": "alpha",
+                    "value": "alpha"
+                },
+                {
+                    "key": "digit",
+                    "value": "digit"
+                },
+                {
+                    "key": "lower",
+                    "value": "lower"
+                },
+                {
+                    "key": "upper",
+                    "value": "upper"
+                },
+                {
+                    "key": "choice",
+                    "value": "choice"
+                }
+            ]
+        },
+        {
+            "name": "min",
+            "type": "integer"
+        },
+        {
+            "name": "max",
+            "type": "integer"
+        },
+        {
+            "name": "validator",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "NotBlank",
+                    "value": "NotBlank"
+                },
+                {
+                    "key": "Blank",
+                    "value": "Blank"
+                },
+                {
+                    "key": "NotNull",
+                    "value": "NotNull"
+                },
+                {
+                    "key": "IsNull",
+                    "value": "IsNull"
+                },
+                {
+                    "key": "IsTrue",
+                    "value": "IsTrue"
+                },
+                {
+                    "key": "IsFalse",
+                    "value": "IsFalse"
+                },
+                {
+                    "key": "Type",
+                    "value": "Type"
+                },
+                {
+                    "key": "Email",
+                    "value": "Email"
+                },
+                {
+                    "key": "Length",
+                    "value": "Length"
+                },
+                {
+                    "key": "Url",
+                    "value": "Url"
+                },
+                {
+                    "key": "Range",
+                    "value": "Range"
+                },
+                {
+                    "key": "EqualTo",
+                    "value": "EqualTo"
+                },
+                {
+                    "key": "NotEqualTo",
+                    "value": "NotEqualTo"
+                },
+                {
+                    "key": "LessThan",
+                    "value": "LessThan"
+                },
+                {
+                    "key": "LessThanOrEqual",
+                    "value": "LessThanOrEqual"
+                },
+                {
+                    "key": "GreaterThan",
+                    "value": "GreaterThan"
+                },
+                {
+                    "key": "GreaterThanOrEqual",
+                    "value": "GreaterThanOrEqual"
+                },
+                {
+                    "key": "Choice",
+                    "value": "Choice"
+                },
+                {
+                    "key": "NotInList",
+                    "value": "NotInList"
+                },
+                {
+                    "key": "Iban",
+                    "value": "Iban"
+                },
+                {
+                    "key": "Regex",
+                    "value": "Regex"
+                },
+                {
+                    "key": "Vat",
+                    "value": "Vat"
+                },
+                {
+                    "key": "Nace",
+                    "value": "Nace"
+                },
+                {
+                    "key": "Ean",
+                    "value": "Ean"
+                },
+                {
+                    "key": "IsNotGos",
+                    "value": "IsNotGos"
+                },
+                {
+                    "key": "AlreadyContracted",
+                    "value": "AlreadyContracted"
+                },
+                {
+                    "key": "HasResidential",
+                    "value": "HasResidential"
+                },
+                {
+                    "key": "HasDrop",
+                    "value": "HasDrop"
+                },
+                {
+                    "key": "HasPrepaid",
+                    "value": "HasPrepaid"
+                },
+                {
+                    "key": "PhoneNumber",
+                    "value": "PhoneNumber"
+                },
+                {
+                    "key": "FixedPhoneNumber",
+                    "value": "Fixed PhoneNumber"
+                },
+                {
+                    "key": "MobilePhoneNumber",
+                    "value": "Mobile PhoneNumber"
+                },
+                {
+                    "key": "File",
+                    "value": "File"
+                },
+                {
+                    "key": "IsEndOfMonth",
+                    "value": "IsEndOfMonth"
+                },
+                {
+                    "key": "Date",
+                    "value": "Date"
+                },
+                {
+                    "key": "MultiEmail",
+                    "value": "MultiEmail"
+                }
+            ]
+        },
+        {
+            "name": "field",
+            "type": "string"
+        },
+        {
+            "name": "mode",
+            "type": "boolean"
+        },
+        {
+            "name": "validationGroup",
+            "type": "string"
+        },
+        {
+            "name": "mutator",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "day",
+                    "value": "day"
+                },
+                {
+                    "key": "month",
+                    "value": "month"
+                },
+                {
+                    "key": "year",
+                    "value": "year"
+                }
+            ]
+        },
+        {
+            "name": "customErrorMessage",
+            "type": "string"
+        },
+        {
+            "name": "maxFileSize",
+            "type": "string"
+        },
+        {
+            "name": "showOnTop",
+            "type": "boolean"
+        },
+        {
+            "name": "andNotNull",
+            "type": "boolean"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

@@ -1,0 +1,99 @@
+<div
+  ng-if="addressFormElementController.isReadonly === false"
+  id="{{ ::addressFormElementController.elementId }}-container"
+  class="auto-complete"
+  ng-class="{'editable-group': !addressFormElementController.hasBorder}">
+
+  <fieldset>
+
+    <resizing-input
+      ng-if="addressFormElementController.fields.street.display"
+      field-id="{{ addressFormElementController.fields.street.key }}"
+      ng-model="addressFormElementController.internalModelValue[addressFormElementController.fields.street.key]"
+      is-disabled="addressFormElementController.fieldIsDisabled()"
+      placeholder="{{ addressFormElementController.fields.street.label }}"
+      is-readonly="false">
+    </resizing-input>
+
+    <resizing-input
+      ng-if="addressFormElementController.fields.houseNumber.display"
+      field-id="{{ addressFormElementController.fields.houseNumber.key }}"
+      ng-model="addressFormElementController.internalModelValue[addressFormElementController.fields.houseNumber.key]"
+      is-disabled="addressFormElementController.fieldIsDisabled()"
+      placeholder="{{ addressFormElementController.fields.houseNumber.label }}"
+      is-readonly="false">
+    </resizing-input>
+
+    <resizing-input
+      ng-if="addressFormElementController.fields.addition.display"
+      field-id="{{ addressFormElementController.fields.addition.key }}"
+      ng-model="addressFormElementController.internalModelValue[addressFormElementController.fields.addition.key]"
+      is-disabled="addressFormElementController.fieldIsDisabled()"
+      placeholder="{{ addressFormElementController.fields.addition.label }}"
+      is-readonly="false">
+    </resizing-input>
+
+    <resizing-input
+      ng-if="addressFormElementController.fields.box.display"
+      field-id="{{ addressFormElementController.fields.box.key }}"
+      ng-model="addressFormElementController.internalModelValue[addressFormElementController.fields.box.key]"
+      is-disabled="addressFormElementController.fieldIsDisabled()"
+      placeholder="{{ addressFormElementController.fields.box.label }}"
+      is-readonly="false">
+    </resizing-input>
+
+    <br/>
+
+    <resizing-input
+      ng-if="addressFormElementController.fields.postalCode.display"
+      field-id="{{ addressFormElementController.fields.postalCode.key }}"
+      ng-model="addressFormElementController.internalModelValue[addressFormElementController.fields.postalCode.key]"
+      is-disabled="addressFormElementController.fieldIsDisabled()"
+      placeholder="{{ addressFormElementController.fields.postalCode.label }}"
+      is-readonly="false">
+    </resizing-input>
+
+    <resizing-input
+      ng-if="addressFormElementController.fields.city.display"
+      field-id="{{ addressFormElementController.fields.city.key }}"
+      ng-model="addressFormElementController.internalModelValue[addressFormElementController.fields.city.key]"
+      is-disabled="addressFormElementController.fieldIsDisabled()"
+      placeholder="{{ addressFormElementController.fields.city.label }}"
+      is-readonly="false">
+    </resizing-input>
+
+    <select
+      id="{{ addressFormElementController.fields.country.key }}"
+      ng-model="addressFormElementController.internalModelValue[addressFormElementController.fields.country.key]"
+      ng-options="option.value as option.name for option in addressFormElementController.fields.country.enumValues"
+      ng-if="addressFormElementController.fields.country.display"
+      ng-disabled="addressFormElementController.fieldIsDisabled()"
+    >
+    </select>
+
+    <autocomplete
+      ng-hide="addressFormElementController.fieldIsDisabled()"
+      for-elements="addressFormElementController.autoCompleteElementIds"
+      suggestion-clicked="addressFormElementController.suggestionClicked(suggestion)"
+      suggestions="addressFormElementController.suggestions"
+      suggestion-left-text-property="label"
+      suggestion-right-text-property="labelAddition">
+    </autocomplete>
+
+  </fieldset>
+  <div style="height: 35px">
+    <a
+      ng-click="addressFormElementController.clearAddressFields()"
+      ng-show="addressFormElementController.showResetButton() && addressFormElementController.fieldIsDisabled() === false"
+      translate>
+      ADDRESS.RESET
+    </a>
+  </div>
+</div>
+
+<div class="non-editable-input" ng-if="addressFormElementController.isReadonly === true">
+  <strong id="{{ ::addressFormElementController.elementId }}">
+    {{ addressFormElementController.readonlyValueLine1() }} <br/>
+    {{ addressFormElementController.readonlyValueLine2() }}
+  </strong>
+</div>

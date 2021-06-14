@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    public: true
+
+  ExEss\Cms\Api\V8_Custom\Repository\ListHandler:
+    arguments:
+      - !tagged { tag: 'handler.list', index_by: 'alias' }
+      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
+
+  ExEss\Cms\Servicemix\ExternalObjectHandler:
+    arguments:
+      - !tagged { tag: 'handler.flow', index_by: 'alias' }
+      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
+      - '@ExEss\Cms\Logger\Logger'
+
+imports:
+  - { resource: 'handlers/aftersave.yaml' }
+  - { resource: 'handlers/response.yaml' }
+  - { resource: 'handlers/save.yaml' }

@@ -1,0 +1,23 @@
+<div ng-if="rangeInputFormElementController.isReadonly === false">
+
+  <!-- we are using ng-readonly and not ng-disabled because when we disable the field we lose the focus -->
+  <input
+    id="{{ ::rangeInputFormElementController.elementId }}"
+    type="range"
+    min="{{ rangeInputFormElementController.min }}"
+    max="{{ rangeInputFormElementController.max }}"
+    step="{{ rangeInputFormElementController.stepBy }}"
+    ng-model="rangeInputFormElementController.internalModelValue"
+    ng-change="rangeInputFormElementController.internalModelValueChanged()"
+    ng-mousedown="rangeInputFormElementController.showTooltip()"
+    ng-mouseup="rangeInputFormElementController.hideTooltip()"
+    ng-readonly="rangeInputFormElementController.fieldIsDisabled()">
+  <span class="range__background"></span>
+  <span class="range__background">
+    <span class="tooltip-up">{{ rangeInputFormElementController.internalModelValue }}%</span>
+  </span>
+</div>
+
+<div class="non-editable-input" ng-if="rangeInputFormElementController.isReadonly === true">
+  <strong id="{{ ::rangeInputFormElementController.elementId }}">{{ rangeInputFormElementController.internalModelValue }}</strong>
+</div>

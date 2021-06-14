@@ -1,0 +1,61 @@
+{
+    "recordName": "ExEss\\Cms\\Entity\\ListCellLink",
+    "relations": [
+        {
+            "name": "rowBar",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\ListRowBar"
+        },
+        {
+            "name": "list",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\ListDynamic"
+        },
+        {
+            "name": "cell",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\ListCell"
+        },
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\User"
+        },
+        {
+            "name": "securityGroups",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\SecurityGroup"
+        }
+    ],
+    "fields": [
+        {
+            "name": "order",
+            "type": "integer"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

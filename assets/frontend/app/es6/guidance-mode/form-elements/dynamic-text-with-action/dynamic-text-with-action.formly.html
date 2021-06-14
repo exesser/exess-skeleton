@@ -1,0 +1,8 @@
+<div class="non-editable-input">
+  <a id="{{:: options.id | kebabCase }}-field"
+     ng-click="dynamicTextWithActionController.actionClicked(false)"
+     dwp-ctrl-click="dynamicTextWithActionController.actionClicked(true)"
+  >
+    {{ dynamicTextWithActionController.unparsedFieldExpression | interpolate:dynamicTextWithActionController.model }}
+  </a>
+</div>

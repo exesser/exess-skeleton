@@ -1,0 +1,44 @@
+{
+  "name": "digital-workplace",
+  "version": "3.15.0",
+  "dependencies": {
+    "jquery": "2.2.3",
+    "angular": "1.5.8",
+    "json3": "3.3.2",
+    "es5-shim": "4.1.1",
+    "lodash": "4.13.1",
+    "angular-ui-router": "0.2.15",
+    "angular-animate": "1.5.8",
+    "angular-cookies": "1.5.8",
+    "angular-messages": "1.5.8",
+    "angular-sanitize": "1.5.8",
+    "angular-touch": "1.5.8",
+    "angular-translate": "2.8.1",
+    "angular-translate-loader-static-files": "2.8.1",
+    "angular-translate-storage-local": "2.8.1",
+    "angular-formly": "7.3.9",
+    "angular-uuid-service": "0.1.0",
+    "font-awesome": "5.0.6",
+    "api-check": "7.5.5",
+    "moment": "2.11.2",
+    "pikaday-angular": "2.0.0",
+    "ng-file-upload": "12.0.4",
+    "angular-loading-bar": "0.9.0",
+    "angular-elastic": "2.5.1",
+    "textAngular": "1.5.16",
+    "angular-signature": "^1.0.3",
+    "angulartics": "^1.4.0",
+    "angulartics-google-tag-manager": "^0.0.1",
+    "ng-jsoneditor": "angular-tools/ng-jsoneditor#^1.0.0",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#^1.7.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.5.8",
+    "angular-scenario": "1.5.8"
+  },
+  "resolutions": {
+    "angular": "1.5.8",
+    "angular-cookies": "1.5.8"
+  },
+  "appPath": "app"
+}

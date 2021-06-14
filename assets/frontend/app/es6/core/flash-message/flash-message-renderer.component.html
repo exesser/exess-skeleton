@@ -1,0 +1,6 @@
+<flash-message
+  ng-repeat="message in flashMessageRendererController.messages"
+  type="{{ message.type }}"
+  text="{{ message.text }}"
+  close="flashMessageRendererController.closeMessage(message)">
+</flash-message>

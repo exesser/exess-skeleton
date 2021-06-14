@@ -1,0 +1,59 @@
+services:
+  ExEss\Cms\EventListener\:
+    public: true
+    resource: '../../src/ExEss/Cms/EventListener/'
+
+  #
+  # Global listeners for ALL entities
+  # see https://symfony.com/doc/current/doctrine/events.html#doctrine-lifecycle-listeners
+  #
+
+  ExEss\Cms\EventListener\EnumValueListener:
+    tags:
+      - { name: 'doctrine.event_listener', event: 'prePersist' }
+
+  ExEss\Cms\EventListener\DateModifiedListener:
+    tags:
+      - { name: 'doctrine.event_listener', event: 'preUpdate' }
+
+  ExEss\Cms\EventListener\DateEnteredListener:
+    tags:
+      - { name: 'doctrine.event_listener', event: 'preFlush' }
+
+  ExEss\Cms\EventListener\HtmlPurifierListener:
+    autowire: true
+    tags:
+      - { name: 'doctrine.event_listener', event: 'preFlush' }
+
+  #
+  # Entity specific listeners
+  # see https://symfony.com/doc/current/doctrine/events.html#doctrine-entity-listeners
+  #
+
+  ExEss\Cms\EventListener\NormaliseTranslationListener:
+    tags:
+      - { name: 'doctrine.orm.entity_listener', event: 'preFlush', entity: 'ExEss\Cms\Entity\Translation' }
+
+  ExEss\Cms\EventListener\PropertyUpdateListener:
+    autowire: true
+    tags:
+      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Cms\Entity\Dashboard' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Cms\Entity\FlowStep' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Cms\Entity\Dashboard' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Cms\Entity\FlowStep' }
+
+  ExEss\Cms\EventListener\DefaultFilterJsonListener:
+    autowire: true
+    tags:
+      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Cms\Entity\FilterField' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Cms\Entity\FilterFieldGroup' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Cms\Entity\FilterField' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Cms\Entity\FilterFieldGroup' }
+
+  ExEss\Cms\EventListener\DefaultRoleListener:
+    tags:
+      - { name: 'doctrine.orm.entity_listener', event: 'prePersist', entity: 'ExEss\Cms\Entity\User' }
+     
+  ExEss\Cms\EventListener\PrimaryGroupListener:
+    tags:
+      - { name: 'doctrine.orm.entity_listener', event: 'preFlush', entity: 'ExEss\Cms\Entity\User' }    

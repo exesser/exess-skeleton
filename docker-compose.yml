@@ -1,0 +1,73 @@
+version: "3.2"
+
+services:
+  redis:
+    image: redis:alpine
+    container_name: cms-redis
+
+  mysql:
+    extends:
+      file: docker/common-services.yaml
+      service: mysql
+    container_name: cms-mysql 
+    ports:
+      - "3306:3306"   
+  
+  mysql-test:
+    extends:
+      file: docker/common-services.yaml
+      service: mysql
+    container_name: cms-mysql-test  
+    ports:
+      - "4306:3306"   
+
+  php:
+    build: docker/php
+    container_name: cms-php
+    working_dir: /exesscms-api
+    volumes:
+      - .:/exesscms-api
+      - ./docker/php/overrides.ini:/usr/local/etc/php/conf.d/zz-overrides.ini
+
+  php-debug:
+    extends:
+      service: php
+    container_name: cms-php-debug  
+    build: 
+      args:
+          - XDEBUG=1
+    volumes:
+      - .:/exesscms-api
+      - ./docker/php/overrides.ini:/usr/local/etc/php/conf.d/zz-overrides.ini
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/zz-xdebug.ini  
+
+  webserver:
+    image: nginx:alpine
+    container_name: cms-webserver
+    working_dir: /exesscms-api
+    volumes:
+      - .:/exesscms-api
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8888:80"
+
+  node:
+    build: assets/frontend
+    container_name: cms-node
+    working_dir: /exesscms
+    command: ["npm", "start"]
+    volumes: 
+      - node_modules:/exesscms/node_modules
+      - bower_components:/exesscms/bower_components
+      - ./assets/frontend:/exesscms
+    ports:
+      - "9005:9005"  
+      - "35729:35729"
+    links:
+      - webserver
+  
+volumes:
+  node_modules:
+    external: true    
+  bower_components:
+    external: true    

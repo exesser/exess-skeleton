@@ -1,0 +1,54 @@
+parameters:
+  env(VERBOSE_ERRORS): false
+  verbose_errors: '%env(bool:VERBOSE_ERRORS)%'
+
+services:
+  _defaults:
+    public: true
+
+  ExEss\Cms\Loader\MiddlewareLoader:
+    arguments:
+      - !tagged_iterator crm.middleware
+
+  # https://www.sitepoint.com/working-with-slim-middleware/
+  # Slim middleware is a layered architecture,
+  # It starts with the routing in the middle, and every middleware you add here,
+  # is added as a layer around the routing or the previous middleware in the array.
+
+  ExEss\Cms\Api\V8_Custom\Middleware\SecurityMiddleware:
+    arguments:
+      - '@ExEss\Cms\Users\Security\Route\DecisionManager'
+    tags: [{ name: 'crm.middleware', priority: 150 }]
+
+  # Make sure this is before the JwtAuthentication to guarantee x-log-user-id and x-log-user are filled in
+  # when logging incoming calls
+  ExEss\Cms\Api\V8_Custom\Middleware\LoggingMiddleware:
+    arguments:
+      - '@ExEss\Cms\Api\V8_Custom\Service\RequestResponseLogger'
+    tags: [{ name: 'crm.middleware', priority: 140 }]
+
+  ExEss\Cms\Api\V8_Custom\Middleware\CleanInputMiddleware:
+    tags: [{ name: 'crm.middleware', priority: 90 }]
+
+  ExEss\Cms\Api\V8_Custom\Middleware\JsonErrorMiddleware:
+    arguments:
+      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
+      - '@ExEss\Cms\Logger\Logger'
+      - '%verbose_errors%'
+    tags: [{ name: 'crm.middleware', priority: 80 }]
+
+  # FlashMessageMiddleware should always be the last one in the list.
+  ExEss\Cms\Api\V8_Custom\Middleware\FlashMessageMiddleware:
+    arguments:
+      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
+      - '@ExEss\Cms\Logger\Logger'
+      - '%verbose_errors%'
+    tags: [{ name: 'crm.middleware', priority: 60 }]
+
+  # Route middleware
+  ExEss\Cms\Api\V8_Custom\Controller\Middleware\CachedResponseHandler:
+    arguments:
+      - '@=service(constant("ExEss\\Cms\\Cache\\Cache::CONTROLLER_RESPONSE"))'
+      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+

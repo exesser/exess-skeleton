@@ -1,0 +1,8 @@
+<li>
+  <a class="accordion-button"
+     ng-class="{ 'disabled': menuLinkController.clickable === false }"
+     ng-click="menuLinkController.actionClicked()">
+    <span class="{{menuLinkController.icon}}"></span>
+    <span>{{menuLinkController.label}}</span>
+  </a>
+</li>

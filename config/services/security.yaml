@@ -1,0 +1,54 @@
+services:
+  _defaults:
+    public: true
+    autowire: true
+
+  ExEss\Cms\Security\JsonLoginAuthenticator: ~
+
+  ExEss\Cms\Security\JwtTokenAuthenticator: 
+    arguments:
+      - '@ExEss\Cms\Api\V8_Custom\Service\User\RefreshTokenService'
+
+  ExEss\Cms\Security\Listener\LogoutSuccessSubscriber:
+    tags:
+      - name: kernel.event_subscriber
+        dispatcher: security.event_dispatcher.api
+
+  ExEss\Cms\Api\V8_Custom\Service\User\DefaultUser:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
+  ExEss\Cms\Api\V8_Custom\Service\User\UserService:
+    arguments:
+      - '%default_locale%'
+
+  ExEss\Cms\Acl\AclService:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+      - '@ExEss\Cms\Users\Security\DecisionManager'
+
+  ExEss\Cms\Users\Security\DecisionManager:
+    arguments:
+      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+      - !tagged_iterator user.voter
+
+  ExEss\Cms\Users\Security\Route\DecisionManager:
+    arguments:
+      - !tagged_iterator route.voter
+
+  # Route voters
+  ExEss\Cms\Users\Security\Route\Voter\RouteVoter:
+    arguments:
+      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+      - '@ExEss\Cms\SecurityGroups\SecurityGroupsRepository'
+      - '@Slim\Router'
+    tags: ['route.voter']
+
+  # CRUD
+  ExEss\Cms\CRUD\Helpers\SecurityService:
+    arguments:
+      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+
+imports:
+  - { resource: 'idp.yaml' }

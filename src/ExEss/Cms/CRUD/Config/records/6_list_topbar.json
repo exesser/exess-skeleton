@@ -1,0 +1,20 @@
+{
+  "list_topbar": [
+    {
+      "id": "5136efaa-1902-1d51-e2c9-5bd6f947f439",
+      "name": "crud_select_new_relation",
+      "date_entered": "2018-11-27 00:25:52",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "selectall": false
+    },
+    {
+      "id": "871ddfb9-d946-1516-2b17-5bfc8fc729c9",
+      "name": "crud_create",
+      "date_entered": "2018-11-27 00:25:52",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "selectall": false
+    }
+  ]
+}

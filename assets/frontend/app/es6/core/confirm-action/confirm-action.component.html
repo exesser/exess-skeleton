@@ -1,0 +1,24 @@
+<a ng-click="confirmActionController.buttonClicked()" name="{{ confirmActionController.buttonLabel }}">
+  <span class="{{ confirmActionController.buttonIcon }}"></span>
+  <span>{{ confirmActionController.buttonLabel }}</span>
+</a>
+
+<section class="view__modal confirm__modal ng-hide" ng-show="confirmActionController.showConfirmBox">
+  <div class="modal__container">
+    <div class="modal__header">
+      <h5>Confirm</h5>
+      <a class="button icon-close" ng-click="confirmActionController.close()"></a>
+    </div>
+    <div class="modal__content">
+      <div class="cols">
+
+        <h5>{{ confirmActionController.confirmMessage }}</h5><br>
+
+        <div class="button-group modal__actions">
+          <a class="button" ng-click="confirmActionController.triggerAction()" id="confirm-button">YES</a>
+          <a class="button" ng-click="confirmActionController.close()" id="cancel-button">NO</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

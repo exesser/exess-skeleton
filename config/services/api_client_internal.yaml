@@ -1,0 +1,23 @@
+#
+# Internal API clients
+#
+# Internal meaning any service that is IN the NOVA infrastructure, which should never use a proxy
+#
+parameters:
+  env(LOCAL_PROXY_HOST): null
+  env(LOCAL_PROXY_PORT): null
+
+services:
+  _defaults:
+    public: true
+
+  ExEss\Cms\Component\Client\Serializer\Normalizer\GuzzleResponseNormalizer:
+    tags: ['serializer.normalizer']
+
+  ExEss\Cms\Component\Client\Event\Listeners\EnhanceHeadersSubscriber:
+    autowire: true
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\Component\Client\Event\Listeners\EnhanceHeadersSubscriber' }]
+
+  ExEss\Cms\Component\Client\Event\Listeners\LogSubscriber:
+    autowire: true
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\Component\Client\Event\Listeners\LogSubscriber' }]

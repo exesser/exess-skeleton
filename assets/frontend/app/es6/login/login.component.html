@@ -1,0 +1,43 @@
+<section class="view__modal" ng-if="loginController.showLoginForm">
+  <div class="modal__container login">
+    <div class="login__header">
+      <span class="icon-nova"></span>
+    </div>
+    <div class="login__content">
+      <h1 translate>LOGIN.HEADER</h1>
+
+      <div class="alert is-error" ng-show="loginController.loginFailed">
+        <p translate>{{ loginController.failedMessage }}</p>
+      </div>
+
+      <form name="loginForm" ng-submit="loginController.login()" novalidate>
+        <div class="input">
+          <label for="username" translate>LOGIN.USERNAME</label>
+          <div>
+            <input type="text"
+                   id="username"
+                   placeholder="{{'LOGIN.USERNAME.PLACEHOLDER' | translate}}"
+                   ng-model="loginController.username"
+                   ng-required="true"
+                   autofocus=""/>
+          </div>
+        </div>
+
+        <div class="input">
+          <label for="password" translate>LOGIN.PASSWORD</label>
+          <div>
+            <input type="password"
+                   id="password"
+                   placeholder="{{'LOGIN.PASSWORD.PLACEHOLDER' | translate}}"
+                   ng-model="loginController.password"
+                   ng-required="true"/>
+          </div>
+        </div>
+
+        <div class="form__footer">
+          <input type="submit" class="button" value="{{ 'LOGIN.SUBMIT' | translate }}" ng-disabled="loginForm.$invalid"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

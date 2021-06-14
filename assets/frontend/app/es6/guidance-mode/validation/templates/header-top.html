@@ -1,0 +1,5 @@
+<div class="input" ng-class="{'is-error': inputValidationController.messages.length > 0}">
+  <h3>{{inputValidationController.label}}</h3>
+  <div ng-transclude></div>
+  <validation-messages messages="inputValidationController.messages"></validation-messages>
+</div>

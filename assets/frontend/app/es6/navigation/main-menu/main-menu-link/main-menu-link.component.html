@@ -1,0 +1,7 @@
+<a id="{{ ::mainMenuLinkController.params.mainMenuKey | kebabCase }}-link"
+   ng-click="mainMenuLinkController.linkClicked(mainMenuLinkController.linkTo)"
+   dwp-ctrl-click="mainMenuLinkController.linkClicked(mainMenuLinkController.linkTo, true)"
+   ng-class="{ 'active': mainMenuLinkController.active }">
+  <span class="{{ mainMenuLinkController.icon }}"></span>
+  <span>{{ mainMenuLinkController.name }}</span>
+</a>

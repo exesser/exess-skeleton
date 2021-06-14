@@ -1,0 +1,89 @@
+{
+  "flw_flows": [
+    {
+      "id": "whatEvahDude",
+      "key_c": "flowForDefault",
+      "created_by" : "1"
+    }
+  ],
+  "flw_flowsteps" : [
+    {
+      "id": "plop",
+      "key_c": "flowSTepForDefault",
+      "created_by" : "1"
+    }
+  ],
+  "flw_flowstepslink" : [
+    {
+      "id": "plop2",
+      "created_by" : "1",
+      "flow_id": "whatEvahDude",
+      "flow_step_id": "plop"
+    }
+  ],
+  "flw_guidancefields" : [
+    {
+      "id": "plop5",
+      "field_id": "gf_1",
+      "field_type": "plop3",
+      "field_overwrite_value" : "%modelField%",
+      "field_fieldgroup": "r1c1",
+      "created_by" : "1"
+    },
+     {
+      "id": "plop6",
+      "field_id": "gf_2",
+      "field_type": "plop3",
+      "field_overwrite_value" : "HARDEWAARDE",
+       "field_fieldgroup": "r1c1",
+       "created_by" : "1"
+    },
+    {
+      "id": "plop7",
+      "field_id": "gf_3",
+      "field_type": "plop3",
+      "field_overwrite_value" : "",
+      "field_fieldgroup": "r1c1",
+      "created_by" : "1"
+    },
+    {
+      "id": "plop8",
+      "field_id": "selectWithSearch",
+      "field_type": "selectWithSearch",
+      "field_overwrite_value" : "",
+      "field_fieldgroup": "r1c1",
+      "created_by" : "1"
+    },
+    {
+      "id": "plop9",
+      "field_id": "toBeURBA",
+      "field_type": "hidden",
+      "field_overwrite_value" : "%selectWithSearch%",
+      "field_fieldgroup": "r1c1",
+      "created_by" : "1"
+    }
+
+  ],
+  "flw_guidancefields_flw_flowsteps_c" : [
+    {
+      "flow_field_id": "plop5",
+      "flow_step_id": "plop"
+    },
+    {
+      "flow_field_id": "plop6",
+      "flow_step_id": "plop"
+    },
+    {
+      "flow_field_id": "plop7",
+      "flow_step_id": "plop"
+    },
+    {
+      "flow_field_id": "plop8",
+      "flow_step_id": "plop"
+    },
+    {
+      "flow_field_id": "plop9",
+      "flow_step_id": "plop"
+    }
+  ]
+}

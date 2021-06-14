@@ -1,0 +1,16 @@
+<div class="nav__bottom" ng-if="logoutController.isLoggedIn() && logoutController.location === 'menu'">
+  <a ng-click="logoutController.logout()">
+    <span class="icon-logout"></span>
+    <span translate>LOGOUT.LOGOUT</span>
+  </a>
+</div>
+
+<div class="progressbar__footer" ng-if="logoutController.isLoggedIn() && logoutController.location === 'sidebar'">
+  <ol>
+    <li>
+      <a ng-click="logoutController.logout()" translate>
+        LOGOUT.LOGOUT
+      </a>
+    </li>
+  </ol>
+</div>

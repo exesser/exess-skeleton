@@ -1,0 +1,6 @@
+<small class="tooltip-up" ng-if="validationMessagesController.messages.length > 0">
+  <span class="error-message" ng-if="validationMessagesController.messages.length === 1">{{ validationMessagesController.messages[0] }}</span>
+  <ul ng-if="validationMessagesController.messages.length > 1">
+    <li class="error-message" ng-repeat="message in validationMessagesController.messages">{{ message }}</li>
+  </ul>
+</small>

@@ -1,0 +1,31 @@
+<div class="focus-mode ignore-animation">
+  <div class="focus-content">
+    <div class="top">
+      <a class="home" ng-click="focusModeContentController.onBackArrowClicked()">
+        <span class="icon-previous"></span>
+      </a>
+      <a class="home"
+         ng-show="focusModeContentController.showTopArrow"
+         ng-click="focusModeContentController.onTopArrowClicked()">
+        <span class="icon-arrow-up"></span>
+      </a>
+      <div class="top-form">
+        <h4>{{ focusModeContentController.title }}</h4>
+        <top-actions></top-actions>
+        <top-search></top-search>
+      </div>
+    </div>
+    <!--
+      The flash messages need to be rendered as the first elements in the grid.
+      Because the grid is rendered dynamically, we wrap it inside another grid that we CAN control.
+     -->
+    <div class="grid">
+      <flash-message-renderer></flash-message-renderer>
+      <div class="col-1-1">
+        <div class="row-1-1">
+          <div ng-transclude></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

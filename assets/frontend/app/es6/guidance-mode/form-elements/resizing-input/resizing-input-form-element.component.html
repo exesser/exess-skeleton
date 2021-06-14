@@ -1,0 +1,22 @@
+<div
+  resizing-input
+  class="resizing-input auto-complete"
+  ng-class="{ 'editable-input': !resizingInputFormElementController.hasBorder }">
+
+  <resizing-input
+    field-id="{{ resizingInputFormElementController.id }}"
+    ng-model="resizingInputFormElementController.internalModelValue"
+    ng-change="resizingInputFormElementController.internalModelValueChanged()"
+    placeholder="{{resizingInputFormElementController.label}}"
+    is-disabled="resizingInputFormElementController.fieldIsDisabled()"
+    is-readonly="resizingInputFormElementController.isReadonly">
+  </resizing-input>
+
+  <autocomplete
+    for-elements="resizingInputFormElementController.autoCompleteElementIds"
+    suggestion-clicked="resizingInputFormElementController.suggestionClicked(suggestion)"
+    suggestions="resizingInputFormElementController.suggestions"
+    suggestion-left-text-property="label"
+    suggestion-right-text-property="labelAddition">
+  </autocomplete>
+</div>

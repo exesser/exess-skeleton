@@ -1,0 +1,119 @@
+{
+  "list_cell": [
+    {
+      "id": "a2b30412-e167-70ad-45c4-5bb4b97e5517",
+      "name": "crud_name",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "date_entered": "2018-10-16 14:34:25",
+      "type": "list_link_bold_top_two_liner_cell",
+      "line1": "%name%",
+      "linkto": "dashboard",
+      "params_c": "{\r\n \"mainMenuKey\": \"CRUD\",\r\n \"dashboardId\": \"CrudBeanRecords\",\r\n \"recordType\": \"%recordType%\"\r\n }",
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "b4b862cd-392f-599c-decb-5bb4d1209269",
+      "name": "crud_records_list_column1",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "date_entered": "2018-10-16 14:34:25",
+      "type": "list_link_bold_top_two_liner_cell",
+      "line1": "%crudListC1R1%",
+      "line2": "%crudListC1R2%",
+      "linkto": "dashboard",
+      "params_c": "{\r\n\"mainMenuKey\": \"CRUD\",\r\n\"dashboardId\": \"CrudRecordView\",\r\n\"recordType\": \"%object_name%\",\r\n\"recordId\": \"%id%\"\r\n}",
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "b4b862cd-392f-599c-decb-5bb4d1209270",
+      "name": "crud_records_list_column2",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "date_entered": "2018-10-16 14:34:25",
+      "type": "list_simple_two_liner_cell",
+      "line1": "<div class=\"word-break\">%crudListC2R1%</div>",
+      "line2": "<div class=\"word-break\">%crudListC2R2%</div>",
+      "linkto": "dashboard",
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "d0597f00-fca8-10c8-810e-5bc7515a3dfb",
+      "name": "crud_name_related",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "date_entered": "2018-10-16 14:34:25",
+      "type": "list_link_bold_top_two_liner_cell",
+      "line1": "%name%",
+      "linkto": "dashboard",
+      "params_c": "{\r\n\"mainMenuKey\": \"CRUD\",\r\n\"dashboardId\": \"CrudRecordView\",\r\n\"recordType\": \"%RealObjectName%\",\r\n\"recordId\": \"%id%\"\r\n}",
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "a2b30412-e167-70ad-45c4-5bb4b97e5511",
+      "name": "crud_record_type_1",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "date_entered": "2018-10-16 14:34:25",
+      "type": "list_link_bold_top_two_liner_cell",
+      "line1": "{translate}%recordType1%;module{/translate}",
+      "linkto": "dashboard",
+      "params_c": "{\r\n \"mainMenuKey\": \"CRUD\",\r\n \"dashboardId\": \"CrudBeanRecords\",\r\n \"recordType\": \"%recordType1%\"\r\n }",
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "a2b30412-e167-70ad-45c4-5bb4b97e5512",
+      "name": "crud_record_type_2",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "date_entered": "2018-10-16 14:34:25",
+      "type": "list_link_bold_top_two_liner_cell",
+      "line1": "{translate}%recordType2%;module{/translate}",
+      "linkto": "dashboard",
+      "params_c": "{\r\n \"mainMenuKey\": \"CRUD\",\r\n \"dashboardId\": \"CrudBeanRecords\",\r\n \"recordType\": \"%recordType2%\"\r\n }",
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "a2b30412-e167-70ad-45c4-5bb4b97e5513",
+      "name": "crud_record_type_3",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "date_entered": "2018-10-16 14:34:25",
+      "type": "list_link_bold_top_two_liner_cell",
+      "line1": "{translate}%recordType3%;module{/translate}",
+      "linkto": "dashboard",
+      "params_c": "{\r\n \"mainMenuKey\": \"CRUD\",\r\n \"dashboardId\": \"CrudBeanRecords\",\r\n \"recordType\": \"%recordType3%\"\r\n }",
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "de8e1bbc-7c82-761a-72d5-5740d309a94g",
+      "name": "Checkbox CRUD",
+      "date_entered": "2016-05-21 21:29:21",
+      "date_modified": "2018-10-15 21:59:07",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type": "list_checkbox_cell",
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "971750d6-bc53-ae64-9db3-5d8397a17050",
+      "name": "crud_record_plus",
+      "date_entered": "2019-09-19 14:57:26",
+      "date_modified": "2019-09-19 15:07:33",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type": "list_plus_cell",
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "971750d6-bc53-ae64-9db3-5d8397a17051",
+      "name": "crud_relation_plus",
+      "date_entered": "2019-10-10 14:57:26",
+      "date_modified": "2019-10-10 15:07:33",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type": "list_plus_cell",
+      "visible_c": "DEFAULT"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "HELLO_WORLD": "Hallo",
+
+  "EXAMPLE_FORM": "Dies ist ein Musterformular",
+  "FIRST_NAME": "Vorname",
+  "NEXT": "weiter",
+  "SAVE": "speichern",
+  "FINISH": "beenden",
+  "CONFIRM": "bestätigen",
+  "SUBMIT": "freigeben",
+  "SHOW_MORE": "mehr anzeigen",
+  "CANCEL": "abbrechen",
+  "SEARCH": "DWP-SUCHE",
+  "LOADING": "laden",
+
+  "LOGIN.HEADER": "Willkommen bei superNOVA",
+  "LOGIN.USERNAME": "Benutzername",
+  "LOGIN.USERNAME.PLACEHOLDER": "Bitte geben Sie Ihren Benutzername ein",
+  "LOGIN.PASSWORD": "Kennwort",
+  "LOGIN.PASSWORD.PLACEHOLDER": "Bitte geben Sie ihr Kennwort ein",
+  "LOGIN.SUBMIT": "Anmeldung",
+  "LOGIN.ERROR": "Benutzername und/oder Kennwort sind falsch",
+
+  "LOGOUT.LOGOUT": "Abmelden",
+
+  "COMPANY": "Firma",
+  "AVAILABLE_COMMODITIES": "Verfügbare Verbindungen:",
+  "VAT": "MwST",
+  "CONTACT_PERSON": "Ansprechpartner",
+  "PREFERRED_CONTACT_TIME": "Erreichbarkeit",
+
+  "OPPORTUNITIES": "Verkaufschancen",
+  "NO_OPPORTUNITIES_DEFINED": " -keine Verkaufschancen definiert-",
+
+  "EAN": "EAN",
+  "CONTACT": "Kontakt",
+  "AROUND": "um",
+
+  "QUOTES": "Angebote",
+  "NO_QUOTES_DEFINED": " -keine Angebote definiert-",
+
+  "ADD": "hinzufügen",
+  "SHOW_ALL": "Alles anzeigen",
+
+  "SAVING_LEAD": "speichern",
+  "CALCULATING": "berechnen",
+
+  "PRICE_CALCULATION.TITLE": "Preiskalkulation",
+  "PRICE_CALCULATION.CALCULATE": "berechnen",
+  "PRICE_CALCULATION.ADD_YEAR": "Jahr hinzufügen",
+  "PRICE_CALCULATION.RESET": "Zurücksetzen",
+
+  "PRICE_OVERVIEW.TITLE": "Preisübersicht",
+
+  "VALID_UNTIL": "Gültig bis",
+  "PRICED": "Angebotspreis festgelegt",
+
+  "SAVING_OPPORTUNITIES": "Verkaufschance wurden gespeichert",
+
+  "LIST.SORT_BY": "Sortieren nach",
+  "LIST.EXPORT_TO_CSV": "CSV-Export",
+  "LIST.EMPTY_HEADER": "keine Einträge in dieser Liste",
+  "LIST.EMPTY_MESSAGE": "Es scheint, dass diese Liste noch leer ist.",
+  "LIST.LOADING_HEADER": "Liste wird geladen...",
+  "LIST.QUICK_SEARCH": "Suche...",
+
+  "MESSAGE_REQUIRED": "Sie müssen einen Wert in Feld {{label}} eingeben.",
+  "MESSAGE_MINLENGTH": "Ihre Eingabe im Feld {{label}} muss länger als {{minlength}} Zeichen sein.",
+  "MESSAGE_MAXLENGTH": "Ihre Eingabe im Feld {{label}} darf nicht länger als {{maxlength}} Zeichen sein.",
+  "MESSAGE_PATTERN": "Ihre Eingabe im Feld {{label}} muss dem folgenden Muster '{{pattern}}' entsprechen.",
+  "MESSAGE_DATE_FORMAT_ERROR": "Ihre Eingabe im Feld {{label}} hat ein falsches Datumsformat. Das richtige Format ist 'dd/mm/yyyy'.",
+  "MESSAGE_TIME_FORMAT_ERROR": "Ihre Eingabe im Feld {{label}} hat ein falsches Zeitformat. Richtiges Format ist 'hh:mm'.",
+
+  "MONTHS": "MONATE",
+
+  "FILTERS.FILTERS": "Filter",
+  "FILTERS.SAVE": "speichern",
+  "FILTERS.RESET": "zurücksetzen",
+
+  "SIDEBAR.PLUS_MENU.TITLE": "Let's get started",
+  "SIDEBAR.FILTERS.TITLE": "Filter",
+
+  "UPLOAD.PLACEHOLDER": "Wählen Sie Ihre Datei aus",
+  "UPLOAD.UPLOADING": "Uploading",
+
+  "NAVIGATE_AWAY_WARNING": "Sind Sie sicher, dass Sie diese Seite verlassen wollen?",
+  "NAVIGATE_AWAY_WARNING_DATA_LOSS": "Die Änderungen wurden noch nicht gespeichert. Sind Sie sicher, dass Sie diese Seite verlassen wollen?",
+
+  "HASHTAG_TEXT_ADD_TAG": "Neue Registerkarte",
+
+  "PAGINATION_TEXT": "Zeige Zeile <b>{{start}} bis {{end}}</ b> aus {{total}}",
+  "PAGINATION_TEXT_NO_TOTAL": "Zeige Zeile <b>{{start}} bis {{end}}</ b>",
+  "SELECT_WITH_SEARCH.SHOW_MORE": "... die nächsten {{amount}} anzeigen",
+  "SELECT_WITH_SEARCH.SHOW_LESS": "weniger anzeigen",
+
+  "ADDRESS.RESET": "zurücksetzen",
+  "LANGUAGE": "-- Sprache --",
+
+  "DRAW_PAD.RESET": "zurücksetzen",
+  "DRAW_PAD.CLEAR": "clear",
+
+  "SUGGESTION_CHANGE": "Der ausgewählte vorschlag hat auch die folgenden felder geändert:{{diff}} möchten sie wirklich fortfahren?",
+
+  "MAX_FILE_SIZE_ERROR": "File size should be smaller then {{max_file_size}}MB"
+}

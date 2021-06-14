@@ -1,0 +1,6 @@
+<div class="top-search" ng-show="topSearchController.topSearchCanBeDisplayed()">
+  <input type="search"
+         placeholder="{{ 'SEARCH' | translate}}"
+         ng-model="topSearchController.query"
+         ng-keyup="topSearchController.onKeyUp($event)">
+</div>

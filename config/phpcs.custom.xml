@@ -1,0 +1,3 @@
+
+    <!-- Exclude cms specific directories -->
+    <exclude-pattern>{{project.basedir}}/(\.tmp_staging/)?(src/ExternalApi|var|vendor|dev|vardefs)/*.php</exclude-pattern>

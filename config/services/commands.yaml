@@ -1,0 +1,18 @@
+# At the moment these commands are public since we're calling them directly,
+# but at some point in time we should be able to all make them private
+services:
+  _defaults:
+    autowire: true
+
+  # General CRM commands
+  ExEss\Cms\Command\AbstractAdminCommand:
+    abstract: true
+    calls:
+      - login: ['@security.token_storage', '@ExEss\Cms\Api\V8_Custom\Service\User\DefaultUser']
+
+  ExEss\Cms\Command\:
+    public: true
+    autowire: true
+    parent: ExEss\Cms\Command\AbstractAdminCommand
+    resource: '../../src/ExEss/Cms/Command'
+    tags: ['console.command']

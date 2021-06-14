@@ -1,0 +1,33 @@
+<div class="view__list show-options compact-list">
+  <div class="list__info"></div>
+
+  <div class="list__header" ng-show="crudListFormElementController.title">
+    <h2>{{crudListFormElementController.title}}</h2>
+  </div>
+
+  <div
+    class="list__actions"
+    ng-if="!crudListFormElementController.isDisabled && !crudListFormElementController.isReadonly">
+
+    <div class="button-group action-buttons">
+      <a id="create-button" ng-click="crudListFormElementController.create()">
+        <span class="icon-plus"></span>
+        <span class="ng-scope">CREATE</span>
+      </a>
+    </div>
+  </div>
+
+  <table class="list__content">
+    <thead>
+    <tr class="list__column-headers">
+      <th class="list__cell" ng-repeat="header in crudListFormElementController.headers">{{ header.label }}</th>
+      <!-- Header for update button  -->
+      <th class="list_cell"></th>
+
+      <!-- Header for delete button  -->
+      <th class="list_cell"></th>
+    </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>

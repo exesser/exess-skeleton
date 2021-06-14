@@ -1,0 +1,17 @@
+<focus-mode-content title="{{ largeGuidanceModeController.guidanceMode.guidance.title }}"
+            back-arrow-clicked="largeGuidanceModeController.backArrowClicked()">
+  <guidance
+    ng-if="largeGuidanceModeController.guidanceMode"
+    guidance-data="largeGuidanceModeController.guidanceMode"
+    guidance-form-observer="largeGuidanceModeController.guidanceFormObserver"
+    flow-id="{{ largeGuidanceModeController.flowId }}"
+    record-id="{{ largeGuidanceModeController.recordId }}"
+    inform-progress-bar-observer="true"
+    enable-guidance-recovery="true"
+    enable-navigate-away-guard="true">
+  </guidance>
+</focus-mode-content>
+<div ng-show="largeGuidanceModeController.loading" class="badge badge-position loading">
+  <img src="images/loading@2x.gif"/>
+  <h5 class="pink">{{ largeGuidanceModeController.guidanceMode.guidance.loadingMessage }}</h5>
+</div>

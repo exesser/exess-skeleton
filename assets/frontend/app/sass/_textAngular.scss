@@ -1,0 +1,130 @@
+/*
+  Style overrides for textAngular editor
+*/
+.ta-toolbar {
+  > .btn-group {
+    margin-bottom: 6px;
+  }
+
+  .font-size ul {
+    display: none;
+  }
+
+  .insert-table td.pink {
+    background: #E10078;
+  }
+
+  .btn-group {
+    .btn {
+      background: #F7F9FB;
+      border: 1px solid #D9E5F6;
+      color: rgba(30, 47, 65, 0.5);
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 700;
+
+      + .btn {
+        margin-left: -1px;
+      }
+
+      &.active {
+        background: #D9E5F6;
+      }
+    }
+
+    &.dropdown {
+      border: none;
+
+      &[disabled = 'disabled'] {
+        pointer-events: none;
+      }
+
+      ul {
+        background: #F7F9FB;
+        border: 1px solid #D9E5F6;
+        left: 0;
+        list-style: none;
+        min-width: 160px;
+        padding: 5px 0;
+        position: absolute;
+        top: 100%;
+        z-index: 1000;
+
+        li {
+          a {
+            color: rgba(30, 47, 65, 0.5);
+            display: block;
+            padding: 3px 20px;
+            text-decoration: none;
+            white-space: nowrap;
+
+            &:hover {
+              background: #D9E5F6;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.ta-editor {
+  p {
+    font-size: 12px;
+  }
+}
+
+.ecp-btn {
+  border: none !important;
+  vertical-align: top;
+  margin-top: 1px;
+
+  &[disabled = 'disabled'] {
+    pointer-events: none;
+  }
+  .sp-replacer {
+    background: #F7F9FB;
+    border: 1px solid #D9E5F6;
+    display: block !important;
+
+    &.sp-active,
+    &:hover {
+      border-color: #D9E5F6;
+    }
+
+    .sp-preview {
+      border-color: #D9E5F6;
+      height: 16px;
+      margin-right: 8px;
+      width: 20px;
+
+      .sp-preview-inner {
+        position: absolute !important;
+
+        &:after {
+          color: rgba(30, 47, 65, 0.5);
+          content: '\f0d7';
+          font: normal normal normal 0.8125rem/1 FontAwesome;
+          position: absolute;
+          right: -10px;
+          top: 1px;
+        }
+      }
+    }
+
+    .sp-dd {
+      display: none;
+    }
+  }
+}
+
+.ecp-container {
+  background: #F7F9FB;
+  border: 1px solid #D9E5F6;
+
+  &.sp-buttons-disabled {
+    .sp-button-container {
+      display: none !important;
+    }
+  }
+}

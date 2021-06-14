@@ -1,0 +1,72 @@
+<div
+  ng-if="uploadFormElementController.isReadonly === false"
+  class="input__with-button input__upload">
+
+  <input
+    type="submit"
+    class="button"
+    value="Upload"
+    ng-disabled="uploadFormElementController.fieldIsDisabled()">
+
+  <div class="input-holder">
+    <input
+      type="text"
+      placeholder="{{ 'UPLOAD.PLACEHOLDER' | translate }}"
+      ng-disabled="uploadFormElementController.fieldIsDisabled()">
+  </div>
+
+  <input
+    id="{{ ::uploadFormElementController.elementId }}" class="col-1-1" type="file"
+    ngf-select
+    ngf-pattern="'{{ uploadFormElementController.accept }}'"
+    accept="{{ uploadFormElementController.accept }}"
+    ngf-change="uploadFormElementController.uploadFieldChanged($file)"
+    ngf-multiple="false"
+    ngf-model-invalid="uploadFormElementController.rejections"
+    ng-required
+    ng-disabled="uploadFormElementController.fieldIsDisabled()">
+
+  <ul class="file-upload__list" style="margin-left: 0;">
+    <li ng-show="uploadFormElementController.isUploading">
+      <div class="file-container">
+        <div class="file front">
+          <div class="uploading">
+            <span class="indicator"><span translate>UPLOAD.UPLOADING</span>:
+              <span class="percentage">{{ uploadFormElementController.progressPercentage }}%</span>
+            </span>
+            <div class="action">
+              <span class="icon-checkmark"></span>
+            </div>
+            <div class="upload-progress" ng-style="{ transition: 'none', width: uploadFormElementController.progressPercentage + '%' }"></div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li ng-repeat="upload in uploadFormElementController.internalModelValue track by upload.id">
+      <div class="file-container completed flip">
+        <div class="file back">
+          <div class="uploaded">
+            <span>{{ upload.name }}</span>
+            <a ng-href="{{ upload.url }}"></a>
+            <a class="icon-close" ng-click="uploadFormElementController.removeFile(upload.id)"></a>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="non-editable-input" ng-if="uploadFormElementController.isReadonly === true">
+  <ul class="file-upload__list" style="margin-left: 0;">
+    <li ng-repeat="upload in uploadFormElementController.internalModelValue track by upload.id">
+      <div class="file-container completed flip">
+        <div class="file back">
+          <div class="uploaded">
+            <span>{{ upload.name }}</span>
+            <a ng-href="{{ upload.url }}"></a>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

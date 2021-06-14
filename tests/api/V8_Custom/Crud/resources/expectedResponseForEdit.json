@@ -1,0 +1,351 @@
+{
+  "status": 200,
+  "data": {
+    "guidance": {
+      "title": "1",
+      "loadingMessage": "Loading"
+    },
+    "form": {
+      "id": "b7a1b4d4-3096-718e-29a3-5bd3070aa83f",
+      "key_c": "CrudRecordEdit",
+      "type_c": "DEFAULT",
+      "name": "Edit Record",
+      "cardList": [
+        "r1c1",
+        "r1c2"
+      ],
+      "r1c1": {
+        "fields": [
+          {
+            "guid": "bf2861b6-f66c-932e-bea3-5bc5f5f51cf1",
+            "required": false,
+            "id": "dwp|dynamicRelation",
+            "label": "Dynamic Relations",
+            "default": null,
+            "type": "enum",
+            "auto_select_suggestions": false,
+            "hideExpression": "1==1",
+            "hasBorder": true,
+            "readonly": false,
+            "noBackendInteraction": false,
+            "generateByServer": "done",
+            "generateType": "repeat-trigger",
+            "overwrite_value": "",
+            "enumValues": []
+          },
+          {
+            "id": "name",
+            "label": "Name",
+            "type": "TextField",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          },
+          {
+            "id": "filtersListKey",
+            "label": "FiltersListKey",
+            "type": "TextField",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          },
+          {
+            "id": "mainRecordType",
+            "label": "MainRecordType",
+            "type": "TextField",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          },
+          {
+            "id": "menuSort",
+            "label": "MenuSort",
+            "type": "TextField",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          },
+          {
+            "id": "key",
+            "label": "Key",
+            "type": "TextField",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          },
+          {
+            "enumValues": [
+              {
+                "key": null,
+                "value": ""
+              },
+              {
+                "key": "DEFAULT",
+                "value": "Default"
+              },
+              {
+                "key": "EXTERNAL",
+                "value": "External"
+              }
+            ],
+            "id": "type",
+            "label": "Type",
+            "type": "enum",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          }
+        ]
+      },
+      "r1c2": {
+        "fields": [
+          {
+            "datasourceName": "crud_relate_relationship",
+            "modalTitle": "Select one or more records",
+            "selectedResultsTitle": "Selected records",
+            "plusButtonTitle": "Select one or more records",
+            "addResultsButtonTitle": "Add one or more records",
+            "multiple": false,
+            "params": {
+              "baseObject": "ExEss\\Cms\\Entity\\GridTemplate"
+            },
+            "id": "gridTemplate|id",
+            "label": "GridTemplate",
+            "type": "selectWithSearch",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          },
+          {
+            "datasourceName": "crud_relate_relationship",
+            "modalTitle": "Select one or more records",
+            "selectedResultsTitle": "Selected records",
+            "plusButtonTitle": "Select one or more records",
+            "addResultsButtonTitle": "Add one or more records",
+            "multiple": false,
+            "params": {
+              "baseObject": "ExEss\\Cms\\Entity\\DashboardMenu"
+            },
+            "id": "dashboardMenu|id",
+            "label": "DashboardMenu",
+            "type": "selectWithSearch",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          },
+          {
+            "datasourceName": "crud_relate_relationship",
+            "modalTitle": "Select one or more records",
+            "selectedResultsTitle": "Selected records",
+            "plusButtonTitle": "Select one or more records",
+            "addResultsButtonTitle": "Add one or more records",
+            "multiple": false,
+            "params": {
+              "baseObject": "ExEss\\Cms\\Entity\\FindSearch"
+            },
+            "id": "search|id",
+            "label": "Search",
+            "type": "selectWithSearch",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          },
+          {
+            "datasourceName": "crud_relate_relationship",
+            "modalTitle": "Select one or more records",
+            "selectedResultsTitle": "Selected records",
+            "plusButtonTitle": "Select one or more records",
+            "addResultsButtonTitle": "Add one or more records",
+            "multiple": false,
+            "params": {
+              "baseObject": "ExEss\\Cms\\Entity\\Filter"
+            },
+            "id": "filter|id",
+            "label": "Filter",
+            "type": "selectWithSearch",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          },
+          {
+            "id": "description",
+            "label": "Description",
+            "type": "textarea",
+            "required": false,
+            "readonly": false,
+            "default": null,
+            "expressionProperties": {},
+            "noBackendInteraction": true
+          }
+        ]
+      }
+    },
+    "grid": {
+      "columns": [
+        {
+          "size": "4-4",
+          "hasMargin": false,
+          "rows": [
+            {
+              "size": "",
+              "type": "navigationHistoryRenderer",
+              "options": [],
+              "cssClasses": [
+                "card"
+              ]
+            },
+            {
+              "size": "1-1",
+              "type": "centeredGuidanceGrid",
+              "options": {
+                "grid": {
+                  "columns": [
+                    {
+                      "size": "1-1",
+                      "rows": [
+                        {
+                          "size": "1-2",
+                          "type": "titleContainingGrid",
+                          "options": {
+                            "titleExpression": "{%name%}",
+                            "grid": {
+                              "columns": [
+                                {
+                                  "size": "1-2",
+                                  "rows": [
+                                    {
+                                      "size": "",
+                                      "type": "basicFormlyForm",
+                                      "options": {
+                                        "formKey": "r1c1"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "size": "1-2",
+                                  "rows": [
+                                    {
+                                      "size": "",
+                                      "type": "basicFormlyForm",
+                                      "options": {
+                                        "formKey": "r1c2"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "cssClasses": [
+                                "has-default-margins"
+                              ]
+                            }
+                          },
+                          "cssClasses": [
+                            "card"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "cssClasses": [
+            "guidance"
+          ]
+        }
+      ]
+    },
+    "model": {
+      "recordTypeOfRecordId": "ExEss\\Cms\\Entity\\Dashboard",
+      "baseModule": "ExEss\\Cms\\Entity\\Dashboard",
+      "dwp|dynamicRelation": null,
+      "id": "{{dashboardId}}",
+      "gridTemplate|id": [
+        {
+          "key": "{{gridId}}",
+          "label": "test-grid "
+        }
+      ],
+      "dashboardMenu|id": [
+        {
+          "key": "{{dashboardMenuId}}",
+          "label": "test-dashboard-menu "
+        }
+      ],
+      "search|id": null,
+      "filter|id": null,
+      "description": null,
+      "name": "dash_name",
+      "filtersListKey": null,
+      "mainRecordType": null,
+      "menuSort": null,
+      "key": "any",
+      "type": "DEFAULT",
+      "dwp|dynamicLoadedFields": [
+        "dashboardMenu|id",
+        "description",
+        "filtersListKey",
+        "filter|id",
+        "gridTemplate|id",
+        "key",
+        "mainRecordType",
+        "menuSort",
+        "name",
+        "search|id",
+        "type"
+      ]
+    },
+    "progress": {
+      "steps": [
+        {
+          "active": true,
+          "canBeActivated": true,
+          "disabled": false,
+          "progressPercentage": 50,
+          "valid": {
+            "result": true,
+            "errors": []
+          },
+          "id": "b7a1b4d4-3096-718e-29a3-5bd3070aa83f",
+          "key_c": "CrudRecordEdit",
+          "name": "Edit Record",
+          "type_c": "DEFAULT"
+        }
+      ]
+    },
+    "step": {
+      "willSave": true,
+      "done": null,
+      "next": {
+        "nextStep": "CrudRecordEdit",
+        "actionId": null,
+        "recordId": "{{dashboardId}}",
+        "lastStep": true,
+        "mainMenuKey": null
+      }
+    }
+  },
+  "message": "SUCCESS"
+}

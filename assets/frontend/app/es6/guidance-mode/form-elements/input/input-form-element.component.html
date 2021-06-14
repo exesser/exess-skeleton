@@ -1,0 +1,29 @@
+<div
+  ng-if="inputFormElementController.isReadonly === false"
+  class="auto-complete"
+  ng-class="{'editable-input': !inputFormElementController.hasBorder}">
+
+  <!-- we are using ng-readonly and not ng-disabled because when we disable the field we lose the focus -->
+  <input
+    id="{{ ::inputFormElementController.elementId }}"
+    type="text"
+    ng-model="inputFormElementController.newInternalModelValue"
+    ng-change="inputFormElementController.newInternalModelValueChanged()"
+    ng-readonly="inputFormElementController.fieldIsDisabled()"/>
+  <span ng-if="inputFormElementController.unitOfMeasure.length > 0" class="unit">
+    {{inputFormElementController.unitOfMeasure}}
+  </span>
+
+  <autocomplete
+    for-elements="inputFormElementController.autoCompleteElementIds"
+    suggestion-clicked="inputFormElementController.suggestionClicked(suggestion)"
+    suggestions="inputFormElementController.suggestions"
+    suggestion-left-text-property="label"
+    suggestion-right-text-property="labelAddition">
+  </autocomplete>
+</div>
+
+<div class="non-editable-input" ng-if="inputFormElementController.isReadonly === true">
+  <strong style="white-space:pre-line;" id="{{ ::inputFormElementController.elementId }}">{{ inputFormElementController.internalModelValue | fixDecimal }}</strong>
+  <span ng-if="inputFormElementController.unitOfMeasure.length > 0" class="unit">{{ inputFormElementController.unitOfMeasure }}</span>
+</div>

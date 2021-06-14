@@ -1,0 +1,62 @@
+{
+  "model": {
+    "title": {
+      "default": {
+        "value": "",
+        "operator": "=",
+        "fieldId": "{{fieldId1}}"
+      }
+    },
+    "name": {
+      "default": {
+        "value": "",
+        "operator": "=",
+        "fieldId": "{{fieldId2}}"
+      }
+    }
+  },
+  "fieldGroups": [
+    {
+      "fields": [
+        {
+          "id": "title.default.value",
+          "label": "My title",
+          "type": null,
+          "operator": "=",
+          "enumValues": {
+            "Large": {
+              "value": "Large"
+            },
+            "Medium": {
+              "value": "Medium"
+            }
+          }
+        }
+      ],
+      "name": null,
+      "sort": "10"
+    },
+    {
+      "fields": [
+        {
+          "id": "name.default.value",
+          "label": "My name",
+          "type": null,
+          "operator": "=",
+          "enumValues": [
+            {
+              "key": "Active",
+              "value": "Active"
+            },
+            {
+              "key": "Inactive",
+              "value": "Inactive"
+            }
+          ]
+        }
+      ],
+      "name": null,
+      "sort": "20"
+    }
+  ]
+}

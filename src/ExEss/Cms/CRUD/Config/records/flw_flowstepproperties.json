@@ -1,0 +1,67 @@
+{
+  "properties":[
+    {
+      "id": "3c462514-ae3e-c294-d3fe-5bc5fa665bb9",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "list_1",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "value_c": "crud_relations_list"
+    },
+    {
+      "id": "52fb6476-5323-0300-c474-5bc5fa1d0be1",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "flowId",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "value_c": "CrudRepeatableList"
+    },
+    {
+      "id": "bc9d0ab6-c68f-6815-32a9-5bc6f80a351c",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "titleExpression",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "value_c": "Relations 1 {%dwp|rowOptions|modelId%}"
+    },
+    {
+      "id": "d47d7360-a848-9d5a-9c93-5bc6fa8b7326",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "titleExpression",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "value_c": "Relations 2 {%dwp|rowOptions|modelId%}"
+    },
+    {
+      "id": "d95561a4-a82a-4c22-1fa3-5bb6155d01e5",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "title",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "value_c": "%name%"
+    },
+    {
+      "id": "e9d8425c-e601-f14e-a553-5bc6fa6e045e",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "title_row1",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "value_c": "Form"
+    },
+    {
+      "id": "e9d8425c-e601-f14e-a553-5bc6fa6e045e",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "text",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "description": null,
+      "value_c": "."
+    }
+  ]
+}

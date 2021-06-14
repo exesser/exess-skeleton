@@ -1,0 +1,12 @@
+<label class="input__radio">
+  <input
+    id="{{ ::radioFormElementController.elementId }}"
+    type="radio"
+    value="{{ radioFormElementController.value }}"
+    ng-model="radioFormElementController.internalModelValue"
+    ng-change="radioFormElementController.internalModelValueChanged()"
+    ng-disabled="radioFormElementController.fieldIsDisabled() || radioFormElementController.isReadonly">
+  {{ radioFormElementController.label }}
+  <span class="icon"></span>
+  <span>&nbsp;</span>
+</label>

@@ -1,0 +1,29 @@
+{
+  "fe_selectwithsearch":[
+    {
+      "id": "e7d4279f-e41c-566d-cb26-5bd6fe94d5ed",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_new_relationship",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "base_object": "CrudSelectRelationsRepository",
+      "items_on_page": "10",
+      "order_by": "name",
+      "option_label": "%crudListC1R1% %crudListC2R1%",
+      "filter_string": "%name%",
+      "option_key": "%id%"
+    },
+    {
+      "id": "e7d4279f-e41c-566d-cb26-5bd6fe94d5ee",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_relate_relationship",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "items_on_page": "10",
+      "order_by": "name",
+      "option_label": "%crudListC1R1% %crudListC2R1%",
+      "filter_string": "%name%",
+      "option_key": "%id%"
+    }
+  ]
+}

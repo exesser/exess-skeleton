@@ -1,0 +1,252 @@
+.form__header {
+  flex-direction: row-reverse;
+
+  h1 {
+    margin-right: auto;
+    text-align: left;
+  }
+}
+
+wysiwyg-editor-form-element[disabled='disabled'] {
+  cursor: default !important;
+}
+
+$white: #FFFFFF;
+$pink: #E10078;
+$dark-extra: #20262F;
+$medium: #3F4A59;
+
+@media screen and (min-width: 60em) {
+  .hide-menu {
+    .top-menu {
+      max-height: 0;
+    }
+  }
+
+  .nav {
+    z-index: 1001;
+  }
+  .mobile-menu {
+    background: $dark-extra;
+    z-index: 1000;
+
+    .top-menu-toggle, input[name="top-menu-toggle"] {
+      display: block;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      left: 60px;
+      z-index: 80;
+    }
+
+    .top-menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        width: 20px;
+        height: 2px;
+        background: $white;
+        display: block;
+        margin: {
+          top: 2px;
+          bottom: 2px;
+        }
+      }
+    }
+
+    input[name="top-menu-toggle"] {
+      opacity: 0;
+      z-index: 1010;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    input[name="top-menu-toggle"]:checked {
+      & ~ .top-menu-toggle {
+        background: $pink;
+
+        span {
+          margin: 0;
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+
+          &:first-child {
+            display: none;
+          }
+
+          &:last-child {
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            margin-top: -2px;
+          }
+        }
+      }
+
+      & ~ .top-menu {
+        display: block;
+      }
+    }
+
+    a.home {
+      float: none;
+    }
+
+    .top-form {
+      position: absolute;
+      top: 0;
+      left: 110px;
+      width: calc(100% - 110px);
+    }
+
+    .top-menu {
+      margin-left: 60px;
+      display: none;
+      border-top: 1px solid $medium;
+
+      a {
+        display: block;
+        float: left;
+        min-width: 350px;
+        border: 0;
+
+        &:before {
+          display: none;
+        }
+
+        &:hover {
+          background: $medium;
+        }
+      }
+    }
+  }
+}
+
+.top-menu {
+  overflow-y: scroll;
+  max-height: calc(100vh - 50px);
+  float: left;
+}
+
+.row-crud-card {
+  margin-top: 100px;
+  h2 {
+    text-transform: initial;
+    font-size: 1em;
+    letter-spacing: 0.7px
+  }
+}
+
+.blue-sidebar .card .card__content {
+  overflow-x: scroll;
+  padding: 0 0 180px 0;
+
+  .icon-nav {
+    position: absolute !important;
+  }
+}
+
+.confirm__modal a {
+  color: #ffffff !important;
+  border-right: 0 !important;
+  margin: 0 !important;
+}
+
+.confirm__modal .icon-close:before {
+  line-height: 1 !important;
+}
+
+.word-break {
+  word-break: break-all;
+}
+
+.jsoneditor-contextmenu ul li ul {
+  overflow: scroll;
+}
+
+.jsoneditor-contextmenu ul,
+.jsoneditor-contextmenu ul li button {
+  width: 155px;
+}
+
+.jsoneditor-contextmenu ul li button.default {
+  width: 90px;
+}
+
+.label-inline strong {
+  word-break: break-word
+}
+
+// - list extra row any component
+.view__list {
+  margin-bottom: 50px;
+}
+
+.row__extra_content {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #d9e5f6;
+
+  .grid {
+    clear: both;
+    position: relative;
+    top: 0;
+  }
+
+  .view__list {
+    margin-bottom: 0px;
+  }
+
+  .is-compact {
+    .list__content {
+      td {
+        padding: 0px;
+      }
+
+      th {
+        padding: 5px;
+      }
+    }
+  }
+}
+
+.row__extra_content.is-open {
+  display: table-row;
+}
+
+.row__actions {
+  display: inherit;
+  background-color: #2f3742;
+  margin: 0px !important;
+  padding-right: 60px !important;
+}
+
+.list__margin_left {
+  margin: 0px !important;
+  .view__list {
+    margin-left: 10%;
+    width: 90%;
+  }
+}
+
+.cell__action [class*=icon-arrow-] {
+  font-size: 40px !important;
+}
+
+.bdt-table {
+  padding: 0;
+  font-size: 11px;
+
+  tr {
+    td {
+      padding: 0 0 0 5px !important;
+      white-space: nowrap;
+    }
+  }
+}

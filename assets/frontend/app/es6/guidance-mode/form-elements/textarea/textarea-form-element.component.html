@@ -1,0 +1,14 @@
+<div ng-if="textareaFormElementController.isReadonly === false">
+  <!-- we are using ng-readonly and not ng-disabled because when we disable the field we lose the focus -->
+  <textarea
+    id="{{ ::textareaFormElementController.elementId }}"
+    ng-model="textareaFormElementController.internalModelValue"
+    ng-change="textareaFormElementController.internalModelValueChanged()"
+    ng-readonly="textareaFormElementController.fieldIsDisabled()"
+    msd-elastic>
+  </textarea>
+</div>
+
+<div class="non-editable-input" ng-if="textareaFormElementController.isReadonly === true">
+  <strong id="{{ ::textareaFormElementController.elementId }}">{{ textareaFormElementController.internalModelValue }}</strong>
+</div>

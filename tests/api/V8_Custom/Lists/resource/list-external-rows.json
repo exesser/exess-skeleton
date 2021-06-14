@@ -1,0 +1,49 @@
+{
+  "id": 12345678,
+  "cells": [
+    {
+      "type": "list_simple_two_liner_cell",
+      "class": "cell__text",
+      "options": {
+        "line1": "billingAccount - lastRejectReason",
+        "line2": "",
+        "link": null,
+        "icon": null,
+        "linkTo": "",
+        "params": []
+      },
+      "cellLines": {
+        "line1": true,
+        "line2": false,
+        "line3": false
+      }
+    }
+  ],
+  "rowData": {
+    "id": 12345678,
+    "agentBlock": true,
+    "billingAccount": "billingAccount",
+    "eans": [
+      "eans"
+    ],
+    "journal": "journal",
+    "journalType": "journalType",
+    "lastRejectReason": "lastRejectReason",
+    "linkedInvoice": "linkedInvoice",
+    "openAmount": 0,
+    "paymentMethod": "paymentMethod",
+    "paymentPlan": true,
+    "reference": "reference",
+    "rejectCount": 0,
+    "status": "status",
+    "totalAmount": 0,
+    "type": "type",
+    "paymentReference": "paymentReference",
+    "dunningStatus": "blub",
+    "accountId": null,
+    "allowInPaymentPlan": true,
+    "allowToReverseDunningCost": true
+  },
+  "sortByOrder": "DESC",
+  "sortBy": null
+}

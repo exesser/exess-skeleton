@@ -1,0 +1,82 @@
+<div
+  ng-if="hashtagTextFormElementController.isReadonly === false"
+  class="auto-complete">
+
+  <!-- we are using ng-readonly and not ng-disabled because when we disable the field we lose the focus -->
+  <textarea
+    ng-if="!hashtagTextFormElementController.displayWysiwyg"
+    id="{{ ::hashtagTextFormElementController.elementId }}"
+    ng-model="hashtagTextFormElementController.internalModelValue.text"
+    ng-readonly="hashtagTextFormElementController.fieldIsDisabled()"
+    ng-keydown="hashtagTextFormElementController.textareaKeyDown($event)"
+    ng-keypress="hashtagTextFormElementController.textareaKeyPress($event)"
+    msd-elastic>
+  </textarea>
+
+  <wysiwyg-editor-form-element
+    ng-if="hashtagTextFormElementController.displayWysiwyg"
+    ng-model="hashtagTextFormElementController.internalModelValue.text"
+    id="{{ hashtagTextFormElementController.elementId }}"
+    key="{{ hashtagTextFormElementController.elementId }}"
+    no-backend-interaction="true"
+    is-readonly="hashtagTextFormElementController.fieldIsDisabled()"
+    ng-keypress="hashtagTextFormElementController.textareaKeyPress($event)"
+    >
+  </wysiwyg-editor-form-element>
+
+  <autocomplete
+    ng-if="hashtagTextFormElementController.getFieldIdForSuggestions()"
+    for-elements="[ hashtagTextFormElementController.getFieldIdForSuggestions() ]"
+    suggestion-clicked="hashtagTextFormElementController.applyTextAutocompletion(suggestion)"
+    suggestions="hashtagTextFormElementController.textAutocompletions"
+    suggestion-left-text-property="label"
+    suggestion-right-text-property="hashtag">
+  </autocomplete>
+
+  <div class="tag-list">
+    <div class="tag" ng-repeat="tag in hashtagTextFormElementController.internalModelValue.tags track by tag.id">
+      #{{ tag.hashtag }}
+      <a class="icon-close"
+         ng-click="hashtagTextFormElementController.removeTag(tag.id)"
+         ng-hide="hashtagTextFormElementController.fieldIsDisabled()"></a>
+    </div>
+    <div class="add-tag">
+      <span class="icon-plus"></span>
+      <!-- we are using ng-readonly and not ng-disabled because when we disable the field we lose the focus -->
+      <input
+        id="{{ ::hashtagTextFormElementController.elementId }}-tag"
+        type="text"
+        ng-keypress="hashtagTextFormElementController.inputKeyPress($event)"
+        ng-keydown="hashtagTextFormElementController.inputKeyDown($event)"
+        ng-readonly="hashtagTextFormElementController.fieldIsDisabled()"
+        placeholder="{{ 'HASHTAG_TEXT_ADD_TAG' | translate }}" />
+
+      <autocomplete
+        for-elements="[ hashtagTextFormElementController.elementId + '-tag' ]"
+        suggestion-clicked="hashtagTextFormElementController.applyHashtagAutocompletion(suggestion)"
+        suggestions="hashtagTextFormElementController.hashtagAutocompletions"
+        suggestion-left-text-property="hashtag">
+      </autocomplete>
+    </div>
+  </div>
+</div>
+
+<div class="non-editable-input" ng-if="hashtagTextFormElementController.isReadonly === true">
+  <strong
+    ng-if="!hashtagTextFormElementController.displayWysiwyg"
+    id="{{ ::hashtagTextFormElementController.elementId }}"
+  >{{ hashtagTextFormElementController.internalModelValue.text }}</strong>
+
+  <strong
+    ng-if="hashtagTextFormElementController.displayWysiwyg"
+    id="{{ ::hashtagTextFormElementController.elementId }}"
+    class="non-editable-editor"
+    ng-bind-html="hashtagTextFormElementController.internalModelValue.text"
+  ></strong>
+
+  <div class="tag-list">
+    <div class="tag" ng-repeat="tag in hashtagTextFormElementController.internalModelValue.tags track by tag.id">
+      #{{ tag.hashtag }}
+    </div>
+  </div>
+</div>

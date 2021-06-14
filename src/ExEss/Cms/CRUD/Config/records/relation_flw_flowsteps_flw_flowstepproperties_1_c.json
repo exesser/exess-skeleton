@@ -1,0 +1,44 @@
+{
+  "flw_flowsteps_flw_flowstepproperties_1_c": [
+    {
+      "flow_step_id": "c0f05b58-d55e-9a4a-b773-5bc5f95a9bb0",
+      "property_id": "3c462514-ae3e-c294-d3fe-5bc5fa665bb9"
+    },
+    {
+      "flow_step_id": "e2a59037-3dcb-2efe-7a01-5bb5ee731b2d",
+      "property_id": "52fb6476-5323-0300-c474-5bc5fa1d0be1"
+    },
+    {
+      "flow_step_id": "b7a1b4d4-3096-718e-29a3-5bd3070aa83f",
+      "property_id": "52fb6476-5323-0300-c474-5bc5fa1d0be1"
+    },
+    {
+      "flow_step_id": "c0f05b58-d55e-9a4a-b773-5bc5f95a9bb0",
+      "property_id": "bc9d0ab6-c68f-6815-32a9-5bc6f80a351c"
+    },
+    {
+      "flow_step_id": "b7a1b4d4-3096-718e-29a3-5bd3070aa83f",
+      "property_id": "d47d7360-a848-9d5a-9c93-5bc6fa8b7326"
+    },
+    {
+      "flow_step_id": "e2a59037-3dcb-2efe-7a01-5bb5ee731b2d",
+      "property_id": "d47d7360-a848-9d5a-9c93-5bc6fa8b7326"
+    },
+    {
+      "flow_step_id": "e2a59037-3dcb-2efe-7a01-5bb5ee731b2d",
+      "property_id": "d95561a4-a82a-4c22-1fa3-5bb6155d01e5"
+    },
+    {
+      "flow_step_id": "b7a1b4d4-3096-718e-29a3-5bd3070aa83f",
+      "property_id": "e9d8425c-e601-f14e-a553-5bc6fa6e045e"
+    },
+    {
+      "flow_step_id": "e2a59037-3dcb-2efe-7a01-5bb5ee731b2d",
+      "property_id": "e9d8425c-e601-f14e-a553-5bc6fa6e045e"
+    },
+    {
+      "flow_step_id": "67051e05-6e35-dcd4-1512-5bd6fd5580b1",
+      "property_id": "e9d8425c-e601-f14e-a553-5bc6fa6e045e"
+    }
+  ]
+}

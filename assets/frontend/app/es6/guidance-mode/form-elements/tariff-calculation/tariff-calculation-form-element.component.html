@@ -1,0 +1,64 @@
+<div id="{{ ::tariffCalculationFormElementController.elementId }}">
+  <h3 translate>PRICE_CALCULATION.TITLE</h3>
+  <hr>
+  <table ng-repeat="calculation in tariffCalculationFormElementController.calculations">
+    <thead>
+      <tr>
+        <th ng-repeat="item in calculation">{{ item[0].title }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="rowIndex in tariffCalculationFormElementController.getRowIndexRange()">
+        <td ng-repeat="item in calculation">
+          <div class="input" ng-if="!tariffCalculationFormElementController.isDisabled && !item[rowIndex].disabled">
+            <label for="input-text">{{ item[rowIndex].label }}</label>
+            <div>
+              <input
+                type="text"
+                  name="input-text"
+                  id="input-text"
+                  ng-model="item[rowIndex].value"
+                  ng-disabled="tariffCalculationFormElementController.loading"
+                  ng-change="tariffCalculationFormElementController.fetchData('CHANGE')"/>
+              <span class="unit"> {{item[rowIndex].uom}}</span>
+            </div>
+          </div>
+          <div ng-if="tariffCalculationFormElementController.isDisabled || item[rowIndex].disabled">
+            {{item[rowIndex].label}} <b>{{item[rowIndex].value}}</b> {{item[rowIndex].uom}}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br/>
+
+<div ng-if="!tariffCalculationFormElementController.isDisabled">
+  <button
+    ng-hide="tariffCalculationFormElementController.hideButton('CALCULATE')"
+    class="button-secondary"
+    ng-click="tariffCalculationFormElementController.fetchData('CHANGE')"
+    translate>
+      PRICE_CALCULATION.CALCULATE
+  </button>
+  <button
+    ng-hide="tariffCalculationFormElementController.hideButton('ADD-YEAR')"
+    class="button-secondary"
+    ng-click="tariffCalculationFormElementController.addEndDate()"
+    translate>
+      PRICE_CALCULATION.ADD_YEAR
+    </button>
+  <button
+    ng-hide="tariffCalculationFormElementController.hideButton('RESET')"
+    class="button-secondary"
+    ng-click="tariffCalculationFormElementController.resetEndDates()"
+    translate>
+      PRICE_CALCULATION.RESET
+  </button>
+</div>
+
+<div ng-show="tariffCalculationFormElementController.isCalculating()" class="badge badge-position loading">
+  <img src="images/loading@2x.gif"/>
+  <h5 class="pink" translate>CALCULATING</h5>
+</div>

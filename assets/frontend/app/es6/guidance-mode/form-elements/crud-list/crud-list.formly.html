@@ -1,0 +1,15 @@
+<!--
+ In this form element we delegate to the list-form-element directive.
+ We do this because there is extensive dom-manipulation going on in here, we dynamically retrieve a
+ list of rows and columns to render.
+-->
+<crud-list-form-element
+  ng-model
+  id="{{options.key}}"
+  key="{{options.key}}"
+  title="{{options.templateOptions.title}}"
+  create-update-action-id="{{options.templateOptions.createUpdateActionId}}"
+  headers="{{options.templateOptions.headers}}"
+  is-disabled="options.templateOptions.disabled"
+  is-readonly="options.templateOptions.readonly">
+</crud-list-form-element>

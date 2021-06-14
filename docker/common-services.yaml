@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:5.7
+    #command: ["--default-authentication-plugin=mysql_native_password"]
+    command: [
+      'mysqld', 
+      '--character-set-server=utf8', 
+      '--collation-server=utf8_general_ci', 
+      '--sql_mode=ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+    ]
+    container_name: cms-mysql
+    working_dir: /exesscms-api
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=${DBCONFIG_DB_NAME}
+      - MYSQL_USER=${DBCONFIG_DB_USER_NAME}
+      - MYSQL_PASSWORD=${DBCONFIG_DB_PASSWORD}
+    volumes:
+      - ./docker/mysql:/docker-entrypoint-initdb.d

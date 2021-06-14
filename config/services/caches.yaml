@@ -1,0 +1,17 @@
+parameters:
+  env(EXTERNAL_CACHE_DISABLE): false
+  cache_disabled: '%env(bool:EXTERNAL_CACHE_DISABLE)%'
+  cache_host: '%env(string:EXTERNAL_CACHE_REDIS_HOST)%'
+  cache_port: '%env(string:EXTERNAL_CACHE_REDIS_PORT)%'
+
+services:
+  _defaults:
+    public: true
+
+  ExEss\Cms\Cache\CacheAdapterFactory:
+    class: ExEss\Cms\Cache\CacheAdapterFactory
+    arguments:
+      - '@monolog.logger'
+      - '%cache_disabled%'
+      - '%cache_host%'
+      - '%cache_port%'

@@ -1,0 +1,11 @@
+<div class="notification alert"
+  ng-class="{
+    'is-error': flashMessageController.type === 'ERROR',
+    'is-warning': flashMessageController.type === 'WARNING',
+    'is-success': flashMessageController.type === 'SUCCESS',
+    'is-information': flashMessageController.type === 'INFORMATION'}">
+  <p class="icon-alert">{{::flashMessageController.text}}</p>
+  <a ng-click="flashMessageController.close()" class="action-close">
+    <span class="icon-close"></span>
+  </a>
+</div>

@@ -1,0 +1,53 @@
+<div
+  ng-if="selectWithSearchFormElementController.isReadonly === false"
+  id="{{ ::selectWithSearchFormElementController.elementId }}">
+  <div>
+    <div class="input">
+      <div>
+        <!-- we are using ng-readonly and not ng-disabled because when we disable the button we lose the focus -->
+        <button
+          type="button"
+          class="button-placeholder"
+          ng-readonly="selectWithSearchFormElementController.fieldIsDisabled()"
+          ng-click="selectWithSearchFormElementController.open()">
+
+          <span class="icon-plus"></span>
+          <span>{{ selectWithSearchFormElementController.plusButtonTitle }}</span>
+        </button>
+      </div>
+    </div>
+    <div class="action-list">
+      <ul ng-disabled="selectWithSearchFormElementController.fieldIsDisabled()">
+        <li ng-repeat="result in selectWithSearchFormElementController.internalModelValue | limitTo:selectWithSearchFormElementController.LIMIT track by $index">
+          <span>{{ result.label }}</span>
+          <a ng-click="selectWithSearchFormElementController.deselectItem(result)" class="action-delete">
+            <span class="icon-close"></span>
+          </a>
+        </li>
+      </ul>
+      <a ng-if="selectWithSearchFormElementController.internalModelValue.length > selectWithSearchFormElementController.LIMIT" class="action-more"
+         ng-click="selectWithSearchFormElementController.open()">
+          <span translate>SHOW_MORE</span> ({{ selectWithSearchFormElementController.internalModelValue.length }} )
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="non-editable-input" ng-if="selectWithSearchFormElementController.isReadonly === true">
+  <strong id="{{ ::selectWithSearchFormElementController.elementId }}" ng-bind-html="selectWithSearchFormElementController.readonlyValue()"></strong>
+  <div ng-if="selectWithSearchFormElementController.internalModelValue.length > selectWithSearchFormElementController.LIMIT">
+    <a
+      ng-if="selectWithSearchFormElementController.readonlyShowAll === false"
+      ng-click="selectWithSearchFormElementController.toggleReadonlyShowAll()"
+      translate-value-amount="{{ selectWithSearchFormElementController.internalModelValue.length - selectWithSearchFormElementController.LIMIT }}"
+      translate
+      >SELECT_WITH_SEARCH.SHOW_MORE
+    </a>
+     <a
+      ng-if="selectWithSearchFormElementController.readonlyShowAll === true"
+      ng-click="selectWithSearchFormElementController.toggleReadonlyShowAll()"
+      translate
+      >SELECT_WITH_SEARCH.SHOW_LESS
+    </a>
+  </div>
+</div>

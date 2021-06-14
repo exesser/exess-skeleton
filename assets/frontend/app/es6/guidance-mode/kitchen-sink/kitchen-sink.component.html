@@ -1,0 +1,18 @@
+<focus-mode-content title="{{ kitchenSinkController.guidanceMode.guidance.title }}"
+                    back-arrow-clicked="kitchenSinkController.backArrowClicked()">
+  <guidance-observers-accessor guidance-form-observer="kitchenSinkController.guidanceFormObserver"
+                               validation-observer="kitchenSinkController.validationObserver"
+                               suggestions-observer="kitchenSinkController.suggestionsObserver">
+    <gridlr definition="kitchenSinkController.guidanceMode.grid"></gridlr>
+  </guidance-o  bservers-accessor>
+</focus-mode-content>
+<div ng-show="kitchenSinkController.loading" class="badge badge-position loading">
+  <img src="images/loading@2x.gif"/>
+  <h5 class="pink">{{ kitchenSinkController.guidanceMode.guidance.loadingMessage }}</h5>
+</div>
+
+<div style="position: fixed; margin: auto; width: 400px; z-index: 1000; top: 100px; left: 65%; overflow: scroll; height: 100%;">
+  <h1>Kitchen Sink</h1>
+
+  <pre>{{ kitchenSinkController.guidanceMode.model | json:2 }}</pre>
+</div>

@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  redis:
+    extends:
+      file: docker-compose.yml
+      service: redis
+
+  mysql-test:
+    extends:
+      file: docker-compose.yml
+      service: mysql
+    container_name: cms-mysql-test    
+
+  php:
+    extends:
+      file: docker-compose.yml
+      service: php
+    links:
+      - mysql-test  
+
+  webserver:
+    extends:
+      file: docker-compose.yml
+      service: webserver

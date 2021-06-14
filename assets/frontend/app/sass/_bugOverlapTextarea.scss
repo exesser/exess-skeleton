@@ -1,0 +1,7 @@
+/*
+  This CSS class has one purpose to fix a bug in mini guidance display.
+  If the content of a textarea wast to big the fields ware overlapping.
+*/
+ul.accordion-menu .is-open.content {
+  max-height: none;
+}

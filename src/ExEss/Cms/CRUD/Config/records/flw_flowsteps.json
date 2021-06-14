@@ -1,0 +1,75 @@
+{
+  "flw_flowsteps": [
+    {
+      "id": "67051e05-6e35-dcd4-1512-5bd6fd5580b1",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "CrudNewRelation",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudNewRelation",
+      "is_card_c": false,
+      "label_c": "Select new relation",
+      "grid_template_id": "c9860c8c-9d9a-1942-48e0-5759d0549517"
+    },
+    {
+      "id": "67051e05-6e35-dcd4-1512-5bd6fd5580b2",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "CrudConfigHelper",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudConfigHelper",
+      "is_card_c": false,
+      "label_c": "CrudConfigHelper",
+      "grid_template_id": "c9860c8c-9d9a-1942-48e0-5759d0549518"
+    },
+    {
+      "id": "b7a1b4d4-3096-718e-29a3-5bd3070aa83f",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "CrudRecordEdit",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudRecordEdit",
+      "is_card_c": false,
+      "label_c": "Edit Record",
+      "grid_template_id": "7e3255fd-f26e-5885-5fad-5bd30e1db380"
+    },
+    {
+      "id": "c0f05b58-d55e-9a4a-b773-5bc5f95a9bb0",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "CrudRepeatableList",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudRepeatableList",
+      "is_card_c": false,
+      "label_c": null,
+      "grid_template_id": "8d010ca7-d069-27f0-cb5c-5bc6f8170e25"
+    },
+    {
+      "id": "e2a59037-3dcb-2efe-7a01-5bb5ee731b2d",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "CRUD Record Details",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudRecordDetails",
+      "is_card_c": false,
+      "label_c": "Record Details",
+      "grid_template_id": "9e3c3111-49bb-5cfa-226f-5bc5f683ed25"
+    },
+    {
+      "id": "1989c7be-2807-b57b-fb4a-5bfc9329de27",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_record_create",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "crud_record_create",
+      "is_card_c": false,
+      "grid_template_id": "7e3255fd-f26e-5885-5fad-5bd30e1db380"
+    }
+  ]
+}

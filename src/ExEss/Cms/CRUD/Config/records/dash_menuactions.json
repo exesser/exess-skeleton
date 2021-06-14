@@ -1,0 +1,39 @@
+{
+  "dash_menuactions": [
+    {
+      "id": "77476baf-0a05-9650-4738-5bd18d7695f6",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_edit",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "flw_actions_id_c": "e36d0319-9e2d-ee6c-29d5-5bd1a7d6a4c4",
+      "label_c": "Edit Record",
+      "sort_order": "0",
+      "conditions_hide_c": "{\"operator\": \"AND\", \"conditions\": [{\"field\": \"%object_name%\", \"validator\": \"EqualTo\", \"params\": {\"value\": \"User\"}}]}",
+      "params_c": "{\r\n  \"recordId\": \"%recordId%\", \"recordType\" : \"%recordType%\"\r\n}"
+    },
+    {
+      "id": "77476baf-0a05-9650-4738-5bd18d7695f7",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_duplicate",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "flw_actions_id_c": "e36d0319-9e2d-ee6c-29d5-5bd1a7d6a4c6",
+      "label_c": "Duplicate Record",
+      "sort_order": "10",
+      "conditions_hide_c": "{\"operator\": \"AND\", \"conditions\": [{\"field\": \"%object_name%\", \"validator\": \"EqualTo\", \"params\": {\"value\": \"User\"}}]}",
+      "params_c": "{\r\n  \"recordId\": \"%recordId%\", \"recordType\" : \"%recordType%\", \"params\": {\"parentType\" : \"%recordType%\"} \r\n}"
+    },
+    {
+      "id": "77476baf-0a05-9650-4738-5bd18d7695f8",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "crud_config_helper",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "flw_actions_id_c": "e36d0319-9e2d-ee6c-29d5-5bd1a7d6a4c8",
+      "label_c": "Config helper",
+      "sort_order": "10",
+      "params_c": null
+    }
+  ]
+}

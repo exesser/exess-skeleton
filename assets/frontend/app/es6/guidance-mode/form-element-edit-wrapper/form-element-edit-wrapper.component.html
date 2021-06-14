@@ -1,0 +1,16 @@
+<div
+  ng-mouseover="formElementEditWrapperController.hoverIn()"
+  ng-mouseleave="formElementEditWrapperController.hoverOut()"
+  class="crud-edit-icon-container"
+>
+  <div ng-show="formElementEditWrapperController.showEditButton()" class="crud-edit-icon">
+    <span>
+      <a href="/#/CRUD/dashboard/CrudRecordView/{{formElementEditWrapperController.guid}}?recordType=ExEss%5CCms%5CEntity%5CFlowField"
+         target="_blank"
+      >
+        <span class="icon-edit"></span>
+      </a>
+    </span>
+  </div>
+  <div ng-transclude></div>
+</div>

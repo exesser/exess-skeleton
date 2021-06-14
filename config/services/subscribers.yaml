@@ -1,0 +1,158 @@
+services:
+  _defaults:
+    public: true
+
+  ExEss\Cms\Api\V8_Custom\Events\Listeners\EnhanceHeadersSubscriber:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\Api\V8_Custom\Events\Listeners\EnhanceHeadersSubscriber' }]
+
+  ExEss\Cms\Api\V8_Custom\Events\Listeners\ExternalApiLogSubscriber:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\Logger\Logger'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\Api\V8_Custom\Events\Listeners\ExternalApiLogSubscriber' }]
+
+  ExEss\Cms\Api\V8_Custom\Events\Listeners\UpdateLastLoginSubscriber:
+    lazy: true
+    arguments:
+      - '@doctrine.orm.entity_manager'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\Api\V8_Custom\Events\Listeners\UpdateLastLoginSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\PreValidationSubscriber:
+    lazy: true
+    arguments:
+      $container: '@service_container'
+      $preValidationHandlers: !tagged_iterator pre-validation-suggestion
+      $gridRepository: '@ExEss\Cms\Dashboard\GridRepository'
+      $em: '@doctrine.orm.entity_manager'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\PreValidationSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\SuggestionsSubscriber:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher'
+      - '@service_container'
+      - !tagged_iterator suggestions
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\SuggestionsSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\ResponseHandlerSubscriber:
+    lazy: true
+    arguments:
+      $container: '@service_container'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\ResponseHandlerSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\PreDispatchSubscriber:
+    lazy: true
+    arguments:
+      - '@doctrine.orm.entity_manager'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\PreDispatchSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\RecordIdSubscriber:
+    lazy: true
+    arguments:
+      - '@doctrine.orm.entity_manager'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\RecordIdSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\GuidanceSubscriber:
+    lazy: true
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\GuidanceSubscriber' }]
+
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\NextStepSubscriber:
+    lazy: true
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\NextStepSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\ProgressSubscriber:
+    lazy: true
+    arguments:
+      - '@Symfony\Component\Translation\Translator'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\ProgressSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\ExternalFlowSubscriber:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\Servicemix\ExternalObjectHandler'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\ExternalFlowSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\BaseEntitySubscriber:
+    lazy: true
+    arguments:
+      - '@doctrine.orm.entity_manager'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\BaseEntitySubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\ValidationSubscriber:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\FLW_Flows\FlowValidator'
+      - '@ExEss\Cms\FLW_Flows\ActionFactory'
+      - '@ExEss\Cms\FLW_Flows\Builder\FormBuilder'
+      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\ValidationSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\ChildModelSubscriber:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\ChildModelSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\GridSubscriber:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\Dashboard\GridRepository'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\GridSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\FormAndModelSubscriber:
+    lazy: true
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@ExEss\Cms\FLW_Flows\Builder\FormBuilder'
+      - '@ExEss\Cms\FLW_Flows\DefaultValueService'
+      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\Logger\Logger'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\FormAndModelSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\ValueExpressionsSubscriber:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\MultiLevelTemplate\TextFunctionHandler'
+      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
+      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
+      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\ValueExpressionsSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\BreakoutSubscriber:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\Grid\RepeatableRowService'
+      - '@ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\BreakoutSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\SaveSubscriber:
+    lazy: true
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\FLW_Flows\SaveFlow'
+      - '@ExEss\Cms\FLW_Flows\MultiLineFlowSaver'
+      - '@ExEss\Cms\FLW_Flows\ActionFactory'
+      - '@ExEss\Cms\FLW_Flows\AfterSave\Handler\AfterSaveHandlerQueue'
+      - '@ExEss\Cms\FLW_Flows\Builder\FormBuilder'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\SaveSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\ModelCleanerSubscriber:
+    lazy: true
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@ExEss\Cms\FLW_Flows\Builder\FormBuilder'
+      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\Logger\Logger'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\ModelCleanerSubscriber' }]
+
+  ExEss\Cms\FLW_Flows\Event\Listeners\GuidanceRecoverySubscriber:
+    lazy: true
+    arguments:
+      - '@ExEss\Cms\Users\Service\GuidanceRecoveryService'
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\GuidanceRecoverySubscriber' }]

@@ -1,0 +1,12 @@
+parameters:
+  routerCacheFile: false
+
+services:
+  _defaults:
+    public: true
+
+  test.monolog.logger: '@monolog.logger'
+
+  ExEss\Cms\Test\TestRepository:
+    tags: [{ name: 'handler.list', alias: !php/const ExEss\Cms\Test\TestRepository::NAME }]
+

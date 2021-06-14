@@ -1,0 +1,13 @@
+<div class="sidebar">
+  <div class="plus-menu"
+       ng-show="sidebarController.isSidebarElementOpen(sidebarController.SIDEBAR_ELEMENT.PLUS_MENU)"
+       ui-view="plus-menu">
+  </div>
+  <div ng-show="sidebarController.isSidebarElementOpen(sidebarController.SIDEBAR_ELEMENT.FILTERS)"
+       ui-view="filters">
+  </div>
+  <div class="mini-guidance"
+       ng-show="sidebarController.isSidebarElementOpen(sidebarController.SIDEBAR_ELEMENT.MINI_GUIDANCE)"
+       ui-view="mini-guidance">
+  </div>
+</div>

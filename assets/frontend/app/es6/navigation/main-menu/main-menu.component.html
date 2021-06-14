@@ -1,0 +1,8 @@
+<main-menu-link
+  ng-repeat="mainMenu in mainMenuController.mainMenus"
+  link-to="{{ mainMenu.link }}"
+  params="mainMenu.params"
+  icon="{{ mainMenu.icon }}"
+  name="{{ mainMenu.name }}"
+  active="mainMenu.active">
+</main-menu-link>

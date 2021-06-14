@@ -1,0 +1,44 @@
+<section class="view__modal" ng-if="guidanceModalController.isOpen">
+  <div class="modal__container" ng-class="{'modal__wide': guidanceModalController.originalModalData.wide}">
+    <div class="modal__header">
+      <h5>{{ guidanceModalController.originalModalData.title }}</h5>
+      <a class="button icon-close" ng-click="guidanceModalController.close()"></a>
+    </div>
+    <flash-message-renderer></flash-message-renderer>
+    <div ng-if="guidanceModalController.hasWarning()" class="alert is-warning">
+      {{ guidanceModalController.originalModalData.warningText }}
+    </div>
+    <div class="modal__content">
+      <div class="cols" ng-hide="guidanceModalController.loading">
+        <guidance
+          ng-if="guidanceModalController.isOpen && guidanceModalController.guidanceFormObserver"
+          guidance-data="guidanceModalController.modalData"
+          guidance-form-observer="guidanceModalController.guidanceFormObserver"
+          flow-id="{{ guidanceModalController.originalModalData.flowId }}"
+          record-id="{{ guidanceModalController.originalModalData.recordId }}"
+          inform-progress-bar-observer="false"
+          enable-navigate-away-guard="true">
+        </guidance>
+      </div>
+      <div class="button-group modal__actions">
+        <a id="confirm-button" class="button"
+           ng-hide="guidanceModalController.hideConfirmButton()"
+           ng-disabled="guidanceModalController.confirmIsDisabled()"
+           ng-click="guidanceModalController.confirm()">
+            {{ guidanceModalController.originalModalData.confirmLabel }}
+        </a>
+
+        <a id="cancel-button" class="button"
+           ng-hide="guidanceModalController.hideCancelButton()"
+           ng-click="guidanceModalController.cancel()">
+            {{ guidanceModalController.originalModalData.cancelLabel }}
+        </a>
+
+        <div class="badge badge-position loading" ng-show="guidanceModalController.loading">
+          <img src="images/loading@2x.gif"/>
+          <h5 class="pink" translate>LOADING</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

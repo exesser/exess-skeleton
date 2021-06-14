@@ -1,0 +1,29 @@
+<div class="top-actions">
+  <a ng-show="topActionsController.miniGuidanceCanBeOpened()"
+     ng-click="topActionsController.toggleMiniGuidance()"
+     class="icon-log"
+     name="Mini Guidance"
+     ng-class="{'is-active': topActionsController.miniGuidanceIsOpen()}">
+  </a>
+  <a ng-show="topActionsController.filtersCanBeOpened()"
+     ng-click="topActionsController.toggleFilters()"
+     class="icon-filters"
+     name="Filters"
+     ng-class="{'is-active': topActionsController.filtersIsOpen()}">
+  </a>
+  <a ng-show="topActionsController.plusMenuCanBeOpened()"
+     ng-click="topActionsController.togglePlusMenu()"
+     class="icon-plus"
+     name="Plus Menu"
+     ng-class="{'is-active': topActionsController.plusMenuIsOpen()}">
+  </a>
+  <a id="primaryButton"
+     class="button"
+     name="Confirm"
+     ng-show="topActionsController.primaryButtonIsVisible()"
+     ng-click="topActionsController.primaryButtonClicked()"
+     ng-disabled="topActionsController.primaryButtonIsDisabled()">
+    <span class="icon-checkmark"></span>
+    <span>{{topActionsController.getPrimaryButtonData().title}}</span>
+  </a>
+</div>

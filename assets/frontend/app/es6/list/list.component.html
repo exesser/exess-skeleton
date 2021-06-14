@@ -1,0 +1,97 @@
+<div class="view__list show-options is-compact"
+     ng-class="{ 'is-empty': listController.getRows().length === 0 || listController.loading }">
+
+  <div class="list__header" ng-show="listController.data.settings.title">
+    <h2>{{listController.data.settings.title}}</h2>
+  </div>
+
+  <div class="list__actions" ng-show="listController.getTopBar()">
+    <div class="input" ng-show="listController.getTopBar().selectAll">
+      <label class="input__checkbox">
+        <input type="checkbox"
+               ng-model="listController.selectAllCheckbox"
+               ng-click="listController.addAllToSelectList()"/>
+        <span class="icon-checkmark"></span>
+      </label>
+    </div>
+    <div class="button-group action-buttons"
+         ng-show="listController.getTopBar().buttons || listController.getTopBar().exportToCSV">
+      <confirm-action ng-repeat="button in listController.getTopBar().buttons"
+                      ng-disabled="button.enabled === false"
+                      action="listController.topBarActionClicked(button)"
+                      button-icon="{{ button.icon }}"
+                      button-label="{{ button.label | uppercase }}"
+                      confirm-message="{{ listController.getConfirmMessageForButton(button) }}">
+      </confirm-action>
+
+      <a id="export-to-CSV"
+         ng-show="listController.getTopBar().canExportToCSV"
+         ng-click="listController.exportToCSVButtonClicked()">
+        <span class="icon-wijzigen"></span>
+        <span translate>LIST.EXPORT_TO_CSV</span>
+      </a>
+    </div>
+    <div class="sort-options" ng-show="listController.showQuickSearch()">
+      <div class="input">
+        <div>
+          <input name="quick-search"
+                 placeholder="{{ 'LIST.QUICK_SEARCH' | translate }}"
+                 ng-model="listController.quickSearchField"
+                 ng-change="listController.quickSearchHasChanged()">
+        </div>
+      </div>
+    </div>
+    <div class="sort-options" ng-show="listController.showSortingOptions()">
+      <div class="input">
+        <div>
+          <select name="input-selected"
+                  ng-model="listController.sortBy"
+                  ng-change="listController.sortHasChanged()"
+                  ng-options="option.key as option.label for option in listController.getTopBar().sortingOptions">
+            <option value="" selected="" translate>LIST.SORT_BY</option>
+          </select>
+          <span class="icon-arrow-down"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list__empty" ng-if="listController.getRows().length === 0 && listController.loading === false">
+    <h2 translate>LIST.EMPTY_HEADER</h2>
+    <h4 translate>LIST.EMPTY_MESSAGE</h4>
+    <a class="button"
+       ng-if="listController.data.emptyButton.label"
+       ng-click="listController.emptyButtonClicked()">
+      {{ listController.data.emptyButton.label }}
+    </a>
+  </div>
+
+  <div class="list__empty" ng-if="listController.loading">
+    <img src="images/loading@2x.gif"/>
+    <h4 translate>LIST.LOADING_HEADER</h4>
+  </div>
+
+  <table class="list__content" ng-show="!listController.showResponsiveList()">
+    <thead ng-if="listController.showHeaders()">
+    <tr class="list__column-headers">
+      <th class="list__cell" ng-repeat="header in listController.getHeaders()">{{ header.label }}</th>
+    </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <div class="m-table-list" id="rows-responsive" ng-show="listController.showResponsiveList()">
+  </div>
+
+  <div class="list__footer" ng-show="listController.showFooter()">
+    <pagination
+      ng-if="listController.getPagination()"
+      total-pages="listController.getPagination().pages"
+      current-page="listController.getPagination().page"
+      page-size="listController.getPagination().size"
+      total-results="listController.getPagination().total"
+      page-changed="listController.setPage(page, true)">
+    </pagination>
+  </div>
+</div>
+<br/>

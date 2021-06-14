@@ -1,0 +1,76 @@
+<div class="card blue has-header has-icon-nav">
+  <div class="card__header">
+    <div ng-class="blueSideBarController.cssClasses()">
+      <div class="status__badge"></div>
+      <div class="status__label"></div>
+    </div>
+    <h1>{{ blueSideBarController.data.name }}</h1>
+  </div>
+  <div class="card__message" ng-repeat="message in blueSideBarController.data.messages">
+    <span class="icon-exclamation"></span> {{ message }}
+  </div>
+  <div class="card__content">
+    <div class="card__content__inner-wrapper">
+      <h3>{{ blueSideBarController.data.title }}</h3>
+
+      <h4>{{ blueSideBarController.data.number }}</h4>
+
+      <p>
+        {{ blueSideBarController.data.street }}
+        {{ blueSideBarController.data.houseNumber }}
+        {{ blueSideBarController.data.addition }}
+        {{ blueSideBarController.data.box }}<br/>
+        {{ blueSideBarController.data.postalCode }}
+        {{ blueSideBarController.data.city }}
+      </p>
+      <p ng-if="blueSideBarController.data.record_type == 'B2B'">
+        <span translate>VAT</span>: {{ blueSideBarController.data.enterprise_number }}<br/>
+      </p>
+      <h3>{{ blueSideBarController.data.titleContact }}</h3>
+      <p ng-if="blueSideBarController.data.record_type == 'B2B'">
+        <b>{{blueSideBarController.data.first_name}} {{blueSideBarController.data.last_name}}</b><br/>
+        <span>{{blueSideBarController.data.function}}</span>
+      </p>
+      <p>
+        <span ng-if="blueSideBarController.data.phone != ''">{{ blueSideBarController.data.phone }}<br/></span>
+        <span ng-if="blueSideBarController.data.mobile != ''">{{ blueSideBarController.data.mobile }}<br/></span>
+        <span ng-if="blueSideBarController.data['e-mail'] != ''">
+        {{ blueSideBarController.data['e-mail'] }}<br/>
+      </span>
+        <span ng-if="blueSideBarController.data.record_type == 'B2C'">{{ blueSideBarController.data.birthdate }}</span>
+      </p>
+      <p>
+        {{ blueSideBarController.data.language }}
+      </p>
+
+      <h3 translate>CONTRACTS</h3>
+      <ul class="contracts-list">
+        <li>
+          <a ng-click="blueSideBarController.linkClicked(blueSideBarController.data.contractTotalLink)">
+            <span class="badge">{{ blueSideBarController.data.contracts_elec }}</span>
+            <span class="icon-elektriciteit"></span>
+          </a>
+        </li>
+        <li>
+          <a ng-click="blueSideBarController.linkClicked(blueSideBarController.data.contractTotalLink)">
+            <span class="badge">{{ blueSideBarController.data.contracts_gas }}</span>
+            <span class="icon-aardgas"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="icon-nav">
+      <a class="nav-header"
+         ng-click="blueSideBarController.linkClicked(blueSideBarController.data.arrowLink)">
+        {{ blueSideBarController.data.arrowLink.title }}
+      </a>
+      <a class="col-1-4 nav-item"
+         ng-repeat="button in blueSideBarController.data.buttons"
+         ng-click="blueSideBarController.linkClicked(button)"
+         ng-class="{'active': blueSideBarController.isActive(button)}">
+        <span class="{{ button.icon }}"></span>
+        <small class="tooltip-down is-dark">{{ button.title }}</small>
+      </a>
+    </div>
+  </div>
+</div>

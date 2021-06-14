@@ -1,0 +1,58 @@
+{
+  "dash_dashboard":[
+    {
+      "id": "58791e1a-50e5-b418-c086-5bb5e0093b42",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "CrudRecordView",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudRecordView",
+      "grid_gridtemplates_id_c": "793d3697-9e5d-76cc-c38d-5bb5e317253a",
+      "dashboard_menu_id" : "ca00b7cd-0e98-8bd2-0340-5bd18cb0aaf1"
+    },
+    {
+      "id": "6b9f453a-7b55-3ac2-ece9-5bb4cdde9d80",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "CrudBeanRecords",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudBeanRecords",
+      "grid_gridtemplates_id_c": "d785a19c-8363-492a-281f-5bb4b5933be1",
+      "filter_id": "72432981-1bb3-6b45-ffc7-5c26563b44c8"
+    },
+    {
+      "id": "6b9f453a-7b55-3ac2-ece9-5bb4cdde9d81",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "CrudViewAnyList",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudViewAnyList",
+      "grid_gridtemplates_id_c": "d785a19c-8363-492a-281f-5bb4b5933be3"
+    },
+    {
+      "id": "6f0b57bd-bde2-9a56-a976-5bb4b5b956a4",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "Crud Records",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudAllBeans",
+      "menu_sort_c": "100",
+      "grid_gridtemplates_id_c": "d785a19c-8363-492a-281f-5bb4b5933be1"
+    },
+    {
+      "id": "6f0b57bd-bde2-9a56-a976-5bb4b5b956a5",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "Crud Config Helper",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudConfigHelper",
+      "menu_sort_c": "500",
+      "grid_gridtemplates_id_c": "d785a19c-8363-492a-281f-5bb4b5933be2"
+    }
+  ]
+}

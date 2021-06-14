@@ -1,0 +1,19 @@
+<div
+  ng-if="resizingInputController.isReadonly === false"
+  class="resizing-input">
+
+  <!-- we are using ng-readonly and not ng-disabled because when we disable the field we lose the focus-->
+  <input
+    type="text"
+    id="{{ ::resizingInputController.elementId }}"
+    ng-model="resizingInputController.inputValue"
+    ng-readonly="resizingInputController.isDisabled"
+    ng-change="resizingInputController.inputValueChanged()"
+    ng-style="{'width': resizingInputController.spanWidth }"
+    placeholder="{{resizingInputController.placeholder}}"/>
+  <span>{{ resizingInputController.inputValue | orDefault:resizingInputController.placeholder }}</span>
+</div>
+
+<div class="non-editable-input" ng-if="resizingInputController.isReadonly === true">
+  <strong id="{{ ::resizingInputController.elementId }}">{{ resizingInputController.inputValue }}</strong>
+</div>

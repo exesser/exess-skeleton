@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    target-branch: master  
+    labels:
+      - "dependencies"
+      - "dependabot"
+      - "security"
+      - "php"
+    commit-message:
+      prefix: "[SECURITY]"  
+      include: "scope"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"    
+    target-branch: master
+    labels:
+      - "dependencies"
+      - "dependabot"
+      - "security"
+      - "actions"
+    commit-message:
+      prefix: "[ACTIONS]"  
+      include: "scope"  

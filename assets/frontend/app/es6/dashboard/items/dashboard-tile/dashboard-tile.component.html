@@ -1,0 +1,17 @@
+<div class="m-tile__content">
+
+  <span class="m-tile__icon {{ dashboardTileController.icon }}"
+        ng-if="dashboardTileController.icon"
+        ng-class="{'icon__big': !dashboardTileController.title }"
+  ></span>
+  <h3 class="m-tile__title" ng-show="dashboardTileController.title">{{ dashboardTileController.title }}</h3>
+  <h1 class="m-tile__value" ng-show="dashboardTileController.value">{{ dashboardTileController.value }}</h1>
+  <p ng-show="dashboardTileController.text">{{ dashboardTileController.text }}</p>
+</div>
+<div class="m-tile__footer">
+  <a
+    class="button m-tile__button"
+    ng-show="dashboardTileController.showActionButton()"
+    ng-click="dashboardTileController.doAction()"
+  >{{ dashboardTileController.button }}</a>
+</div>

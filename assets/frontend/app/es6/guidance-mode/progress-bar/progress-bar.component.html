@@ -1,0 +1,33 @@
+<ul>
+  <li ng-if="progressBarController.image" class="list-logo">
+    <img class="flow-logo" src="{{progressBarController.image}}">
+  </li>
+  <li ng-repeat="step in progressBarController.progressMetadata.steps">
+    <a ng-class="{
+        'status-active': step.active,
+        'status-done': step.canBeActivated,
+        'status-disabled': step.disabled,
+        'status-error' : step.valid.result
+       }"
+       ng-click="progressBarController.click(step)">
+      <div class="radial-progress" data-progress="{{ step.progressPercentage | number:0 }}">
+        <div class="circle">
+          <div class="mask"></div>
+          <div class="mask"></div>
+        </div>
+      </div>
+      {{step.name}}
+    </a>
+    <ul>
+      <li ng-repeat="substep in step.substeps">
+        <a ng-class="{
+            'status-active': substep.active,
+            'status-done': substep.activatable,
+            'status-disabled': substep.disabled
+           }"
+           ng-click="progressBarController.click(substep)">{{ substep.name }}
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>

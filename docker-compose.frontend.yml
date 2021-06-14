@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  node:
+    build: assets/frontend
+    container_name: cms-node
+    working_dir: /exesscms
+    command: ["npm", "start"]
+    volumes: 
+      - node_modules:/exesscms/node_modules
+      - bower_components:/exesscms/bower_components
+      - ./assets/frontend:/exesscms
+    ports:
+      - "9005:9005"  
+      - "35729:35729"
+  
+volumes:
+  node_modules:
+    external: false    
+  bower_components:
+    external: false    

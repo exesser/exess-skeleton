@@ -1,0 +1,12 @@
+<text-angular
+  ng-if="wysiwygEditorFormElementController.isReadonly === false"
+  id="{{ ::wysiwygEditorFormElementController.elementId }}"
+  ng-model="wysiwygEditorFormElementController.internalModelValue"
+  ng-change="wysiwygEditorFormElementController.internalModelValueChangedLocal()"
+  ta-disabled="wysiwygEditorFormElementController.fieldIsDisabled()">
+</text-angular>
+
+<div class="non-editable-editor"
+  ng-if="wysiwygEditorFormElementController.isReadonly === true"
+  ng-bind-html="wysiwygEditorFormElementController.internalModelValue">
+</div>

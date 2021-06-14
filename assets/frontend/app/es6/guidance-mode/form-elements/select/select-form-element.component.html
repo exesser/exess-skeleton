@@ -1,0 +1,47 @@
+<div
+  ng-if="selectFormElementController.isReadonly === false && selectFormElementController.checkboxes === false"
+  ng-class="{'editable-select': !selectFormElementController.hasBorder}">
+
+  <select
+    id="{{ ::selectFormElementController.elementId }}"
+    ng-model="selectFormElementController.selectValue"
+    ng-options="option.value as option.name for option in selectFormElementController.getDropdownOptions()"
+    ng-change="selectFormElementController.selectValueChanged(selectFormElementController.selectValue)"
+    ng-if="selectFormElementController.multipleSelect === false"
+    ng-disabled="selectFormElementController.fieldIsDisabled()">
+  </select>
+
+  <select
+    id="{{ ::selectFormElementController.elementId }}"
+    ng-model="selectFormElementController.selectValue"
+    ng-options="option.value as option.name for option in selectFormElementController.getDropdownOptions()"
+    ng-change="selectFormElementController.selectValueChanged(selectFormElementController.selectValue)"
+    ng-if="selectFormElementController.multipleSelect === true"
+    ng-disabled="selectFormElementController.fieldIsDisabled()"
+    multiple>
+  </select>
+  <span class="icon-arrow-down"></span>
+</div>
+
+<div
+  id="{{ ::selectFormElementController.elementId }}"
+  ng-if="selectFormElementController.isReadonly === false && selectFormElementController.checkboxes">
+  <div ng-repeat="option in selectFormElementController.getDropdownOptions()">
+    <label class="input__checkbox"
+           ng-disabled="option.disabled || selectFormElementController.fieldIsDisabled()">
+      <input
+        type="checkbox"
+        ng-click="selectFormElementController.selectOption(option.value)"
+        ng-checked="selectFormElementController.optionIsSelected(option.value)"
+        ng-disabled="option.disabled || selectFormElementController.fieldIsDisabled()"
+      >
+      {{ option.name }}
+      <span class="icon-checkmark"></span>
+      <span>&nbsp;</span>
+    </label>
+  </div>
+</div>
+
+<div class="non-editable-input" ng-if="selectFormElementController.isReadonly === true">
+  <strong id="{{ ::selectFormElementController.elementId }}">{{ selectFormElementController.readonlyValue() }}</strong>
+</div>

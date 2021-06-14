@@ -1,0 +1,46 @@
+{
+  "fe_selectwithsearch": [
+    {
+      "id" : "99970186-b230-0aef-b74f-59b10a085d79",
+      "name" : "someSWS",
+      "date_entered" : "2017-09-07 09:00:30",
+      "created_by" : "1",
+      "description" : "test",
+      "base_object" : "ExEss\\Cms\\Entity\\AclRole",
+      "filters" : "JOIN sws.groups g WHERE g.id = '%SecurityGroups|id%'",
+      "items_on_page" : "10",
+      "order_by" : "sws.name",
+      "option_label" : "%name%",
+      "filter_string" : "%name%",
+      "option_key" : "%id%"
+    }
+  ],
+  "acl_roles" : [
+    {
+      "id" : "244fc047-542f-7374-6793-571617651fb9",
+      "date_entered" : "2016-04-19 11:31:26",
+      "created_by" : "1",
+      "name" : "Sales extern group",
+      "description" : "Role parameters without dashboard\r\n"
+    }
+  ],
+  "securitygroups" : [
+    {
+      "id" : "2c527afa-b7d3-15c2-929c-580dba396789",
+      "name" : "Power2B",
+      "date_entered" : "2016-10-24 07:39:36",
+      "created_by" : "1",
+      "description" : null,
+      "assigned_user_id" : "1",
+      "external_c" : 0,
+      "main_groups_c" : "DEALER",
+      "reliable_c" : 0
+    }
+  ],
+  "securitygroups_acl_roles" : [
+    {
+      "security_group_id" : "2c527afa-b7d3-15c2-929c-580dba396789",
+      "acl_role_id" : "244fc047-542f-7374-6793-571617651fb9"
+    }
+  ]
+}

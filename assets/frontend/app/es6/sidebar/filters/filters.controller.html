@@ -1,0 +1,17 @@
+<div class="filter-conten dark-inputs">
+  <div class="sidebar__header" translate>
+    SIDEBAR.FILTERS.TITLE
+  </div>
+
+  <div class="form__footer">
+    <button class="button" ng-click="filtersController.resetModel()" translate>FILTERS.RESET</button>
+  </div>
+
+  <guidance-observers-accessor guidance-form-observer="filtersController.guidanceFormObserver"
+                               validation-observer="filtersController.validationObserver"
+                               suggestions-observer="filtersController.suggestionsObserver">
+    <fieldset ng-repeat="fieldGroup in filtersController.fieldGroups">
+      <formly-form model="filtersController.model" fields="fieldGroup.fields"></formly-form>
+    </fieldset>
+  </guidance-observers-accessor>
+</div>
