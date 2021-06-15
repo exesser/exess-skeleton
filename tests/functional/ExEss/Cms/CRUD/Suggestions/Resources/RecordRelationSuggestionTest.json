@@ -682,6 +682,10 @@
             "value": "ExEss\\Cms\\Entity\\FlowStepLink"
         },
         {
+            "key": "gridPanels",
+            "value": "ExEss\\Cms\\Entity\\GridPanel"
+        },
+        {
             "key": "securityGroups",
             "value": "ExEss\\Cms\\Entity\\SecurityGroup"
         }
@@ -770,6 +774,10 @@
         {
             "key": "cellLinks",
             "value": "ExEss\\Cms\\Entity\\ListCellLink"
+        },
+        {
+            "key": "gridPanels",
+            "value": "ExEss\\Cms\\Entity\\GridPanel"
         },
         {
             "key": "securityGroups",

@@ -87,6 +87,12 @@ class Flow extends Entity
     private FlowAction $action;
 
     /**
+     * @ORM\OneToMany(targetEntity="GridPanel", mappedBy="flow")
+     * @var Collection|GridPanel[]
+     */
+    private Collection $gridPanels;
+
+    /**
      * @ORM\OneToMany(targetEntity="FlowStepLink", mappedBy="flow")
      * @ORM\OrderBy({"order" = "asc"})
      * @var Collection|FlowStepLink[]
@@ -106,6 +112,7 @@ class Flow extends Entity
     public function __construct()
     {
         $this->stepLinks = new ArrayCollection();
+        $this->gridPanels = new ArrayCollection();
     }
 
     public function getKey(): ?string

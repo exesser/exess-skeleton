@@ -1,8 +1,8 @@
-name: ExessCMS pull-request build
+name: Exess pull-request build
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
