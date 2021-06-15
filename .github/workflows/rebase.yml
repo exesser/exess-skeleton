@@ -1,4 +1,4 @@
-name: ExessCMS rebase
+name: Exess rebase
 
 on:
   issue_comment:
