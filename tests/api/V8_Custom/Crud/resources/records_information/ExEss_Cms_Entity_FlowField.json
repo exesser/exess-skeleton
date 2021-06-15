@@ -212,10 +212,6 @@
             ]
         },
         {
-            "name": "addressType",
-            "type": "string"
-        },
-        {
             "name": "enumValues",
             "type": "json"
         },
@@ -250,10 +246,6 @@
         {
             "name": "autoSelectSuggestions",
             "type": "boolean"
-        },
-        {
-            "name": "apiLabel",
-            "type": "string"
         },
         {
             "name": "removeWhenEmpty",

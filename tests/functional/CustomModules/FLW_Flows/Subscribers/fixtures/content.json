@@ -15,8 +15,7 @@
       "loading_message_c": "Processing...",
       "label_c": "Create quote (B2C - Web)",
       "error_message": "To create a new quote, the following fields are mandatory. Please fill the fields below to save the quote.",
-      "external": 0,
-      "use_api_label_c": 1
+      "external": 0
     }
   ],
   "grid_gridtemplates":
@@ -82,8 +81,7 @@
       "required_c": 0,
       "field_no_backend_interaction": 0,
       "field_valueexpression": "{iterator}dwp|discount_assigned;<p>UOM: %uom_translated%</p><p>VALUE: %value_excl_vat%</p><p>DURATION: %duration_translated%</p><p>DISCOUNT DESC: {translate}%id%;discount-description{/translate}</p><p>DISCOUNT GEN CON: {translate}%id%;discount-general-conditions{/translate}</p>{/iterator}",
-      "field_auto_select_suggestions": 0,
-      "api_label_c": null
+      "field_auto_select_suggestions": 0
     }
   ],
   "flw_guidancefields_flw_flowsteps_c": [

@@ -39,7 +39,7 @@ class MenuRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('m');
 
         return $qb
-            ->orderBy('m.displayOrder')
+            ->orderBy('m.order')
             ->getQuery()
             ->execute()
         ;

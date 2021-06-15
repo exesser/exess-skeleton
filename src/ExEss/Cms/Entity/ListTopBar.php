@@ -69,14 +69,14 @@ class ListTopBar extends Entity
         $this->lists = new ArrayCollection();
     }
 
-    public function getSelectAll(): ?bool
+    public function getSelectAll(): bool
     {
-        return $this->selectAll;
+        return (bool) $this->selectAll;
     }
 
-    public function getCanExportToCsv(): ?bool
+    public function getCanExportToCsv(): bool
     {
-        return $this->canExportToCsv;
+        return (bool) $this->canExportToCsv;
     }
 
     /**

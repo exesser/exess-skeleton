@@ -80,10 +80,6 @@
             "type": "string"
         },
         {
-            "name": "useApiLabel",
-            "type": "boolean"
-        },
-        {
             "name": "isConfig",
             "type": "boolean"
         },

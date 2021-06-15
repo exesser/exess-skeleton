@@ -152,8 +152,8 @@ class User implements UserInterface, CmsUserInterface
     private ?UserGuidanceRecovery $guidanceRecovery;
 
     /**
-     * @ORM\OneToMany(targetEntity="SecuritygroupsUser", mappedBy="user")
-     * @var Collection|SecuritygroupsUser[]
+     * @ORM\OneToMany(targetEntity="SecurityGroupUser", mappedBy="user")
+     * @var Collection|SecurityGroupUser[]
      */
     private Collection $userGroups;
 
@@ -464,7 +464,7 @@ class User implements UserInterface, CmsUserInterface
         return \count(
             \array_filter(
                 $this->userGroups->toArray(),
-                function (SecuritygroupsUser $userGroup) use ($types) {
+                function (SecurityGroupUser $userGroup) use ($types) {
                     return \in_array(
                         $userGroup->getSecuritygroup()->getType(),
                         $types,
@@ -484,14 +484,14 @@ class User implements UserInterface, CmsUserInterface
         return $this->userGroups;
     }
 
-    public function removeUserGroup(SecuritygroupsUser $group): void
+    public function removeUserGroup(SecurityGroupUser $group): void
     {
         $this->userGroups->removeElement($group);
     }
 
     public function getPrimaryGroup(): ?SecurityGroup
     {
-        /** @var SecuritygroupsUser $group */
+        /** @var SecurityGroupUser $group */
         foreach ($this->userGroups as $group) {
             if ($group->isPrimaryGroup()) {
                 return $group->getSecurityGroup();

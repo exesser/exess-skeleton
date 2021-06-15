@@ -28,7 +28,7 @@
             "type": "json"
         },
         {
-            "name": "displayOrder",
+            "name": "order",
             "type": "string"
         },
         {

@@ -80,11 +80,6 @@ class Filter extends Entity
         return $this->key;
     }
 
-    public function setKey(?string $key): void
-    {
-        $this->key = $key;
-    }
-
     /**
      * @return Collection|FilterFieldGroup[]
      */

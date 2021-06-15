@@ -69,11 +69,6 @@ class Flow extends Entity
     private ?string $label = '1';
 
     /**
-     * @ORM\Column(name="use_api_label_c", type="boolean", nullable=false)
-     */
-    private bool $useApiLabel;
-
-    /**
      * @ORM\Column(name="is_config", type="boolean", nullable=false)
      */
     private bool $isConfig;
@@ -148,11 +143,6 @@ class Flow extends Entity
     public function getLabel(): ?string
     {
         return $this->label;
-    }
-
-    public function getUseApiLabel(): ?bool
-    {
-        return $this->useApiLabel;
     }
 
     public function getIsConfig(): bool

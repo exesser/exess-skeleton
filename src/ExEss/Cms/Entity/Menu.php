@@ -38,7 +38,7 @@ class Menu extends Entity
     /**
      * @ORM\Column(name="display_order_c", type="string", length=255, nullable=true, options={"default"="10"})
      */
-    private ?string $displayOrder = '10';
+    private ?string $order = '10';
 
     /**
      * @ORM\Column(name="link_c", type="string", length=255, nullable=true)
@@ -68,9 +68,9 @@ class Menu extends Entity
         return $this->params;
     }
 
-    public function getDisplayOrder(): ?string
+    public function getOrder(): ?string
     {
-        return $this->displayOrder;
+        return $this->order;
     }
 
     public function getLink(): ?string

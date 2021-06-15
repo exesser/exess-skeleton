@@ -43,18 +43,8 @@ class AclAction extends Entity
         return $this->category;
     }
 
-    public function setCategory(?string $category): void
-    {
-        $this->category = $category;
-    }
-
     public function getAclAccess(): ?int
     {
         return $this->aclAccess;
-    }
-
-    public function setAclAccess(?int $aclAccess): void
-    {
-        $this->aclAccess = $aclAccess;
     }
 }

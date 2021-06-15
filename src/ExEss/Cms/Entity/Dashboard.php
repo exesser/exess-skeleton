@@ -75,6 +75,7 @@ class Dashboard extends Entity
 
     /**
      * @ORM\ManyToMany(targetEntity="Menu", mappedBy="dashboards")
+     * @ORM\OrderBy({"order" = "asc"})
      * @var Collection|Menu[]
      */
     private Collection $menus;

@@ -719,8 +719,8 @@ class ListFunctions
             return;
         }
 
-        $response->topBar->selectAll = (bool)$topBar->getSelectAll();
-        $response->topBar->canExportToCSV = (bool)$topBar->getCanExportToCsv();
+        $response->topBar->selectAll = $topBar->getSelectAll();
+        $response->topBar->canExportToCSV = $topBar->getCanExportToCsv();
 
         $baseEntity = $sourceList;
         if (!$sourceList->isExternal()

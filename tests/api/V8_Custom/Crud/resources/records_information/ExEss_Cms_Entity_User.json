@@ -19,7 +19,7 @@
         {
             "name": "userGroups",
             "multiRelation": true,
-            "record": "ExEss\\Cms\\Entity\\SecuritygroupsUser"
+            "record": "ExEss\\Cms\\Entity\\SecurityGroupUser"
         }
     ],
     "fields": [

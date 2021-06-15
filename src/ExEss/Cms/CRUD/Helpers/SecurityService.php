@@ -52,7 +52,7 @@ class SecurityService
         Entity\Menu::class,
         Entity\SecurityGroup::class,
         Entity\SecurityGroupApi::class,
-        Entity\SecuritygroupsUser::class,
+        Entity\SecurityGroupUser::class,
         Entity\SelectWithSearch::class,
         Entity\Translation::class,
         Entity\User::class,

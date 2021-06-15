@@ -1,11 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace ExEss\Cms\CRUD\Suggestions;
 
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\SecurityGroup;
-use ExEss\Cms\Manager\AssociationManager;
 use ExEss\Cms\CRUD\Helpers\CrudFlowHelper;
 use ExEss\Cms\CRUD\Helpers\SecurityService;
 use ExEss\Cms\FLW_Flows\EnumRecord;
@@ -19,14 +20,14 @@ class RecordRelationSuggestion extends AbstractSuggestionHandler
 {
     protected SecurityService $crudSecurity;
 
-    protected AssociationManager $associationManager;
+    protected EntityManagerInterface $em;
 
     public function __construct(
-        AssociationManager $associationManager,
+        EntityManagerInterface $em,
         SecurityService $crudSecurity
     ) {
         $this->crudSecurity = $crudSecurity;
-        $this->associationManager = $associationManager;
+        $this->em = $em;
     }
 
     public static function shouldHandle(Response $response, FlowAction $action, Flow $flow): bool
@@ -40,12 +41,13 @@ class RecordRelationSuggestion extends AbstractSuggestionHandler
     {
         $model = $response->getModel();
         $recordType = CrudFlowHelper::getRecordType($model);
-        $relations = $this->getRelations($recordType);
-        $model->setFieldValue(Dwp::RELATIONS_FIELD, $relations);
+        $associations = $this->getRelations($this->em->getClassMetadata($recordType));
+
+        $model->setFieldValue(Dwp::RELATIONS_FIELD, $associations);
 
         $relationModel = new Model();
-        foreach ($relations as $relation) {
-            $relationModel->{$relation->getKey()} = [Dwp::RECORD_TYPE => $relation->getValue()];
+        foreach ($associations as $association) {
+            $relationModel->{$association->getKey()} = [Dwp::RECORD_TYPE => $association->getValue()];
         }
 
         $model->setFieldValue('Reading', $relationModel);
@@ -58,22 +60,23 @@ class RecordRelationSuggestion extends AbstractSuggestionHandler
     /**
      * @return array|EnumRecord[]
      */
-    private function getRelations(string $module): array
+    private function getRelations(ClassMetadata $metadata): array
     {
-        $relations = $this->associationManager->getCollectionValuedAssociationsFor($module);
-        $relationshipList = [];
+        $associations = [];
+        foreach ($metadata->getAssociationNames() as $fieldName) {
+            if ($metadata->isCollectionValuedAssociation($fieldName)) {
+                $associations[] = new EnumRecord($fieldName, $metadata->getAssociationTargetClass($fieldName));
+            }
+        }
 
         // display SecurityGroup at the end
         \uasort(
-            $relations,
-            function ($a, $b) {
-                return $b === SecurityGroup::class ? -1 : 1;
+            $associations,
+            function (EnumRecord $a, EnumRecord $b) {
+                return $b->getValue() === SecurityGroup::class ? -1 : 1;
             }
         );
-        foreach ($relations as $field => $target) {
-            $relationshipList[] = new EnumRecord($field, $target);
-        }
 
-        return $relationshipList;
+        return \array_values($associations);
     }
 }

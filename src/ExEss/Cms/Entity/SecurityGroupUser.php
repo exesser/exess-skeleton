@@ -15,7 +15,7 @@ use ExEss\Cms\Entity\Base\Join;
  * @ORM\Entity
  * @Auditable
  */
-class SecuritygroupsUser extends Join
+class SecurityGroupUser extends Join
 {
     /**
      * @ORM\Column(name="primary_group", type="boolean", nullable=true)
