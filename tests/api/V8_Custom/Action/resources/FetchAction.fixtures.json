@@ -28,8 +28,7 @@
       "action_id": "3548bcf8-5c6e-044b-ad02-5742b6e6045b",
       "label_c": "1",
       "error_message": null,
-      "external": 0,
-      "use_api_label_c": 0
+      "external": 0
     }
   ],
   "grid_gridtemplates": [
@@ -99,7 +98,6 @@
       "field_fieldgroup": "r1c1",
       "field_order": 100,
       "field_hasborder": 1,
-      "field_address_type": null,
       "field_enum_values": null,
       "field_fieldexpression": null,
       "field_upload_validation": null,
@@ -111,8 +109,7 @@
       "required_c": 0,
       "field_no_backend_interaction": 0,
       "field_valueexpression": null,
-      "field_auto_select_suggestions": 0,
-      "api_label_c": null
+      "field_auto_select_suggestions": 0
     },
     {
       "id": "field_02",
@@ -136,7 +133,6 @@
       "field_fieldgroup": "r1c1",
       "field_order": 100,
       "field_hasborder": 1,
-      "field_address_type": null,
       "field_enum_values": "[\r\n  {\r\n    \"key\": \"CONTESTATION_OF_INDEXES\",\r\n    \"value\": \"Contestation of indexes\"\r\n  },\r\n  {\r\n    \"key\": \"REASON_FOR_EXISTENCE\",\r\n    \"value\": \"Reason of existence of the invoice\"\r\n  },\r\n  {\r\n    \"key\": \"WCO\",\r\n    \"value\": \"WCO (juridicial administration)\"\r\n  },\r\n  {\r\n    \"key\": \"BANKRUPTCY\",\r\n    \"value\": \"Bankruptcy\"\r\n  },\r\n  {\r\n    \"key\": \"PAYMENT_NOT_MATCHED\",\r\n    \"value\": \"Payment not matched\"\r\n  },\r\n  {\r\n    \"key\": \"OVERESTIMATION OF INDEXES\",\r\n    \"value\": \"Overestimation of indexes\"\r\n  },\r\n  {\r\n    \"key\": \"PENALTY_INVOICE\",\r\n    \"value\": \"Penalty invoice\"\r\n  },\r\n  {\r\n    \"key\": \"PAYMENT_PLAN\",\r\n    \"value\": \"Payment plan\"\r\n  },\r\n  {\r\n    \"key\": \"COMPLAINT\",\r\n    \"value\": \"Complaint\"\r\n  }\r\n]",
       "field_fieldexpression": null,
       "field_upload_validation": null,
@@ -148,8 +144,7 @@
       "required_c": 0,
       "field_no_backend_interaction": 0,
       "field_valueexpression": null,
-      "field_auto_select_suggestions": 0,
-      "api_label_c": null
+      "field_auto_select_suggestions": 0
     }
   ],
   "flw_guidancefields_flw_flowsteps_c": [

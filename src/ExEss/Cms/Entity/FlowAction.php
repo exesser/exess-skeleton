@@ -72,22 +72,8 @@ class FlowAction extends Entity
         return $this->guid;
     }
 
-    public function setGuid(?string $guid): self
-    {
-        $this->guid = $guid;
-
-        return $this;
-    }
-
     public function getJson(): ?array
     {
         return $this->json;
-    }
-
-    public function setJson(?string $json): self
-    {
-        $this->json = $json;
-
-        return $this;
     }
 }

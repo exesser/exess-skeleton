@@ -33,11 +33,6 @@ class SecurityGroup extends Entity
     private ?string $type = SecurityGroupType::THIRD_PARTY;
 
     /**
-     * @ORM\Column(name="reliable_c", type="boolean", nullable=true, options={"default":"0"})
-     */
-    private ?bool $reliable = false;
-
-    /**
      * @ORM\Column(name="code", type="string", length=255, nullable=false)
      */
     private string $code;

@@ -4,7 +4,7 @@ namespace Test\Functional\ExEss\Cms\Users\Listeners;
 
 use ExEss\Cms\Test\Testcase\FunctionalTestCase;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Entity\SecuritygroupsUser;
+use ExEss\Cms\Entity\SecurityGroupUser;
 
 /**
  * @see \ExEss\Cms\EvenListener\PrimaryGroupListener
@@ -22,7 +22,7 @@ class PrimaryGroupTest extends FunctionalTestCase
         $this->tester->linkUserToSecurityGroup($userId, $groupId2, ['primary_group' => 0]);
 
         $user = $this->tester->grabEntityFromRepository(User::class, ['id' => $userId]);
-        $primaryGroup = $this->tester->grabEntityFromRepository(SecuritygroupsUser::class, ['id' => $userGroupId]);
+        $primaryGroup = $this->tester->grabEntityFromRepository(SecurityGroupUser::class, ['id' => $userGroupId]);
 
         // run test
         $user->removeUserGroup($primaryGroup);

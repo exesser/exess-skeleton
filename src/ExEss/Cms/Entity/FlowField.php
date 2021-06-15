@@ -112,11 +112,6 @@ class FlowField extends Entity
     private ?string $orientation = null;
 
     /**
-     * @ORM\Column(name="field_address_type", type="string", length=255, nullable=true)
-     */
-    private ?string $addressType = null;
-
-    /**
      * @ORM\Column(name="field_enum_values", type="json", nullable=true)
      */
     private ?array $enumValues = null;
@@ -160,11 +155,6 @@ class FlowField extends Entity
      * @ORM\Column(name="field_auto_select_suggestions", type="boolean", nullable=true, options={"default":"0"})
      */
     private ?bool $autoSelectSuggestions = false;
-
-    /**
-     * @ORM\Column(name="api_label_c", type="string", length=255, nullable=true)
-     */
-    private ?string $apiLabel = null;
 
     /**
      * @ORM\Column(name="remove_when_empty", type="boolean", nullable=true)
@@ -285,11 +275,6 @@ class FlowField extends Entity
         return $this->orientation;
     }
 
-    public function getAddressType(): ?string
-    {
-        return $this->addressType;
-    }
-
     public function getEnumValues(): ?array
     {
         return $this->enumValues;
@@ -333,11 +318,6 @@ class FlowField extends Entity
     public function getAutoSelectSuggestions(): bool
     {
         return (bool) $this->autoSelectSuggestions;
-    }
-
-    public function getApiLabel(): ?string
-    {
-        return $this->apiLabel;
     }
 
     public function isRemoveWhenEmpty(): bool

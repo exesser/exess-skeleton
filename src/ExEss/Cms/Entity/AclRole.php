@@ -57,13 +57,6 @@ class AclRole extends Entity
         return $this->code;
     }
 
-    public function setCode(string $code): self
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
     public function addUser(User $user): void
     {
         $this->users->add($user);

@@ -184,10 +184,6 @@
             ]
         },
         {
-            "name": "reliable",
-            "type": "boolean"
-        },
-        {
             "name": "code",
             "type": "string"
         },

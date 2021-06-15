@@ -74,14 +74,4 @@ class ListSortingOption extends Entity
     {
         return $this->topBars;
     }
-
-    public function setSortKey(string $sortKey): void
-    {
-        $this->sortKey = $sortKey;
-    }
-
-    public function setOrderBy(string $orderBy): void
-    {
-        $this->orderBy = $orderBy;
-    }
 }

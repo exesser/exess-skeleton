@@ -62,7 +62,7 @@ services:
   ExEss\Cms\CRUD\Suggestions\RecordRelationSuggestion:
     lazy: true
     arguments:
-      - '@ExEss\Cms\Manager\AssociationManager'
+      - '@doctrine.orm.entity_manager'
       - '@ExEss\Cms\CRUD\Helpers\SecurityService'
     tags:
       - { name: 'suggestions', priority:  10 }

@@ -13,10 +13,6 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\Manager\AssociationManager:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-
   ExEss\Cms\Component\Session\Headers:
     class: ExEss\Cms\Component\Session\Headers
     factory: [ 'ExEss\Cms\Component\Session\Headers', 'create' ]

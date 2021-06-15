@@ -55,18 +55,8 @@ class FindSearch extends Entity
         return $this->linkTo;
     }
 
-    public function setLinkTo(?string $linkTo): void
-    {
-        $this->linkTo = $linkTo;
-    }
-
     public function getParams(): ?array
     {
         return $this->params;
-    }
-
-    public function setParams(?array $params): void
-    {
-        $this->params = $params;
     }
 }

@@ -13,7 +13,6 @@
       "action_id": "3548bcf8-5c6e-044b-ad02-5742b6e6045b",
       "external": false,
       "label_c": "1",
-      "use_api_label_c": false,
       "is_config": true
     },
     {
@@ -28,7 +27,6 @@
       "action_id": "3548bcf8-5c6e-044b-ad02-5742b6e6045c",
       "external": false,
       "label_c": "1",
-      "use_api_label_c": false,
       "is_config": true
     },
     {
@@ -42,7 +40,6 @@
       "action_id": "3548bcf8-5c6e-044b-ad02-5742b6e6045b",
       "external": false,
       "label_c": "1",
-      "use_api_label_c": false,
       "is_config": true
     },
     {
@@ -56,7 +53,6 @@
       "action_id": "3548bcf8-5c6e-044b-ad02-5742b6e6045b",
       "external": false,
       "label_c": "1",
-      "use_api_label_c": false,
       "is_config": true
     },
     {
@@ -71,7 +67,6 @@
       "action_id": "3548bcf8-5c6e-044b-ad02-5742b6e6045b",
       "external": false,
       "label_c": "1",
-      "use_api_label_c": false,
       "is_config": true
     },
     {
@@ -85,7 +80,6 @@
       "action_id": "3548bcf8-5c6e-044b-ad02-5742b6e6045c",
       "external": false,
       "label_c": "1",
-      "use_api_label_c": false,
       "is_config": true
     }
   ]

@@ -33,8 +33,7 @@
       "description" : null,
       "assigned_user_id" : "1",
       "external_c" : 0,
-      "main_groups_c" : "DEALER",
-      "reliable_c" : 0
+      "main_groups_c" : "DEALER"
     }
   ],
   "securitygroups_acl_roles" : [
