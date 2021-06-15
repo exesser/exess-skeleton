@@ -103,18 +103,6 @@
             "type": "string"
         },
         {
-            "name": "mainMenuKey",
-            "type": "string"
-        },
-        {
-            "name": "dashboardid",
-            "type": "string"
-        },
-        {
-            "name": "customHandler",
-            "type": "string"
-        },
-        {
             "name": "params",
             "type": "json"
         },

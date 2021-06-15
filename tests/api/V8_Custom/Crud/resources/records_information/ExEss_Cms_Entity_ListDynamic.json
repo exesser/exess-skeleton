@@ -2,6 +2,11 @@
     "recordName": "ExEss\\Cms\\Entity\\ListDynamic",
     "relations": [
         {
+            "name": "gridPanels",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\GridPanel"
+        },
+        {
             "name": "cellLinks",
             "multiRelation": true,
             "record": "ExEss\\Cms\\Entity\\ListCellLink"

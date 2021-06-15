@@ -417,7 +417,7 @@ class DashboardService
                     'size' => $gridPanel->getSize(),
                     'type' => $gridPanel->getType(),
                     'options' => [
-                        'listKey' => $gridPanel->getListKey(),
+                        'listKey' => ($list = $gridPanel->getList()) ? $list->getName() : null,
                         'params' => !empty($params = $gridPanel->getParams()) ? $params : [],
                     ],
                 ];

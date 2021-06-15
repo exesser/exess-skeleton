@@ -85,6 +85,12 @@ class ListDynamic extends Entity
     private bool $quickSearch = false;
 
     /**
+     * @ORM\OneToMany(targetEntity="GridPanel", mappedBy="list")
+     * @var Collection|GridPanel[]
+     */
+    private Collection $gridPanels;
+
+    /**
      * @ORM\OneToMany(targetEntity="ListCellLink", mappedBy="list")
      * @ORM\OrderBy({"order" = "asc"})
      * @var Collection|ListCellLink[]
@@ -112,6 +118,7 @@ class ListDynamic extends Entity
     public function __construct()
     {
         $this->cellLinks = new ArrayCollection();
+        $this->gridPanels = new ArrayCollection();
     }
 
     /**

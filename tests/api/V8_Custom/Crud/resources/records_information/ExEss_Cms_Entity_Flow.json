@@ -7,6 +7,11 @@
             "record": "ExEss\\Cms\\Entity\\FlowAction"
         },
         {
+            "name": "gridPanels",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\GridPanel"
+        },
+        {
             "name": "stepLinks",
             "multiRelation": true,
             "record": "ExEss\\Cms\\Entity\\FlowStepLink"

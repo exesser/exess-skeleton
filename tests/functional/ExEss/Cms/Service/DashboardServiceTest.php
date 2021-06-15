@@ -2,6 +2,7 @@
 
 namespace Test\Functional\ExEss\Cms\Service;
 
+use ExEss\Cms\Doctrine\Type\GridType;
 use ExEss\Cms\Entity\Dashboard;
 use ExEss\Cms\Entity\DashboardMenuAction;
 use ExEss\Cms\Entity\GridPanel;
@@ -97,15 +98,16 @@ class DashboardServiceTest extends FunctionalTestCase
         $listId = $this->tester->haveInRepository(ListDynamic::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
+            'name' => $listName = $this->tester->generateUuid(),
         ]);
         $this->tester->haveInRepository(GridPanel::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
             'name' => 'test',
             'size' => '1-1',
-            'type' => 'list',
+            'type' => GridType::LIST,
             'key' => self::GRID_PANEL,
-            'listKey' => $listId,
+            'list' => $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]),
             'params' => [
                 "recordId" => "%recordId%",
                 "recordType" => "%recordType%",
@@ -141,7 +143,7 @@ class DashboardServiceTest extends FunctionalTestCase
                 'size' => '1-1',
                 'type' => 'list',
                 'options' => [
-                    'listKey' => $listId,
+                    'listKey' => $listName,
                     'params' => [
                         'recordId' => $this->recordId,
                         'recordType' => User::class,

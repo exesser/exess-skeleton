@@ -2,6 +2,16 @@
     "recordName": "ExEss\\Cms\\Entity\\GridPanel",
     "relations": [
         {
+            "name": "flow",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\Flow"
+        },
+        {
+            "name": "list",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\ListDynamic"
+        },
+        {
             "name": "conditions",
             "multiRelation": true,
             "record": "ExEss\\Cms\\Entity\\Validator"
@@ -50,10 +60,6 @@
             "type": "string"
         },
         {
-            "name": "flowId",
-            "type": "string"
-        },
-        {
             "name": "flowAction",
             "type": "enum",
             "enumValues": [
@@ -85,10 +91,6 @@
         },
         {
             "name": "size",
-            "type": "string"
-        },
-        {
-            "name": "listKey",
             "type": "string"
         },
         {

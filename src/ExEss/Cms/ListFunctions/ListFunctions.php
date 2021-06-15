@@ -731,8 +731,9 @@ class ListFunctions
         }
 
         foreach ($topBar->getActions() as $action) {
-            if ($action->getFlowAction() && !$this->actionService->isHidden($action, $baseEntity)) {
-                $flowAction = $action->getFlowAction();
+            if (($flowAction = $action->getFlowAction())
+                && !$this->actionService->isHidden($action, $baseEntity)
+            ) {
                 $dynamicListTopBarButton = new DynamicListTopBarButton();
                 $dynamicListTopBarButton->label = $this->translator->trans(
                     $action->getName(),

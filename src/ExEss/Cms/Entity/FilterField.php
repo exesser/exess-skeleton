@@ -85,23 +85,14 @@ class FilterField extends Entity
         return $this->label;
     }
 
-    public function setLabel(?string $label): self
-    {
-        $this->label = $label;
-
-        return $this;
-    }
-
     public function getOperator(): ?string
     {
         return $this->operator;
     }
 
-    public function setOperator(?string $operator): self
+    public function setOperator(?string $operator): void
     {
         $this->operator = $operator;
-
-        return $this;
     }
 
     public function getFieldKey(): ?string
@@ -109,23 +100,9 @@ class FilterField extends Entity
         return $this->fieldKey;
     }
 
-    public function setFieldKey(?string $fieldKey): self
-    {
-        $this->fieldKey = $fieldKey;
-
-        return $this;
-    }
-
     public function getFieldSql(): ?string
     {
         return $this->fieldSql;
-    }
-
-    public function setFieldSql(?string $fieldSql): self
-    {
-        $this->fieldSql = $fieldSql;
-
-        return $this;
     }
 
     public function getFieldOptions(): ?array
@@ -133,23 +110,9 @@ class FilterField extends Entity
         return $this->fieldOptions;
     }
 
-    public function setFieldOptions(?string $fieldOptions): self
-    {
-        $this->fieldOptions = $fieldOptions;
-
-        return $this;
-    }
-
     public function getFieldOptionsEnumKey(): ?string
     {
         return $this->fieldOptionsEnumKey;
-    }
-
-    public function setFieldOptionsEnumKey(?string $fieldOptionsEnumKey): self
-    {
-        $this->fieldOptionsEnumKey = $fieldOptionsEnumKey;
-
-        return $this;
     }
 
     public function getSort(): ?string
@@ -157,23 +120,9 @@ class FilterField extends Entity
         return $this->sort;
     }
 
-    public function setSort(?string $sort): self
-    {
-        $this->sort = $sort;
-
-        return $this;
-    }
-
     public function getType(): ?string
     {
         return $this->type;
-    }
-
-    public function setType(?string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
     }
 
     /**
