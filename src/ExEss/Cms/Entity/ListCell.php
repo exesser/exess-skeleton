@@ -58,21 +58,6 @@ class ListCell extends Entity
     private ?string $link = null;
 
     /**
-     * @ORM\Column(name="mainmenukey", type="string", length=255, nullable=true)
-     */
-    private ?string $mainMenuKey = null;
-
-    /**
-     * @ORM\Column(name="dashboardid", type="string", length=255, nullable=true)
-     */
-    private ?string $dashboardid = null;
-
-    /**
-     * @ORM\Column(name="customhandler", type="string", length=255, nullable=true)
-     */
-    private ?string $customHandler = null;
-
-    /**
      * @ORM\Column(name="params_c", type="json", nullable=true)
      */
     private ?array $params = null;
@@ -151,21 +136,6 @@ class ListCell extends Entity
     public function getLink(): ?string
     {
         return $this->link;
-    }
-
-    public function getMainMenuKey(): ?string
-    {
-        return $this->mainMenuKey;
-    }
-
-    public function getDashboardid(): ?string
-    {
-        return $this->dashboardid;
-    }
-
-    public function getCustomHandler(): ?string
-    {
-        return $this->customHandler;
     }
 
     public function getParams(): ?array

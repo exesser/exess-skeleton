@@ -52,11 +52,6 @@ class GridPanel extends Entity
     private ?string $recordType = null;
 
     /**
-     * @ORM\Column(name="flow_id", type="string", length=255, nullable=true)
-     */
-    private ?string $flowId = null;
-
-    /**
      * @ORM\Column(name="flow_action", type="enum_flow_action", nullable=true)
      */
     private ?string $flowAction = null;
@@ -92,9 +87,16 @@ class GridPanel extends Entity
     private ?string $size = null;
 
     /**
-     * @ORM\Column(name="list_key", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Flow", inversedBy="gridPanels")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private ?string $listKey = null;
+    private ?Flow $flow = null;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ListDynamic", inversedBy="gridPanels")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private ?ListDynamic $list = null;
 
     /**
      * @ORM\ManyToMany(targetEntity="Validator", inversedBy="panels")
@@ -170,9 +172,9 @@ class GridPanel extends Entity
         return $this->size;
     }
 
-    public function getListKey(): ?string
+    public function getList(): ?ListDynamic
     {
-        return $this->listKey;
+        return $this->list;
     }
 
     /**

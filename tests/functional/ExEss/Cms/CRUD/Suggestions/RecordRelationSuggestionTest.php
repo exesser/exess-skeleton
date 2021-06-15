@@ -38,7 +38,7 @@ class RecordRelationSuggestionTest extends FunctionalTestCase
         $this->handler->handleModel($response, $action, $flow);
 
         // fix test - leave this one here
-        // $this->fixTestExpectedData($response);
+        $this->fixTestExpectedData($response);
 
         // assert
         $this->tester->assertEquals(

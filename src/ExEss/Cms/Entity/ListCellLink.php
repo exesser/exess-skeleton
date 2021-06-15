@@ -55,23 +55,9 @@ class ListCellLink extends Entity
         return $this->order;
     }
 
-    public function setOrder(?int $order): self
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
     public function getRowBar(): ?ListRowBar
     {
         return $this->rowBar;
-    }
-
-    public function setRowBar(?ListRowBar $rowBar): self
-    {
-        $this->rowBar = $rowBar;
-
-        return $this;
     }
 
     public function getList(): ?ListDynamic
@@ -79,22 +65,8 @@ class ListCellLink extends Entity
         return $this->list;
     }
 
-    public function setList(?ListDynamic $list): self
-    {
-        $this->list = $list;
-
-        return $this;
-    }
-
     public function getCell(): ?ListCell
     {
         return $this->cell;
-    }
-
-    public function setCell(?ListCell $cell): self
-    {
-        $this->cell = $cell;
-
-        return $this;
     }
 }
