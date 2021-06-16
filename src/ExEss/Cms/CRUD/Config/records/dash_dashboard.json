@@ -12,6 +12,17 @@
       "dashboard_menu_id" : "ca00b7cd-0e98-8bd2-0340-5bd18cb0aaf1"
     },
     {
+      "id": "58791e1a-50e5-b418-c086-5bb5e0093b43",
+      "date_entered": "2018-10-16 14:34:25",
+      "name": "Crud Record Audit",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type_c": "DEFAULT",
+      "key_c": "CrudRecordAudit",
+      "grid_gridtemplates_id_c": "f31ebad4-2d28-7eb6-a881-599eb9f70525",
+      "dashboard_menu_id" : null
+    },
+    {
       "id": "6b9f453a-7b55-3ac2-ece9-5bb4cdde9d80",
       "date_entered": "2018-10-16 14:34:25",
       "name": "CrudBeanRecords",

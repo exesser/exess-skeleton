@@ -43,6 +43,20 @@
       "row_bar_id": "bc38d79f-4c30-d36d-94ba-5d839725c144"
     },
     {
+      "id": "7d1a92ee-df5c-7bf2-4840-5d8398d067e8",
+      "name": "crud_record_plus_audit",
+      "date_entered": "2021-06-14 12:00:00",
+      "date_modified": "2021-06-14 12:00:00",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "type": "CALLBACK",
+      "action_name": "Audit",
+      "conditions_hide_c": "{\"operator\": \"AND\", \"conditions\": [{\"field\": \"%object_name%\", \"validator\": \"EqualTo\", \"params\": {\"value\": \"User\"}}]}",
+      "order_c": "20",
+      "flow_action_id": "e36d0319-9e2d-ee6c-29d5-5bd1a7d6a4c9",
+      "row_bar_id": "bc38d79f-4c30-d36d-94ba-5d839725c144"
+    },
+    {
       "id": "7d1a92ee-df5c-7bf2-4840-5d8398d067e7",
       "name": "crud_edit_acl_action_relation",
       "date_entered": "2019-10-10 15:01:24",

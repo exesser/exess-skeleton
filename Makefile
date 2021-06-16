@@ -53,3 +53,7 @@ php-sh-debug:
 
 front-test:
 	@docker-compose exec -T node npm test
+
+cache-flush:
+	@docker-compose exec -T php bin/console nova:cache:clear
+
