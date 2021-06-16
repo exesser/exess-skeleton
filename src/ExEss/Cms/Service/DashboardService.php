@@ -81,23 +81,27 @@ class DashboardService
         $arguments['recordType'] = $arguments['recordType'] ?? $dashboard->getMainRecordType();
         $arguments['listKey'] = $arguments['listKey'] ?? '';
         $arguments = $this->gridRepository->getAllArguments($arguments);
-        $baseObject = $this->getBaseObject($dashboard, $arguments) ?? $dashboard;
-        $grid = $this->getGridConfig($dashboard, $arguments, $baseObject);
+        $baseObject = $this->getBaseObject($dashboard, $arguments);
 
         $dashboardBaseBean = [];
-        $entityName = \get_class($baseObject);
-        if ($this->em->getMetadataFactory()->hasMetadataFor($entityName)) {
-            $dashboardBaseBean = [
-                'dashboardBaseBean' => \sprintf(
-                    "[ %s ] - %s",
-                    $this->translator->trans($entityName, [], TranslationDomain::MODULE),
-                    CrudMetadata::getCrudListC1R1(
-                        $this->em->getMetadataFactory()->getMetadataFor($entityName),
-                        $baseObject
-                    ),
-                )
-            ];
+        if ($baseObject) {
+            $entityName = \get_class($baseObject);
+            if ($this->em->getMetadataFactory()->hasMetadataFor($entityName)) {
+                $dashboardBaseBean = [
+                    'dashboardBaseBean' => \sprintf(
+                        "[ %s ] - %s",
+                        $this->translator->trans($entityName, [], TranslationDomain::MODULE),
+                        CrudMetadata::getCrudListC1R1(
+                            $this->em->getMetadataFactory()->getMetadataFor($entityName),
+                            $baseObject
+                        ),
+                    )
+                    ];
+            }
         }
+
+        $baseObject = $baseObject ?? $dashboard;
+        $grid = $this->getGridConfig($dashboard, $arguments, $baseObject);
 
         return \array_merge(
             [

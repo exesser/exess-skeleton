@@ -10,6 +10,15 @@
       "list_only": false
     },
     {
+      "id": "43f3e22c-76fe-3107-9fb2-5bb4d681df58",
+      "date_entered": "2021-06-14 12:00:00",
+      "name": "crud_audit",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "class_handler": "auditHandler",
+      "list_only": false
+    },
+    {
       "id": "7ad938b0-daa4-10fc-2528-5bb4b8d11260",
       "date_entered": "2018-10-16 14:34:25",
       "name": "CrudAllBeansHandler",
