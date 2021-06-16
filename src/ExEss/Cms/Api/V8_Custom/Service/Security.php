@@ -4,6 +4,7 @@ namespace ExEss\Cms\Api\V8_Custom\Service;
 use ExEss\Cms\Entity\SecurityGroup;
 use ExEss\Cms\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class Security
 {
@@ -21,7 +22,9 @@ class Security
 
     public function getCurrentUser(): ?User
     {
-        if ($this->tokenStorage->getToken() !== null && $this->tokenStorage->getToken()->getUser() !== null) {
+        if ($this->tokenStorage->getToken() !== null
+            && $this->tokenStorage->getToken()->getUser() instanceof UserInterface
+        ) {
             return $this->tokenStorage->getToken()->getUser();
         }
 

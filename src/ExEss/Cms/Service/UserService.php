@@ -5,7 +5,6 @@ namespace ExEss\Cms\Service;
 use ExEss\Cms\Api\V8_Custom\Service\User\CommandService;
 use ExEss\Cms\Dictionary\Format;
 use ExEss\Cms\Entity\User;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class UserService
 {
@@ -21,11 +20,8 @@ class UserService
         $this->commandService = $commandService;
     }
 
-    public function getData(TokenInterface $token): array
+    public function getDataFor(User $currentUser): array
     {
-        /** @var User $currentUser */
-        $currentUser = $token->getUser();
-
         try {
             $email = $currentUser->getEmail();
         } catch (\DomainException $e) {
