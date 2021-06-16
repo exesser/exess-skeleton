@@ -8,7 +8,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('userDatasource', function ($http, API_URL, LOG_HEADERS_KEYS, $state, $location) {
+  .factory('userDatasource', function ($http, API_PATH, LOG_HEADERS_KEYS, $state, $location) {
 
     return { current };
 
@@ -27,7 +27,7 @@ angular.module('digitalWorkplaceApp')
           _.head(_.split($location.absUrl(), '/#')) + '/' + $state.href(afterLoginState.name, afterLoginState.params);
       }
 
-      return $http.get(API_URL + 'user/current?' + _.random(1, 99999), {headers}).then(function(response) {
+      return $http.get(API_PATH + 'user/current?' + _.random(1, 99999), {headers}).then(function(response) {
         return response.data.data;
       });
     }

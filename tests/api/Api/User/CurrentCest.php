@@ -1,60 +1,81 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Utility;
+namespace Test\Api\Api\User;
 
 use ApiTester;
+use Test\Api\V8_Custom\Crud\CrudTestUser;
 
-class GetCurrentUserCest
+class CurrentCest
 {
-    public function shouldWork(ApiTester $I): void
+    private CrudTestUser $user;
+
+    public function _before(ApiTester $I): void
     {
-        // setup
-        $I->getAnApiTokenFor('adminUser');
-
-        $I->sendGET('/Api/V8_Custom/user/current');
-
-        // assertions
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
-
-        $userName = $I->grabFromDatabase('users', 'user_name', ['id' => '1']);
-        $assertPaths = [
-            '$.data.user_name' => $userName,
-            '$.data.is_admin' => true
-        ];
-
-        $I->seeAssertPathsInJson($assertPaths);
+        $this->user = new CrudTestUser($I);
     }
 
-    public function shouldWorkWithGuidanceRecovery(ApiTester $I): void
+    public function shouldReturnAdminUserData(ApiTester $I): void
     {
-        $I->generateUserGuidanceRecovery('1', '{"data": "recoveryData"}');
-
-        // setup
+        // Given
         $I->getAnApiTokenFor('adminUser');
 
-        $I->sendGET('/Api/V8_Custom/user/current');
+        // When
+        $I->sendGET('/Api/user/current');
 
-        // assertions
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
-
-        $userName = $I->grabFromDatabase('users', 'user_name', ['id' => '1']);
-        $assertPaths = [
-            '$.data.user_name' => $userName,
+        // Then
+        $I->seeResponseIsDwpResponse(200);
+        $I->seeAssertPathsInJson([
+            '$.data.user_name' => $I->grabFromDatabase('users', 'user_name', ['id' => '1']),
             '$.data.is_admin' => true,
-            // @todo add this modal to CRUD
-            //'$.data.command.arguments.flowId' => 'gf_ask_guidance_recovery_modal'
-        ];
+        ]);
+    }
 
-        $I->seeAssertPathsInJson($assertPaths);
+    public function shouldReturnCrudUserData(ApiTester $I): void
+    {
+        // Given
+        $userName = $this->user->getUserName();
+        $I->getAnApiTokenFor($userName, $this->user->getPassword());
+
+        // When
+        $I->sendGET('/Api/user/current');
+
+        // Then
+        $I->seeResponseIsDwpResponse(200);
+        $I->seeAssertPathsInJson([
+            '$.data.user_name' => $userName,
+            '$.data.is_admin' => false,
+        ]);
+    }
+
+    public function shouldReturnRecoveryData(ApiTester $I): void
+    {
+        // Given
+        $userName = $this->user->getUserName();
+        $I->generateUserGuidanceRecovery($this->user->getId(), ["data" => "recoveryData"]);
+        $I->getAnApiTokenFor($userName, $this->user->getPassword());
+
+        // When
+        $I->sendGET('/Api/user/current');
+
+        // Then
+        $I->seeResponseIsDwpResponse(200);
+        $I->seeAssertPathsInJson([
+            '$.data.user_name' => $userName,
+            '$.data.is_admin' => false,
+            // @todo add this modal to CRUD
+            //'$.data.command.arguments.flowId' => 'gf_ask_guidance_recovery_modal',
+        ]);
     }
 
     public function shouldFail(ApiTester $I): void
     {
-        $I->sendGET('/Api/V8_Custom/user/current');
+        // Given
+        $I->haveHttpHeader('Content-Type', 'application/json;charset=utf-8');
 
-        // assertions
-        $I->seeResponseCodeIs(401);
+        // When
+        $I->sendGET('/Api/user/current');
+
+        // Then
+        $I->seeResponseIsDwpResponse(401);
     }
 }

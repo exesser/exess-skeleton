@@ -3,9 +3,9 @@
 namespace Test\Functional\Api\V8_Custom\Service\User;
 
 use Doctrine\ORM\EntityManagerInterface;
-use ExEss\Cms\Api\V8_Custom\Service\User\UserService;
 use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\User;
+use ExEss\Cms\Service\UserService;
 use ExEss\Cms\Test\Testcase\FunctionalTestCase;
 
 class UserServiceTest extends FunctionalTestCase
@@ -25,7 +25,7 @@ class UserServiceTest extends FunctionalTestCase
 
     public function testGetDataForAdminUser(): void
     {
-        // assign - User and Account
+        // Given
         $userId = $this->tester->generateUser(static::TEST_USER_USERNAME, [
             'salt' => $salt = (new User)->getSalt(),
             'user_hash' => User::getPasswordHash(static::TEST_USER_PASSWORD, $salt),
@@ -34,12 +34,14 @@ class UserServiceTest extends FunctionalTestCase
         ]);
         $this->tester->linkUserToRole($userId, User::ROLE_ADMIN);
 
-        $user = $this->manager->find(User::class, $userId);
+        $token = $this->tester->loginAsUser(
+            $this->manager->find(User::class, $userId)
+        );
 
-        // act
-        $result = $this->userService->getData($user);
+        // When
+        $result = $this->userService->getData($token);
 
-        // assert
-        $this->tester->assertEquals($user->isAdmin(), $result['is_admin']);
+        // Then
+        $this->tester->assertEquals(true, $result['is_admin']);
     }
 }

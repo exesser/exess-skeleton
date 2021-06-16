@@ -12,6 +12,8 @@ parameters:
 services:
   _defaults:
     public: true
+    bind:
+      $fallbackLocale: '%default_locale%'
 
   ExEss\Cms\Component\Session\Headers:
     class: ExEss\Cms\Component\Session\Headers

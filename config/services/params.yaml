@@ -48,10 +48,6 @@ services:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
 
-  ExEss\Cms\Api\V8_Custom\Params\ApiLoginParams:
-    arguments:
-      - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
-
   ExEss\Cms\Api\V8_Custom\Params\LogParams:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
