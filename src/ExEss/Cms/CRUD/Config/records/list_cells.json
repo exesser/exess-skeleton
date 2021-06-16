@@ -122,6 +122,36 @@
         "row_bar_id": "bc38d79f-4c30-d36d-94ba-5d839725c145",
         "list_id": "d175e383-5774-8599-bfb5-5bc5fadd8718",
         "cell_id": "971750d6-bc53-ae64-9db3-5d8397a17051"
+      },
+      {
+        "id": "2e2bb49a-405c-dd56-39c0-5bb4d0814382",
+        "date_entered": "2018-10-16 14:34:25",
+        "name": "crud_audit_timestamp",
+        "modified_user_id": "1",
+        "created_by": "1",
+          "order_c": "20",
+        "list_id": "dc13f1b7-1873-c881-426f-5bb4ce82e7f4",
+        "cell_id": "b4b862cd-392f-599c-decb-5bb4d1209271"
+      },
+      {
+        "id": "2e2bb49a-405c-dd56-39c0-5bb4d0814383",
+        "date_entered": "2018-10-16 14:34:25",
+        "name": "crud_audit_operation",
+        "modified_user_id": "1",
+        "created_by": "1",
+          "order_c": "30",
+        "list_id": "dc13f1b7-1873-c881-426f-5bb4ce82e7f4",
+        "cell_id": "b4b862cd-392f-599c-decb-5bb4d1209272"
+      },
+      {
+        "id": "2e2bb49a-405c-dd56-39c0-5bb4d0814384",
+        "date_entered": "2018-10-16 14:34:25",
+        "name": "crud_audit_changes",
+        "modified_user_id": "1",
+        "created_by": "1",
+          "order_c": "40",
+        "list_id": "dc13f1b7-1873-c881-426f-5bb4ce82e7f4",
+        "cell_id": "b4b862cd-392f-599c-decb-5bb4d1209273"
       }
     ]
 }

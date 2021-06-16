@@ -81,8 +81,7 @@ class DashboardService
         $arguments['recordType'] = $arguments['recordType'] ?? $dashboard->getMainRecordType();
         $arguments['listKey'] = $arguments['listKey'] ?? '';
         $arguments = $this->gridRepository->getAllArguments($arguments);
-        $baseObject = $this->getBaseObject($dashboard, $arguments) ?? $dashboard;
-        $grid = $this->getGridConfig($dashboard, $arguments, $baseObject);
+        $baseObject = $this->getBaseObject($dashboard, $arguments);
 
         $dashboardBaseBean = [];
         $entityName = \get_class($baseObject);
@@ -96,8 +95,11 @@ class DashboardService
                         $baseObject
                     ),
                 )
-            ];
+                ];
         }
+
+        $baseObject = $baseObject ?? $dashboard;
+        $grid = $this->getGridConfig($dashboard, $arguments, $baseObject);
 
         return \array_merge(
             [

@@ -114,6 +114,45 @@
       "created_by": "1",
       "type": "list_plus_cell",
       "visible_c": "DEFAULT"
+    },
+    {
+      "id": "b4b862cd-392f-599c-decb-5bb4d1209271",
+      "name": "crud_audit_timestamp",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "date_entered": "2021-06-14 12:00:00",
+      "type": "list_link_bold_top_two_liner_cell",
+      "line1": "%username%",
+      "line2": "%timestampAsString%",
+      "column_label": "USER / DATE",
+      "linkto": null,
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "b4b862cd-392f-599c-decb-5bb4d1209272",
+      "name": "crud_audit_operation",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "date_entered": "2021-06-14 12:00:00",
+      "type": "list_simple_two_liner_cell",
+      "line1": "%operation%",
+      "column_label": "OPERATION",
+      "line2": null,
+      "linkto": null,
+      "visible_c": "DEFAULT"
+    },
+    {
+      "id": "b4b862cd-392f-599c-decb-5bb4d1209273",
+      "name": "crud_audit_changes",
+      "modified_user_id": "1",
+      "created_by": "1",
+      "date_entered": "2021-06-14 12:00:00",
+      "type": "list_simple_two_liner_cell",
+      "line1": "%changes%",
+      "column_label": "CHANGES",
+      "line2": null,
+      "linkto": null,
+      "visible_c": "DEFAULT"
     }
   ]
 }
