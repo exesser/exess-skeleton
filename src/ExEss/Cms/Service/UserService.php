@@ -1,6 +1,8 @@
-<?php
-namespace ExEss\Cms\Api\V8_Custom\Service\User;
+<?php declare(strict_types=1);
 
+namespace ExEss\Cms\Service;
+
+use ExEss\Cms\Api\V8_Custom\Service\User\CommandService;
 use ExEss\Cms\Dictionary\Format;
 use ExEss\Cms\Entity\User;
 
@@ -8,13 +10,17 @@ class UserService
 {
     private string $fallbackLocale;
 
+    private CommandService $commandService;
+
     public function __construct(
-        string $fallbackLocale
+        string $fallbackLocale,
+        CommandService $commandService
     ) {
         $this->fallbackLocale = $fallbackLocale;
+        $this->commandService = $commandService;
     }
 
-    public function getData(User $currentUser): array
+    public function getDataFor(User $currentUser): array
     {
         try {
             $email = $currentUser->getEmail();
@@ -22,7 +28,7 @@ class UserService
             $email = '';
         }
 
-        return [
+        $data = [
             'user_name' => $currentUser->getUserName() ?? '',
             'last_name' => $currentUser->getLastName() ?? '',
             'first_name' => $currentUser->getFirstName() ?? '',
@@ -33,5 +39,11 @@ class UserService
             'is_admin' => $currentUser->isAdmin(),
             'preferred_language' => $currentUser->getPreferredLocale() ?? $this->fallbackLocale,
         ];
+
+        if (null !== ($command = $this->commandService->getRedirectCommandForUser($currentUser))) {
+            $data['command'] = $command;
+        }
+
+        return $data;
     }
 }

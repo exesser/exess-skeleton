@@ -17,7 +17,7 @@ class FlashMessageMiddlewareCest
         $flashMessageContainer->addFlashMessage(new FlashMessage('test'));
 
         // When
-        $I->sendGET('/Api/V8_Custom/user/current');
+        $I->sendGET('/Api/V8_Custom/CRUD/records-information');
 
         // Then
         $I->seeResponseCodeIs(200);

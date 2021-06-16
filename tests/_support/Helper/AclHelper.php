@@ -11,6 +11,7 @@ use ExEss\Cms\Command\Traits\LoginTrait;
 use ExEss\Cms\Entity\AclRole;
 use ExEss\Cms\Entity\User;
 use ExEss\Cms\Test\Codeception\Module\Db;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class AclHelper extends \Codeception\Module
 {
@@ -42,9 +43,9 @@ class AclHelper extends \Codeception\Module
         $this->getDoctrine()->onReconfigure();
     }
 
-    public function loginAsUser(User $user): void
+    public function loginAsUser(User $user): ?TokenInterface
     {
-        $this->loginAs(
+        return $this->loginAs(
             $this->getSymfony()->grabService('security.token_storage'),
             $user
         );

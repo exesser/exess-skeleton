@@ -77,13 +77,13 @@ class RecordGeneratorHelper extends \Codeception\Module
         );
     }
 
-    public function generateUserGuidanceRecovery(string $userId, string $recoveryData): string
+    public function generateUserGuidanceRecovery(string $userId, ?array $recoveryData = null): string
     {
         return $this->genArrayFixture(
             'user_guidance_recovery',
             [
                 'id' => $userId,
-                'recovery_data' => $recoveryData,
+                'recovery_data' => $recoveryData ? \json_encode($recoveryData) : null,
             ]
         );
     }

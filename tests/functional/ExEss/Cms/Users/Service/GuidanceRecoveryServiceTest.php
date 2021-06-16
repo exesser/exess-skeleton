@@ -34,7 +34,7 @@ class GuidanceRecoveryServiceTest extends FunctionalTestCase
     public function testGetData(): void
     {
         $data = 'recovery-data';
-        $this->tester->generateUserGuidanceRecovery($this->userId, '{"data": "' . $data . '"}');
+        $this->tester->generateUserGuidanceRecovery($this->userId, ["data" => $data]);
 
         $this->tester->loginAsUser(
             $this->tester->grabEntityFromRepository(User::class, ['id' => $this->userId])
@@ -45,7 +45,7 @@ class GuidanceRecoveryServiceTest extends FunctionalTestCase
 
     public function testReset(): void
     {
-        $this->tester->generateUserGuidanceRecovery($this->userId, '{"not": "null"}');
+        $this->tester->generateUserGuidanceRecovery($this->userId, ["not" => "null"]);
 
         $this->tester->loginAsUser(
             $this->tester->grabEntityFromRepository(User::class, ['id' => $this->userId])

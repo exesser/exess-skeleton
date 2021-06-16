@@ -19,8 +19,8 @@ class SlimFallbackController
     }
 
     /**
-     * @Route("/{anything}", requirements={ "anything"=".+" }, name="exesscms_slim_fallback")
-     * @Route("/")
+     * @Route("/{anything}", requirements={ "anything"=".+" }, priority="-100")
+     * @Route("/", priority="-100")
      */
     public function __invoke(Request $request): Response
     {

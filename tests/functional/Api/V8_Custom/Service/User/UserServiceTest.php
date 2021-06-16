@@ -3,16 +3,14 @@
 namespace Test\Functional\Api\V8_Custom\Service\User;
 
 use Doctrine\ORM\EntityManagerInterface;
-use ExEss\Cms\Api\V8_Custom\Service\User\UserService;
+use ExEss\Cms\Doctrine\Type\Locale;
 use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\User;
+use ExEss\Cms\Service\UserService;
 use ExEss\Cms\Test\Testcase\FunctionalTestCase;
 
 class UserServiceTest extends FunctionalTestCase
 {
-    private const TEST_USER_USERNAME = 'skrstic';
-    private const TEST_USER_PASSWORD = 'qwerty';
-
     private UserService $userService;
 
     private EntityManagerInterface $manager;
@@ -25,21 +23,34 @@ class UserServiceTest extends FunctionalTestCase
 
     public function testGetDataForAdminUser(): void
     {
-        // assign - User and Account
-        $userId = $this->tester->generateUser(static::TEST_USER_USERNAME, [
-            'salt' => $salt = (new User)->getSalt(),
-            'user_hash' => User::getPasswordHash(static::TEST_USER_PASSWORD, $salt),
+        // Given
+        $userName = "blub@" . $this->tester->generateUuid() . ".com";
+        $userId = $this->tester->generateUser($userName, [
             'status' => UserStatus::ACTIVE,
-            'user_name' => 'blub@blub.com',
+            'first_name' => 'B',
+            'last_name' => 'D',
         ]);
         $this->tester->linkUserToRole($userId, User::ROLE_ADMIN);
 
         $user = $this->manager->find(User::class, $userId);
 
-        // act
-        $result = $this->userService->getData($user);
+        // When
+        $result = $this->userService->getDataFor($user);
 
-        // assert
-        $this->tester->assertEquals($user->isAdmin(), $result['is_admin']);
+        // Then
+        $this->tester->assertEquals(
+            [
+                'user_name' => $userName,
+                'last_name' => 'D',
+                'first_name' => 'B',
+                'full_name' => 'B D',
+                'date_entered' => '2017-01-06 00:00:00',
+                'email1' => $userName,
+                'status' => UserStatus::ACTIVE,
+                'is_admin' => true,
+                'preferred_language' => Locale::EN,
+            ],
+            $result
+        );
     }
 }

@@ -2,9 +2,7 @@
 
 use ExEss\Cms\Api\V8_Custom\Controller\Middleware\CachedResponseHandler;
 use ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverterFactory;
-use ExEss\Cms\Api\V8_Custom\Controller\User\CurrentController;
 use ExEss\Cms\Api\V8_Custom\Params\ActionParams;
-use ExEss\Cms\Api\V8_Custom\Params\ApiLoginParams;
 use ExEss\Cms\Api\V8_Custom\Params\ChangeLocaleParams;
 use ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetDashboardParams;
@@ -13,23 +11,15 @@ use ExEss\Cms\Api\V8_Custom\Params\GetSubMenuParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarActionParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
-use ExEss\Cms\Api\V8_Custom\Params\LoginParams;
 use ExEss\Cms\Api\V8_Custom\Params\LogParams;
 use ExEss\Cms\Api\V8_Custom\Params\SelectWithSearchParams;
 use ExEss\Cms\Api\V8_Custom\Params\SidebarParams;
-use ExEss\Cms\Controller\Security\LoginController;
-use ExEss\Cms\Controller\Security\LogoutController;
 
+/** @var \ExEss\Cms\App $app */
 /** @var ParamObjectConverterFactory $paramsFactory */
 $paramsFactory = $app->getContainer()->get(ParamObjectConverterFactory::class);
 
 $app->group('/Api', function () use ($app, $paramsFactory): void {
-    /** @var \ExEss\Cms\App $app */
-    $app->group('/V8', function () use ($app, $paramsFactory): void {
-        // V8 login
-        $app->post('/login', LoginController::class)
-            ->add($paramsFactory->create(ApiLoginParams::class));
-    });
 
     $app->group('/V8_Custom', function () use ($app, $paramsFactory): void {
         $controllerCache = $app->getContainer()->get(CachedResponseHandler::class);
@@ -87,16 +77,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
             ->add($paramsFactory->create(GetDashboardParams::class))
         ;
 
-        $app
-            ->post('/login', LoginController::class)
-            ->add($paramsFactory->create(LoginParams::class))
-        ;
-        $app
-            ->post('/logout', LogoutController::class)
-        ;
-        $app
-            ->get('/user/current', CurrentController::class)
-        ;
         $app
             ->post(
                 '/user/change-locale/{locale}',

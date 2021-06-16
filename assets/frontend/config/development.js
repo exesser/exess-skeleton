@@ -23,6 +23,7 @@ module.exports = function(appConfig) {
       password: 'ch4ng3m3pl5'
     },
     API_URL: '/Api/V8_Custom/',
+    API_PATH: '/Api/',
     GTM_CONTAINER: '',
     GTM_ENABLED: false
   }

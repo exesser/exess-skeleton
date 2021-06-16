@@ -5,7 +5,7 @@ services:
 
   ExEss\Cms\Security\JsonLoginAuthenticator: ~
 
-  ExEss\Cms\Security\JwtTokenAuthenticator: 
+  ExEss\Cms\Security\JwtTokenAuthenticator:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Service\User\RefreshTokenService'
 
@@ -17,10 +17,6 @@ services:
   ExEss\Cms\Api\V8_Custom\Service\User\DefaultUser:
     arguments:
       - '@doctrine.orm.entity_manager'
-
-  ExEss\Cms\Api\V8_Custom\Service\User\UserService:
-    arguments:
-      - '%default_locale%'
 
   ExEss\Cms\Acl\AclService:
     arguments:

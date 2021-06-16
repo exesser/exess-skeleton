@@ -32,11 +32,9 @@ class UserGuidanceRecovery
         return $this->recoveryData;
     }
 
-    public function setRecoveryData(?array $recoveryData): self
+    public function setRecoveryData(?array $recoveryData): void
     {
         $this->recoveryData = $recoveryData;
-
-        return $this;
     }
 
     public function getId(): ?User
@@ -44,7 +42,7 @@ class UserGuidanceRecovery
         return $this->id;
     }
 
-    public function setId(?User $id): void
+    public function setId(User $id): void
     {
         $this->id = $id;
     }
