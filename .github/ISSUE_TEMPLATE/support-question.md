@@ -1,5 +1,6 @@
 ---
 name: ⛔ Support Question
+about: What can we help you with?
 ---
 
 <!-- What can we help you with? 
