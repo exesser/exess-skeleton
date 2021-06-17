@@ -12,10 +12,6 @@ class ParamObjectConverter extends AbstractConverter
     {
         $arguments = $this->getRequestParameters($request);
 
-        foreach ($request->getAttribute(RequestConverter::ATTRIBUTE) ?? [] as $removeKey) {
-            unset($arguments[$removeKey]);
-        }
-
         if (!$arguments) {
             return $response->withJson(
                 ['message' => 'unable to create params object data found in request'],

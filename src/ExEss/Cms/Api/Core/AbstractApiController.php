@@ -2,9 +2,10 @@
 
 namespace ExEss\Cms\Api\Core;
 
-use Slim\Http\Response as HttpResponse;
+use ExEss\Cms\Http\ErrorResponse;
+use ExEss\Cms\Http\SuccessResponse;
+use Slim\Http\Response;
 use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
-use ExEss\Cms\Dictionary\Response;
 
 abstract class AbstractApiController
 {
@@ -14,15 +15,16 @@ abstract class AbstractApiController
      * @param mixed $data
      */
     public function generateResponse(
-        HttpResponse $response,
+        Response $response,
         int $status,
         $data = null,
         ?string $message = null
-    ): HttpResponse {
+    ): Response {
         $body = [
             'status' => $status,
             'data' => $this->decode ? DataCleaner::decodeData($data) : $data,
-            'message' => $message ?? ($status > 320 ? Response::MESSAGE_ERROR : Response::MESSAGE_SUCCESS),
+            'message' => $message ??
+                ($status > 320 ? ErrorResponse::MESSAGE_ERROR : SuccessResponse::MESSAGE_SUCCESS),
         ];
 
         return $response

@@ -2,11 +2,11 @@
 
 namespace Test\Functional\Api\V8_Custom\Middleware;
 
+use ExEss\Cms\Http\ErrorResponse;
 use Mockery\Mock;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response as HttpResponse;
 use ExEss\Cms\Api\V8_Custom\Middleware\JsonErrorMiddleware;
-use ExEss\Cms\Dictionary\Response;
 use ExEss\Cms\Exception\NotAllowedException;
 use ExEss\Cms\Exception\NotFoundException;
 use ExEss\Cms\Logger\Logger;
@@ -65,7 +65,7 @@ class JsonErrorMiddlewareTest extends FunctionalTestCase
         // Check message
         $message = $body['message'] ?? null;
         $this->tester->assertTrue(isset($message), 'Message key should be present');
-        $this->tester->assertEquals($message, Response::MESSAGE_ERROR);
+        $this->tester->assertEquals($message, ErrorResponse::MESSAGE_ERROR);
 
         // Check data
         $data = $body['data'] ?? null;
@@ -81,15 +81,15 @@ class JsonErrorMiddlewareTest extends FunctionalTestCase
     {
         return [
             '404 for NotFoundException' =>
-                [404, Response::TYPE_NOT_FOUND_EXCEPTION, 'warning', NotFoundException::class],
+                [404, ErrorResponse::TYPE_NOT_FOUND_EXCEPTION, 'warning', NotFoundException::class],
             '405 for NotAllowedException' =>
-                [405, Response::TYPE_NOT_ALLOWED_EXCEPTION, 'warning', NotAllowedException::class],
+                [405, ErrorResponse::TYPE_NOT_ALLOWED_EXCEPTION, 'warning', NotAllowedException::class],
             '422 for LogicException' =>
-                [422, Response::TYPE_DOMAIN_EXCEPTION, 'error', \LogicException::class],
+                [422, ErrorResponse::TYPE_DOMAIN_EXCEPTION, 'error', \LogicException::class],
             '422 for DomainException' =>
-                [422, Response::TYPE_DOMAIN_EXCEPTION, 'error', \DomainException::class],
+                [422, ErrorResponse::TYPE_DOMAIN_EXCEPTION, 'error', \DomainException::class],
             '500 for anything else' =>
-                [500, Response::TYPE_FATAL_ERROR, 'critical', \Exception::class],
+                [500, ErrorResponse::TYPE_FATAL_ERROR, 'critical', \Exception::class],
         ];
     }
 }
