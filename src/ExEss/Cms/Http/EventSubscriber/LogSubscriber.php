@@ -37,8 +37,8 @@ class LogSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            // as last during request event
-            KernelEvents::REQUEST => ['logRequest', -1001],
+            // as last one during request event
+            KernelEvents::REQUEST => ['logRequest', -100],
             // after FlashMessageSubscriber but before StreamedResponseListener
             KernelEvents::RESPONSE => ['logResponse', -1001],
         ];

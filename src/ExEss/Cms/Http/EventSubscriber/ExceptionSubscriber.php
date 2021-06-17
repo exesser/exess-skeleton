@@ -49,46 +49,43 @@ class ExceptionSubscriber implements EventSubscriberInterface
 
     public function processException(ExceptionEvent $event): void
     {
-        $e = $event->getThrowable();
+        $event->setResponse(
+            $this->transformToResponse($event->getThrowable())
+        );
+    }
 
+    public function transformToResponse(\Throwable $e): Response
+    {
         switch (true) {
             case $e instanceof AccessDeniedException:
             case $e instanceof NotAuthenticatedException:
-                $response = new ErrorResponse(Response::HTTP_UNAUTHORIZED);
-                break;
+                return new ErrorResponse(Response::HTTP_UNAUTHORIZED);
             case $e instanceof NotAuthorizedException:
-                $response = new ErrorResponse(Response::HTTP_FORBIDDEN);
-                break;
+                return new ErrorResponse(Response::HTTP_FORBIDDEN);
             case $e instanceof NotAllowedException:
-                $response = new ErrorResponse(
+                return new ErrorResponse(
                     Response::HTTP_METHOD_NOT_ALLOWED,
                     ErrorResponse::errorData(ErrorResponse::TYPE_NOT_ALLOWED_EXCEPTION, $e->getMessage())
                 );
-                break;
             case $e instanceof NotFoundException:
-                $response = new ErrorResponse(
+                return new ErrorResponse(
                     Response::HTTP_NOT_FOUND,
                     ErrorResponse::errorData(ErrorResponse::TYPE_NOT_FOUND_EXCEPTION, $e->getMessage())
                 );
-                break;
             case $e instanceof CommandException:
             case $e instanceof EmailForExportNotFoundException:
             case $e instanceof \LogicException:
             case $e instanceof \DomainException:
-                $response = new ErrorResponse(
+                return new ErrorResponse(
                     Response::HTTP_UNPROCESSABLE_ENTITY,
                     ErrorResponse::errorData(ErrorResponse::TYPE_DOMAIN_EXCEPTION, $e->getMessage())
                 );
-                break;
             default:
-                $response = new ErrorResponse(
+                return new ErrorResponse(
                     Response::HTTP_INTERNAL_SERVER_ERROR,
                     ErrorResponse::errorData(ErrorResponse::TYPE_FATAL_ERROR, $e->getMessage())
                 );
-                break;
         }
-
-        $event->setResponse($response);
     }
 
     public function logException(ExceptionEvent $event): void

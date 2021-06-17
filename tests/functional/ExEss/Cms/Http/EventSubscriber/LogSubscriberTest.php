@@ -2,6 +2,7 @@
 
 namespace Test\Functional\ExEss\Cms\Http\EventSubscriber;
 
+use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
 use ExEss\Cms\Doctrine\Type\HttpMethod;
 use ExEss\Cms\Http\EventSubscriber\LogSubscriber;
 use Mockery\MockInterface;
@@ -254,8 +255,8 @@ class LogSubscriberTest extends FunctionalTestCase
         // Given
         $method = HttpMethod::POST;
         $path = '/Api/Flow/cool-url';
-        $expected = "Outgoing response for: $path, method: $method, status: 200, "
-            . 'message: coole-message, model: {"dwp|binaryFile":[{"name":"test","stream":"stream-not-logged"}]}';
+        $expected = "Outgoing response for: $path, method: $method, status: 200, message: coole-message, "
+            . 'model: {"dwp|binaryFile":[{"name":"test","stream":"' . DataCleaner::STREAM_REPLACEMENT.'"}]}';
 
         // Then
         $this->request->shouldReceive([
