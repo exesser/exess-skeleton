@@ -3,7 +3,7 @@
 namespace Test\Api\V8_Custom\Action;
 
 use ApiTester;
-use ExEss\Cms\Dictionary\Response;
+use ExEss\Cms\Http\ErrorResponse;
 
 class FetchActionByIdCest
 {
@@ -78,8 +78,8 @@ class FetchActionByIdCest
 
         $response = \json_decode($I->grabResponse(), true);
 
-        $I->assertEquals($response['message'], Response::MESSAGE_ERROR);
-        $I->assertEquals($response['data']['type'], Response::TYPE_DOMAIN_EXCEPTION);
+        $I->assertEquals($response['message'], ErrorResponse::MESSAGE_ERROR);
+        $I->assertEquals($response['data']['type'], ErrorResponse::TYPE_DOMAIN_EXCEPTION);
         $I->assertTrue(\strpos($response['data']['message'], 'my_test_action') !== false);
     }
 
@@ -100,7 +100,7 @@ class FetchActionByIdCest
         $I->seeResponseCodeIs(422);
         $I->seeResponseIsJson();
         $I->seeAssertPathsInJson([
-            '$.message' => Response::MESSAGE_ERROR,
+            '$.message' => ErrorResponse::MESSAGE_ERROR,
         ]);
     }
 

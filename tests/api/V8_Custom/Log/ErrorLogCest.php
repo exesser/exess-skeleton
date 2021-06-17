@@ -3,7 +3,7 @@
 namespace Test\Api\V8_Custom\Log;
 
 use ApiTester;
-use ExEss\Cms\Dictionary\Response;
+use ExEss\Cms\Http\SuccessResponse;
 
 class ErrorLogCest
 {
@@ -33,7 +33,7 @@ JSON;
 
         $assertPaths = [
             '$.data.' => 'OK',
-            '$.message' => Response::MESSAGE_SUCCESS
+            '$.message' => SuccessResponse::MESSAGE_SUCCESS,
         ];
 
         $I->seeAssertPathsInJson($assertPaths);

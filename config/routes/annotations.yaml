@@ -1,6 +1,8 @@
 controllers:
   resource: ../../src/ExEss/Cms/Controller/
   type: annotation
+  defaults:
+    stateless: true
 
 kernel:
   resource: ../../src/ExEss/Cms/Kernel.php

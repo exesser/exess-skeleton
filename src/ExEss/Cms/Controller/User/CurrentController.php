@@ -3,10 +3,10 @@
 namespace ExEss\Cms\Controller\User;
 
 use ExEss\Cms\Api\V8_Custom\Service\Security;
+use ExEss\Cms\Exception\NotAuthenticatedException;
+use ExEss\Cms\Http\SuccessResponse;
 use ExEss\Cms\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CurrentController extends AbstractController
@@ -24,12 +24,12 @@ class CurrentController extends AbstractController
     /**
      * @Route("/Api/user/current", methods={"GET"})
      */
-    public function __invoke(): Response
+    public function __invoke(): SuccessResponse
     {
         if (null === $user = $this->security->getCurrentUser()) {
-            return new Response('Token not found', Response::HTTP_UNAUTHORIZED);
+            throw new NotAuthenticatedException('Token not found');
         }
 
-        return new JsonResponse(['data' => $this->userService->getDataFor($user)], Response::HTTP_OK);
+        return new SuccessResponse($this->userService->getDataFor($user));
     }
 }

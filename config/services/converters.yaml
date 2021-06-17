@@ -12,6 +12,3 @@ services:
   ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverterFactory:
     arguments:
       - '@service_container'
-
-  ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\RequestConverterFactory: ~
-

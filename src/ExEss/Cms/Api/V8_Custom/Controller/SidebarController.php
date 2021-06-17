@@ -1,6 +1,7 @@
 <?php
 namespace ExEss\Cms\Api\V8_Custom\Controller;
 
+use ExEss\Cms\Exception\NotFoundException;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ExEss\Cms\Api\Core\AbstractApiController;
@@ -22,14 +23,7 @@ class SidebarController extends AbstractApiController
         $response = $this->sidebarFactory->createSidebar($params)->getData();
 
         if (!$response) {
-            return $this->generateResponse(
-                $res,
-                404,
-                [
-                    'type' => \ExEss\Cms\Dictionary\Response::TYPE_NOT_FOUND_EXCEPTION,
-                    'message' => 'No ' . $params->getObject() .  ' found for ID ' . $params->getId()
-                ]
-            );
+            throw new NotFoundException('No ' . $params->getObject() .  ' found for ID ' . $params->getId());
         }
 
         return $this->generateResponse($res, 200, $response);

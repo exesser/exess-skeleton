@@ -1,6 +1,16 @@
+parameters:
+  env(VERBOSE_ERRORS): false
+  verbose_errors: '%env(bool:VERBOSE_ERRORS)%'
+
 services:
   _defaults:
     public: true
+    bind:
+      $debug: '%verbose_errors%'
+
+  ExEss\Cms\Http\EventSubscriber\ExceptionSubscriber:
+    autoconfigure: true
+    autowire: true
 
   ExEss\Cms\Api\V8_Custom\Events\Listeners\EnhanceHeadersSubscriber:
     lazy: true

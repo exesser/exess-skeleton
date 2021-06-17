@@ -54,7 +54,7 @@ class ApiTester extends \Codeception\Actor
         $this->seeResponseCodeIs(200);
         $this->seeResponseIsJson();
 
-        $token = $this->grabDataFromResponseByJsonPath('$.token')[0];
+        $token = $this->grabDataFromResponseByJsonPath('$.data.token')[0];
 
         $this->haveHttpHeader('Content-Type', 'application/json');
         $this->haveHttpHeader('Accept', 'application/json');

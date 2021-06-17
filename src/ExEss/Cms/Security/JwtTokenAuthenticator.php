@@ -4,8 +4,8 @@ namespace ExEss\Cms\Security;
 
 use ExEss\Cms\Api\V8_Custom\Service\User\TokenService;
 use ExEss\Cms\Entity\User;
+use ExEss\Cms\Http\ErrorResponse;
 use stdClass;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -52,7 +52,7 @@ class JwtTokenAuthenticator extends AbstractGuardAuthenticator
     /**
      * @inheritDoc
      */
-    public function getUser($credentials, UserProviderInterface $userProvider): User
+    public function getUser($credentials, UserProviderInterface $userProvider): ?User
     {
         if (null === $credentials) {
             return null;
@@ -93,9 +93,10 @@ class JwtTokenAuthenticator extends AbstractGuardAuthenticator
      */
     public function start(Request $request, ?AuthenticationException $authException = null): Response
     {
-        return new JsonResponse([
-            'message' => 'Authentication Required'
-        ], Response::HTTP_UNAUTHORIZED);
+        return new ErrorResponse(
+            Response::HTTP_UNAUTHORIZED,
+            'Authentication Required'
+        );
     }
 
     /**

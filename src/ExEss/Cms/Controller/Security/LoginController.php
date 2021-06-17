@@ -3,8 +3,8 @@
 namespace ExEss\Cms\Controller\Security;
 
 use ExEss\Cms\Api\V8_Custom\Service\User\RefreshTokenService;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
+use ExEss\Cms\Exception\NotAuthenticatedException;
+use ExEss\Cms\Http\SuccessResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
@@ -23,18 +23,18 @@ class LoginController
     /**
      * @Route("/Api/login", name="exesscms_login", methods={"POST"})
      */
-    public function __invoke(): Response
+    public function __invoke(): SuccessResponse
     {
         if (null === $token = $this->tokenStorage->getToken()) {
-            return new Response('Token not found', Response::HTTP_UNAUTHORIZED);
+            throw new NotAuthenticatedException('Token not found');
         }
 
         if (!\is_object($user = $token->getUser())) {
-            return new Response('Not logged in', Response::HTTP_UNAUTHORIZED);
+            throw new NotAuthenticatedException('Not logged in');
         }
 
         $jwt = $this->tokenService->generateToken($user->getUsername());
 
-        return new JsonResponse(['token' => $jwt], Response::HTTP_OK);
+        return new SuccessResponse(['token' => $jwt]);
     }
 }

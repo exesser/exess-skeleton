@@ -2,11 +2,11 @@
 
 namespace ExEss\Cms\Api\V8_Custom\Middleware;
 
+use ExEss\Cms\Http\ErrorResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
-use ExEss\Cms\Dictionary\Response;
 use ExEss\Cms\Exception\EmailForExportNotFoundException;
 use ExEss\Cms\Exception\ExternalListFetchException;
 use ExEss\Cms\Exception\NotAllowedException;
@@ -47,7 +47,7 @@ class JsonErrorMiddleware
         try {
             $response = $next($request, $response);
         } catch (\Throwable $e) {
-            $body['message'] = Response::MESSAGE_ERROR;
+            $body['message'] = ErrorResponse::MESSAGE_ERROR;
 
             switch (true) {
                 case $e instanceof NotAuthorizedException:
@@ -59,12 +59,18 @@ class JsonErrorMiddleware
                     break;
                 case $e instanceof NotAllowedException:
                     $response = $response->withStatus(405);
-                    $body['data'] =  Response::errorData(Response::TYPE_NOT_ALLOWED_EXCEPTION, $e->getMessage());
+                    $body['data'] =  ErrorResponse::errorData(
+                        ErrorResponse::TYPE_NOT_ALLOWED_EXCEPTION,
+                        $e->getMessage()
+                    );
                     $this->logger->warning($e->getMessage() . \PHP_EOL . $e->getTraceAsString());
                     break;
                 case $e instanceof NotFoundException:
                     $response = $response->withStatus(404);
-                    $body['data'] = Response::errorData(Response::TYPE_NOT_FOUND_EXCEPTION, $e->getMessage());
+                    $body['data'] = ErrorResponse::errorData(
+                        ErrorResponse::TYPE_NOT_FOUND_EXCEPTION,
+                        $e->getMessage()
+                    );
                     $this->logger->warning($e->getMessage() . \PHP_EOL . $e->getTraceAsString());
                     break;
                 case $e instanceof CommandException:
@@ -74,7 +80,10 @@ class JsonErrorMiddleware
                 case $e instanceof \LogicException:
                 case $e instanceof \DomainException:
                     $response = $response->withStatus(422);
-                    $body['data'] = Response::errorData(Response::TYPE_DOMAIN_EXCEPTION, $e->getMessage());
+                    $body['data'] = ErrorResponse::errorData(
+                        ErrorResponse::TYPE_DOMAIN_EXCEPTION,
+                        $e->getMessage()
+                    );
                     $this->logger->error($e->getMessage() . \PHP_EOL . $e->getTraceAsString());
                     break;
                 case $e instanceof ExternalListFetchException:
@@ -84,7 +93,10 @@ class JsonErrorMiddleware
                     break;
                 default:
                     $response = $response->withStatus(500);
-                    $body['data'] = Response::errorData(Response::TYPE_FATAL_ERROR, $e->getMessage());
+                    $body['data'] = ErrorResponse::errorData(
+                        ErrorResponse::TYPE_FATAL_ERROR,
+                        $e->getMessage()
+                    );
                     $this->logger->critical($e->getMessage() . \PHP_EOL . $e->getTraceAsString());
                     break;
             }
