@@ -5,7 +5,7 @@ namespace Test\Functional\ExEss\Cms\Repository;
 use ExEss\Cms\Doctrine\Type\Locale;
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use ExEss\Cms\Repository\TranslationRepository;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class TranslationRepositoryTest extends FunctionalTestCase
 {

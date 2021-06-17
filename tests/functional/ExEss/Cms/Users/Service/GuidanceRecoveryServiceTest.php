@@ -4,7 +4,7 @@ namespace Test\Functional\ExEss\Cms\Users\Service;
 
 use ExEss\Cms\Entity\User;
 use ExEss\Cms\Entity\UserGuidanceRecovery;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 use ExEss\Cms\Users\Service\GuidanceRecoveryService;
 
 class GuidanceRecoveryServiceTest extends FunctionalTestCase

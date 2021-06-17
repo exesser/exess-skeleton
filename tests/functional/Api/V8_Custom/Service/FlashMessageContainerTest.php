@@ -4,7 +4,7 @@ namespace Test\Functional\Api\V8_Custom\Service;
 
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class FlashMessageContainerTest extends FunctionalTestCase
 {

@@ -4,7 +4,7 @@ namespace Test\Functional\CustomInclude\Collection;
 
 use ExEss\Cms\Collection\ObjectCollection;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ObjectCollectionTest extends FunctionalTestCase
 {

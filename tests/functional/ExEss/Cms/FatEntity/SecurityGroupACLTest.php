@@ -5,7 +5,7 @@ namespace Test\Functional\ExEss\Cms\FatEntity;
 use ExEss\Cms\Acl\AclService;
 use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class SecurityGroupACLTest extends FunctionalTestCase
 {

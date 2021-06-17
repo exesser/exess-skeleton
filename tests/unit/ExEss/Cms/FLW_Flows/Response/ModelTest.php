@@ -3,7 +3,7 @@
 namespace Test\Unit\ExEss\Cms\FLW_Flows\Response;
 
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 
 class ModelTest extends UnitTestCase
 {

@@ -6,7 +6,7 @@ use Mockery\MockInterface;
 use ExEss\Cms\Component\Logger\Processor\NeededHeadersProcessor;
 use ExEss\Cms\Component\Session\Headers;
 use ExEss\Cms\Component\Session\User\UserInterface;
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 
 class NeededHeadersProcessorTest extends UnitTestCase
 {

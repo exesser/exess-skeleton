@@ -10,7 +10,7 @@ use ExEss\Cms\FLW_Flows\Event\Listeners\ValueExpressionsSubscriber;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ValueExpressionsTest extends FunctionalTestCase
 {

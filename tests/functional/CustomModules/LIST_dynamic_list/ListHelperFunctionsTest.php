@@ -18,7 +18,7 @@ use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
 use ExEss\Cms\Parser\ExpressionGroup;
 use ExEss\Cms\Parser\ExpressionParserOptions;
 use ExEss\Cms\Parser\PathResolverOptions;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ListHelperFunctionsTest extends FunctionalTestCase
 {

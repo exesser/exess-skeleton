@@ -4,7 +4,7 @@ namespace Helper;
 use Codeception\Module\Symfony;
 use Codeception\TestInterface;
 use Doctrine\Bundle\DoctrineBundle\Registry;
-use ExEss\Cms\Test\Codeception\Module\Db;
+use Helper\Module\Db;
 
 /**
  * Additional methods for DB module
@@ -17,7 +17,7 @@ class DbHelper extends \Codeception\Module
 {
     protected function getDbModule(): Db
     {
-        return $this->getModule('ExEss\Cms\Test\Codeception\Module\Db');
+        return $this->getModule('Helper\Module\Db');
     }
 
     /**

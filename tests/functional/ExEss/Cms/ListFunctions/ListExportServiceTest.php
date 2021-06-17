@@ -7,7 +7,7 @@ use ExEss\Cms\ListFunctions\HelperClasses\DynamicListResponse;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRow;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRowCell;
 use ExEss\Cms\ListFunctions\ListExportService;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ListExportServiceTest extends FunctionalTestCase
 {

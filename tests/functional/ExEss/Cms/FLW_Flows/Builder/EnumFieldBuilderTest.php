@@ -8,7 +8,7 @@ use ExEss\Cms\Entity\User;
 use ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder;
 use ExEss\Cms\FLW_Flows\EnumRecord;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class EnumFieldBuilderTest extends FunctionalTestCase
 {

@@ -5,7 +5,7 @@ namespace Test\Unit\ExEss\Cms\Component\Session;
 use ExEss\Cms\Component\Session\Headers;
 use ExEss\Cms\Component\Session\User\UserInterface;
 use Ramsey\Uuid\Uuid;
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 
 class HeadersTest extends UnitTestCase
 {

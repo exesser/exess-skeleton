@@ -7,7 +7,7 @@ use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Parser\Expression;
 use ExEss\Cms\Parser\ExpressionParser;
 use ExEss\Cms\Parser\ExpressionParserOptions;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ExpressionParserTest extends FunctionalTestCase
 {

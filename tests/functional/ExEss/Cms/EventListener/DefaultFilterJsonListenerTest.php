@@ -5,7 +5,7 @@ namespace Test\Functional\ExEss\Cms\EventListener;
 use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Entity\FilterField;
 use ExEss\Cms\Entity\FilterFieldGroup;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 /**
  * @see DefaultFilterJsonListener

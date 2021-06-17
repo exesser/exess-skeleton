@@ -120,6 +120,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Helper\\": "tests/_support/Helper/",
             "Test\\Api\\": "tests/api/",
             "Test\\Functional\\": "tests/functional/",
             "Test\\Unit\\": "tests/unit/"

@@ -2,7 +2,7 @@
 
 namespace Test\Functional\CustomModules\Dashboard\Model;
 
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 use ExEss\Cms\Dashboard\Model\Grid;
 
 class GridTest extends FunctionalTestCase

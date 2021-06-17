@@ -11,7 +11,7 @@ use ExEss\Cms\Api\V8_Custom\Service\RequestResponseLogger;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\Logger\Logger;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class RequestResponseLoggerTest extends FunctionalTestCase
 {

@@ -2,7 +2,7 @@
 
 namespace Test\Functional\ExEss\Cms;
 
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ContainerTest extends FunctionalTestCase
 {

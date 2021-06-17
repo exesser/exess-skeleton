@@ -6,7 +6,7 @@ use ExEss\Cms\Dictionary\Format;
 use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\AclRole;
 use Ramsey\Uuid\Uuid;
-use ExEss\Cms\Test\Codeception\Module\Db;
+use Helper\Module\Db;
 
 /**
  *  Methods to generate fat entities on the fly

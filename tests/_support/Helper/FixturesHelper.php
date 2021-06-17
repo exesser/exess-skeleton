@@ -2,7 +2,7 @@
 namespace Helper;
 
 use Codeception\TestInterface;
-use ExEss\Cms\Test\Codeception\Module\Db;
+use Helper\Module\Db;
 
 /**
  * Fixtures module
@@ -126,6 +126,6 @@ class FixturesHelper extends \Codeception\Module
 
     protected function getDbModule(): Db
     {
-        return $this->getModule('ExEss\Cms\Test\Codeception\Module\Db');
+        return $this->getModule('Helper\Module\Db');
     }
 }

@@ -4,7 +4,7 @@ namespace Test\Functional\Api\V8_Custom\Repository;
 
 use ExEss\Cms\Api\V8_Custom\Repository\ListRowbarRepository;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ListRowbarRepositoryTest extends FunctionalTestCase
 {

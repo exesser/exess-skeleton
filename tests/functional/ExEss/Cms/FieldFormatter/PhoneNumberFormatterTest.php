@@ -3,7 +3,7 @@
 namespace Test\Functional\ExEss\Cms\FieldFormatter;
 
 use ExEss\Cms\FieldFormatter\PhoneNumberFormatter;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class PhoneNumberFormatterTest extends FunctionalTestCase
 {

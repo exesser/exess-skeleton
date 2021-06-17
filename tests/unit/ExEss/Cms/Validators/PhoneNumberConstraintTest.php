@@ -2,7 +2,7 @@
 
 namespace Test\Unit\ExEss\Cms\Validators;
 
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 use ExEss\Cms\Validators\PhoneNumber;
 use ExEss\Cms\Validators\PhoneNumberValidator;
 use Symfony\Component\Validator\Constraint;

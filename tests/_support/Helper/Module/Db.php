@@ -1,5 +1,5 @@
 <?php
-namespace ExEss\Cms\Test\Codeception\Module;
+namespace Helper\Module;
 
 use Codeception\Lib\ModuleContainer;
 use Codeception\Module\Db as CodeceptionModule;

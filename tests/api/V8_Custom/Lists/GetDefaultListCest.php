@@ -5,7 +5,7 @@ namespace Test\Api\V8_Custom\Lists;
 use ApiTester;
 use ExEss\Cms\Doctrine\Type\FilterFieldType;
 use ExEss\Cms\Entity\ListCellLink;
-use ExEss\Cms\Test\TestRepository;
+use Helper\TestRepository;
 
 class GetDefaultListCest
 {

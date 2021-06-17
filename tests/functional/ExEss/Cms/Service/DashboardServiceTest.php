@@ -10,7 +10,7 @@ use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Entity\Property;
 use ExEss\Cms\Entity\User;
 use ExEss\Cms\Service\DashboardService;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class DashboardServiceTest extends FunctionalTestCase
 {

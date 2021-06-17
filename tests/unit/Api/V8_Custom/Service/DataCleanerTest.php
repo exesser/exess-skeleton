@@ -4,7 +4,7 @@ namespace Test\Unit\Api\V8_Custom\Service;
 
 use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
 use ExEss\Cms\Exception\JsonDecodeException;
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 use stdClass;
 
 class DataCleanerTest extends UnitTestCase

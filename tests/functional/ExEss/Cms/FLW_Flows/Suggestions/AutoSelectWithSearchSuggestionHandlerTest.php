@@ -10,7 +10,7 @@ use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Suggestions\AutoSelectWithSearchSuggestionHandler;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class AutoSelectWithSearchSuggestionHandlerTest extends FunctionalTestCase
 {

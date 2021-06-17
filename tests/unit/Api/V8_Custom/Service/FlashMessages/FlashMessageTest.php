@@ -2,7 +2,7 @@
 
 namespace Test\Unit\Api\V8_Custom\Service\FlashMessages;
 
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 
 class FlashMessageTest extends UnitTestCase

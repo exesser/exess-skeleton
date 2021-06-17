@@ -8,7 +8,7 @@ use ExEss\Cms\Entity\Dashboard;
 use ExEss\Cms\Entity\FlowStep;
 use ExEss\Cms\Entity\GridTemplate;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 /**
  * @see PropertyUpdateListener
