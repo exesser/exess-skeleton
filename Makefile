@@ -5,6 +5,9 @@ up:
 	@docker volume create bower_components
 	@docker-compose -f docker-compose.yml up -d --build
 
+restart:
+	@docker-compose -f docker-compose.yml restart
+
 up-front: 
 	@docker-compose -f docker-compose.frontend.yml up -d --build
 

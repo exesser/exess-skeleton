@@ -12,19 +12,17 @@ describe('Component: logout', function () {
 
   let loginFactory;
   let tokenFactory;
-  let currentUserFactory;
   let commandHandler;
 
   const template = '<logout location="menu"></logout>';
 
-  beforeEach(inject(function (_$rootScope_, _$compile_, _$state_, _loginFactory_, _currentUserFactory_, _$q_,
+  beforeEach(inject(function (_$rootScope_, _$compile_, _$state_, _loginFactory_, _$q_,
                               _commandHandler_, _tokenFactory_) {
     $rootScope = _$rootScope_;
     $compile = _$compile_;
     $state = _$state_;
     loginFactory = _loginFactory_;
     tokenFactory = _tokenFactory_;
-    currentUserFactory = _currentUserFactory_;
     $q = _$q_;
     commandHandler = _commandHandler_;
 
@@ -32,7 +30,7 @@ describe('Component: logout', function () {
   }));
 
   function compile({ loggedIn }) {
-    spyOn(currentUserFactory, 'isLoggedIn').and.returnValue(loggedIn);
+    spyOn(tokenFactory, 'hasToken').and.returnValue(loggedIn);
 
     const scope = $rootScope.$new();
 
@@ -63,7 +61,6 @@ describe('Component: logout', function () {
 
   it('should log the user out when logout is clicked', function () {
     spyOn(loginFactory, 'logout').and.callFake(mockHelpers.resolvedPromise($q));
-    spyOn(currentUserFactory, 'setUser');
     spyOn(tokenFactory, 'removeToken');
 
     compile({ loggedIn: true });
@@ -72,9 +69,6 @@ describe('Component: logout', function () {
 
     aHrefElement.click();
     $rootScope.$apply();
-
-    expect(currentUserFactory.setUser).toHaveBeenCalledTimes(1);
-    expect(currentUserFactory.setUser).toHaveBeenCalledWith(null);
 
     expect(tokenFactory.removeToken).toHaveBeenCalledTimes(1);
 

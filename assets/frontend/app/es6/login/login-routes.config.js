@@ -12,7 +12,7 @@ angular.module('digitalWorkplaceApp')
         }
       }
     });
-  }).run(function ($rootScope, currentUserFactory, loginFactory, $state) {
+  }).run(function ($rootScope, tokenFactory, loginFactory, $state) {
   /*
    If the user is logged in and tries to navigate to the login page, navigate him away
    to the home page.
@@ -23,7 +23,7 @@ angular.module('digitalWorkplaceApp')
    to see a page route redirect him to the home page.
    */
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams) { //eslint-disable-line angular/on-watch
-    var isLoggedIn = currentUserFactory.isLoggedIn();
+    var isLoggedIn = tokenFactory.hasToken();
 
     if (isLoggedIn && toState.name === 'login') {
       event.preventDefault();

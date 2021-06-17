@@ -24,17 +24,17 @@ angular.module('digitalWorkplaceApp')
       location: "@"
     },
     controllerAs: 'logoutController',
-    controller: function (loginFactory, currentUserFactory, tokenFactory, $state, commandHandler) {
+    controller: function (loginFactory, tokenFactory, $state, commandHandler) {
       const logoutController = this;
 
       logoutController.isLoggedIn = function() {
-        return currentUserFactory.isLoggedIn();
+        return tokenFactory.hasToken();
       };
 
       logoutController.logout = function () {
           return loginFactory.logout().then(function (logoutData) {
               tokenFactory.removeToken();
-              currentUserFactory.setUser(null);
+
               if (_.has(logoutData, 'command')) {
                   commandHandler.handle(logoutData.command);
               } else {

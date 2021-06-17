@@ -19,7 +19,7 @@ angular.module('digitalWorkplaceApp')
     templateUrl: 'es6/login/login.component.html',
     controllerAs: 'loginController',
     controller: function (loginFactory, commandHandler, $state, STANDARD_USER, userDatasource,
-                          currentUserFactory, tokenFactory, $translate, LANGUAGE, $analytics, googleTagManager, $timeout) {
+                          tokenFactory, $translate, LANGUAGE, $analytics, googleTagManager, $timeout) {
       const loginController = this;
 
       // Bindings for username and password.
@@ -31,15 +31,7 @@ angular.module('digitalWorkplaceApp')
       loginController.showLoginForm = false;
 
       loginController.$onInit = function () {
-
-        /*
-          Try to log the user in automatically by calling postAuthenticate() manually;
-          When the token is not set this will fail and result in a 401 error,
-          if it succeeds the user is logged in automatically.
-        */
-        postAuthenticate().catch(function () {
-            loginController.showLoginForm = currentUserFactory.getDisplayLogin();
-        });
+        loginController.showLoginForm = !tokenFactory.hasToken();
       };
 
       /**
@@ -63,14 +55,14 @@ angular.module('digitalWorkplaceApp')
       };
 
       /**
-       * Retrieves the currentUser from the back-end and stores it into the currentUserFactory.
+       * Retrieves the currentUser preferences from the back-end and used them.
        * @return {Promise} The promise that lets you know when the postAuthenticate is done.
        */
       function postAuthenticate() {
-        return userDatasource.current(loginFactory.afterLoginState).then(function (user) {
-          currentUserFactory.setUser({ username: user.username });
+        setAnalyticsData(tokenFactory.getUsername());
+
+        return userDatasource.getUserPreferences(loginFactory.afterLoginState).then(function (user) {
           setPreferredLanguage(user);
-          setAnalyticsData(user);
 
           $timeout(function () {
             if (_.has(user, 'command')) {
@@ -88,8 +80,7 @@ angular.module('digitalWorkplaceApp')
        * @param {Object} user
        */
       function setPreferredLanguage(user) {
-        const preferredLanguage =
-          _.isEmpty(user.preferredLanguage) ? LANGUAGE.ENGLISH_BELGIUM : user.preferredLanguage;
+        const preferredLanguage = _.get(user, 'preferredLanguage', LANGUAGE.ENGLISH_BELGIUM);
 
         if ($translate.use() !== preferredLanguage && _.includes(LANGUAGE, preferredLanguage)) {
           $translate.use(preferredLanguage);
@@ -99,10 +90,10 @@ angular.module('digitalWorkplaceApp')
       /**
        * Sets data that need to be send to google tag manager
        *
-       * @param {Object} user
+       * @param {string} username
        */
-      function setAnalyticsData(user) {
-        $analytics.setUsername(user.username);
+      function setAnalyticsData(username) {
+        $analytics.setUsername(username);
       }
     }
   });
