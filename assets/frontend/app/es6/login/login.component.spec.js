@@ -122,7 +122,7 @@ describe('Component: login', function () {
     it('should log the user in when the username and password are correct', function () {
       const loginPromise = $q.defer();
       spyOn(loginFactory, 'login').and.returnValue(loginPromise.promise);
-      loginPromise.resolve({data: {token:"token-value"}});
+      loginPromise.resolve({data: {data: {token:"token-value"}}});
       spyOn(tokenFactory, 'setToken');
 
       currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { user_name: "Tony" }));

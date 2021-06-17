@@ -51,8 +51,9 @@ angular.module('digitalWorkplaceApp')
         loginController.loginFailed = false;
 
         loginFactory.login(loginController.username, loginController.password).then(function (response) {
-          if (response && response.data && response.data.token) {
-            tokenFactory.setToken(response.data.token);
+          const token = _.get(response, 'data.data.token', null);
+          if (token) {
+            tokenFactory.setToken(token);
           }
           postAuthenticate();
         }).catch(function (responseData) {

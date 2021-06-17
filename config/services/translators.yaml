@@ -28,17 +28,6 @@ services:
       - '%default_locale%'
   Symfony\Contracts\Translation\TranslatorInterface: '@Symfony\Component\Translation\Translator'
 
-  translatorWithoutFallback:
-    lazy: true
-    class: ExEss\Cms\Api\V8_Custom\Translator\LoggedTranslator
-    factory: [ '@ExEss\Cms\Factory\TranslatorFactory', create ]
-    arguments:
-      - '%translator_untranslated_database%'
-      - '%translator_cache%'
-      - '%default_locale%'
-    calls:
-      - setFallbackLocales: [[]]
-
   ExEss\Cms\Api\V8_Custom\Translator\DatabaseLoader:
     arguments:
       - '@doctrine.orm.entity_manager'
