@@ -1,9 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace ExEss\Cms\Api\V8_Custom\Service\FlashMessages;
 
 use Symfony\Contracts\Service\ResetInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * This is a class to which you can add flash messages
@@ -11,42 +10,36 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class FlashMessageContainer implements \Countable, ResetInterface
 {
+    /**
+     * @var array|FlashMessage[]
+     */
     private array $flashMessages = [];
-
-    private TranslatorInterface $translator;
 
     private static ?self $instance = null;
 
-    public static function get(TranslatorInterface $translator): self
+    public static function get(): self
     {
         if (!self::$instance) {
-            self::$instance = new self($translator);
+            self::$instance = new self();
         }
 
         return self::$instance;
     }
 
-    private function __construct(TranslatorInterface $translator)
-    {
-        $this->translator = $translator;
-    }
-
-    public function addFlashMessage(FlashMessage $flashMessage): self
+    public function addFlashMessage(FlashMessage $flashMessage): void
     {
         foreach ($this->flashMessages as $existing) {
             if (true === $existing->equals($flashMessage)) {
                 $existing->addCount();
-                return $this;
+                return;
             }
         }
 
         $this->flashMessages[] = $flashMessage;
-
-        return $this;
     }
 
     /**
-     * @return FlashMessage[]
+     * @return array|FlashMessage[]
      */
     public function getFlashMessages(?string $group = null): array
     {
@@ -61,7 +54,7 @@ class FlashMessageContainer implements \Countable, ResetInterface
 
     public function count(): int
     {
-        return \count($this->getFlashMessages());
+        return \count($this->flashMessages);
     }
 
     public function reset(): void

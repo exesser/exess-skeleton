@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace ExEss\Cms\Http\EventSubscriber;
 
@@ -37,7 +37,6 @@ class ExceptionSubscriber implements EventSubscriberInterface
 
     public static function getSubscribedEvents(): array
     {
-        // return the subscribed events, their methods and priorities
         return [
             KernelEvents::EXCEPTION => [
                 ['processException', 10],

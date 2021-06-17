@@ -2,10 +2,9 @@
 
 namespace ExEss\Cms\Http;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class SuccessResponse extends JsonResponse
+class SuccessResponse extends AbstractJsonResponse
 {
     public const MESSAGE_SUCCESS = 'SUCCESS';
 
