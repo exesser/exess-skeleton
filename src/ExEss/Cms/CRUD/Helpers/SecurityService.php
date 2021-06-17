@@ -103,18 +103,6 @@ class SecurityService
         }
     }
 
-    public function isIfRelationAllowed(array $relation): bool
-    {
-        try {
-            $this->checkIfRecordTypeAllowed($relation['lhs_module']);
-            $this->checkIfRecordTypeAllowed($relation['rhs_module']);
-        } catch (NotAllowedException $e) {
-            return false;
-        }
-
-        return true;
-    }
-
     public function canUpdate(string $recordType): bool
     {
         return $this->isCrudModule($recordType)

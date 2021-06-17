@@ -40,10 +40,7 @@ services:
   # FlashMessageMiddleware should always be the last one in the list.
   ExEss\Cms\Api\V8_Custom\Middleware\FlashMessageMiddleware:
     arguments:
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
       - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
-      - '@ExEss\Cms\Logger\Logger'
-      - '%verbose_errors%'
     tags: [{ name: 'crm.middleware', priority: 60 }]
 
   # Route middleware

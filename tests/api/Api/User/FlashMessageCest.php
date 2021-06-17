@@ -1,26 +1,28 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Middleware;
+namespace Test\Api\Api\User;
 
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
 
-class FlashMessageMiddlewareCest
+class FlashMessageCest
 {
     public function testIfMessageIsReturned(\ApiTester $I): void
     {
         // Given
         $I->getAnApiTokenFor('adminUser');
 
+        $message = "I have a message for you!";
+
         /** @var FlashMessageContainer $flashMessageContainer */
         $flashMessageContainer = $I->grabService(FlashMessageContainer::class);
-        $flashMessageContainer->addFlashMessage(new FlashMessage('test'));
+        $flashMessageContainer->addFlashMessage(new FlashMessage($message));
 
         // When
-        $I->sendGET('/Api/V8_Custom/CRUD/records-information');
+        $I->sendGET('/Api/user/current');
 
         // Then
         $I->seeResponseCodeIs(200);
-        $I->seeResponseJsonMatchesJsonPath('flashMessages.0.text', 'test');
+        $I->seeResponseJsonMatchesJsonPath('flashMessages.0.text', $message);
     }
 }

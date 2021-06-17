@@ -2,10 +2,9 @@
 
 namespace ExEss\Cms\Http;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class ErrorResponse extends JsonResponse
+class ErrorResponse extends AbstractJsonResponse
 {
     public const MESSAGE_ERROR = 'ERROR';
 
@@ -41,11 +40,14 @@ class ErrorResponse extends JsonResponse
 
     public function addDebugInformation(\Throwable $e): void
     {
-        $this->data['data']['debug'] = [
+        $data = \json_decode($this->data, true);
+        $data['data']['debug'] = [
             'file' => $e->getFile(),
             'line' => $e->getLine(),
             'stacktrace' => \explode(\PHP_EOL, $e->getTraceAsString()),
         ];
+
+        $this->setData($data);
     }
 
     public static function errorData(string $type, string $message): array

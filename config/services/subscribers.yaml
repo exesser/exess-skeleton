@@ -12,6 +12,10 @@ services:
     autoconfigure: true
     autowire: true
 
+  ExEss\Cms\Http\EventSubscriber\FlashMessageSubscriber:
+    autoconfigure: true
+    autowire: true
+
   ExEss\Cms\Api\V8_Custom\Events\Listeners\EnhanceHeadersSubscriber:
     lazy: true
     arguments:

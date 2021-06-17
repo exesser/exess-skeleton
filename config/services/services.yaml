@@ -30,8 +30,6 @@ services:
   ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer:
     lazy: true
     factory: [ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer, get]
-    arguments:
-      - '@Symfony\Component\Translation\Translator'
 
   Symfony\Component\EventDispatcher\EventDispatcher:
     class: Symfony\Component\EventDispatcher\EventDispatcher
