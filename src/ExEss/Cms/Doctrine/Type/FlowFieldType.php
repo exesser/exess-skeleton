@@ -25,7 +25,6 @@ class FlowFieldType extends AbstractEnumType
     public const FIELD_TYPE_HASHTAG_TEXT = 'hashtagText';
     public const FIELD_TYPE_WYSIWYG = 'wysiwyg';
     public const FIELD_TYPE_DRAW_PAD = 'drawPad';
-    public const FIELD_TYPE_BEST_OFFER = 'bestOffer';
     public const FIELD_TYPE_JSON = 'json';
     public const FIELD_TYPE_JSON_EDITOR = 'json-editor';
 
@@ -51,7 +50,6 @@ class FlowFieldType extends AbstractEnumType
             self::FIELD_TYPE_HASHTAG_TEXT => 'Hashtag TextField',
             self::FIELD_TYPE_WYSIWYG => 'WYSIWYG',
             self::FIELD_TYPE_DRAW_PAD => 'Draw pad',
-            self::FIELD_TYPE_BEST_OFFER => 'Best offer',
             self::FIELD_TYPE_JSON => 'Json',
             self::FIELD_TYPE_JSON_EDITOR => 'Json Editor',
         ];

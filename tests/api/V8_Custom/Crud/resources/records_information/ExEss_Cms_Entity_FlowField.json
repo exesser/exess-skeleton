@@ -126,10 +126,6 @@
                     "value": "Draw pad"
                 },
                 {
-                    "key": "bestOffer",
-                    "value": "Best offer"
-                },
-                {
                     "key": "json",
                     "value": "Json"
                 },

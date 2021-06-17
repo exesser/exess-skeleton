@@ -149,17 +149,6 @@ abstract class AbstractBlueSidebar implements SidebarInterface
         ];
 
         $buttons[] = [
-            'title' => $this->translator->trans('BestRetentionOffer', [], TranslationDomain::SIDEBAR),
-            'icon' => 'icon-opportunity',
-            'linkTo' => 'focus-mode',
-            'params' => [
-                'mainMenuKey' => 'sales-marketing',
-                'focusModeId' => 'account_cockpit_best_retention_offer_overview',
-                'recordId' => $id,
-            ],
-        ];
-
-        $buttons[] = [
             'title' => $this->translator->trans('Documents', [], TranslationDomain::SIDEBAR),
             'icon' => 'icon-mappen',
             'linkTo' => 'focus-mode',
