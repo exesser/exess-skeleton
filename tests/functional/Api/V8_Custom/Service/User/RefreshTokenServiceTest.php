@@ -5,7 +5,7 @@ namespace Test\Functional\Api\V8_Custom\Service\User;
 use ExEss\Cms\Api\V8_Custom\Service\User\TokenService;
 use Firebase\JWT\JWT;
 use ExEss\Cms\Api\V8_Custom\Service\User\RefreshTokenService;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class RefreshTokenServiceTest extends FunctionalTestCase
 {

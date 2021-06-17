@@ -2,7 +2,7 @@
 
 namespace Test\Unit\ExEss\Cms\Validators\Factory;
 
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 use ExEss\Cms\Validators\Exception\ConstraintNotFoundException;
 use ExEss\Cms\Validators\Factory\ConstraintFactory;
 use Symfony\Component\Validator\Constraints\EqualTo;

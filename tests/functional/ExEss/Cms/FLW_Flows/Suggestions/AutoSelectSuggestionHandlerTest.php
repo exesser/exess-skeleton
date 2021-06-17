@@ -7,7 +7,7 @@ use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Suggestions\AutoSelectSuggestionHandler;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class AutoSelectSuggestionHandlerTest extends FunctionalTestCase
 {

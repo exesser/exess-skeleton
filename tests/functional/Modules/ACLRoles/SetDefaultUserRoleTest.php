@@ -5,7 +5,7 @@ namespace Test\Functional\Modules\ACLRoles;
 use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\AclRole;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class SetDefaultUserRoleTest extends FunctionalTestCase
 {

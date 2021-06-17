@@ -22,6 +22,6 @@ modules:
         - \Helper\XmlHelper
         - \Helper\AclHelper
         - Asserts
-        - ExEss\Cms\Test\Codeception\Module\Db
+        - Helper\Module\Db
         - Filesystem
         - Mockery

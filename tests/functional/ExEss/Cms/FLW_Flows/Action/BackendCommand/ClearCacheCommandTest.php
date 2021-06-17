@@ -8,7 +8,7 @@ use ExEss\Cms\Cache\CacheAdapterFactory;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\FLW_Flows\Action\BackendCommand\ClearCacheCommand;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 class ClearCacheCommandTest extends FunctionalTestCase

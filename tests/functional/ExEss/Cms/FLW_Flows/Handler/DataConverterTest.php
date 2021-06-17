@@ -10,7 +10,7 @@ use ExEss\Cms\FLW_Flows\Handler\DataConverter;
 use ExEss\Cms\FLW_Flows\Handler\FlowData;
 use ExEss\Cms\FLW_Flows\Handler\ModelConverter;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class DataConverterTest extends FunctionalTestCase
 {

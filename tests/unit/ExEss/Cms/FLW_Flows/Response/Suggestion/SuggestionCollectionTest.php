@@ -5,7 +5,7 @@ namespace Test\Unit\ExEss\Cms\FLW_Flows\Response\Suggestion;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Response\Suggestion\ModelSuggestion;
 use ExEss\Cms\FLW_Flows\Response\Suggestion\SuggestionCollection;
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 use JsonSerializable;
 
 class SuggestionCollectionTest extends UnitTestCase

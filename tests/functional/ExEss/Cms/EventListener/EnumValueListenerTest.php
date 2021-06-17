@@ -5,7 +5,7 @@ namespace Test\Functional\ExEss\Cms\EventListener;
 use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Doctrine\Type\FlowFieldType;
 use ExEss\Cms\Entity\FlowField;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 /**
  * @see EnumValueListener

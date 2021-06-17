@@ -4,7 +4,7 @@ namespace Test\Functional\ExEss\Cms\FLW_Flows\Services;
 
 use ExEss\Cms\FLW_Flows\DefaultValueService;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class DefaultValueServiceTest extends FunctionalTestCase
 {

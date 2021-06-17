@@ -3,7 +3,7 @@
 namespace Test\Unit\ExEss\Cms\Component\Health;
 
 use ExEss\Cms\Component\Health\PingService;
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 
 class PingServiceTest extends UnitTestCase
 {

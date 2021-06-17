@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ExEss\Cms\Test;
+namespace Helper;
 
 use ExEss\Cms\Api\V8_Custom\Repository\AbstractRepository;
 use ExEss\Cms\Base\Response\BaseListResponse;

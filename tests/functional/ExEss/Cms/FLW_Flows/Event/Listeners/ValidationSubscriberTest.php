@@ -13,7 +13,7 @@ use ExEss\Cms\FLW_Flows\FlowValidator;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Response\ValidationResult;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ValidationSubscriberTest extends FunctionalTestCase
 {

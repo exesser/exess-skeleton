@@ -16,7 +16,7 @@ use ExEss\Cms\Entity\User;
 use ExEss\Cms\Api\V8_Custom\Params\ListParams;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListResponse;
 use ExEss\Cms\ListFunctions\ListFunctions;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ListFunctionsTest extends FunctionalTestCase
 {

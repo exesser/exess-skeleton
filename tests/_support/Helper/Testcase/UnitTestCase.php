@@ -1,5 +1,6 @@
 <?php
-namespace ExEss\Cms\Test\Testcase;
+
+namespace Helper\Testcase;
 
 if (!\class_exists('UnitTester')) {
     throw new \Exception('The UnitTester class should exist (check the tests/_support folder)');

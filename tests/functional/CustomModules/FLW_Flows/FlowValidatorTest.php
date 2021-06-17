@@ -6,7 +6,7 @@ use ExEss\Cms\Entity\FlowStep;
 use ExEss\Cms\FLW_Flows\FlowValidator;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Response\ValidationResult;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 use Test\Functional\CustomModules\Dashboard\GridRepositoryTest;
 
 class FlowValidatorTest extends FunctionalTestCase

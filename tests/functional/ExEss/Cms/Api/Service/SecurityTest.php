@@ -6,7 +6,7 @@ use ExEss\Cms\Api\V8_Custom\Service\Security;
 use ExEss\Cms\Doctrine\Type\SecurityGroupType;
 use ExEss\Cms\Entity\SecurityGroup;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class SecurityTest extends FunctionalTestCase
 {

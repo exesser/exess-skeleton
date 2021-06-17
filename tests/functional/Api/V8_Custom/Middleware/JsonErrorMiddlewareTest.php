@@ -10,7 +10,7 @@ use ExEss\Cms\Api\V8_Custom\Middleware\JsonErrorMiddleware;
 use ExEss\Cms\Exception\NotAllowedException;
 use ExEss\Cms\Exception\NotFoundException;
 use ExEss\Cms\Logger\Logger;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class JsonErrorMiddlewareTest extends FunctionalTestCase
 {

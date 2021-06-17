@@ -6,7 +6,7 @@ use ExEss\Cms\Api\V8_Custom\Translator\DatabaseLoader;
 use ExEss\Cms\Doctrine\Type\Locale;
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use ExEss\Cms\Entity\Translation;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class DatabaseLoaderTest extends FunctionalTestCase
 {

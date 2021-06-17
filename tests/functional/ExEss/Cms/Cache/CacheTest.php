@@ -3,7 +3,7 @@
 namespace Test\Functional\ExEss\Cms\Cache;
 
 use ExEss\Cms\Cache\CacheAdapterFactory;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class CacheTest extends FunctionalTestCase
 {

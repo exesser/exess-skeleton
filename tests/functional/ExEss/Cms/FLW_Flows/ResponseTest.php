@@ -8,7 +8,7 @@ use ExEss\Cms\Collection\ObjectCollection;
 use ExEss\Cms\FLW_Flows\Action\Arguments;
 use ExEss\Cms\FLW_Flows\Action\Command;
 use ExEss\Cms\FLW_Flows\Response;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ResponseTest extends FunctionalTestCase
 {

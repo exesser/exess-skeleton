@@ -4,7 +4,7 @@ namespace Test\Functional\CustomInclude\Validators;
 
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use ExEss\Cms\Validators\NotInList;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class NotInListValidatorTest extends FunctionalTestCase
 {

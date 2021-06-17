@@ -4,7 +4,7 @@ namespace Test\Unit\ExEss\Cms\FLW_Flows\Response\Suggestion;
 
 use ExEss\Cms\FLW_Flows\Response\Suggestion\SuggestionInterface;
 use ExEss\Cms\FLW_Flows\Response\Suggestion\ValueSuggestion;
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 use JsonSerializable;
 
 class ValueSuggestionTest extends UnitTestCase

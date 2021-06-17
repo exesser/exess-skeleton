@@ -5,7 +5,7 @@ namespace Test\Functional\ExEss\Cms\Parser;
 use ExEss\Cms\Entity\ListCell;
 use ExEss\Cms\Parser\PathCompiler;
 use ExEss\Cms\Parser\PathResolverOptions;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class PathCompilerTest extends FunctionalTestCase
 {

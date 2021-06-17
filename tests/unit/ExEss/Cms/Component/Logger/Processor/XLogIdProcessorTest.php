@@ -3,7 +3,7 @@
 namespace Test\Unit\ExEss\Cms\Component\Logger\Processor;
 
 use ExEss\Cms\Component\Logger\Processor\XLogIdProcessor;
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 
 class XLogIdProcessorTest extends UnitTestCase
 {

@@ -2,7 +2,7 @@
 
 namespace Test\Functional\ExEss\Cms\Users\Listeners;
 
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 use ExEss\Cms\Entity\User;
 use ExEss\Cms\Entity\SecurityGroupUser;
 

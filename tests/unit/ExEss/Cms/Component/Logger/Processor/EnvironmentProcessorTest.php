@@ -3,7 +3,7 @@
 namespace Test\Unit\ExEss\Cms\Component\Logger\Processor;
 
 use ExEss\Cms\Component\Logger\Processor\EnvironmentProcessor;
-use ExEss\Cms\Test\Testcase\UnitTestCase;
+use Helper\Testcase\UnitTestCase;
 
 class EnvironmentProcessorTest extends UnitTestCase
 {

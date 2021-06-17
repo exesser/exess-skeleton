@@ -7,6 +7,6 @@ services:
 
   test.monolog.logger: '@monolog.logger'
 
-  ExEss\Cms\Test\TestRepository:
-    tags: [{ name: 'handler.list', alias: !php/const ExEss\Cms\Test\TestRepository::NAME }]
+  Helper\TestRepository:
+    tags: [{ name: 'handler.list', alias: !php/const Helper\TestRepository::NAME }]
 

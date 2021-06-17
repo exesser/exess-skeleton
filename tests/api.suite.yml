@@ -17,7 +17,7 @@ modules:
         - \Helper\CleanupHelper
         - \Helper\XmlHelper
         - Asserts
-        - ExEss\Cms\Test\Codeception\Module\Db
+        - Helper\Module\Db
         - REST:
            depends: Symfony
         - Filesystem

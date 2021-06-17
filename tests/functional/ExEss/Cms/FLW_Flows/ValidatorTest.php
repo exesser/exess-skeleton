@@ -8,7 +8,7 @@ use ExEss\Cms\Entity\Validator;
 use stdClass;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Validator as ValidatorService;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ValidatorTest extends FunctionalTestCase
 {

@@ -4,7 +4,7 @@ namespace Test\Functional\ExEss\Cms\Service;
 
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use ExEss\Cms\Service\MenuService;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 use Symfony\Component\Translation\Translator;
 
 class MenuServiceTest extends FunctionalTestCase

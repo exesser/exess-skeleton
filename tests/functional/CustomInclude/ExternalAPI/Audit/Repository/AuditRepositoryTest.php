@@ -9,7 +9,7 @@ use ExEss\Cms\Dictionary\Format;
 use ExEss\Cms\Doctrine\Type\Locale;
 use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class AuditRepositoryTest extends FunctionalTestCase
 {

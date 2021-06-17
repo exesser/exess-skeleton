@@ -8,7 +8,7 @@ use ExEss\Cms\Entity\User;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Suggestions\SelectWithSearchLabelHandler;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class SelectWithSearchLabelHandlerTest extends FunctionalTestCase
 {

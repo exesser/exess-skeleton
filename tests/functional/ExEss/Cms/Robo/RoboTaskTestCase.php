@@ -3,7 +3,7 @@
 namespace Test\Functional\ExEss\Cms\Robo;
 
 use Robo\Robo;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class RoboTaskTestCase extends FunctionalTestCase
 {

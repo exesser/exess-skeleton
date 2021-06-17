@@ -9,7 +9,7 @@ use ExEss\Cms\FLW_Flows\Event\Listeners\PreValidationSubscriber;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Suggestions\OverrideDefaultHandler;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 use Test\Functional\CustomModules\Dashboard\GridRepositoryTest;
 
 class PreValidationSubscriberTest extends FunctionalTestCase

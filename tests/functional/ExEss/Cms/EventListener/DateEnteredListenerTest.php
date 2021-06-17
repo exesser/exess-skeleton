@@ -4,7 +4,7 @@ namespace Test\Functional\ExEss\Cms\EventListener;
 
 use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 /**
  * @see DateEnteredListener

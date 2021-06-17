@@ -2,7 +2,7 @@
 
 namespace Test\Functional\CustomInclude\Validators;
 
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 use ExEss\Cms\Validators\MobilePhoneNumber;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 

@@ -34,7 +34,7 @@ coverage:
 
 modules:
     config:
-        ExEss\Cms\Test\Codeception\Module\Db:
+        Helper\Module\Db:
             dsn: 'mysql:host=%DBCONFIG_DB_HOST_NAME%;dbname=%DBCONFIG_DB_NAME%;charset=utf8'
             user: '%DBCONFIG_DB_USER_NAME%'
             password: '%DBCONFIG_DB_PASSWORD%'

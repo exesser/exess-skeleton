@@ -6,7 +6,7 @@ use ExEss\Cms\Command\CacheClearCommand;
 use Mockery;
 use ExEss\Cms\Cache\Cache;
 use ExEss\Cms\Cache\CacheAdapterFactory;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\Console\Tester\CommandTester;
 

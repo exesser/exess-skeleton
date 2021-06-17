@@ -2,12 +2,12 @@
 
 namespace Test\Functional\Api\V8_Custom\Repository;
 
-use ExEss\Cms\Test\TestRepository;
+use Helper\TestRepository;
 use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
 use ExEss\Cms\Base\Response\BaseListResponse;
 use ExEss\Cms\Exception\ExternalListFetchException;
-use ExEss\Cms\Test\Testcase\FunctionalTestCase;
+use Helper\Testcase\FunctionalTestCase;
 
 class ListHandlerTest extends FunctionalTestCase
 {

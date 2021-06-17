@@ -10,8 +10,8 @@ use ExEss\Cms\Api\V8_Custom\Service\User\DefaultUser;
 use ExEss\Cms\Command\Traits\LoginTrait;
 use ExEss\Cms\Entity\AclRole;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Test\Codeception\Module\Db;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Helper\Module\Db;
 
 class AclHelper extends \Codeception\Module
 {
@@ -68,7 +68,7 @@ class AclHelper extends \Codeception\Module
 
     protected function getDb(): Db
     {
-        return $this->getModule('ExEss\Cms\Test\Codeception\Module\Db');
+        return $this->getModule('Helper\Module\Db');
     }
 
     public function grantsAclRightsTo(string $userId, string $module, string $name, int $aclAccess): void
