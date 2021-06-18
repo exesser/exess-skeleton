@@ -29,16 +29,15 @@ services:
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
       - !tagged_iterator user.voter
 
-  ExEss\Cms\Users\Security\Route\DecisionManager:
+  ExEss\Cms\Security\Route\DecisionManager:
     arguments:
       - !tagged_iterator route.voter
 
   # Route voters
-  ExEss\Cms\Users\Security\Route\Voter\RouteVoter:
+  ExEss\Cms\Security\Route\Voter\RouteVoter:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
       - '@ExEss\Cms\SecurityGroups\SecurityGroupsRepository'
-      - '@Slim\Router'
     tags: ['route.voter']
 
   # CRUD

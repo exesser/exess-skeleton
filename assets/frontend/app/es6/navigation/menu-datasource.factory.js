@@ -11,7 +11,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('menuDatasource', function($http, API_URL, LOG_HEADERS_KEYS) {
+  .factory('menuDatasource', function($http, API_PATH, LOG_HEADERS_KEYS) {
 
     return { getMain, getSub };
 
@@ -23,7 +23,7 @@ angular.module('digitalWorkplaceApp')
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = 'Main menu';
 
-      return $http.get(API_URL + 'Menu', {headers}).then(function(response) {
+      return $http.get(API_PATH + 'menu', {headers}).then(function(response) {
         return response.data.data;
       });
     }
@@ -37,7 +37,7 @@ angular.module('digitalWorkplaceApp')
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = `Submenu for: ${mainMenuKey}`;
 
-      return $http.get(API_URL + `Menu/${mainMenuKey}`, {headers}).then(function(response) {
+      return $http.get(API_PATH + `menu/${mainMenuKey}`, {headers}).then(function(response) {
         return response.data.data;
       });
     }

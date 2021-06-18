@@ -1,29 +1,28 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace ExEss\Cms\Users\Security\Route;
+namespace ExEss\Cms\Security\Route;
 
-use Slim\Http\Request;
-use Slim\Route;
-use ExEss\Cms\Users\Security\Route\Voter\VoterInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use ExEss\Cms\Security\Route\Voter\VoterInterface;
 
 class DecisionManager
 {
     /**
      * @var iterable|VoterInterface[]
      */
-    private iterable $voters = [];
+    private iterable $voters;
 
     public function __construct(iterable $voters)
     {
         $this->voters = $voters;
     }
 
-    public function hasAccess(Request $request, Route $route): bool
+    public function hasAccess(ServerRequestInterface $request): bool
     {
         foreach ($this->voters as $voter) {
             if ($voter instanceof VoterInterface
-                && $voter->supports($request, $route)
-                && !$voter->vote($request, $route)
+                && $voter->supports($request)
+                && !$voter->vote($request)
             ) {
                 return false;
             }

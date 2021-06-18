@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Menu;
+namespace Test\Api\Api\Menu;
 
 use ApiTester;
 
@@ -23,11 +23,10 @@ class GetSubMenuCest
         $I->getAnApiTokenFor('adminUser');
 
         // When
-        $I->sendGET("/Api/V8_Custom/Menu/$name");
+        $I->sendGET("/Api/menu/$name");
 
         // Then
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
+        $I->seeResponseIsDwpResponse(200);
 
         $I->assertCount(
             2,

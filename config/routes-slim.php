@@ -7,7 +7,6 @@ use ExEss\Cms\Api\V8_Custom\Params\ChangeLocaleParams;
 use ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetDashboardParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetFilterParams;
-use ExEss\Cms\Api\V8_Custom\Params\GetSubMenuParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarActionParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
@@ -149,16 +148,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
         $app
             ->post('/log/error', 'ExEss\Cms\Api\V8_Custom\Controller\LogController:error')
             ->add($paramsFactory->create(LogParams::class))
-        ;
-
-        // Menu
-        $app->get('/Menu', 'ExEss\Cms\Api\V8_Custom\Controller\MenuController:getMainMenu')
-            ->add($controllerCache)
-        ;
-        $app
-            ->get('/Menu/{mainMenuKey}', 'ExEss\Cms\Api\V8_Custom\Controller\MenuController:getSubmenu')
-            ->add($paramsFactory->create(GetSubMenuParams::class))
-            ->add($controllerCache)
         ;
 
         $app

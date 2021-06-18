@@ -270,6 +270,8 @@ services:
       - '@doctrine.orm.entity_manager'
       - '@ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder'
 
+  ExEss\Cms\Http\Factory\PsrFactory: ~
+
   # Autowired Service directory
   ExEss\Cms\Service\:
     public: true

@@ -23,6 +23,8 @@ class FlowCest
             'grid_gridtemplates_id_c' => $this->gridId,
             'dashboard_menu_id' => $this->dashboardMenuId,
         ]);
+
+        $this->user = new CrudTestUser($I);
     }
 
     public function _after(ApiTester $I): void
@@ -32,7 +34,8 @@ class FlowCest
 
     public function shouldNotSeeConfigRecordDetailsFlow(ApiTester $I): void
     {
-        $this->user = new CrudTestUser($I);
+        $I->markTestSkipped("until route has been transferred to sf");
+
         $this->user->login();
 
         $I->sendPOST(
@@ -44,7 +47,6 @@ class FlowCest
 
     public function shouldSeeConfigRecordDetailsFlow(ApiTester $I): void
     {
-        $this->user = new CrudTestUser($I);
         $this->user->linkSecurity(CrudTestUser::CRUD_VIEW_CONFIG_SECURITY);
         $this->user->login();
 
@@ -59,7 +61,8 @@ class FlowCest
 
     public function shouldNotSeeConfigRecordEditFlow(ApiTester $I): void
     {
-        $this->user = new CrudTestUser($I);
+        $I->markTestSkipped("until route has been transferred to sf");
+
         $this->user->login();
 
         $I->sendPOST(
@@ -70,7 +73,6 @@ class FlowCest
 
     public function shouldSeeConfigRecordEditFlow(ApiTester $I): void
     {
-        $this->user = new CrudTestUser($I);
         $this->user->linkSecurity(CrudTestUser::CRUD_VIEW_CONFIG_SECURITY);
         $this->user->linkSecurity(CrudTestUser::CRUD_EDIT_CONFIG_SECURITY);
         $this->user->login();

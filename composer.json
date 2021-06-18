@@ -45,6 +45,7 @@
         "ocramius/proxy-manager": "^2.1",
         "ramsey/uuid": "^4.1",
         "ramsey/uuid-doctrine": "^1.5",
+        "sensio/framework-extra-bundle": "^6.0",
         "slim/slim": "3.8.*",
         "symfony/cache": "^5.2",
         "symfony/console": "^5.2",
