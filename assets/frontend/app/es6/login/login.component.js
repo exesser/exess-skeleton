@@ -68,7 +68,7 @@ angular.module('digitalWorkplaceApp')
        */
       function postAuthenticate() {
         return userDatasource.current(loginFactory.afterLoginState).then(function (user) {
-          currentUserFactory.setUser({ username: user.user_name });
+          currentUserFactory.setUser({ username: user.username });
           setPreferredLanguage(user);
           setAnalyticsData(user);
 
@@ -89,7 +89,7 @@ angular.module('digitalWorkplaceApp')
        */
       function setPreferredLanguage(user) {
         const preferredLanguage =
-          _.isEmpty(user.preferred_language) ? LANGUAGE.ENGLISH_BELGIUM : user.preferred_language;
+          _.isEmpty(user.preferredLanguage) ? LANGUAGE.ENGLISH_BELGIUM : user.preferredLanguage;
 
         if ($translate.use() !== preferredLanguage && _.includes(LANGUAGE, preferredLanguage)) {
           $translate.use(preferredLanguage);
@@ -102,13 +102,7 @@ angular.module('digitalWorkplaceApp')
        * @param {Object} user
        */
       function setAnalyticsData(user) {
-        $analytics.setUsername(user.user_name);
-        googleTagManager.push(
-          {
-            'clientnumber': user.account_number,
-            'event': 'clientnumber'
-          }
-        );
+        $analytics.setUsername(user.username);
       }
     }
   });

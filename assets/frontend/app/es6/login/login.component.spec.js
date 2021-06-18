@@ -70,7 +70,7 @@ describe('Component: login', function () {
   });
 
   it('should skip the login modal when autologin succeeds', function () {
-    spyOn(userDatasource, 'current').and.callFake(mockHelpers.resolvedPromise($q, { user_name: "Tony" }));
+    spyOn(userDatasource, 'current').and.callFake(mockHelpers.resolvedPromise($q, { username: "Tony" }));
     spyOn(currentUserFactory, 'setUser');
 
     compile();
@@ -93,7 +93,7 @@ describe('Component: login', function () {
       }
     };
 
-    spyOn(userDatasource, 'current').and.callFake(mockHelpers.resolvedPromise($q, { user_name: "Tony", command }));
+    spyOn(userDatasource, 'current').and.callFake(mockHelpers.resolvedPromise($q, { username: "Tony", command }));
     spyOn(currentUserFactory, 'setUser');
     spyOn(commandHandler, 'handle');
 
@@ -125,7 +125,7 @@ describe('Component: login', function () {
       loginPromise.resolve({data: {data: {token:"token-value"}}});
       spyOn(tokenFactory, 'setToken');
 
-      currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { user_name: "Tony" }));
+      currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { username: "Tony" }));
       spyOn(currentUserFactory, 'setUser');
 
       submitElement.click();
@@ -221,7 +221,7 @@ describe('Component: login', function () {
 
     it('should set the default language', function () {
       spyOn(loginFactory, 'login').and.callFake(mockHelpers.resolvedPromise($q));
-      currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { user_name: "Tony" }));
+      currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { username: "Tony" }));
       spyOn($translate, 'use').and.returnValue('en_BE');
 
       submitElement.click();
@@ -233,7 +233,7 @@ describe('Component: login', function () {
 
     it('should set the preferred language', function () {
       spyOn(loginFactory, 'login').and.callFake(mockHelpers.resolvedPromise($q));
-      currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { user_name: "Tony", preferred_language: "nl_BE" }));
+      currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { username: "Tony", preferredLanguage: "nl_BE" }));
       spyOn($translate, 'use');
 
       submitElement.click();
@@ -259,9 +259,9 @@ describe('Component: login', function () {
       expect(userDatasource.current).toHaveBeenCalledTimes(1);
     });
 
-    it('should set the username and clientnumber', function () {
+    it('should set the username', function () {
       spyOn(loginFactory, 'login').and.callFake(mockHelpers.resolvedPromise($q));
-      currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { user_name: "Tony", account_number: '12345' }));
+      currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { username: "Tony" }));
 
       spyOn($analytics, 'setUsername');
       spyOn(googleTagManager, 'push');
@@ -271,8 +271,6 @@ describe('Component: login', function () {
 
       expect($analytics.setUsername).toHaveBeenCalledTimes(1);
       expect($analytics.setUsername).toHaveBeenCalledWith('Tony');
-      expect(googleTagManager.push).toHaveBeenCalledTimes(1);
-      expect(googleTagManager.push).toHaveBeenCalledWith({ 'clientnumber': '12345', 'event': 'clientnumber' });
     });
   });
 });

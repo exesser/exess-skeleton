@@ -40,17 +40,10 @@ class UserServiceTest extends FunctionalTestCase
         // Then
         $this->tester->assertEquals(
             [
-                'user_name' => $userName,
-                'last_name' => 'D',
-                'first_name' => 'B',
-                'full_name' => 'B D',
-                'date_entered' => '2017-01-06 00:00:00',
-                'email1' => $userName,
-                'status' => UserStatus::ACTIVE,
-                'is_admin' => true,
-                'preferred_language' => Locale::EN,
+                'username' => $userName,
+                'preferredLanguage' => Locale::EN,
             ],
-            $result
+            \json_decode(\json_encode($result), true)
         );
     }
 }

@@ -22,14 +22,7 @@ describe('Factory: userDatasource - http requests', function () {
     const mockResponse = {
       "status": 200,
       "data": {
-        "user_name": "Tony",
-        "last_name": null,
-        "first_name": null,
-        "full_name": " ",
-        "date_entered": null,
-        "email1": null,
-        "status": null,
-        "is_admin": "0"
+        "username": "Tony",
       },
       "message": "Success"
     };
@@ -57,14 +50,7 @@ describe('Factory: userDatasource - http requests', function () {
     const mockResponse = {
       "status": 200,
       "data": {
-        "user_name": "Tony",
-        "last_name": null,
-        "first_name": null,
-        "full_name": " ",
-        "date_entered": null,
-        "email1": null,
-        "status": null,
-        "is_admin": "0"
+        "username": "Tony",
       },
       "message": "Success"
     };

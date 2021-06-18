@@ -169,6 +169,11 @@ class User implements UserInterface, CmsUserInterface
         return $this->id;
     }
 
+    public function getUserIdentifier(): ?string
+    {
+        return $this->userName;
+    }
+
     public function getUserName(): ?string
     {
         return $this->userName;
