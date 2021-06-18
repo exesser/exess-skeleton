@@ -12,7 +12,7 @@ up-front:
 	@docker-compose -f docker-compose.frontend.yml up -d --build
 
 down: 
-	@docker-compose -f docker-compose.yml -f docker-compose.frontend.yml down --remove-orphans
+	@docker-compose -f docker-compose.yml -f docker-compose.frontend.yml down --remove-orphans --volumes
 
 init:
 	@make up
