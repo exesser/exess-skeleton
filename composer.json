@@ -1,8 +1,8 @@
 {
-    "name": "exesser/exesscms",
-    "type": "library",
+    "name": "exesser/exess-skeleton",
+    "type": "project",
     "license": "MIT",
-    "description": "Api and front-end with cms capabilities",
+    "description": "Open source content-management system implemented with Symfony",
     "config": {
         "vendor-dir": "vendor",
         "bin-dir": "bin",
