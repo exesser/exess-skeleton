@@ -2,59 +2,17 @@
 
 ## Installation
 
-TODO: update these instructions !!!
+Prerequisite: Make sure you have docker installed on your machine ([docker website](https://www.docker.com)).
 
-Make sure you have docker installed on your machine.
+- Run `composer create-project exesser/exess-skeleton my-project`
+- Run `cd my-project`
+- Run `make init`
 
-Runt init (one time only)
+This will setup the needed docker containers, fills the database with some test data, installs some git-hooks for the project
 
-```sh
-cd dwp-temp
-make init
-```
+- Run `make test`, to run the php test suite and make sure everything's ok
+- Run `make front-test`, to run the AngularJs test suite and make sure that's ok too
+  
+### Front-end
 
-Run tests:
-
-```sh
-make test
-```
-
-make a DB connection in your mysql client:
-
-```sh
-host: 127.0.0.1
-database: exesscms 
-port: 3306 
-```
-
-Open DWP:
-[http://localhost:8888/](http://localhost:8888/)
-
-### Configure PHPSTORM to Xdebug
-
-![information](dev/docs/xdebug_settings.png)
-
-And configure the Browser to start Xdebugging with PHPStorm by 
-[generating the bookmarklets](https://www.jetbrains.com/phpstorm/marklets/) (click generate for xdebug,
-and save those bookmarklets under a folder)
-
-## Debug
-
-If you are using chrome:
-
-1. Install [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc)
-2. Right-click on the Xdebug icon, select options and the proper IDE key
-3. Left-click on the icon and select debug
-
-If you are using Intellij/PHPStorm:
-
-1. Go to preferences -> Languages & Frameworks -> PHP -> Servers
-2. Create a new framework with the following options:
-    - Host: `exesscms.dev`
-    - Port: `80`
-    - Debugger: `Xdebug`
-    - For every route in your "Project Files" list, set `/vagrant` as your "Absolute path on the server" (this is a column)
-3. Click in the "Start Listening for PHP Debug Connections".
-4. Put a breakpoint somewhere.
-5. Go to your local [DWP](http://exesscms.dev/dwp)
-6. Now you can be a happy developer again!
+The front-end should be available at port 9005, so you should be able to visit [http://localhost:9005](http://localhost:9005) if npm is started (tip check docker logs for `cms-node` container)

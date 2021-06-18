@@ -1,11 +1,16 @@
-# ExessCms
+# Exess skeleton
 
-Api and front-end with cms capabilities.
+Open source api and front-end with cms capabilities. 
+This is the base skeleton which you need to get started!
 
 ## Installation
 
-Go [here](docs/installation.md) and follow the instructions!
+Go [to the installion guid](docs/installation.md) and follow the instructions!
 
 ## Developer documentation
 
-There are docs available in the `docs` folder or go [here](docs/index.md)
+There are docs available [in the `docs` folder](docs/index.md)
+
+## Contributing
+
+Look for our [contribution guidelines in `.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md)

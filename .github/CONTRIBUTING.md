@@ -8,7 +8,7 @@ You don't have to be a PHP or Symfony guru or even be a programmer to help our c
 
 - Open an `issue` and tell us you're gonna try to contribute the feature or bug yourself
 - Fork this project
-- Check the `installation guide` on how to setup your environment with Docker
+- Check the (installation guide)[../docs/installation.md] on how to setup your environment with Docker
 - Write code
 - Run `composer run lint` and `composer run test` to make sure everything is good to go
 - Create a new branch starting feature/issue-<issue-number> or fix/issue-<issue-number>
