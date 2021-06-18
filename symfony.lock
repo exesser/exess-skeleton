@@ -232,12 +232,6 @@
     "laminas/laminas-code": {
         "version": "4.2.0"
     },
-    "laminas/laminas-eventmanager": {
-        "version": "3.3.1"
-    },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.2.0"
-    },
     "league/container": {
         "version": "2.4.1"
     },
@@ -609,9 +603,6 @@
     },
     "symfony/orm-pack": {
         "version": "v1.1.0"
-    },
-    "symfony/password-hasher": {
-        "version": "v5.3.0"
     },
     "symfony/polyfill-ctype": {
         "version": "v1.22.0"
