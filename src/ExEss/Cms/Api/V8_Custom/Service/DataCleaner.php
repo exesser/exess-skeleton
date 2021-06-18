@@ -19,22 +19,50 @@ class DataCleaner
      * @param mixed $data
      * @return mixed
      */
-    public static function clean($data)
+    public static function cleanInput($data)
     {
         if (null === $data) {
             return $data;
         }
 
         if (\is_object($data) || \is_array($data)) {
-            foreach ($data as $key => &$value) {
-                $value = self::clean($value);
+            foreach ($data as &$value) {
+                $value = self::cleanInput($value);
             }
         }
 
         if (\is_string($data)) {
-            $data = \preg_replace('/javascript:/i', 'java script:', $data);
-            $data = \str_replace(['{{', '}}'], ['[[', ']]'], $data);
-            return \preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $data);
+            return \preg_replace(
+                ['/javascript:/i', '/<script[^>]*>(.*?)<(\\\\)*\/script>/is'],
+                ['java script:', ""],
+                $data
+            );
+        }
+
+        return $data;
+    }
+
+    /**
+     * Takes an object, or array or null or string or int, whatever actually
+     * and will filter out javascript if its present.
+     *
+     * @param mixed $data
+     * @return mixed
+     */
+    public static function cleanOutput($data)
+    {
+        if (null === $data) {
+            return $data;
+        }
+
+        if (\is_object($data) || \is_array($data)) {
+            foreach ($data as &$value) {
+                $value = self::cleanOutput($value);
+            }
+        }
+
+        if (\is_string($data)) {
+            return \str_replace(['{{', '}}'], ['[[', ']]'], $data);
         }
 
         return $data;
