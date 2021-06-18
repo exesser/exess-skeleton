@@ -687,11 +687,11 @@ class ListFunctions
                 $dynamicListRowCell->options->linkTo = \str_replace('_', '-', $cell->getLinkto());
 
                 if (isset($dynamicListRowCell->options->line1)) {
-                    $dynamicListRowCell->options->line1 = DataCleaner::cleanInput($dynamicListRowCell->options->line1);
+                    $dynamicListRowCell->options->line1 = DataCleaner::cleanOutput($dynamicListRowCell->options->line1);
                 }
 
                 if (isset($dynamicListRowCell->options->line2)) {
-                    $dynamicListRowCell->options->line2 = DataCleaner::cleanInput($dynamicListRowCell->options->line2);
+                    $dynamicListRowCell->options->line2 = DataCleaner::cleanOutput($dynamicListRowCell->options->line2);
                 }
 
                 $dynamicListRow->cells[] = $dynamicListRowCell;
