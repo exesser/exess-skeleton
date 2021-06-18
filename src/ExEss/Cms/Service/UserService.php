@@ -4,7 +4,7 @@ namespace ExEss\Cms\Service;
 
 use ExEss\Cms\Api\V8_Custom\Service\User\CommandService;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Users\UserData;
+use ExEss\Cms\Users\PreferencesData;
 
 class UserService
 {
@@ -18,9 +18,9 @@ class UserService
         $this->commandService = $commandService;
     }
 
-    public function getDataFor(User $currentUser): UserData
+    public function getPreferencesData(User $currentUser): PreferencesData
     {
-        return new UserData(
+        return new PreferencesData(
             $currentUser,
             $this->fallbackLocale,
             $this->commandService->getRedirectCommandForUser($currentUser)

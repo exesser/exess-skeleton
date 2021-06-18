@@ -6,17 +6,14 @@ use ExEss\Cms\Entity\User;
 use ExEss\Cms\FLW_Flows\Action\Command;
 use JsonSerializable;
 
-class UserData implements JsonSerializable
+class PreferencesData implements JsonSerializable
 {
-    private string $username;
-
     private string $preferredLanguage;
 
     private ?Command $command;
 
     public function __construct(User $user, string $fallbackLocale, ?Command $command)
     {
-        $this->username = $user->getUserIdentifier() ?? '';
         $this->preferredLanguage = $user->getPreferredLocale() ?? $fallbackLocale;
         $this->command = $command;
     }

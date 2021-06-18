@@ -9,7 +9,7 @@ use ExEss\Cms\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CurrentController extends AbstractController
+class PreferencesController extends AbstractController
 {
     private UserService $userService;
 
@@ -22,7 +22,7 @@ class CurrentController extends AbstractController
     }
 
     /**
-     * @Route("/Api/user/current", methods={"GET"})
+     * @Route("/Api/user/preferences", methods={"GET"})
      */
     public function __invoke(): SuccessResponse
     {
@@ -30,6 +30,6 @@ class CurrentController extends AbstractController
             throw new NotAuthenticatedException('Token not found');
         }
 
-        return new SuccessResponse($this->userService->getDataFor($user));
+        return new SuccessResponse($this->userService->getPreferencesData($user));
     }
 }

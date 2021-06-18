@@ -28,7 +28,7 @@ describe('Factory: userDatasource - http requests', function () {
     };
 
     $httpBackend.expectGET(/^(.*)user\/current\?(.*)/, function(headers) {
-      return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Current user'
+      return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'User preferences'
         && headers[LOG_HEADERS_KEYS.DWP_FULL_PATH] === 'exesscms.local/dwp/#/menu/dashboard/test-dwp/';
     }).respond(mockResponse);
 
@@ -56,7 +56,7 @@ describe('Factory: userDatasource - http requests', function () {
     };
 
     $httpBackend.expectGET(/^(.*)user\/current\?(.*)/, function(headers) {
-      return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Current user'
+      return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'User preferences'
         && _.isUndefined(headers[LOG_HEADERS_KEYS.DWP_FULL_PATH]);
     }).respond(mockResponse);
 
