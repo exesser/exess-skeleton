@@ -7,14 +7,13 @@ services:
     public: true
     bind:
       $debug: '%verbose_errors%'
+      $requestLogger: '@monolog.logger.request'
 
-  ExEss\Cms\Http\EventSubscriber\ExceptionSubscriber:
-    autoconfigure: true
+  # Auto-wired and auto-configured http event subscribers
+  ExEss\Cms\Http\EventSubscriber\:
     autowire: true
-
-  ExEss\Cms\Http\EventSubscriber\FlashMessageSubscriber:
     autoconfigure: true
-    autowire: true
+    resource: '../../src/ExEss/Cms/Http/EventSubscriber'
 
   ExEss\Cms\Api\V8_Custom\Events\Listeners\EnhanceHeadersSubscriber:
     lazy: true

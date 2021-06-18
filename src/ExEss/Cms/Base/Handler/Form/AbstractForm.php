@@ -13,18 +13,11 @@ abstract class AbstractForm extends AbstractSaveHandler implements FlashMessageC
 {
     private FlashMessageContainer $flashMessageContainer;
 
-    /**
-     * @inheritdoc
-     */
-    public function setFlashMessageContainer(FlashMessageContainer $flashMessageContainer)
+    public function setFlashMessageContainer(FlashMessageContainer $flashMessageContainer): void
     {
         $this->flashMessageContainer = $flashMessageContainer;
     }
 
-    /**
-     * @inheritdoc
-     * @throws \DomainException When we have a servicemix error.
-     */
     protected function doHandle(FlowData $data): void
     {
         try {

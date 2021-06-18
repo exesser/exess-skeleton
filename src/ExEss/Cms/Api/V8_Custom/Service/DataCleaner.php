@@ -10,6 +10,8 @@ use ExEss\Cms\Exception\JsonDecodeException;
  */
 class DataCleaner
 {
+    public const STREAM_REPLACEMENT = 'stream-not-logged';
+
     /**
      * Takes an object, or array or null or string or int, whatever actually
      * and will filter out javascript if its present.
@@ -132,7 +134,7 @@ class DataCleaner
                 if ($removeCompleteFile) {
                     unset($model[Dwp::BINARY_FILE][$key]);
                 } else {
-                    $model[Dwp::BINARY_FILE][$key]['stream'] = 'stream-not-logged';
+                    $model[Dwp::BINARY_FILE][$key]['stream'] = self::STREAM_REPLACEMENT;
                 }
             }
         }

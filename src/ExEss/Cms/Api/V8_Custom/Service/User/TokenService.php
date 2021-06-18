@@ -39,11 +39,4 @@ class TokenService
             return null;
         }
     }
-
-    public function getCookie(string $jwt): array
-    {
-        return [
-            'value' => $jwt,
-        ];
-    }
 }
