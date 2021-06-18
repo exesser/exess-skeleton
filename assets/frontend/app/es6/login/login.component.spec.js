@@ -13,7 +13,6 @@ describe('Component: login', function () {
 
   let loginFactory;
   let tokenFactory;
-  let currentUserFactory;
   let userDatasource;
   let commandHandler;
 

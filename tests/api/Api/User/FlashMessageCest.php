@@ -19,7 +19,7 @@ class FlashMessageCest
         $flashMessageContainer->addFlashMessage(new FlashMessage($message));
 
         // When
-        $I->sendGET('/Api/user/current');
+        $I->sendGET('/Api/user/preferences');
 
         // Then
         $I->seeResponseCodeIs(200);

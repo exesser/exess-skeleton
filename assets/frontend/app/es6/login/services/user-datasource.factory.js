@@ -18,7 +18,7 @@ angular.module('digitalWorkplaceApp')
      */
     function getUserPreferences(afterLoginState) {
       const headers = {};
-      headers[LOG_HEADERS_KEYS.DESCRIPTION] = 'Current user';
+      headers[LOG_HEADERS_KEYS.DESCRIPTION] = 'User preferences';
       if (_.isUndefined(afterLoginState) === false
         && _.isUndefined(afterLoginState.name) === false
         && _.isUndefined(afterLoginState.params) === false
@@ -27,7 +27,7 @@ angular.module('digitalWorkplaceApp')
           _.head(_.split($location.absUrl(), '/#')) + '/' + $state.href(afterLoginState.name, afterLoginState.params);
       }
 
-      return $http.get(API_PATH + 'user/current?' + _.random(1, 99999), {headers}).then(function(response) {
+      return $http.get(API_PATH + 'user/preferences?' + _.random(1, 99999), {headers}).then(function(response) {
         return response.data.data;
       });
     }
