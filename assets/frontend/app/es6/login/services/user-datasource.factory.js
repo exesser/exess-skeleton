@@ -10,13 +10,13 @@
 angular.module('digitalWorkplaceApp')
   .factory('userDatasource', function ($http, API_PATH, LOG_HEADERS_KEYS, $state, $location) {
 
-    return { current };
+    return { getUserPreferences };
 
     /**
      * Returns the current user.
      * @return {Promise} A promise which resolves to the current user.
      */
-    function current(afterLoginState) {
+    function getUserPreferences(afterLoginState) {
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = 'Current user';
       if (_.isUndefined(afterLoginState) === false

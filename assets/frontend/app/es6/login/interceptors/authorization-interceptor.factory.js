@@ -7,7 +7,7 @@
  * Factory in the digitalWorkplaceApp is a $http.interceptor.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('authorizationInterceptor', function ($injector, $q, currentUserFactory, tokenFactory) {
+  .factory('authorizationInterceptor', function ($injector, $q, tokenFactory) {
 
     /*
       A Note about injecting the $state via the $injector manually.
@@ -39,11 +39,10 @@ angular.module('digitalWorkplaceApp')
     function responseError(rejection) {
       if (rejection.status === 401) {
         tokenFactory.removeToken();
-        currentUserFactory.setUser(null);
+
         if (_.has(rejection.data, 'command')) {
           // Inject 'commandHandler' manually to prevent the circular dependency bug.
           $injector.get('commandHandler').handle(rejection.data.command);
-          currentUserFactory.setDisplayLogin(false);
           return $q.reject(rejection);
         }
 

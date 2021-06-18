@@ -10,15 +10,13 @@ describe('Service: loginFactory', function () {
   let $httpBackend;
   let API_URL;
   let LOG_HEADERS_KEYS;
-  let currentUserFactory;
 
-  beforeEach(inject(function (_loginFactory_, _$httpBackend_, $state, _API_URL_, _LOG_HEADERS_KEYS_, _currentUserFactory_) {
+  beforeEach(inject(function (_loginFactory_, _$httpBackend_, $state, _API_URL_, _LOG_HEADERS_KEYS_) {
     mockHelpers.blockUIRouter($state);
 
     loginFactory = _loginFactory_;
     API_URL = _API_URL_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
-    currentUserFactory = _currentUserFactory_;
 
     $httpBackend = _$httpBackend_;
   }));
@@ -29,8 +27,6 @@ describe('Service: loginFactory', function () {
   });
 
   it('should send the correct login request, and handle a successful response.', function () {
-    spyOn(currentUserFactory, 'setUser');
-
     $httpBackend.expectPOST('/Api/login', function(data) {
       return data === '{ "username": "kristof", "password": "vc" }';
     }, function(headers) {

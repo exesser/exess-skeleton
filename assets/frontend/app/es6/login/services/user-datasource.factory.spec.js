@@ -34,7 +34,7 @@ describe('Factory: userDatasource - http requests', function () {
 
     let promiseResolved = false;
 
-    userDatasource.current({name: 'dashboard', params: {mainMenuKey: 'menu', dashboardId: 'test-dwp'}}).then(function(user) {
+    userDatasource.getUserPreferences({name: 'dashboard', params: {mainMenuKey: 'menu', dashboardId: 'test-dwp'}}).then(function(user) {
       expect(user).toEqual(mockResponse.data);
       promiseResolved = true;
     });
@@ -62,7 +62,7 @@ describe('Factory: userDatasource - http requests', function () {
 
     let promiseResolved = false;
 
-    userDatasource.current().then(function(user) {
+    userDatasource.getUserPreferences().then(function(user) {
       expect(user).toEqual(mockResponse.data);
       promiseResolved = true;
     });

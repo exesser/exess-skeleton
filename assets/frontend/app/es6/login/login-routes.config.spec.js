@@ -44,11 +44,11 @@ describe('Routes: login', function () {
   }));
 
   it('should transition user to home page if he tries to go to the login page if he is already logged in', function () {
-    const currentUserFactory = createCurrentUserFactory(true);
+    const tokenFactory = createTokenFactory(true);
 
-    runBlock(rootScope, currentUserFactory, undefined, state);
+    runBlock(rootScope, tokenFactory, undefined, state);
 
-    spyOn(currentUserFactory, 'isLoggedIn').and.callThrough();
+    spyOn(tokenFactory, 'hasToken').and.callThrough();
     spyOn(state, 'transitionTo');
 
     const toState = { name: 'login' };
@@ -57,7 +57,7 @@ describe('Routes: login', function () {
 
     $stateChangeStart(event, toState);
 
-    expect(currentUserFactory.isLoggedIn).toHaveBeenCalledTimes(1);
+    expect(tokenFactory.hasToken).toHaveBeenCalledTimes(1);
 
     expect(event.preventDefault).toHaveBeenCalledTimes(1);
 
@@ -66,11 +66,11 @@ describe('Routes: login', function () {
   });
 
   it('should transition user to login page if he tries to go a page when he is not logged in', function () {
-    const currentUserFactory = createCurrentUserFactory(false);
+    const tokenFactory = createTokenFactory(false);
 
-    runBlock(rootScope, currentUserFactory, loginFactory, state);
+    runBlock(rootScope, tokenFactory, loginFactory, state);
 
-    spyOn(currentUserFactory, 'isLoggedIn').and.callThrough();
+    spyOn(tokenFactory, 'hasToken').and.callThrough();
     spyOn(state, 'transitionTo');
 
     const toState = { name: 'home-page' };
@@ -80,7 +80,7 @@ describe('Routes: login', function () {
 
     $stateChangeStart(event, toState, toParams);
 
-    expect(currentUserFactory.isLoggedIn).toHaveBeenCalledTimes(1);
+    expect(tokenFactory.hasToken).toHaveBeenCalledTimes(1);
 
     expect(event.preventDefault).toHaveBeenCalledTimes(1);
 
@@ -92,11 +92,11 @@ describe('Routes: login', function () {
   });
 
   it('should allow the user to go to the page if he is logged in', function () {
-    const currentUserFactory = createCurrentUserFactory(true);
+    const tokenFactory = createTokenFactory(true);
 
-    runBlock(rootScope, currentUserFactory, loginFactory, state);
+    runBlock(rootScope, tokenFactory, loginFactory, state);
 
-    spyOn(currentUserFactory, 'isLoggedIn').and.callThrough();
+    spyOn(tokenFactory, 'hasToken').and.callThrough();
     spyOn(state, 'transitionTo');
 
     const toState = { name: 'home-page' };
@@ -106,7 +106,7 @@ describe('Routes: login', function () {
 
     $stateChangeStart(event, toState, toParams);
 
-    expect(currentUserFactory.isLoggedIn).toHaveBeenCalledTimes(1);
+    expect(tokenFactory.hasToken).toHaveBeenCalledTimes(1);
 
     expect(event.preventDefault).not.toHaveBeenCalled();
     expect(state.transitionTo).not.toHaveBeenCalled();
@@ -124,13 +124,10 @@ describe('Routes: login', function () {
     expect(state.views['modal@'].template).toBe('<login></login>');
   });
 
-  function createCurrentUserFactory(isLoggedIn) {
+  function createTokenFactory(isLoggedIn) {
     return {
-      isLoggedIn() {
+      hasToken() {
         return isLoggedIn;
-      },
-      getUser() {
-        return { role: 'ADMIN' };
       }
     };
   }
