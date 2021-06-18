@@ -15,11 +15,6 @@ services:
   # It starts with the routing in the middle, and every middleware you add here,
   # is added as a layer around the routing or the previous middleware in the array.
 
-  ExEss\Cms\Api\V8_Custom\Middleware\SecurityMiddleware:
-    arguments:
-      - '@ExEss\Cms\Users\Security\Route\DecisionManager'
-    tags: [{ name: 'crm.middleware', priority: 150 }]
-
   # Make sure this is before the JwtAuthentication to guarantee x-log-user-id and x-log-user are filled in
   # when logging incoming calls
   ExEss\Cms\Api\V8_Custom\Middleware\LoggingMiddleware:

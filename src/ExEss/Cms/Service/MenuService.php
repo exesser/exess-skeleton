@@ -3,6 +3,7 @@
 namespace ExEss\Cms\Service;
 
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
+use ExEss\Cms\Entity\Menu;
 use ExEss\Cms\Repository\DashboardRepository;
 use ExEss\Cms\Repository\MenuRepository;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -40,11 +41,8 @@ class MenuService
         return $menus;
     }
 
-    public function getSubMenu(string $menuName): array
+    public function getSubMenu(Menu $menu): array
     {
-        // @todo could have been done by a param converter in the route
-        $menu = $this->menuRepository->get($menuName);
-
         $return = [];
         foreach ($this->dashboardRepository->getFor($menu) as $dashboard) {
             $return[] = [
@@ -52,7 +50,7 @@ class MenuService
                 'link' => 'dashboard',
                 'params' => [
                     'dashboardId' => $dashboard->getKey(),
-                    'mainMenuKey' => $menuName,
+                    'mainMenuKey' => $menu->getName(),
                     'recordId' => null,
                 ],
             ];

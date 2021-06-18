@@ -2,7 +2,9 @@
 
 namespace Test\Functional\ExEss\Cms\Service;
 
+use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
+use ExEss\Cms\Entity\Menu;
 use ExEss\Cms\Service\MenuService;
 use Helper\Testcase\FunctionalTestCase;
 use Symfony\Component\Translation\Translator;
@@ -20,10 +22,14 @@ class MenuServiceTest extends FunctionalTestCase
 
     private array $currentRecords;
 
+    private EntityManager $em;
+
     public function _before(): void
     {
         $this->translator = \Mockery::mock(Translator::class);
         $this->tester->mockService(Translator::class, $this->translator);
+
+        $this->em = $this->tester->grabService('doctrine.orm.entity_manager');
 
         $this->menuService = $this->tester->grabService(MenuService::class);
 
@@ -186,8 +192,10 @@ class MenuServiceTest extends FunctionalTestCase
             ->with($subMenuName3, [], TranslationDomain::SUB_MENU)
             ->andReturn($subMenuName3);
 
+        $menu = $this->em->find(Menu::class, $mainMenuId);
+
         // run
-        $actual = $this->menuService->getSubMenu($mainMenuKey);
+        $actual = $this->menuService->getSubMenu($menu);
 
         // assert
         $this->tester->assertEquals($expected, $actual);

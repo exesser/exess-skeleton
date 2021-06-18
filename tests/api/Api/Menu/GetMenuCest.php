@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Menu;
+namespace Test\Api\Api\Menu;
 
 use ApiTester;
 
@@ -21,7 +21,7 @@ class GetMenuCest
         $expectedItems = $items + 2;
 
         // When
-        $I->sendGET('/Api/V8_Custom/Menu');
+        $I->sendGET('/Api/menu');
 
         // Then
         $I->seeResponseIsDwpResponse(200);

@@ -3,16 +3,14 @@
 namespace ExEss\Cms\Http\EventSubscriber;
 
 use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
+use ExEss\Cms\Doctrine\Type\HttpMethod;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
-use Nyholm\Psr7\Factory\Psr17Factory;
+use ExEss\Cms\Http\Factory\PsrFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Log\LoggerInterface;
-use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -28,10 +26,14 @@ class LogSubscriber implements EventSubscriberInterface
 
     private LoggerInterface $logger;
 
+    private PsrFactory $psrFactory;
+
     public function __construct(
+        PsrFactory $psrFactory,
         LoggerInterface $requestLogger
     ) {
         $this->logger = $requestLogger;
+        $this->psrFactory = $psrFactory;
     }
 
     public static function getSubscribedEvents(): array
@@ -44,32 +46,16 @@ class LogSubscriber implements EventSubscriberInterface
         ];
     }
 
-    private function getPsrRequest(Request $request): ServerRequestInterface
-    {
-        $psr17Factory = new Psr17Factory();
-        $psrHttpFactory = new PsrHttpFactory($psr17Factory, $psr17Factory, $psr17Factory, $psr17Factory);
-
-        return $psrHttpFactory->createRequest($request);
-    }
-
-    private function getPsrResponse(Response $response): ResponseInterface
-    {
-        $psr17Factory = new Psr17Factory();
-        $psrHttpFactory = new PsrHttpFactory($psr17Factory, $psr17Factory, $psr17Factory, $psr17Factory);
-
-        return $psrHttpFactory->createResponse($response);
-    }
-
     public function logRequest(RequestEvent $event): void
     {
-        $this->logPsrRequest($this->getPsrRequest($event->getRequest()));
+        $this->logPsrRequest($this->psrFactory->createRequest($event->getRequest()));
     }
 
     public function logResponse(ResponseEvent $event): void
     {
         $this->logPsrResponse(
-            $this->getPsrRequest($event->getRequest()),
-            $this->getPsrResponse($event->getResponse())
+            $this->psrFactory->createRequest($event->getRequest()),
+            $this->psrFactory->createResponse($event->getResponse())
         );
     }
 
@@ -125,7 +111,7 @@ class LogSubscriber implements EventSubscriberInterface
 
     private function determineLogMode(ServerRequestInterface $request): string
     {
-        if ($request->getMethod() === Request::METHOD_GET) {
+        if ($request->getMethod() === HttpMethod::GET) {
             return self::LOG_NO_CONTENT;
         }
 

@@ -20,7 +20,7 @@ class SecurityGroupsRepository
     {
         $sql = \sprintf(
             "SELECT allowed_usergroups FROM securitygroups_api
-                WHERE route = %s
+                WHERE name = %s
                 AND http_method = %s",
             $this->entityManager->getConnection()->quote($route),
             $this->entityManager->getConnection()->quote($method)
@@ -48,7 +48,7 @@ class SecurityGroupsRepository
                 (SELECT securitygroups.id FROM securitygroups
                 INNER JOIN securitygroups_users ON securitygroups.id = securitygroups_users.securitygroup_id
                 WHERE securitygroups_users.user_id = %s)
-            AND securitygroups_api.route = %s",
+            AND securitygroups_api.name = %s",
             $this->entityManager->getConnection()->quote($userId),
             $this->entityManager->getConnection()->quote($route)
         );

@@ -12,6 +12,8 @@ class ListCest
 
     public function shouldNotSeeRecordTypeList(ApiTester $I): void
     {
+        $I->markTestSkipped("until route has been transferred to sf");
+
         // act
         $this->user = new CrudTestUser($I);
         $this->user->login();
@@ -42,6 +44,8 @@ class ListCest
 
     public function shouldNotSeeRecordList(ApiTester $I): void
     {
+        $I->markTestSkipped("until route has been transferred to sf");
+
         // act
         $this->user = new CrudTestUser($I);
         $this->user->login();

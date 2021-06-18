@@ -7,15 +7,15 @@ describe('Factory: menuDatasource - http requests', function () {
 
   let $httpBackend;
   let menuDatasource;
-  let API_URL;
+  let API_PATH;
   let LOG_HEADERS_KEYS;
 
-  beforeEach(inject(function ($state, _menuDatasource_, _$httpBackend_, _API_URL_, _LOG_HEADERS_KEYS_) {
+  beforeEach(inject(function ($state, _menuDatasource_, _$httpBackend_, _API_PATH_, _LOG_HEADERS_KEYS_) {
     mockHelpers.blockUIRouter($state);
 
     $httpBackend = _$httpBackend_;
     menuDatasource = _menuDatasource_;
-    API_URL = _API_URL_;
+    API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
   }));
 
@@ -99,7 +99,7 @@ describe('Factory: menuDatasource - http requests', function () {
       "message": "Success"
     };
 
-    $httpBackend.expectGET(API_URL + 'Menu', function(headers) {
+    $httpBackend.expectGET(API_PATH + 'menu', function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Main menu';
     }).respond(mockResponse);
 
@@ -144,7 +144,7 @@ describe('Factory: menuDatasource - http requests', function () {
       message: "Success"
     };
 
-    $httpBackend.expectGET(API_URL + 'Menu/sales-marketing', function(headers) {
+    $httpBackend.expectGET(API_PATH + 'menu/sales-marketing', function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Submenu for: sales-marketing';
     }).respond(mockResponse);
 
