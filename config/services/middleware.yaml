@@ -22,9 +22,6 @@ services:
       - '@ExEss\Cms\Api\V8_Custom\Service\RequestResponseLogger'
     tags: [{ name: 'crm.middleware', priority: 140 }]
 
-  ExEss\Cms\Api\V8_Custom\Middleware\CleanInputMiddleware:
-    tags: [{ name: 'crm.middleware', priority: 90 }]
-
   ExEss\Cms\Api\V8_Custom\Middleware\JsonErrorMiddleware:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
