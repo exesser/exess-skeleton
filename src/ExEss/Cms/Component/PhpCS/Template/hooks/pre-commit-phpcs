@@ -30,7 +30,7 @@ do
 done < <(git diff --cached --name-only --diff-filter=AM)
 
 # Second construct the phpcs command.
-command=$(echo "${phpcsPath} --report=full --standard=${codingStandard} ${stagedFiles[@]}")
+command=$(echo "${phpcsPath} --report=full --extensions=php --standard=${codingStandard} ${stagedFiles[@]}")
 
 # Third get SSH config from Vagrant
 # This is done because sometimes vagrant ssh -c can be wonky
@@ -51,7 +51,7 @@ then
     echo "${results}"
 
     phpcbfPath="bin/phpcbf"
-    command=$(echo "${phpcbfPath} --report=full --standard=${codingStandard} ${stagedFiles[@]}")
+    command=$(echo "${phpcbfPath} --report=full --extensions=php --standard=${codingStandard} ${stagedFiles[@]}")
 
     # Allows us to read user input below, assigns stdin to keyboard
     exec < /dev/tty
