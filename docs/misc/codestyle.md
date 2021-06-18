@@ -14,8 +14,7 @@ The code sniffer also has the ability to fix some errors automatically. The comm
 e.g.: to fix errors in `custom/MyClass.php`
 
 ```
-    cd /var/www/crm/nova-crm
-    bin/phpcbf --standard=config/phpcs.host.xml custom/MyClass.php
+   docker-compose exec -T php bin/phpcbf --standard=config/phpcs.host.xml custom/MyClass.php
 ```
 
 ## PHPStorm
@@ -33,8 +32,5 @@ enforced by the pre-commit hook.
 
 * Add a remote (vagrant) interpreter to PHPStorm: `Preferences -> Languages & Frameworks -> PHP`
 * Configure the codesniffer path: `Preferences -> Languages & Frameworks -> PHP -> PHP Quality Tools -> PHP_CodeSniffer`
-  For Vagrant the path to phpcs is: `/var/www/crm/nova-crm/bin/phpcs`
 * Enable the php code sniffer inspection: `Preferences -> Editor -> Inspections`
-  The path for the custom coding standard ruleset is `/var/www/crm/nova-crm/config/phpcs.host.xml`
-
-![PHPStorm phpcs](../resources/images/phpcs-phpstorm.png "PHPStorm phpcs")
+  The path for the custom coding standard ruleset is `config/phpcs.host.xml`

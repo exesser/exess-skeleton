@@ -4,27 +4,9 @@
 
 ## Running tests
 
-All commands to performed from the root folder (`/var/www/crm/nova-crm/` in most cases).
+- Run `make test`
 
-Run all tests (phpunit and codeception):
-
-`./runtests`
-
-Run a specific suite:
-
-`bin/codecept run api`
-
-Run all tests in a specific folder:
-
-`bin/codecept run tests/api/V8_Custom/Flow/CUPQ`
-
-Run a specific test:
-
-`bin/codecept run tests/api/V8_Custom/Flow/CUPQ/CUPQMultiEANCest.php`
-
-Run a specific test with full debug output (very practical for api tests!):
-
-`bin/codecept run tests/api/V8_Custom/Flow/CUPQ/CUPQMultiEANCest.php -vvv`
+You can also run a test suite or test separately by running `make codecept suite=<test-suite-or-relative-file-path>`
 
 ## Modules
 
@@ -40,12 +22,6 @@ Some remarks:
 
 * If you call an external system to 'create' something, and the response contains some sort of 'id', you will see that the 'cassette' has an episode added for each call. This is not unusual, however make sure you do not commit every call, one request and one response is enough.
 * You can play with the ``record`` and ``playback`` settings in ``codeception.yml`` to test if playback works for your specific test. If you first do the call with ``record: true`` and ``playback: false``, your test should also work with ``record: false`` and ``playback: true``.
-
-### Slim
-
-This is a custom module, which enables to route requests directly into Slim Framework, without the need for a working web server.
-
-This enables us to route calls directly (practical for api tests), and to access services on the bootstrapped framework. The latter is practical for functional tests, where you typically want to test a service which has all of its dependencies injected in it (without the need to set all these up yourself to test).
 
 ### Db
 
