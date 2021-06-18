@@ -2,6 +2,7 @@
 
 namespace Test\Api\V8_Custom\Crud;
 
+use ExEss\Cms\Doctrine\Type\Locale;
 use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\User;
 
@@ -31,6 +32,7 @@ class CrudTestUser
                 'salt' => $salt = (new User)->getSalt(),
                 'user_hash' => User::getPasswordHash($this->password, $salt),
                 'status' => UserStatus::ACTIVE,
+                'preferred_locale' => Locale::EN,
             ]
         );
     }

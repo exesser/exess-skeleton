@@ -3,6 +3,7 @@
 namespace Test\Api\Api\User;
 
 use ApiTester;
+use ExEss\Cms\Doctrine\Type\Locale;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
 class CurrentCest
@@ -25,8 +26,8 @@ class CurrentCest
         // Then
         $I->seeResponseIsDwpResponse(200);
         $I->seeAssertPathsInJson([
-            '$.data.user_name' => $I->grabFromDatabase('users', 'user_name', ['id' => '1']),
-            '$.data.is_admin' => true,
+            '$.data.username' => $I->grabFromDatabase('users', 'user_name', ['id' => '1']),
+            '$.data.preferredLanguage' => $I->grabFromDatabase('users', 'preferred_locale', ['id' => '1']),
         ]);
     }
 
@@ -42,8 +43,8 @@ class CurrentCest
         // Then
         $I->seeResponseIsDwpResponse(200);
         $I->seeAssertPathsInJson([
-            '$.data.user_name' => $userName,
-            '$.data.is_admin' => false,
+            '$.data.username' => $userName,
+            '$.data.preferredLanguage' => Locale::EN,
         ]);
     }
 
@@ -60,8 +61,8 @@ class CurrentCest
         // Then
         $I->seeResponseIsDwpResponse(200);
         $I->seeAssertPathsInJson([
-            '$.data.user_name' => $userName,
-            '$.data.is_admin' => false,
+            '$.data.username' => $userName,
+            '$.data.preferredLanguage' => Locale::EN,
             // @todo add this modal to CRUD
             //'$.data.command.arguments.flowId' => 'gf_ask_guidance_recovery_modal',
         ]);
