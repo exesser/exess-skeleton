@@ -26,7 +26,7 @@ class DoctrineHandlerTest extends UnitTestCase
     public function testSuccess(): void
     {
         // Given
-        $this->connection->shouldReceive('ping')->once()->andReturn(true);
+        $this->connection->shouldReceive('executeQuery')->once()->andReturn(true);
 
         // When
         $result = $this->handler->getHealthCheck();
@@ -40,7 +40,7 @@ class DoctrineHandlerTest extends UnitTestCase
     public function testFailure(): void
     {
         // Given
-        $this->connection->shouldReceive('ping')->once()->andReturn(false);
+        $this->connection->shouldReceive('executeQuery')->once()->andThrow(\Exception::class);
 
         // When
         $result = $this->handler->getHealthCheck();
