@@ -16,10 +16,11 @@ class DoctrineHandler implements HealthCheckInterface
 
     public function getHealthCheck(): HealthCheckResult
     {
-        if ($this->connection->ping() === false) {
+        try {
+            $this->connection->executeQuery("SELECT 1");
+            return new HealthCheckResult();
+        } catch (\Throwable $e) {
             return new HealthCheckResult(false, 'Database server not available');
         }
-
-        return new HealthCheckResult();
     }
 }
