@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace ExEss\Cms\Api\V8_Custom\Params;
 
 use ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory;
@@ -23,10 +24,7 @@ abstract class AbstractParams implements \JsonSerializable, ResetInterface
         $this->validatorFactory = $validatorFactory;
     }
 
-    /**
-     * @return $this
-     */
-    public function configure(array ...$arguments)
+    public function configure(array ...$arguments): self
     {
         // get the class name
         $class = static::class;
@@ -34,22 +32,16 @@ abstract class AbstractParams implements \JsonSerializable, ResetInterface
         $arguments = \array_merge(...$arguments);
 
         // store resolver in object for possible re-usage
-        if (!\array_key_exists($class, self::$resolversByClass)) {
+        if (!isset(self::$resolversByClass[$class])) {
             $optionsResolver = new OptionsResolver();
             self::$resolversByClass[$class] = $optionsResolver;
 
             $this->configureOptions(self::$resolversByClass[$class]);
         }
 
-        $this->setDefined(self::$resolversByClass[$class], $arguments);
         $this->arguments = self::$resolversByClass[$class]->resolve($arguments);
 
         return $this;
-    }
-
-    public function setDefined(OptionsResolver $optionsResolver, array $arguments): void
-    {
-        // do nothing
     }
 
     /**
