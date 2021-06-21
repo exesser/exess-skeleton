@@ -6,7 +6,7 @@ use ApiTester;
 use ExEss\Cms\Doctrine\Type\Locale;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
-class CurrentCest
+class PreferencesCest
 {
     private CrudTestUser $user;
 
@@ -21,12 +21,11 @@ class CurrentCest
         $I->getAnApiTokenFor('adminUser');
 
         // When
-        $I->sendGET('/Api/user/current');
+        $I->sendGET('/Api/user/preferences');
 
         // Then
         $I->seeResponseIsDwpResponse(200);
         $I->seeAssertPathsInJson([
-            '$.data.username' => $I->grabFromDatabase('users', 'user_name', ['id' => '1']),
             '$.data.preferredLanguage' => $I->grabFromDatabase('users', 'preferred_locale', ['id' => '1']),
         ]);
     }
@@ -38,12 +37,11 @@ class CurrentCest
         $I->getAnApiTokenFor($userName, $this->user->getPassword());
 
         // When
-        $I->sendGET('/Api/user/current');
+        $I->sendGET('/Api/user/preferences');
 
         // Then
         $I->seeResponseIsDwpResponse(200);
         $I->seeAssertPathsInJson([
-            '$.data.username' => $userName,
             '$.data.preferredLanguage' => Locale::EN,
         ]);
     }
@@ -56,12 +54,11 @@ class CurrentCest
         $I->getAnApiTokenFor($userName, $this->user->getPassword());
 
         // When
-        $I->sendGET('/Api/user/current');
+        $I->sendGET('/Api/user/preferences');
 
         // Then
         $I->seeResponseIsDwpResponse(200);
         $I->seeAssertPathsInJson([
-            '$.data.username' => $userName,
             '$.data.preferredLanguage' => Locale::EN,
             // @todo add this modal to CRUD
             //'$.data.command.arguments.flowId' => 'gf_ask_guidance_recovery_modal',
@@ -74,7 +71,7 @@ class CurrentCest
         $I->haveHttpHeader('Content-Type', 'application/json;charset=utf-8');
 
         // When
-        $I->sendGET('/Api/user/current');
+        $I->sendGET('/Api/user/preferences');
 
         // Then
         $I->seeResponseIsDwpResponse(401);

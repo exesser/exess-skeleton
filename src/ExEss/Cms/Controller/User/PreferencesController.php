@@ -8,7 +8,7 @@ use ExEss\Cms\Http\SuccessResponse;
 use ExEss\Cms\Service\UserService;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CurrentController
+class PreferencesController
 {
     private UserService $userService;
 
@@ -21,7 +21,7 @@ class CurrentController
     }
 
     /**
-     * @Route("/Api/user/current", methods={"GET"})
+     * @Route("/Api/user/preferences", methods={"GET"})
      */
     public function __invoke(): SuccessResponse
     {
@@ -29,6 +29,6 @@ class CurrentController
             throw new NotAuthenticatedException('Token not found');
         }
 
-        return new SuccessResponse($this->userService->getDataFor($user));
+        return new SuccessResponse($this->userService->getPreferencesData($user));
     }
 }

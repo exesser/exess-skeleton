@@ -35,12 +35,11 @@ class UserServiceTest extends FunctionalTestCase
         $user = $this->manager->find(User::class, $userId);
 
         // When
-        $result = $this->userService->getDataFor($user);
+        $result = $this->userService->getPreferencesData($user);
 
         // Then
         $this->tester->assertEquals(
             [
-                'username' => $userName,
                 'preferredLanguage' => Locale::EN,
             ],
             \json_decode(\json_encode($result), true)
