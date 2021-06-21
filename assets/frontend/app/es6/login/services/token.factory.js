@@ -58,8 +58,8 @@ angular.module('digitalWorkplaceApp')
     function getDataFromToken() {
       let data = {};
       const token = getToken();
-      if (typeof token !== 'undefined') {
-        data = JSON.parse(urlBase64Decode(token.split('.')[1]));
+      if (!_.isUndefined(token)) {
+        data = angular.fromJson(urlBase64Decode(token.split('.')[1]));
       }
 
       return data;
@@ -80,6 +80,6 @@ angular.module('digitalWorkplaceApp')
           throw 'Illegal base64url string!';
       }
 
-      return window.atob(output);
+      return $window.atob(output);
     }
   });

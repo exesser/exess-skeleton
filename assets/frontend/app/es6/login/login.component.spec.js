@@ -19,13 +19,12 @@ describe('Component: login', function () {
   let $translate;
 
   let $analytics;
-  let googleTagManager;
 
   const template = '<login></login>';
 
   beforeEach(inject(function (_$rootScope_, _$compile_, _$state_, _loginFactory_, _tokenFactory_,
                               _userDatasource_, _$translate_, LANGUAGE, _$q_, _commandHandler_,
-                              _$analytics_, _googleTagManager_, _$timeout_) {
+                              _$analytics_, _$timeout_) {
     $rootScope = _$rootScope_;
     $compile = _$compile_;
     $state = _$state_;
@@ -37,7 +36,6 @@ describe('Component: login', function () {
     $q = _$q_;
     $timeout = _$timeout_;
     $analytics = _$analytics_;
-    googleTagManager = _googleTagManager_;
 
     mockHelpers.blockUIRouter($state);
   }));
@@ -93,10 +91,10 @@ describe('Component: login', function () {
     it('should log the user in when the username and password are correct', function () {
       const loginPromise = $q.defer();
       spyOn(loginFactory, 'login').and.returnValue(loginPromise.promise);
-      loginPromise.resolve({data: {data: {token:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOiJzdXBlcmFkbWluIiwiZXhwIjoxNjI0MDA2MzcwfQ.i62-7hutcuWkelD6yKRMevSxCNt9lTHE18BfZByxtvIU9n5tA1W2aLA9eEOKAY4E6f7bsCgbG2iyGWMO6mNIGA"}}});
+      loginPromise.resolve({data: {data: {token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOiJzdXBlcmFkbWluIiwiZXhwIjoxNjI0MDA2MzcwfQ.i62-7hutcuWkelD6yKRMevSxCNt9lTHE18BfZByxtvIU9n5tA1W2aLA9eEOKAY4E6f7bsCgbG2iyGWMO6mNIGA"}}});
       spyOn($analytics, 'setUsername');
       spyOn($translate, 'use');
-      currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { user_name: "Tony" , preferredLanguage: "nl_BE"}));
+      currentSpy.and.callFake(mockHelpers.resolvedPromise($q, { user_name: "Tony", preferredLanguage: "nl_BE"}));
 
       submitElement.click();
       $rootScope.$apply();
@@ -121,7 +119,7 @@ describe('Component: login', function () {
     it('should call the commandHandler when the response contains a command', function () {
       const loginPromise = $q.defer();
       spyOn(loginFactory, 'login').and.returnValue(loginPromise.promise);
-      loginPromise.resolve({data: {data: {token:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOiJzdXBlcmFkbWluIiwiZXhwIjoxNjI0MDA2MzcwfQ.i62-7hutcuWkelD6yKRMevSxCNt9lTHE18BfZByxtvIU9n5tA1W2aLA9eEOKAY4E6f7bsCgbG2iyGWMO6mNIGA"}}});
+      loginPromise.resolve({data: {data: {token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VySWQiOiJzdXBlcmFkbWluIiwiZXhwIjoxNjI0MDA2MzcwfQ.i62-7hutcuWkelD6yKRMevSxCNt9lTHE18BfZByxtvIU9n5tA1W2aLA9eEOKAY4E6f7bsCgbG2iyGWMO6mNIGA"}}});
       spyOn($analytics, 'setUsername');
       spyOn($translate, 'use');
       spyOn(commandHandler, 'handle');

@@ -17,7 +17,7 @@ angular.module('digitalWorkplaceApp')
       fields: "<"
     },
     controllerAs: 'formElementEditWrapperController',
-    controller: function (navigationHistoryContainer) {
+    controller: function (navigationHistoryContainer, $window) {
       const formElementEditWrapperController = this;
 
       formElementEditWrapperController.guid = null;
@@ -33,21 +33,19 @@ angular.module('digitalWorkplaceApp')
 
       formElementEditWrapperController.click = function() {
         $window.open('/#/CRUD/dashboard/CrudRecordView/4abe018e-a071-faf1-c6cd-5be0b29a3909?recordType=ExEss%5CCms%5CEntity%5CFlowField', '_blank');
-      }
+      };
 
-      formElementEditWrapperController.showEditButton = function () {
+      formElementEditWrapperController.showEditButton = function() {
         return (formElementEditWrapperController.hoverEdit
           && !_.isEmpty(formElementEditWrapperController.guid)
           && navigationHistoryContainer.getShowEditIcon());
       };
 
-      formElementEditWrapperController.hoverIn = function(){
+      formElementEditWrapperController.hoverIn = function() {
         formElementEditWrapperController.hoverEdit = true;
-        console.log('hoverIn');
-        console.log(formElementEditWrapperController.showEditButton());
       };
 
-      formElementEditWrapperController.hoverOut = function(){
+      formElementEditWrapperController.hoverOut = function() {
         formElementEditWrapperController.hoverEdit = false;
       };
 
