@@ -16,9 +16,6 @@ class PingServiceTest extends UnitTestCase
         $result = $service->getResult();
 
         // Then
-        $this->tester->assertEquals(
-            '<?xml version="1.0"?><rs-response><result>true</result></rs-response>',
-            $result
-        );
+        $this->tester->assertEquals(['result' => true], $result);
     }
 }
