@@ -14,9 +14,6 @@ class RouteVoter implements VoterInterface
         // @todo remove these
         'exess_cms_slimfallback__invoke',
         'exess_cms_slimfallback__invoke_1',
-        // @todo adapt when transferred
-        '/V8_Custom/check/ping',
-        '/V8_Custom/check/health',
     ];
 
     private Security $security;

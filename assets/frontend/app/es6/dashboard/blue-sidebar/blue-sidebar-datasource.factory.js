@@ -11,7 +11,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('blueSidebarDatasource', function (API_URL, $http, LOG_HEADERS_KEYS) {
+  .factory('blueSidebarDatasource', function (API_PATH, $http, LOG_HEADERS_KEYS) {
 
     return { get };
 
@@ -23,9 +23,9 @@ angular.module('digitalWorkplaceApp')
      */
     function get({recordType, id}) {
       const headers = {};
-      headers[LOG_HEADERS_KEYS.DESCRIPTION] = `get BlueSidebar for ${recordType}:${id}`;
+      headers[LOG_HEADERS_KEYS.DESCRIPTION] = `get sidebar for ${recordType}:${id}`;
 
-      return $http.get(API_URL + `BlueSidebar/${recordType}/${id}`, {headers}).then(function(response) {
+      return $http.get(API_PATH + `sidebar/${recordType}/${id}`, {headers}).then(function(response) {
         return response.data.data;
       });
     }
