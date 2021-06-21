@@ -36,10 +36,10 @@ services:
   ExEss\Cms\FLW_Flows\Event\Listeners\PreValidationSubscriber:
     lazy: true
     arguments:
-      $container: '@service_container'
-      $preValidationHandlers: !tagged_iterator pre-validation-suggestion
-      $gridRepository: '@ExEss\Cms\Dashboard\GridRepository'
-      $em: '@doctrine.orm.entity_manager'
+      - '@service_container'
+      - !tagged_iterator pre-validation-suggestion
+      - '@doctrine.orm.entity_manager'
+      - '@ExEss\Cms\Service\GridService'
     tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\PreValidationSubscriber' }]
 
   ExEss\Cms\FLW_Flows\Event\Listeners\SuggestionsSubscriber:
@@ -107,14 +107,14 @@ services:
   ExEss\Cms\FLW_Flows\Event\Listeners\ChildModelSubscriber:
     lazy: true
     arguments:
-      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\Service\GridService'
       - '@ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher'
     tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\ChildModelSubscriber' }]
 
   ExEss\Cms\FLW_Flows\Event\Listeners\GridSubscriber:
     lazy: true
     arguments:
-      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\Service\GridService'
     tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\GridSubscriber' }]
 
   ExEss\Cms\FLW_Flows\Event\Listeners\FormAndModelSubscriber:
@@ -123,7 +123,7 @@ services:
       - '@doctrine.orm.entity_manager'
       - '@ExEss\Cms\FLW_Flows\Builder\FormBuilder'
       - '@ExEss\Cms\FLW_Flows\DefaultValueService'
-      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\Service\GridService'
       - '@ExEss\Cms\Logger\Logger'
     tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\FormAndModelSubscriber' }]
 
@@ -147,7 +147,7 @@ services:
     lazy: true
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\Service\GridService'
       - '@ExEss\Cms\FLW_Flows\SaveFlow'
       - '@ExEss\Cms\FLW_Flows\MultiLineFlowSaver'
       - '@ExEss\Cms\FLW_Flows\ActionFactory'
@@ -160,7 +160,7 @@ services:
     arguments:
       - '@doctrine.orm.entity_manager'
       - '@ExEss\Cms\FLW_Flows\Builder\FormBuilder'
-      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\Service\GridService'
       - '@ExEss\Cms\Logger\Logger'
     tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\ModelCleanerSubscriber' }]
 

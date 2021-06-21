@@ -3,7 +3,6 @@ namespace ExEss\Cms\FLW_Flows;
 
 use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Api\V8_Custom\Service\SimpleActionFactory;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use ExEss\Cms\FLW_Flows\Action\Arguments;
@@ -11,6 +10,7 @@ use ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\Logger\Logger;
+use ExEss\Cms\Service\GridService;
 use ExEss\Cms\Users\Service\GuidanceRecoveryService;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -34,7 +34,7 @@ class ActionFactory extends SimpleActionFactory
 
     protected function handleJson(\stdClass $data): \stdClass
     {
-        foreach (GridRepository::TO_TRANSLATE_OPTIONS as $toTranslateOption) {
+        foreach (GridService::TO_TRANSLATE_OPTIONS as $toTranslateOption) {
             if (isset($data->arguments->{$toTranslateOption})) {
                 $data->arguments->{$toTranslateOption} = $this->translator->trans(
                     $data->arguments->{$toTranslateOption},

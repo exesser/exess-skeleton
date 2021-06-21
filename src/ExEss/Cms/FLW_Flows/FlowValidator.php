@@ -8,25 +8,25 @@ use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\FlowField;
 use ExEss\Cms\Entity\FlowStep;
+use ExEss\Cms\Service\GridService;
 use stdClass;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\Dictionary\Model\Dwp;
 
 class FlowValidator
 {
     private Validator $validator;
 
-    private GridRepository $gridRepository;
+    private GridService $gridService;
 
     private EntityManager $em;
 
     public function __construct(
         EntityManager $em,
         Validator $validator,
-        GridRepository $gridRepository
+        GridService $gridService
     ) {
         $this->validator = $validator;
-        $this->gridRepository = $gridRepository;
+        $this->gridService = $gridService;
         $this->em = $em;
     }
 
@@ -69,14 +69,14 @@ class FlowValidator
         }
 
         // validate all child flows in this flow step
-        $repeatableRows = $this->gridRepository->getRepeatableRowsInStep($flowStep);
+        $repeatableRows = $this->gridService->getRepeatableRowsInStep($flowStep);
         /** @var \ExEss\Cms\Dashboard\Model\Grid\Row $repeatableRow */
         foreach ($repeatableRows as $repeatableRow) {
             $modelKey = $repeatableRow->getOptions()->getModelKey();
             $repeatedFlow = $this->em->getRepository(Flow::class)->get($repeatableRow->getOptions()->getFlowId());
 
             $childModels = $model->$modelKey ?? new Response\Model();
-            foreach ($this->gridRepository->getRepeatValuesFromModel($repeatableRow, $model) as $repeatKey) {
+            foreach ($this->gridService->getRepeatValuesFromModel($repeatableRow, $model) as $repeatKey) {
                 if ($childModels->$repeatKey instanceof Response\Model) {
                     $childModel = clone $childModels->$repeatKey;
                 } else {

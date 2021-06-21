@@ -7,7 +7,7 @@ use ExEss\Cms\FLW_Flows\FlowValidator;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Response\ValidationResult;
 use Helper\Testcase\FunctionalTestCase;
-use Test\Functional\CustomModules\Dashboard\GridRepositoryTest;
+use Test\Functional\ExEss\Cms\Service\GridServiceTest;
 
 class FlowValidatorTest extends FunctionalTestCase
 {
@@ -19,7 +19,7 @@ class FlowValidatorTest extends FunctionalTestCase
     public function _before(): void
     {
         $this->validator = $this->tester->grabService(FlowValidator::class);
-        $this->tester->loadJsonFixturesFrom(__DIR__  . '/../Dashboard/resources/repeatable.fixtures.json');
+        $this->tester->loadJsonFixturesFrom(__DIR__  . '/../../ExEss/Cms/Service/resources/repeatable.fixtures.json');
     }
 
     public function testValidateUnknownField(): void
@@ -45,7 +45,7 @@ class FlowValidatorTest extends FunctionalTestCase
         $flowStep = $this->tester->grabEntityFromRepository(FlowStep::class, ['id' => 'my-flowstep']);
 
         // run test
-        $result = $this->validator->validateField($flowStep, $model, GridRepositoryTest::FIELD_NAME);
+        $result = $this->validator->validateField($flowStep, $model, GridServiceTest::FIELD_NAME);
 
         // assertions
         $this->tester->assertInstanceOf(\stdClass::class, $result);
@@ -76,7 +76,7 @@ class FlowValidatorTest extends FunctionalTestCase
     ): void {
         $this->tester->loadJsonFixturesFrom(__DIR__  . '/resources/' . $fixturesToLoad);
 
-        $field = GridRepositoryTest::FIELD_NAME;
+        $field = GridServiceTest::FIELD_NAME;
 
         $model = new Model();
         $model->$field = $value;
@@ -135,7 +135,7 @@ class FlowValidatorTest extends FunctionalTestCase
             $this->tester->linkGuidanceFieldToFieldValidator('my-child-field', 'my-validator-2');
         }
 
-        $repeatField = GridRepositoryTest::FIELD_NAME;
+        $repeatField = GridServiceTest::FIELD_NAME;
         $modelKey = 'packageProduct';
         $field = 'someChildField';
         $selectedRepeatTriggerValue = '123';

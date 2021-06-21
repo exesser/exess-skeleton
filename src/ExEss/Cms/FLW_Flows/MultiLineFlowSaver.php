@@ -2,14 +2,14 @@
 namespace ExEss\Cms\FLW_Flows;
 
 use Doctrine\ORM\EntityManager;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\FLW_Flows\AfterSave\AfterSaveData;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Service\GridService;
 
 class MultiLineFlowSaver
 {
-    private GridRepository $gridRepository;
+    private GridService $gridService;
 
     private SaveFlow $saveFlow;
 
@@ -17,10 +17,10 @@ class MultiLineFlowSaver
 
     public function __construct(
         EntityManager $em,
-        GridRepository $gridRepository,
+        GridService $gridService,
         SaveFlow $saveFlow
     ) {
-        $this->gridRepository = $gridRepository;
+        $this->gridService = $gridService;
         $this->saveFlow = $saveFlow;
         $this->em = $em;
     }
@@ -31,7 +31,7 @@ class MultiLineFlowSaver
     public function save(Flow $parentFlow, Model $parentModel): AfterSaveData
     {
         // get the repeatable rows
-        $gridRepo = $this->gridRepository;
+        $gridRepo = $this->gridService;
 
         $repeatedNameSpaces = [];
         $childFlowsToSave = [];

@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Api\V8_Custom\Service\Security;
 use ExEss\Cms\CRUD\Config\CrudMetadata;
 use ExEss\Cms\DASH_Dashboard\DashboardCalcFunctions;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\Doctrine\Type\DashboardType;
 use ExEss\Cms\Doctrine\Type\GridType;
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
@@ -28,7 +27,7 @@ class DashboardService
     private const PANEL_KEY = 'panelKey';
     private const PANEL_TYPE_LIST = 'list';
 
-    private GridRepository $gridRepository;
+    private GridService $gridService;
 
     private TranslatorInterface $translator;
 
@@ -50,7 +49,7 @@ class DashboardService
 
     public function __construct(
         EntityManagerInterface $em,
-        GridRepository $gridRepository,
+        GridService $gridService,
         TranslatorInterface $translator,
         ActionService $actionService,
         DashboardCalcFunctions $dashboardCalcFunctions,
@@ -60,7 +59,7 @@ class DashboardService
         Security $security,
         ExternalObjectHandler $externalObjectHandler
     ) {
-        $this->gridRepository = $gridRepository;
+        $this->gridService = $gridService;
         $this->translator = $translator;
         $this->actionService = $actionService;
         $this->externalObjectHandler = $externalObjectHandler;
@@ -80,7 +79,7 @@ class DashboardService
 
         $arguments['recordType'] = $arguments['recordType'] ?? $dashboard->getMainRecordType();
         $arguments['listKey'] = $arguments['listKey'] ?? '';
-        $arguments = $this->gridRepository->getAllArguments($arguments);
+        $arguments = $this->gridService->getAllArguments($arguments);
         $baseObject = $this->getBaseObject($dashboard, $arguments);
 
         $dashboardBaseBean = [];
@@ -328,9 +327,9 @@ class DashboardService
             return [];
         }
 
-        $gridJson = $this->gridRepository->encodeJson(\json_encode($jsonFields));
+        $gridJson = $this->gridService->encodeJson(\json_encode($jsonFields));
         $gridJson = $this->replaceDashboardProperties($gridJson, $dashboard, $arguments, $baseEntity);
-        $gridJson = $this->gridRepository->replaceArguments($gridJson, $arguments);
+        $gridJson = $this->gridService->replaceArguments($gridJson, $arguments);
 
         $decodedGrid = \json_decode($gridJson, true, 512, \JSON_THROW_ON_ERROR);
         if (\is_array($decodedGrid)) {
@@ -431,7 +430,7 @@ class DashboardService
         }
 
         $panel = \json_encode($panel);
-        $panel = $this->gridRepository->replaceArguments($panel, $arguments);
+        $panel = $this->gridService->replaceArguments($panel, $arguments);
         $panel = $this->replaceDashboardProperties($panel, $dashboard, $arguments, $baseFatEntity);
         $panel = \json_decode($panel, true);
 
@@ -439,7 +438,7 @@ class DashboardService
             throw new \UnexpectedValueException("The defined grid panel $key has no recordId.");
         }
 
-        foreach (GridRepository::TO_TRANSLATE_OPTIONS as $toTranslateOption) {
+        foreach (GridService::TO_TRANSLATE_OPTIONS as $toTranslateOption) {
             if (isset($panel['options'][$toTranslateOption])) {
                 $panel['options'][$toTranslateOption] = $this->translator->trans(
                     $panel['options'][$toTranslateOption],

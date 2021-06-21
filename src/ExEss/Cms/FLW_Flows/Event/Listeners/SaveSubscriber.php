@@ -7,7 +7,6 @@ use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvent;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvents;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\FLW_Flows\Action\Command;
 use ExEss\Cms\FLW_Flows\ActionFactory;
 use ExEss\Cms\FLW_Flows\AfterSave\AfterSaveData;
@@ -19,11 +18,12 @@ use ExEss\Cms\FLW_Flows\MultiLineFlowSaver;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\SaveFlow;
+use ExEss\Cms\Service\GridService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class SaveSubscriber implements EventSubscriberInterface
 {
-    private GridRepository $gridRepository;
+    private GridService $gridService;
 
     private SaveFlow $saveFlow;
 
@@ -39,14 +39,14 @@ class SaveSubscriber implements EventSubscriberInterface
 
     public function __construct(
         EntityManagerInterface $em,
-        GridRepository $gridRepository,
+        GridService $gridService,
         SaveFlow $saveFlow,
         MultiLineFlowSaver $multiLineFlowSaver,
         ActionFactory $actionFactory,
         AfterSaveHandlerQueue $afterSaveHandlerQueue,
         FormBuilder $formBuilder
     ) {
-        $this->gridRepository = $gridRepository;
+        $this->gridService = $gridService;
         $this->saveFlow = $saveFlow;
         $this->actionFactory = $actionFactory;
         $this->multiLineFlowSaver = $multiLineFlowSaver;
@@ -76,7 +76,7 @@ class SaveSubscriber implements EventSubscriberInterface
         $flow = $event->getFlow();
 
         try {
-            if ($this->gridRepository->hasFlowRepeatableRows($flow)) {
+            if ($this->gridService->hasFlowRepeatableRows($flow)) {
                 $allFlowData = $this->multiLineFlowSaver->save($flow, $model);
 
                 $recordId = $allFlowData->getFlowData()->getRecordId() ?? false;

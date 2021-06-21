@@ -1,7 +1,0 @@
-services:
-  _defaults:
-    public: true
-    autowire: true
-
-  legacy_annotations_reader:
-    alias: Doctrine\Common\Annotations\Reader

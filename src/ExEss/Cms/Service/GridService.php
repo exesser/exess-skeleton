@@ -1,7 +1,8 @@
-<?php
-namespace ExEss\Cms\Dashboard;
+<?php declare(strict_types=1);
 
-use Doctrine\ORM\EntityManager;
+namespace ExEss\Cms\Service;
+
+use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Api\V8_Custom\Service\Security;
 use ExEss\Cms\Dashboard\Model\Grid;
 use ExEss\Cms\Entity\Flow;
@@ -12,7 +13,7 @@ use ExEss\Cms\Grid\RepeatableRowService;
 use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
 use ExEss\Cms\Parser\ExpressionParserOptions;
 
-class GridRepository
+class GridService
 {
     public const DWP_EXP_START = '{%';
     public const DWP_EXP_END = '%}';
@@ -31,10 +32,10 @@ class GridRepository
 
     private RepeatableRowService $repeatableRowService;
 
-    private EntityManager $em;
+    private EntityManagerInterface $em;
 
     public function __construct(
-        EntityManager $em,
+        EntityManagerInterface $em,
         ListHelperFunctions $listHelperFunctions,
         Security $security,
         RepeatableRowService $repeatableRowService
