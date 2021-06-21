@@ -14,12 +14,12 @@ describe('Factory: exceptionReporter', function () {
   let $http;
   let $httpBackend;
   let exceptionReporter;
-  let API_URL;
+  let API_PATH;
   let LOG_HEADERS_KEYS;
 
   let expectedConfig;
 
-  beforeEach(inject(function ($state, _exceptionReporter_, _$http_, _$httpBackend_, _API_URL_, _LOG_HEADERS_KEYS_) {
+  beforeEach(inject(function ($state, _exceptionReporter_, _$http_, _$httpBackend_, _API_PATH_, _LOG_HEADERS_KEYS_) {
     mockHelpers.blockUIRouter($state);
 
     expectedConfig = { ignoreLoadingBar: true, headers: {} };
@@ -27,7 +27,7 @@ describe('Factory: exceptionReporter', function () {
     exceptionReporter = _exceptionReporter_;
     $http = _$http_;
     $httpBackend = _$httpBackend_;
-    API_URL = _API_URL_;
+    API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
   }));
 
@@ -40,7 +40,7 @@ describe('Factory: exceptionReporter', function () {
         state: {}
       };
 
-      $httpBackend.expectPOST(API_URL + 'log/error', report).respond(200);
+      $httpBackend.expectPOST(API_PATH + 'log/error', report).respond(200);
       spyOn($http, 'post').and.callThrough();
 
       const error = { cause: "developer stupidity" };
@@ -68,7 +68,7 @@ describe('Factory: exceptionReporter', function () {
         state: {}
       };
 
-      $httpBackend.expectPOST(API_URL + 'log/error', report).respond(200);
+      $httpBackend.expectPOST(API_PATH + 'log/error', report).respond(200);
       spyOn($http, 'post').and.callThrough();
 
       const error = { stack: "one big stack\nit is really big", cause: "developer stupidity" };
@@ -95,7 +95,7 @@ describe('Factory: exceptionReporter', function () {
         state: {}
       };
 
-      $httpBackend.expectPOST(API_URL + 'log/error', report).respond(200);
+      $httpBackend.expectPOST(API_PATH + 'log/error', report).respond(200);
       spyOn($http, 'post').and.callThrough();
 
       const error = { cause: "developer stupidity" };

@@ -9,7 +9,6 @@ use ExEss\Cms\Api\V8_Custom\Params\GetDashboardParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetFilterParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarActionParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
-use ExEss\Cms\Api\V8_Custom\Params\LogParams;
 use ExEss\Cms\Api\V8_Custom\Params\SelectWithSearchParams;
 
 /** @var \ExEss\Cms\App $app */
@@ -118,12 +117,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
                 'ExEss\Cms\Api\V8_Custom\Controller\ListRowbarController:getListRowActions'
             )
             ->add($paramsFactory->create(ListRowbarActionParams::class));
-
-        // Manage Configuration Errors from the DWP
-        $app
-            ->post('/log/error', 'ExEss\Cms\Api\V8_Custom\Controller\LogController:error')
-            ->add($paramsFactory->create(LogParams::class))
-        ;
 
         $app
             ->post(

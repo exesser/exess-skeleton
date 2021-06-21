@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Log;
+namespace Test\Api\Api\Log;
 
 use ApiTester;
 use ExEss\Cms\Http\SuccessResponse;
 
-class ErrorLogCest
+class ErrorCest
 {
     // @codingStandardsIgnoreStart
     private $body = <<<JSON
@@ -23,19 +23,16 @@ JSON;
 
     public function shouldReturn(ApiTester $I): void
     {
+        // Given
         $I->getAnApiTokenFor('adminUser');
 
-        $I->sendPOST('/Api/V8_Custom/log/error', \json_decode($this->body, true));
+        // When
+        $I->sendPOST('/Api/log/error', \json_decode($this->body, true));
 
-        // assertions
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
-
-        $assertPaths = [
-            '$.data.' => 'OK',
+        // Then
+        $I->seeResponseIsDwpResponse(200);
+        $I->seeAssertPathsInJson([
             '$.message' => SuccessResponse::MESSAGE_SUCCESS,
-        ];
-
-        $I->seeAssertPathsInJson($assertPaths);
+        ]);
     }
 }
