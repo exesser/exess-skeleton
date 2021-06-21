@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace ExEss\Cms\Controller;
+namespace ExEss\Cms\Controller\Sidebar;
 
 use ExEss\Cms\Component\Sidebar\Factory\SidebarFactory;
 use ExEss\Cms\Http\SuccessResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SidebarController
+class ViewController
 {
     private SidebarFactory $sidebarFactory;
 

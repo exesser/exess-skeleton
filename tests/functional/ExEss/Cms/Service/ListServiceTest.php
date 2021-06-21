@@ -3,6 +3,7 @@
 namespace Test\Functional\ExEss\Cms\Service;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use ExEss\Cms\Controller\ListDynamic\Body\ListBody;
 use ExEss\Cms\Doctrine\Type\CellType;
 use ExEss\Cms\Doctrine\Type\Locale;
 use ExEss\Cms\Doctrine\Type\SecurityGroupType;
@@ -13,7 +14,7 @@ use ExEss\Cms\Entity\ListTopAction;
 use ExEss\Cms\Entity\ListTopBar;
 use ExEss\Cms\Entity\Translation;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\Api\V8_Custom\Params\ListParams;
+use ExEss\Cms\Http\Factory\JsonBodyFactory;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListResponse;
 use ExEss\Cms\Service\ListService;
 use Helper\Testcase\FunctionalTestCase;
@@ -22,7 +23,7 @@ class ListServiceTest extends FunctionalTestCase
 {
     private ?string $sortingOptionId = null;
     private ListService $listService;
-    private ListParams $listParams;
+    private ListBody $body;
     private string $userId;
 
     public function _before(): void
@@ -59,7 +60,7 @@ class ListServiceTest extends FunctionalTestCase
         );
 
         $this->listService = $this->tester->grabService(ListService::class);
-        $this->listParams = $this->tester->grabService(ListParams::class);
+        $this->body = $this->tester->grabService(JsonBodyFactory::class)->create(ListBody::class);
     }
 
     private function setupDataList(int $fixPagination, int $itemsPerPage = 10): string
@@ -173,13 +174,13 @@ class ListServiceTest extends FunctionalTestCase
     {
         // setup
         $listId = $this->setupDataList(1);
-        $this->listParams->configure([
+        $this->body->configure([
             'params' => [],
         ]);
         $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
         // act
-        $response = $this->listService->getList($list, $this->listParams);
+        $response = $this->listService->getList($list, $this->body);
 
         // assert
         $this->tester->assertGreaterThan(5, \count($response->rows));    // we added 5 in _before
@@ -194,14 +195,14 @@ class ListServiceTest extends FunctionalTestCase
     {
         // Given
         $listId = $this->setupDataList(1);
-        $this->listParams->configure([
+        $this->body->configure([
             'params' => [],
             'onlyRecordCount' => true,
         ]);
         $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
         // When
-        $response = $this->listService->getList($list, $this->listParams);
+        $response = $this->listService->getList($list, $this->body);
 
         // Then
         $this->tester->assertIsObject($response->pagination);
@@ -213,14 +214,14 @@ class ListServiceTest extends FunctionalTestCase
         // Given
         $this->tester->generateUser('ZZZ {{2*2}}');
         $listId = $this->setupDataList(1);
-        $this->listParams->configure([
+        $this->body->configure([
             'params' => [],
             'sortBy' => $this->sortingOptionId,
         ]);
         $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
         // When
-        $response = $this->listService->getList($list, $this->listParams);
+        $response = $this->listService->getList($list, $this->body);
 
         // Then
         $this->tester->assertEquals('ZZZ [[2*2]]', $response->rows[0]->cells[5]->options->line1);
@@ -264,14 +265,14 @@ class ListServiceTest extends FunctionalTestCase
     {
         // Given
         $listId = $this->setupDataList(0, 2);
-        $this->listParams->configure([
+        $this->body->configure([
             'params' => [],
             'page' => $page,
         ]);
         $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
         // When
-        $response = $this->listService->getList($list, $this->listParams);
+        $response = $this->listService->getList($list, $this->body);
 
         // Then
         $responsePagination = \json_decode(\json_encode($response->pagination), true);
@@ -300,7 +301,7 @@ class ListServiceTest extends FunctionalTestCase
         // When
         $this->listService->fillTopBarOnList(
             $list,
-            $this->listParams,
+            $this->body,
             $response,
         );
 
@@ -332,7 +333,7 @@ class ListServiceTest extends FunctionalTestCase
         // When
         $this->listService->fillTopBarOnList(
             $list,
-            $this->listParams,
+            $this->body,
             $response,
         );
 
@@ -349,7 +350,7 @@ class ListServiceTest extends FunctionalTestCase
         $response = new DynamicListResponse();
         $listId = $this->setupDataList(1);
 
-        $this->listParams->configure([
+        $this->body->configure([
             'recordId' => $recordId,
             'recordType' => User::class,
             'params' => [],
@@ -392,7 +393,7 @@ class ListServiceTest extends FunctionalTestCase
         // When
         $this->listService->fillTopBarOnList(
             $list,
-            $this->listParams,
+            $this->body,
             $response,
         );
 

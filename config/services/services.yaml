@@ -250,6 +250,9 @@ services:
 
   ExEss\Cms\Http\Factory\PsrFactory: ~
 
+  ExEss\Cms\Http\Factory\JsonBodyFactory:
+    autowire: true
+
   # Autowired Service directory
   ExEss\Cms\Service\:
     public: true

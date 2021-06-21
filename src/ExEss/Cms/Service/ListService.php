@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\Expr\OrderBy;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use ExEss\Cms\Controller\ListDynamic\Body\ListBody;
 use ExEss\Cms\CRUD\Config\CrudMetadata;
 use ExEss\Cms\Dictionary\Format;
 use ExEss\Cms\Doctrine\Type\CellType;
@@ -15,7 +16,6 @@ use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Entity\ListSortingOption;
 use ExEss\Cms\Acl\AclService;
-use ExEss\Cms\Api\V8_Custom\Params\ListParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
 use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
 use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
@@ -86,7 +86,7 @@ class ListService
      * @throws \DomainException When the baseFatEntity is not an instance of AbstractFatEntity
      * or the table doesn't exist.
      */
-    public function getList(ListDynamic $list, ListParams $params, ?string $combinedListKey = null): DynamicListResponse
+    public function getList(ListDynamic $list, ListBody $params, ?string $combinedListKey = null): DynamicListResponse
     {
         $response = new DynamicListResponse();
 
@@ -186,7 +186,7 @@ class ListService
     private function generateQueryBuilder(
         ClassMetadata $metadata,
         ListDynamic $list,
-        ListParams $params,
+        ListBody $params,
         ?string $combinedListKey = null,
         DynamicListResponse $retValue
     ): QueryBuilder {
@@ -294,7 +294,7 @@ class ListService
         ?ClassMetadata $metadata,
         int $pageSize,
         ListDynamic $list,
-        ListParams $params,
+        ListBody $params,
         ?QueryBuilder $queryBuilder,
         DynamicListResponse $response,
         ?string $combinedListKey = null
@@ -705,7 +705,7 @@ class ListService
 
     public function fillTopBarOnList(
         ListDynamic $sourceList,
-        ListParams $listParams,
+        ListBody $listParams,
         DynamicListResponse $response
     ): void {
         if (!($topBar = $sourceList->getTopBar())) {
@@ -849,7 +849,7 @@ class ListService
     private function getCombinedList(
         ListDynamic $list,
         DynamicListResponse $response,
-        ListParams $params,
+        ListBody $params,
         int $pageSize = -1
     ): void {
         $response->topBar = null;

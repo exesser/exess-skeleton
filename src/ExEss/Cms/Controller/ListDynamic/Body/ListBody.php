@@ -1,25 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace ExEss\Cms\Api\V8_Custom\Params;
+namespace ExEss\Cms\Controller\ListDynamic\Body;
 
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query\Expr\OrderBy;
+use ExEss\Cms\AwareTrait\EntityManagerAwareTrait;
 use ExEss\Cms\Entity\ListSortingOption;
-use ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory;
+use ExEss\Cms\Http\Request\AbstractJsonBody;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ListParams extends AbstractParams
+class ListBody extends AbstractJsonBody
 {
-    private EntityManager $em;
-
-    public function __construct(
-        ValidatorFactory $validatorFactory,
-        EntityManager $em
-    ) {
-        parent::__construct($validatorFactory);
-        $this->em = $em;
-    }
+    use EntityManagerAwareTrait;
 
     public function getPage(): int
     {
@@ -86,11 +78,6 @@ class ListParams extends AbstractParams
         return $this->arguments;
     }
 
-    public function setDefined(OptionsResolver $optionsResolver, array $arguments): void
-    {
-        $optionsResolver->setDefined(\array_keys($arguments));
-    }
-
     /**
      * @inheritdoc
      */
@@ -99,10 +86,10 @@ class ListParams extends AbstractParams
         $resolver
             ->setDefault('page', 1)
             ->setAllowedTypes('page', ['int', 'string'])
-            ->addNormalizer('page', function (Options $option, $value): ?int {
-                return \intval($value);
-            });
-
+            ->addNormalizer('page', function (Options $option, $value): int {
+                return \is_string($value) ? \intval($value) : $value;
+            })
+        ;
         $resolver
             ->setDefault('sortBy', null)
             ->setAllowedTypes('sortBy', ['null', 'string', OrderBy::class])
@@ -162,6 +149,9 @@ class ListParams extends AbstractParams
         $resolver
             ->setDefault('uniqueListKey', '')
             ->setAllowedTypes('uniqueListKey', ['string'])
+        ;
+        $resolver
+            ->setDefined(['dwp|relationName', 'parentId', 'parentType', 'relationName'])
         ;
     }
 }

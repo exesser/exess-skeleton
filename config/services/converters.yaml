@@ -5,6 +5,7 @@ services:
     autoconfigure: true
 
   ExEss\Cms\Http\ParamConverter\BaseEntityConverter: ~
+  ExEss\Cms\Http\ParamConverter\JsonBodyConverter: ~
 
   # Controller middleware
 

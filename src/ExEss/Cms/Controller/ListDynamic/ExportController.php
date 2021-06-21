@@ -2,12 +2,12 @@
 
 namespace ExEss\Cms\Controller\ListDynamic;
 
-use ExEss\Cms\Api\V8_Custom\Params\ListParams;
 use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\FLW_Flows\Action\Command;
 use ExEss\Cms\Http\SuccessResponse;
 use ExEss\Cms\Service\ListExportService;
 use ExEss\Cms\Service\ListService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,27 +15,23 @@ class ExportController
 {
     private ListService $listHandler;
     private ListExportService $exportService;
-    private ListParams $listParams;
 
     public function __construct(
         ListService $listHandler,
-        ListExportService $exportService,
-        ListParams $listParams
+        ListExportService $exportService
     ) {
         $this->listHandler = $listHandler;
         $this->exportService = $exportService;
-        $this->listParams = $listParams;
     }
 
     /**
      * @Route("/Api/list/{name}/export/csv", methods={"POST"})
+     * @ParamConverter("jsonBody")
      */
-    public function __invoke(Request $request, ListDynamic $list): SuccessResponse
+    public function __invoke(Request $request, ListDynamic $list, Body\ListBody $jsonBody): SuccessResponse
     {
-        $this->listParams->configure(\json_decode($request->getContent(), true));
-
         $link = $this->exportService->export(
-            $this->listHandler->getList($list, $this->listParams)
+            $this->listHandler->getList($list, $jsonBody)
         );
 
         return new SuccessResponse([
