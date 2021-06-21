@@ -14,6 +14,7 @@ services:
     public: true
     bind:
       $fallbackLocale: '%default_locale%'
+      $siteUrl: '%env_url%'
 
   ExEss\Cms\Component\Session\Headers:
     class: ExEss\Cms\Component\Session\Headers
@@ -93,17 +94,6 @@ services:
     arguments:
       - '%env_url%'
       - '%kernel.cache_dir%/htmlcleaner'
-
-  ExEss\Cms\ListFunctions\ListFunctions:
-    arguments:
-      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
-      - '@ExEss\Cms\Api\V8_Custom\Repository\ListHandler'
-      - '@ExEss\Cms\Service\ActionService'
-      - '@Symfony\Component\Translation\Translator'
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
-      - '@ExEss\Cms\Acl\AclService'
-      - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Service\FilterService'
 
   ExEss\Cms\Parser\Translator\FatEntityTranslator:
     arguments:
@@ -189,11 +179,6 @@ services:
       - '@ExEss\Cms\Api\V8_Custom\Repository\ListHandler'
       - '@ExEss\Cms\FLW_Flows\EnumRecordFactory'
       - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
-
-  ExEss\Cms\ListFunctions\ListExportService:
-    arguments:
-      - '%env_url%'
-      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
 
   ExEss\Cms\Component\Sidebar\Factory\SidebarFactory: ~
 

@@ -22,7 +22,6 @@ services:
   ExEss\Cms\Api\V8_Custom\Params\ListParams:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
-      - '@ExEss\Cms\Config\Cache\ConfigCacheFactory'
       - '@doctrine.orm.entity_manager'
 
   ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams:

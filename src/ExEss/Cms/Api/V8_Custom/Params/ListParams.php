@@ -1,35 +1,24 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace ExEss\Cms\Api\V8_Custom\Params;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query\Expr\OrderBy;
-use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Entity\ListSortingOption;
 use ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory;
-use ExEss\Cms\Config\Cache\ConfigCacheFactory;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints as Assert;
 
 class ListParams extends AbstractParams
 {
-    private ConfigCacheFactory $configCacheFactory;
-
     private EntityManager $em;
 
     public function __construct(
         ValidatorFactory $validatorFactory,
-        ConfigCacheFactory $configCacheFactory,
         EntityManager $em
     ) {
         parent::__construct($validatorFactory);
-        $this->configCacheFactory = $configCacheFactory;
         $this->em = $em;
-    }
-
-    public function getList(): ListDynamic
-    {
-        return $this->arguments['list'];
     }
 
     public function getPage(): int
@@ -37,7 +26,7 @@ class ListParams extends AbstractParams
         return $this->arguments['page'];
     }
 
-    public function getSortBy(): ?OrderBy
+    public function getSortBy(): OrderBy
     {
         return $this->arguments['sortBy'];
     }
@@ -64,7 +53,7 @@ class ListParams extends AbstractParams
 
     public function getRecordType(): ?string
     {
-        return $this->arguments['recordType'];
+        return $this->arguments['recordType'] ?? null;
     }
 
     public function getExtraActionData(): array
@@ -94,9 +83,7 @@ class ListParams extends AbstractParams
 
     public function getArguments(): array
     {
-        $arguments = $this->arguments;
-        unset($arguments['list']);
-        return $arguments;
+        return $this->arguments;
     }
 
     public function setDefined(OptionsResolver $optionsResolver, array $arguments): void
@@ -110,17 +97,6 @@ class ListParams extends AbstractParams
     protected function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
-            ->setRequired('list')
-            ->setAllowedTypes('list', ['string'])
-            ->setAllowedValues('list', $this->validatorFactory->createClosure([
-                new Assert\NotBlank(),
-            ]))
-            ->setNormalizer('list', function (Options $options, string $value): ListDynamic {
-                return $this->em->getRepository(ListDynamic::class)->get($value);
-            })
-        ;
-
-        $resolver
             ->setDefault('page', 1)
             ->setAllowedTypes('page', ['int', 'string'])
             ->addNormalizer('page', function (Options $option, $value): ?int {
@@ -129,18 +105,14 @@ class ListParams extends AbstractParams
 
         $resolver
             ->setDefault('sortBy', null)
-            ->setAllowedTypes('sortBy', ['null', 'string'])
-            ->setNormalizer('sortBy', function (Options $options, $value) {
+            ->setAllowedTypes('sortBy', ['null', 'string', OrderBy::class])
+            ->setNormalizer('sortBy', function (Options $options, $value): OrderBy {
                 if (empty($value)) {
-                    /** @var ListDynamic $list */
-                    $list = $options['list'];
-                    if (!$list->getExternalObject()) {
-                        return ListSortingOption::getDefault();
-                    }
-
-                    return null;
+                    return ListSortingOption::getDefault();
                 }
-
+                if (\is_object($value) && $value instanceof OrderBy) {
+                    return $value;
+                }
                 /** @var ListSortingOption $listSorting */
                 $listSorting = $this->em->getRepository(ListSortingOption::class)->find($value);
 

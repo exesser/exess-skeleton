@@ -12,8 +12,8 @@ use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use ExEss\Cms\Entity\Filter;
 use ExEss\Cms\Entity\FilterField;
 use ExEss\Cms\Entity\ListDynamic;
+use ExEss\Cms\Entity\SecurityGroup;
 use ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder;
-use SecurityGroup;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class FilterService
@@ -95,7 +95,7 @@ class FilterService
 
                 if ($condition['value'] === self::CURRENT_USER_ID) {
                     $condition['value'] = $this->security->getCurrentUser()->getId();
-                    $condition['key'] = $this->security->getCurrentUser()->name;
+                    $condition['key'] = $this->security->getCurrentUser()->getName();
                 } elseif ($condition['value'] === self::CURRENT_PRIMARY_GROUP_ID) {
                     $primaryGroup = $this->security->getPrimaryGroup();
                     if ($primaryGroup instanceof SecurityGroup) {

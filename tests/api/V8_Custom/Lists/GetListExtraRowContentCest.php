@@ -42,7 +42,7 @@ class GetListExtraRowContentCest
         $I->generateGrid([
             'key_c' => $gridKey,
             'json_fields_c' => \json_encode($I->loadJsonWithParams(
-                __DIR__ . '/resource/list-external-rows-grid.json',
+                __DIR__ . '/resources/list-external-rows-grid.json',
                 [
                     'parentId' => '%parentId%',
                     'recordId' => '%recordId%',
@@ -64,7 +64,7 @@ class GetListExtraRowContentCest
         $grid = $I->grabDataFromResponseByJsonPath('$.data.grid')[0];
 
         $I->assertArrayEqual(
-            $I->loadJsonWithParams(__DIR__ . '/resource/list-external-rows-grid.json', [
+            $I->loadJsonWithParams(__DIR__ . '/resources/list-external-rows-grid.json', [
                 'recordId' => $this->userId,
                 'parentId' => $parenId,
             ]),

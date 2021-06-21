@@ -7,18 +7,20 @@ describe('Factory: listDatasource - http requests', function () {
   let $httpBackend;
   let listDatasource;
   let API_URL;
+  let API_PATH;
   let LOG_HEADERS_KEYS;
 
-  beforeEach(inject(function ($state, _listDatasource_, _$httpBackend_, _API_URL_, _LOG_HEADERS_KEYS_) {
+  beforeEach(inject(function ($state, _listDatasource_, _$httpBackend_, _API_URL_, _API_PATH_, _LOG_HEADERS_KEYS_) {
     mockHelpers.blockUIRouter($state);
 
     $httpBackend = _$httpBackend_;
     listDatasource = _listDatasource_;
     API_URL = _API_URL_;
+    API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
   }));
 
-  it('should sent a correct request when retrieving a list', function() {
+  it('should send a correct request when retrieving a list', function() {
     const mockResponse = {
       status: 200,
       data: {
@@ -224,7 +226,7 @@ describe('Factory: listDatasource - http requests', function () {
       message: "Success"
     };
 
-    $httpBackend.expectPOST(API_URL + 'List/1337', { data: "suhnetraam" }, function(headers) {
+    $httpBackend.expectPOST(API_PATH + 'list/1337', { data: "suhnetraam" }, function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'List: 1337';
     }).respond(mockResponse);
 
@@ -391,7 +393,7 @@ describe('Factory: listDatasource - http requests', function () {
       message: "Success"
     };
 
-    $httpBackend.expectPOST(API_URL + 'List/1337/export/CSV', { data: "suhnetraam", recordIds: [1, 2, 3] }, function(headers) {
+    $httpBackend.expectPOST(API_PATH + 'list/1337/export/csv', { data: "suhnetraam", recordIds: [1, 2, 3] }, function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'List: 1337 | exportToCSV';
     }).respond(mockResponse);
 

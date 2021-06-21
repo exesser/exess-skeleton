@@ -11,7 +11,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('listDatasource', function (API_URL, $http, LOG_HEADERS_KEYS) {
+  .factory('listDatasource', function (API_PATH, API_URL, $http, LOG_HEADERS_KEYS) {
 
     return {
       getList,
@@ -30,7 +30,7 @@ angular.module('digitalWorkplaceApp')
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = `List: ${listKey}`;
 
-      return $http.post(API_URL + `List/${listKey}`, params, {headers}).then(function (response) {
+      return $http.post(API_PATH + `list/${listKey}`, params, {headers}).then(function (response) {
         return response.data.data;
       });
     }
@@ -81,7 +81,7 @@ angular.module('digitalWorkplaceApp')
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = `List: ${listKey} | exportToCSV`;
 
-      return $http.post(API_URL + `List/${listKey}/export/CSV`, params, {headers}).then(function (response) {
+      return $http.post(API_PATH + `list/${listKey}/export/csv`, params, {headers}).then(function (response) {
         return response.data.data;
       });
     }

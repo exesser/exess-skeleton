@@ -1,7 +1,8 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace ExEss\Cms\ListFunctions\HelperClasses;
 
-class DynamicListResponse
+class DynamicListResponse implements \JsonSerializable
 {
     public DynamicListSettings $settings;
 
@@ -10,9 +11,9 @@ class DynamicListResponse
      */
     public $topBar;
 
-    public array $headers;
+    public array $headers = [];
 
-    public array $rows;
+    public array $rows = [];
 
     /**
      * The CSV File name when present
@@ -27,11 +28,14 @@ class DynamicListResponse
 
     public function __construct(?string $filename = null)
     {
+        $this->fileName = $filename;
         $this->settings = new DynamicListSettings();
         $this->topBar = new DynamicListTopBar();
-        $this->headers = [];
-        $this->rows = [];
         $this->pagination = new DynamicListPagination();
-        $this->fileName = $filename;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return \get_object_vars($this);
     }
 }

@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace ExEss\Cms\Service;
 
 use Doctrine\ORM\EntityManagerInterface;

@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BaseEntityConverter implements ParamConverterInterface
 {
+    public const ARGUMENT_NAME = 'baseEntity';
+
     private EntityManagerInterface $em;
 
     public function __construct(EntityManagerInterface $em)
@@ -18,20 +20,23 @@ class BaseEntityConverter implements ParamConverterInterface
 
     public function supports(ParamConverter $configuration): bool
     {
-        $options = $configuration->getOptions();
-
-        return isset($options['record_type'], $options['record_id']);
+        return $configuration->getName() === self::ARGUMENT_NAME;
     }
 
     public function apply(Request $request, ParamConverter $configuration): void
     {
-        $entityName = $request->attributes->get($configuration->getOptions()['record_type']);
-        $entityId = $request->attributes->get($configuration->getOptions()['record_id']);
+        if (!$request->attributes->has('record_type')
+            || !$request->attributes->has('record_id')
+        ) {
+            return;
+        }
 
-        $entity = $this->em->getRepository($entityName)->find($entityId);
+        $entityName = $request->attributes->get('record_type');
+        $entityId = $request->attributes->get('record_id');
 
-        $param = $configuration->getName();
-
-        $request->attributes->set($param, $entity);
+        $request->attributes->set(
+            $configuration->getName(),
+            $this->em->getRepository($entityName)->find($entityId)
+        );
     }
 }
