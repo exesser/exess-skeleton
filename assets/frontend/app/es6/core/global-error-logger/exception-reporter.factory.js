@@ -15,7 +15,7 @@
  */
 angular.module('digitalWorkplaceApp')
   .constant('BACK_END_LOG_URL', 'log/error')
-  .factory('exceptionReporter', function(ENV, API_URL, $injector, $stateParams, BACK_END_LOG_URL, LOG_HEADERS_KEYS) {
+  .factory('exceptionReporter', function(ENV, API_PATH, $injector, $stateParams, BACK_END_LOG_URL, LOG_HEADERS_KEYS) {
     /*
       Cannot inject $http and $location directly because of
       circular dependency injection errors.
@@ -77,7 +77,7 @@ angular.module('digitalWorkplaceApp')
         const headers = { [LOG_HEADERS_KEYS.DESCRIPTION]: `Report error: ${report.name}` };
         const newConfig = _.merge({}, config, { headers });
 
-        $http.post(API_URL + BACK_END_LOG_URL, report, newConfig);
+        $http.post(API_PATH + BACK_END_LOG_URL, report, newConfig);
       }
 
       lastReport = report;

@@ -16,9 +16,9 @@ class SuccessResponse extends AbstractJsonResponse
         int $status = Response::HTTP_OK,
         array $headers = []
     ) {
-        if (!\is_array($data) && !$data instanceof \JsonSerializable) {
+        if (!($data === null || \is_array($data) || $data instanceof \JsonSerializable)) {
             throw new \InvalidArgumentException(
-                "The response data should be an array or a json serializable object"
+                "The response data should be null, an array or a json serializable object"
             );
         }
         if ($status < Response::HTTP_OK || $status >= Response::HTTP_MULTIPLE_CHOICES) {

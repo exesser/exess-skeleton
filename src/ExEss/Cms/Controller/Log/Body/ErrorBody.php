@@ -1,11 +1,16 @@
-<?php
-namespace ExEss\Cms\Api\V8_Custom\Params;
+<?php declare(strict_types=1);
 
+namespace ExEss\Cms\Controller\Log\Body;
+
+use ExEss\Cms\AwareTrait\ValidatorFactoryAwareTrait;
+use ExEss\Cms\Http\Request\AbstractJsonBody;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class LogParams extends AbstractParams
+class ErrorBody extends AbstractJsonBody
 {
+    use ValidatorFactoryAwareTrait;
+
     public function getName(): string
     {
         return $this->arguments['name'];
