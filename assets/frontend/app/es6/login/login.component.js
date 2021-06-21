@@ -19,7 +19,7 @@ angular.module('digitalWorkplaceApp')
     templateUrl: 'es6/login/login.component.html',
     controllerAs: 'loginController',
     controller: function (loginFactory, commandHandler, $state, STANDARD_USER, userDatasource,
-                          tokenFactory, $translate, LANGUAGE, $analytics, googleTagManager, $timeout) {
+                          tokenFactory, $translate, LANGUAGE, $analytics, $timeout) {
       const loginController = this;
 
       // Bindings for username and password.

@@ -22,7 +22,7 @@ describe('Factory: userDatasource - http requests', function () {
     const mockResponse = {
       "status": 200,
       "data": {
-        "username": "Tony",
+        "username": "Tony"
       },
       "message": "Success"
     };
@@ -50,7 +50,7 @@ describe('Factory: userDatasource - http requests', function () {
     const mockResponse = {
       "status": 200,
       "data": {
-        "username": "Tony",
+        "username": "Tony"
       },
       "message": "Success"
     };

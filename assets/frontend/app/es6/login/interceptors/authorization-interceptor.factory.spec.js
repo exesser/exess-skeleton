@@ -73,7 +73,7 @@ describe('httpInterceptor: authorizationInterceptor', function () {
     const config = { url: 'getList', headers: {}};
     const response = authorizationInterceptor.request(config);
     const expectedResponse = angular.copy(config);
-    expectedResponse.headers['Authorization'] = 'Bearer bla-bla-bla';
+    expectedResponse.headers.Authorization = 'Bearer bla-bla-bla';
 
     expect(response).toEqual(expectedResponse);
   });

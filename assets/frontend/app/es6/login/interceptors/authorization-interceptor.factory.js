@@ -24,8 +24,8 @@ angular.module('digitalWorkplaceApp')
     return { request, responseError };
 
     function request(request) {
-      if (tokenFactory.getToken() !== null) {
-        request.headers['Authorization'] = 'Bearer ' + tokenFactory.getToken();
+      if (tokenFactory.getToken() !== null) {
+        request.headers.Authorization = 'Bearer ' + tokenFactory.getToken();
       }
 
       return request;

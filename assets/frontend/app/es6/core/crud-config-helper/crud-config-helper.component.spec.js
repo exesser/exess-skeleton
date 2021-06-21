@@ -323,7 +323,7 @@ describe('Component: crudConfigHelper', function () {
             fields: []
           }
         ]
-      }))
+      }));
     }
 
     if (api) {
@@ -572,7 +572,7 @@ describe('Component: crudConfigHelper', function () {
               "type": "text"
             }
           ]
-        },
+        }
       ];
 
       $httpBackend.expectGET(API_URL + 'CRUD/records-information', function (headers) {

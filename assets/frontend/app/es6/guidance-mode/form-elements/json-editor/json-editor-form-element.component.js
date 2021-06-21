@@ -96,7 +96,7 @@ angular.module('digitalWorkplaceApp')
           return {};
         }
 
-        return JSON.parse(jsonEditorFormElementController.internalModelValue);
+        return angular.fromJson(jsonEditorFormElementController.internalModelValue);
       };
 
       // Needed for spec.

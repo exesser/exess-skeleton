@@ -8,14 +8,12 @@ describe('Service: loginFactory', function () {
   let loginFactory;
 
   let $httpBackend;
-  let API_URL;
   let LOG_HEADERS_KEYS;
 
-  beforeEach(inject(function (_loginFactory_, _$httpBackend_, $state, _API_URL_, _LOG_HEADERS_KEYS_) {
+  beforeEach(inject(function (_loginFactory_, _$httpBackend_, $state, _LOG_HEADERS_KEYS_) {
     mockHelpers.blockUIRouter($state);
 
     loginFactory = _loginFactory_;
-    API_URL = _API_URL_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
 
     $httpBackend = _$httpBackend_;
