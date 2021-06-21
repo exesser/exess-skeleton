@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Lists;
+namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
 use Codeception\Example;
@@ -98,7 +98,7 @@ class GetRelationsListCest
         $I->getAnApiTokenFor('adminUser');
 
         // When
-        $I->sendPOST("/Api/V8_Custom/List/{$this->listName}", $params);
+        $I->sendPOST("/Api/list/{$this->listName}", $params);
 
         // Then
         $I->seeResponseIsDwpResponse(200);
@@ -155,7 +155,7 @@ class GetRelationsListCest
         ];
 
         // When
-        $I->sendPOST("/Api/V8_Custom/List/{$this->listName}", $params);
+        $I->sendPOST("/Api/list/{$this->listName}", $params);
 
         // Then
         $I->seeResponseIsDwpResponse(200);

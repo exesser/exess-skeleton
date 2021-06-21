@@ -1,24 +1,23 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Crud;
+namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
 use ExEss\Cms\Entity\Dashboard;
 use ExEss\Cms\Entity\Property;
+use Test\Api\V8_Custom\Crud\CrudTestUser;
 
-class ListCest
+class CrudCest
 {
     private CrudTestUser $user;
 
     public function shouldNotSeeRecordTypeList(ApiTester $I): void
     {
-        $I->markTestSkipped("until route has been transferred to sf");
-
         // act
         $this->user = new CrudTestUser($I);
         $this->user->login();
 
-        $I->sendPOST('/Api/V8_Custom/List/CrudAllBeans');
+        $I->sendPOST('/Api/list/CrudAllBeans');
 
         // assert
         $I->seeResponseIsDwpResponse(403, "You don't have the rights to perform this action");
@@ -32,7 +31,7 @@ class ListCest
         $this->user->login();
 
         // act
-        $I->sendPOST('/Api/V8_Custom/List/CrudAllBeans');
+        $I->sendPOST('/Api/list/CrudAllBeans');
 
         // assert
         $I->seeResponseIsDwpResponse(200);
@@ -44,13 +43,11 @@ class ListCest
 
     public function shouldNotSeeRecordList(ApiTester $I): void
     {
-        $I->markTestSkipped("until route has been transferred to sf");
-
         // act
         $this->user = new CrudTestUser($I);
         $this->user->login();
 
-        $I->sendPOST('/Api/V8_Custom/List/CrudRecordsList', ['page' => 1, 'recordType' => 'Account']);
+        $I->sendPOST('/Api/list/CrudRecordsList', ['page' => 1, 'recordType' => Dashboard::class]);
 
         // assert
         $I->seeResponseIsDwpResponse(403, "You don't have the rights to perform this action");
@@ -64,7 +61,7 @@ class ListCest
 
         // act
         $I->sendPOST(
-            '/Api/V8_Custom/List/CrudRecordsList',
+            '/Api/list/CrudRecordsList',
             [
                 "page" => 1,
                 "recordType" => Dashboard::class,
@@ -99,11 +96,11 @@ class ListCest
 
         // act
         $I->sendPOST(
-            '/Api/V8_Custom/List/CrudRecordsList',
+            '/Api/list/CrudRecordsList',
             [
                 "page" => 1,
-                "recordType" => "ExEss\Cms\Entity\Dashboard",
-                "uniqueListKey" => "CrudRecordsList::ExEss\Cms\Entity\Dashboard",
+                "recordType" => Dashboard::class,
+                "uniqueListKey" => "CrudRecordsList::" . Dashboard::class,
                 "quickSearch" => 'crud',
             ]
         );
@@ -134,7 +131,7 @@ class ListCest
 
         // When
         $I->sendPOST(
-            '/Api/V8_Custom/List/crud_relations_list',
+            '/Api/list/crud_relations_list',
             [
                 "page" => 1,
                 'relationName' => $relation,

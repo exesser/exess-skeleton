@@ -18,8 +18,8 @@ class SidebarController
     }
 
     /**
-     * @Route("/Api/sidebar/{entity}/{id}", methods={"GET"})
-     * @ParamConverter("baseEntity", options={"record_type":"entity", "record_id": "id"})
+     * @Route("/Api/sidebar/{record_type}/{record_id}", methods={"GET"})
+     * @ParamConverter("baseEntity")
      */
     public function __invoke(object $baseEntity): SuccessResponse
     {

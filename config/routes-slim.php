@@ -7,7 +7,6 @@ use ExEss\Cms\Api\V8_Custom\Params\ChangeLocaleParams;
 use ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetDashboardParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetFilterParams;
-use ExEss\Cms\Api\V8_Custom\Params\ListParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarActionParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
 use ExEss\Cms\Api\V8_Custom\Params\LogParams;
@@ -32,24 +31,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
                 ExEss\Cms\Api\V8_Custom\Controller\FetchActionController::class
             )
             ->add($paramsFactory->create(ActionParams::class))
-        ;
-        /**
-         * Call to get list data
-         * @see \ExEss\Cms\Api\V8_Custom\Controller\ListController::getList()
-         */
-        $app
-            ->post('/List/{list}', 'ExEss\Cms\Api\V8_Custom\Controller\ListController:getList')
-            ->add($paramsFactory->create(ListParams::class))
-        ;
-        /**
-         * Call to export list data
-         * @see \ExEss\Cms\Api\V8_Custom\Controller\ListController::getListCSV()
-         */
-        $app
-            ->post('/List/{list}/export/CSV', 'ExEss\Cms\Api\V8_Custom\Controller\ListController:getListCSV')
-            ->setArgument('onlyRecordCount', false)
-            ->setArgument('exportToCSV', true)
-            ->add($paramsFactory->create(ListParams::class))
         ;
 
         /**

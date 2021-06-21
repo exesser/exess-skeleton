@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace ExEss\Cms\ListFunctions;
+namespace ExEss\Cms\Service;
 
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
@@ -202,7 +202,7 @@ class ListExportService
             $this->getCSVFileName($list);
         }
 
-        $csv = \fopen($list->fileName, $mode, \LOCK_EX);
+        $csv = \fopen($list->fileName, $mode);
 
         if (false === \flock($csv, \LOCK_EX)) {
             throw new \RuntimeException("Could not acquire exclusive lock on the file '{$list->fileName}'");

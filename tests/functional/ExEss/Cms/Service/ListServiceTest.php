@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\CustomModules\LIST_dynamic_list;
+namespace Test\Functional\ExEss\Cms\Service;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use ExEss\Cms\Doctrine\Type\CellType;
@@ -15,17 +15,14 @@ use ExEss\Cms\Entity\Translation;
 use ExEss\Cms\Entity\User;
 use ExEss\Cms\Api\V8_Custom\Params\ListParams;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListResponse;
-use ExEss\Cms\ListFunctions\ListFunctions;
+use ExEss\Cms\Service\ListService;
 use Helper\Testcase\FunctionalTestCase;
 
-class ListFunctionsTest extends FunctionalTestCase
+class ListServiceTest extends FunctionalTestCase
 {
     private ?string $sortingOptionId = null;
-
-    protected ListFunctions $listFunctions;
-
-    protected ListParams $listParams;
-
+    private ListService $listService;
+    private ListParams $listParams;
     private string $userId;
 
     public function _before(): void
@@ -61,7 +58,7 @@ class ListFunctionsTest extends FunctionalTestCase
             ['primary_group' => 1]
         );
 
-        $this->listFunctions = $this->tester->grabService(ListFunctions::class);
+        $this->listService = $this->tester->grabService(ListService::class);
         $this->listParams = $this->tester->grabService(ListParams::class);
     }
 
@@ -88,7 +85,7 @@ class ListFunctionsTest extends FunctionalTestCase
         );
         $topBar->setSortingOptions(new ArrayCollection([$sortingOption]));
 
-        $this->tester->haveInRepository(ListDynamic::class, [
+        $listId = $this->tester->haveInRepository(ListDynamic::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
             'name' => $listName = $this->tester->generateUuid(),
@@ -169,19 +166,20 @@ class ListFunctionsTest extends FunctionalTestCase
             $this->tester->grabEntityFromRepository(User::class, ['id' => $this->userId])
         );
 
-        return $listName;
+        return $listId;
     }
 
     public function testGetList(): void
     {
         // setup
+        $listId = $this->setupDataList(1);
         $this->listParams->configure([
-            'list' => $this->setupDataList(1),
             'params' => [],
         ]);
+        $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
         // act
-        $response = $this->listFunctions->getList($this->listParams);
+        $response = $this->listService->getList($list, $this->listParams);
 
         // assert
         $this->tester->assertGreaterThan(5, \count($response->rows));    // we added 5 in _before
@@ -194,17 +192,18 @@ class ListFunctionsTest extends FunctionalTestCase
 
     public function testGetOnlyRecordCount(): void
     {
-        // setup
+        // Given
+        $listId = $this->setupDataList(1);
         $this->listParams->configure([
-            'list' => $this->setupDataList(1),
             'params' => [],
             'onlyRecordCount' => true,
         ]);
+        $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
-        // act
-        $response = $this->listFunctions->getList($this->listParams);
+        // When
+        $response = $this->listService->getList($list, $this->listParams);
 
-        // assert
+        // Then
         $this->tester->assertIsObject($response->pagination);
         $this->tester->assertGreaterThan(5, (int) $response->pagination->total);
     }
@@ -213,14 +212,15 @@ class ListFunctionsTest extends FunctionalTestCase
     {
         // Given
         $this->tester->generateUser('ZZZ {{2*2}}');
+        $listId = $this->setupDataList(1);
         $this->listParams->configure([
-            'list' => $this->setupDataList(1),
             'params' => [],
             'sortBy' => $this->sortingOptionId,
         ]);
+        $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
         // When
-        $response = $this->listFunctions->getList($this->listParams);
+        $response = $this->listService->getList($list, $this->listParams);
 
         // Then
         $this->tester->assertEquals('ZZZ [[2*2]]', $response->rows[0]->cells[5]->options->line1);
@@ -263,14 +263,15 @@ class ListFunctionsTest extends FunctionalTestCase
     public function testGetListWithoutPagination(int $page, array $pagination): void
     {
         // Given
+        $listId = $this->setupDataList(0, 2);
         $this->listParams->configure([
-            'list' => $this->setupDataList(0, 2),
             'params' => [],
             'page' => $page,
         ]);
+        $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
         // When
-        $response = $this->listFunctions->getList($this->listParams);
+        $response = $this->listService->getList($list, $this->listParams);
 
         // Then
         $responsePagination = \json_decode(\json_encode($response->pagination), true);
@@ -285,7 +286,7 @@ class ListFunctionsTest extends FunctionalTestCase
     {
         // Given
         $user = $this->tester->grabEntityFromRepository(User::class, ['id' => '1']);
-        $this->tester->haveInRepository(ListDynamic::class, [
+        $listId = $this->tester->haveInRepository(ListDynamic::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
             'name' => $listName = $this->tester->generateUuid(),
@@ -294,12 +295,11 @@ class ListFunctionsTest extends FunctionalTestCase
             'baseObject' => User::class,
         ]);
         $response = new DynamicListResponse();
-        $this->listParams->configure([
-            'list' => $listName,
-        ]);
+        $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
         // When
-        $this->listFunctions->fillTopBarOnList(
+        $this->listService->fillTopBarOnList(
+            $list,
             $this->listParams,
             $response,
         );
@@ -312,7 +312,7 @@ class ListFunctionsTest extends FunctionalTestCase
     {
         // Given
         $user = $this->tester->grabEntityFromRepository(User::class, ['id' => '1']);
-        $this->tester->haveInRepository(ListDynamic::class, [
+        $listId = $this->tester->haveInRepository(ListDynamic::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
             'name' => $listName = $this->tester->generateUuid(),
@@ -326,12 +326,12 @@ class ListFunctionsTest extends FunctionalTestCase
             ],
         ]);
         $response = new DynamicListResponse();
-        $this->listParams->configure([
-            'list' => $listName,
-        ]);
+
+        $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
         // When
-        $this->listFunctions->fillTopBarOnList(
+        $this->listService->fillTopBarOnList(
+            $list,
             $this->listParams,
             $response,
         );
@@ -347,14 +347,15 @@ class ListFunctionsTest extends FunctionalTestCase
         // Given
         $recordId = $this->tester->generateUser("test user");
         $response = new DynamicListResponse();
+        $listId = $this->setupDataList(1);
+
         $this->listParams->configure([
-            'list' => $this->setupDataList(1),
             'recordId' => $recordId,
             'recordType' => User::class,
             'params' => [],
         ]);
 
-        $list = $this->listParams->getList();
+        $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $listId]);
 
         $user = $this->tester->grabEntityFromRepository(User::class, ['id' => '1']);
         $toTranslate = 'mandatorySelectRecordMessageTrans';
@@ -389,7 +390,8 @@ class ListFunctionsTest extends FunctionalTestCase
         ]);
 
         // When
-        $this->listFunctions->fillTopBarOnList(
+        $this->listService->fillTopBarOnList(
+            $list,
             $this->listParams,
             $response,
         );

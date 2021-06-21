@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Lists;
+namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
 use ExEss\Cms\Doctrine\Type\FilterFieldType;
@@ -51,7 +51,7 @@ class GetDefaultListCest
         $I->getAnApiTokenFor('adminUser');
 
         // When
-        $I->sendPOST("/Api/V8_Custom/List/$this->listName");
+        $I->sendPOST("/Api/list/$this->listName");
 
         // Then
         $I->seeResponseIsDwpResponse(200);
@@ -90,7 +90,7 @@ class GetDefaultListCest
 
         // When
         $I->sendPOST(
-            "/Api/V8_Custom/List/$listName",
+            "/Api/list/$listName",
             ['extraActionData' => ['name' => 'Ken Block', 'number' => '43']]
         );
 
@@ -101,12 +101,12 @@ class GetDefaultListCest
         unset($row['createDate']);
 
         $I->assertArrayEqual(
-            $I->loadJsonWithParams(__DIR__ . '/resource/list-external-rows.json'),
+            $I->loadJsonWithParams(__DIR__ . '/resources/list-external-rows.json'),
             $row
         );
 
         $I->assertArrayEqual(
-            $I->loadJsonWithParams(__DIR__ . '/resource/list-settings.json'),
+            $I->loadJsonWithParams(__DIR__ . '/resources/list-settings.json'),
             $I->grabDataFromResponseByJsonPath('$.data.settings')[0]
         );
     }
@@ -149,7 +149,7 @@ class GetDefaultListCest
         // When
         $I->getAnApiTokenFor('adminUser');
         $I->sendPOST(
-            "/Api/V8_Custom/List/$listName",
+            "/Api/list/$listName",
             [
                 'page' => 1,
                 'filters' => [
