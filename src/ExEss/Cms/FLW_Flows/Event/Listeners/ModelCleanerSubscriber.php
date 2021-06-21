@@ -6,13 +6,13 @@ use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvent;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvents;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Entity\FlowField;
 use ExEss\Cms\FLW_Flows\Builder\FormBuilder;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\SaveFlow;
 use ExEss\Cms\Logger\Logger;
+use ExEss\Cms\Service\GridService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ModelCleanerSubscriber implements EventSubscriberInterface
@@ -48,7 +48,7 @@ class ModelCleanerSubscriber implements EventSubscriberInterface
         Dwp::DYNAMIC_LOADED_FIELDS,
     ];
 
-    private GridRepository $gridRepository;
+    private GridService $gridService;
 
     private Logger $logger;
 
@@ -57,11 +57,11 @@ class ModelCleanerSubscriber implements EventSubscriberInterface
     public function __construct(
         EntityManager $em,
         FormBuilder $formBuilder,
-        GridRepository $gridRepository,
+        GridService $gridService,
         Logger $logger
     ) {
         $this->formBuilder = $formBuilder;
-        $this->gridRepository = $gridRepository;
+        $this->gridService = $gridService;
         $this->logger = $logger;
         $this->em = $em;
     }
@@ -175,7 +175,7 @@ class ModelCleanerSubscriber implements EventSubscriberInterface
         foreach ($flow->getSteps() as $step) {
             $parentFields = \array_merge($parentFields, $this->formBuilder->getFlowStepFields($step));
 
-            foreach ($this->gridRepository->getRepeatableRowsInStep($step) as $repeatableRow) {
+            foreach ($this->gridService->getRepeatableRowsInStep($step) as $repeatableRow) {
                 $nameSpace = $repeatableRow->getOptions()->getModelKey();
                 $parentFields[] = $nameSpace;
 
@@ -229,7 +229,7 @@ class ModelCleanerSubscriber implements EventSubscriberInterface
         $childFields = [];
         $parentFields = $this->getGuidanceFields($flow);
 
-        foreach ($this->gridRepository->getRepeatableRows($flow) as $repeatableRow) {
+        foreach ($this->gridService->getRepeatableRows($flow) as $repeatableRow) {
             /** @var Flow $childFlow */
             $childFlow = $this->em->getRepository(Flow::class)->get(
                 $repeatableRow->getOptions()->getFlowId()

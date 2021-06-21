@@ -19,7 +19,7 @@ services:
   ExEss\Cms\FLW_Flows\MultiLineFlowSaver:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\Service\GridService'
       - '@ExEss\Cms\FLW_Flows\SaveFlow'
 
   # Handlers

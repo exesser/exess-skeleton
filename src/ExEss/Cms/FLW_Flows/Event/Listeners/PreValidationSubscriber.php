@@ -4,10 +4,10 @@ namespace ExEss\Cms\FLW_Flows\Event\Listeners;
 
 use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Entity\Flow;
+use ExEss\Cms\Service\GridService;
 use Psr\Container\ContainerInterface;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvent;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvents;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\Exception\HandlerNotFoundException;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
@@ -23,7 +23,7 @@ class PreValidationSubscriber implements EventSubscriberInterface
      */
     protected iterable $preValidationHandlers;
 
-    protected GridRepository $gridRepository;
+    protected GridService $gridService;
 
     private EntityManager $em;
 
@@ -31,11 +31,11 @@ class PreValidationSubscriber implements EventSubscriberInterface
         ContainerInterface $container,
         iterable $preValidationHandlers,
         EntityManager $em,
-        GridRepository $gridRepository
+        GridService $gridService
     ) {
         $this->container = $container;
         $this->preValidationHandlers = $preValidationHandlers;
-        $this->gridRepository = $gridRepository;
+        $this->gridService = $gridService;
         $this->em = $em;
     }
 
@@ -89,7 +89,7 @@ class PreValidationSubscriber implements EventSubscriberInterface
     {
         // nothing special to be done for flows without repeating sub flows
         $flow = $event->getFlow();
-        if (!$this->gridRepository->hasFlowRepeatableRows($flow)) {
+        if (!$this->gridService->hasFlowRepeatableRows($flow)) {
             $this->runFor($event->getResponse(), $event->getAction(), $flow);
 
             return;
@@ -129,7 +129,7 @@ class PreValidationSubscriber implements EventSubscriberInterface
     private function mergeParentAndChildrenFieldsFromSameNamespace(FlowEvent $event, Model $model): array
     {
         $repeatedNameSpaces = [];
-        foreach ($this->gridRepository->getRepeatableRows($event->getFlow()) as $repeatableRow) {
+        foreach ($this->gridService->getRepeatableRows($event->getFlow()) as $repeatableRow) {
             $childModels = [];
             $modelKey = $repeatableRow->getOptions()->getModelKey();
             if (\array_key_exists($modelKey, $repeatedNameSpaces)) {
@@ -137,7 +137,7 @@ class PreValidationSubscriber implements EventSubscriberInterface
                 continue;
             }
 
-            $repeatValues = $this->gridRepository->getRepeatValuesFromModel($repeatableRow, $model);
+            $repeatValues = $this->gridService->getRepeatValuesFromModel($repeatableRow, $model);
 
             // make sure the key holding the child models exists
             if (!$model->$modelKey instanceof Model) {
@@ -165,7 +165,7 @@ class PreValidationSubscriber implements EventSubscriberInterface
     private function getRepeatableFlows(Flow $flow): array
     {
         $repeatedNameSpaces = [];
-        foreach ($this->gridRepository->getRepeatableRows($flow) as $repeatableRow) {
+        foreach ($this->gridService->getRepeatableRows($flow) as $repeatableRow) {
             $modelKey = $repeatableRow->getOptions()->getModelKey();
             $repeatedNameSpaces[$modelKey][] = $repeatableRow->getOptions()->getFlowId();
         }

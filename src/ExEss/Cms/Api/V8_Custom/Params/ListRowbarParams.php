@@ -2,8 +2,8 @@
 namespace ExEss\Cms\Api\V8_Custom\Params;
 
 use ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\Dashboard\Model\Grid;
+use ExEss\Cms\Service\GridService;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -12,12 +12,12 @@ class ListRowbarParams extends AbstractParams implements \JsonSerializable
 {
     public const DEFAULT_GRID_KEY = 'action-bar';
 
-    private GridRepository $gridRepository;
+    private GridService $gridService;
 
-    public function __construct(ValidatorFactory $validatorFactory, GridRepository $gridRepository)
+    public function __construct(ValidatorFactory $validatorFactory, GridService $gridService)
     {
         parent::__construct($validatorFactory);
-        $this->gridRepository = $gridRepository;
+        $this->gridService = $gridService;
     }
 
     public function getListKey(): string
@@ -84,7 +84,7 @@ class ListRowbarParams extends AbstractParams implements \JsonSerializable
                 'grid',
                 function (Options $options, $grid) {
                     if ($options['gridKey'] !== self::DEFAULT_GRID_KEY) {
-                        return $this->gridRepository->getGridByKey(
+                        return $this->gridService->getGridByKey(
                             $options['gridKey'],
                             ['recordId' => $options['recordId']] + $options['actionData']
                         );

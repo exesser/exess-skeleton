@@ -28,7 +28,7 @@ services:
   ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
-      - '@ExEss\Cms\Dashboard\GridRepository'
+      - '@ExEss\Cms\Service\GridService'
 
   ExEss\Cms\Api\V8_Custom\Params\ListRowbarActionParams:
     arguments:

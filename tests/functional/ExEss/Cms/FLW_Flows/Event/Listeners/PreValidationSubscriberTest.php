@@ -10,7 +10,7 @@ use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Suggestions\OverrideDefaultHandler;
 use Helper\Testcase\FunctionalTestCase;
-use Test\Functional\CustomModules\Dashboard\GridRepositoryTest;
+use Test\Functional\ExEss\Cms\Service\GridServiceTest;
 
 class PreValidationSubscriberTest extends FunctionalTestCase
 {
@@ -70,7 +70,7 @@ class PreValidationSubscriberTest extends FunctionalTestCase
             'packageProduct|addresses_aos_products_quotes|is_main' => true,
             'packageProduct|advance_base_c' => 'EAV',
             'packageProduct|line_status_c' => $parentLineStatus,
-            GridRepositoryTest::FIELD_NAME => [
+            GridServiceTest::FIELD_NAME => [
                 'product-id-1',
             ],
         ]);
@@ -87,13 +87,13 @@ class PreValidationSubscriberTest extends FunctionalTestCase
             'packageProduct|addresses_aos_products_quotes|is_main' => true,
             'packageProduct|advance_base_c' => 'EAV',
             'packageProduct|line_status_c' => $parentLineStatus,
-            GridRepositoryTest::FIELD_NAME => [
+            GridServiceTest::FIELD_NAME => [
                 'product-id-1',
             ],
         ];
 
         $modelWithNoneSelected = clone $modelWithOneChild;
-        unset($modelWithNoneSelected->{GridRepositoryTest::FIELD_NAME});
+        unset($modelWithNoneSelected->{GridServiceTest::FIELD_NAME});
 
         $expectedWithNoneSelected = [
             'packageProduct' => [],
@@ -120,7 +120,7 @@ class PreValidationSubscriberTest extends FunctionalTestCase
             'packageProduct|addresses_aos_products_quotes|is_main' => true,
             'packageProduct|advance_base_c' => 'EAV',
             'packageProduct|line_status_c' => $parentLineStatus,
-            GridRepositoryTest::FIELD_NAME => [
+            GridServiceTest::FIELD_NAME => [
                 'product-id-1',
                 'product-id-2',
             ],
@@ -144,7 +144,7 @@ class PreValidationSubscriberTest extends FunctionalTestCase
             'packageProduct|addresses_aos_products_quotes|is_main' => true,
             'packageProduct|advance_base_c' => 'EAV',
             'packageProduct|line_status_c' => $parentLineStatus,
-            GridRepositoryTest::FIELD_NAME => [
+            GridServiceTest::FIELD_NAME => [
                 'product-id-1',
                 'product-id-2',
             ],

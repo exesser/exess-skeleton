@@ -8,12 +8,12 @@ use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\FlowStep;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvent;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvents;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\FLW_Flows\Builder\FormBuilder;
 use ExEss\Cms\FLW_Flows\DefaultValueService;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\Logger\Logger;
+use ExEss\Cms\Service\GridService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class FormAndModelSubscriber implements EventSubscriberInterface
@@ -27,7 +27,7 @@ class FormAndModelSubscriber implements EventSubscriberInterface
 
     private Logger $logger;
 
-    private GridRepository $gridRepository;
+    private GridService $gridService;
 
     private EntityManager $em;
 
@@ -35,13 +35,13 @@ class FormAndModelSubscriber implements EventSubscriberInterface
         EntityManager $em,
         FormBuilder $formBuilder,
         DefaultValueService $defaultValueService,
-        GridRepository $gridRepository,
+        GridService $gridService,
         Logger $logger
     ) {
         $this->formBuilder = $formBuilder;
         $this->defaultValueService = $defaultValueService;
         $this->logger = $logger;
-        $this->gridRepository = $gridRepository;
+        $this->gridService = $gridService;
         $this->em = $em;
     }
 
@@ -118,7 +118,7 @@ class FormAndModelSubscriber implements EventSubscriberInterface
     {
         $model = $event->getResponse()->getModel();
 
-        foreach ($this->gridRepository->getRepeatableRows($event->getFlow()) as $repeatableRow) {
+        foreach ($this->gridService->getRepeatableRows($event->getFlow()) as $repeatableRow) {
             $options = $repeatableRow->getOptions();
             $modelKey = $options->getModelKey();
 

@@ -3,17 +3,17 @@ namespace ExEss\Cms\FLW_Flows\Event\Listeners;
 
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvent;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvents;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\Entity\FlowStep;
+use ExEss\Cms\Service\GridService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class GridSubscriber implements EventSubscriberInterface
 {
-    private GridRepository $gridRepository;
+    private GridService $gridService;
 
-    public function __construct(GridRepository $gridRepository)
+    public function __construct(GridService $gridService)
     {
-        $this->gridRepository = $gridRepository;
+        $this->gridService = $gridService;
     }
 
     /**
@@ -74,7 +74,7 @@ class GridSubscriber implements EventSubscriberInterface
 
     private function loadGridForStep(FlowEvent $event, FlowStep $flowStep): void
     {
-        $grid = $this->gridRepository->getGridForFlowStep(
+        $grid = $this->gridService->getGridForFlowStep(
             $flowStep,
             $event->getModel(),
             $event->getFlow(),

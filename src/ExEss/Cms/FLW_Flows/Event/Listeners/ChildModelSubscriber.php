@@ -3,26 +3,24 @@ namespace ExEss\Cms\FLW_Flows\Event\Listeners;
 
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvent;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvents;
-use ExEss\Cms\Dashboard\GridRepository;
 use ExEss\Cms\Dashboard\Model\Grid;
 use ExEss\Cms\Dashboard\Model\Grid\RowsCollection;
 use ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
+use ExEss\Cms\Service\GridService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ChildModelSubscriber implements EventSubscriberInterface
 {
-
-    private GridRepository $gridRepository;
-
+    private GridService $gridService;
     private FlowEventDispatcher $flowEventDispatcher;
 
     public function __construct(
-        GridRepository $gridRepository,
+        GridService $gridService,
         FlowEventDispatcher $flowEventDispatcher
     ) {
-        $this->gridRepository = $gridRepository;
+        $this->gridService = $gridService;
         $this->flowEventDispatcher = $flowEventDispatcher;
     }
 
@@ -102,7 +100,7 @@ class ChildModelSubscriber implements EventSubscriberInterface
         $allRepeatableRows = new RowsCollection();
 
         foreach ($event->getFlow()->getSteps() as $flowStep) {
-            $grid = $this->gridRepository->getGridForFlowStep(
+            $grid = $this->gridService->getGridForFlowStep(
                 $flowStep,
                 $event->getModel(),
                 $event->getFlow(),

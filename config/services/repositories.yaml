@@ -12,13 +12,6 @@ services:
     arguments:
       - '@doctrine.orm.entity_manager'
 
-  ExEss\Cms\Dashboard\GridRepository:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
-      - '@ExEss\Cms\Grid\RepeatableRowService'
-
   ExEss\Cms\Api\V8_Custom\Repository\ListRowbarRepository:
     arguments:
       - '@doctrine.orm.entity_manager'
