@@ -139,6 +139,12 @@
             "@set-up-phpcs",
             "@set-up-hooks"
         ],
+        "init-db": [
+           "bin/console doctrine:database:drop --force --if-exists",
+	       "bin/console doctrine:database:create",
+	       "bin/console doctrine:migrations:migrate --no-interaction",
+	       "bin/robo db:load-test-dump"
+        ],
         "post-install-cmd": "@set-up",
         "post-update-cmd": "@set-up",
         "lint": [
