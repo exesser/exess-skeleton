@@ -2,10 +2,9 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\Component\Health\HealthService:
+  ExEss\Cms\Component\Health\HealthCheckService:
     arguments:
       - !tagged { tag: 'handler.health', index_by: 'alias' }
-      - '@Symfony\Component\Serializer\Serializer'
 
   # Handlers
   ExEss\Cms\Component\Health\Handler\DoctrineHandler:

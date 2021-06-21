@@ -117,11 +117,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
             ->add($paramsFactory->create(FlowUpdateParams::class))
         ;
 
-        // Ping check
-        $app->get('/check/ping', \ExEss\Cms\Api\V8_Custom\Controller\PingController::class);
-        // Health check
-        $app->get('/check/health', \ExEss\Cms\Api\V8_Custom\Controller\HealthController::class);
-
         $app
             ->get('/Filter/{filterKey}/{list}', 'ExEss\Cms\Api\V8_Custom\Controller\FilterController:getFilter')
             ->add($paramsFactory->create(GetFilterParams::class))

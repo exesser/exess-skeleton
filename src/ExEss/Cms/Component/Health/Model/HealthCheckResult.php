@@ -2,7 +2,7 @@
 
 namespace ExEss\Cms\Component\Health\Model;
 
-class HealthCheckResult
+class HealthCheckResult implements \JsonSerializable
 {
     public const OK = 'OK';
 
@@ -24,5 +24,10 @@ class HealthCheckResult
     public function getMessage(): string
     {
         return $this->message;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return \get_object_vars($this);
     }
 }

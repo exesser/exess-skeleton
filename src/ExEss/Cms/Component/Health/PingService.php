@@ -4,8 +4,8 @@ namespace ExEss\Cms\Component\Health;
 
 class PingService
 {
-    public function getResult(): string
+    public function getResult(): array
     {
-        return '<?xml version="1.0"?><rs-response><result>true</result></rs-response>';
+        return ['result' => true];
     }
 }

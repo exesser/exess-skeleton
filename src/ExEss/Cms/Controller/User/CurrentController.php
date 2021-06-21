@@ -6,10 +6,9 @@ use ExEss\Cms\Api\V8_Custom\Service\Security;
 use ExEss\Cms\Exception\NotAuthenticatedException;
 use ExEss\Cms\Http\SuccessResponse;
 use ExEss\Cms\Service\UserService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CurrentController extends AbstractController
+class CurrentController
 {
     private UserService $userService;
 

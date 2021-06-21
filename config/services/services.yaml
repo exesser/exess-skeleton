@@ -94,13 +94,6 @@ services:
       - '%env_url%'
       - '%kernel.cache_dir%/htmlcleaner'
 
-  ExEss\Cms\Component\Health\Serializer\Normalizer\HealthCheckResultNormalizer: ~
-  Symfony\Component\Serializer\Serializer:
-    arguments:
-      -
-        - '@ExEss\Cms\Component\Health\Serializer\Normalizer\HealthCheckResultNormalizer'
-        - '@ExEss\Cms\Component\Client\Serializer\Normalizer\GuzzleResponseNormalizer'
-
   ExEss\Cms\ListFunctions\ListFunctions:
     arguments:
       - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'

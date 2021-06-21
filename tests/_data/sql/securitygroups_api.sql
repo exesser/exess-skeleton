@@ -18,4 +18,6 @@ VALUES
 ('d397d0ea-ac93-11e8-8d8c-0a8aac76adce', '/V8_Custom/Flow/{flow_name}/{record_id}', '2018-08-30 20:32:34', '2018-12-05 12:01:53', NULL, '1', NULL, 'GET', '^DASHBOARD^'),
 ('d397d78c-ac93-11e8-8d8c-0a8aac76adce', '/V8_Custom/Flow/{flow_name}/{record_id}', '2018-08-30 20:32:34', '2018-12-05 12:02:10', NULL, '1', NULL, 'POST', '^DASHBOARD^'),
 ('d3980724-ac93-11e8-8d8c-0a8aac76adce', '/V8_Custom/log/error', '2018-08-30 20:32:34', '2018-11-21 13:57:12', NULL, '1', NULL, 'POST', '^DASHBOARD^'),
+('d39813d0-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_check_health__invoke', '2018-08-30 20:32:34', '2018-11-21 13:56:59', NULL, '1', NULL, 'GET', '^THIRD_PARTY^'),
+('d39813e1-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_check_ping__invoke', '2018-08-30 20:32:34', '2018-11-21 13:56:59', NULL, '1', NULL, 'GET', '^THIRD_PARTY^'),
 ('d39813c9-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_menu_children__invoke', '2018-08-30 20:32:34', '2018-11-21 13:56:59', NULL, '1', NULL, 'GET', '^DASHBOARD^');
