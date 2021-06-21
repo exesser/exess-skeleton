@@ -195,7 +195,7 @@ services:
       - '%env_url%'
       - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
 
-  ExEss\Cms\Api\V8_Custom\Sidebar\SidebarFactory: ~
+  ExEss\Cms\Component\Sidebar\Factory\SidebarFactory: ~
 
   ExEss\Cms\DASH_Dashboard\DashboardCalcFunctions: ~
 

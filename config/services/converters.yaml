@@ -1,7 +1,10 @@
 services:
   _defaults:
     public: true
+    autowire: true
+    autoconfigure: true
 
+  ExEss\Cms\Http\ParamConverter\BaseEntityConverter: ~
 
   # Controller middleware
 

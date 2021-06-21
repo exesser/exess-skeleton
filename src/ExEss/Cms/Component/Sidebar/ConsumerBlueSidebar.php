@@ -1,5 +1,6 @@
-<?php
-namespace ExEss\Cms\Api\V8_Custom\Sidebar;
+<?php declare(strict_types=1);
+
+namespace ExEss\Cms\Component\Sidebar;
 
 class ConsumerBlueSidebar extends AbstractBlueSidebar
 {

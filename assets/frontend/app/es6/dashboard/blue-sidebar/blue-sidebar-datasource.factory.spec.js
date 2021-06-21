@@ -6,15 +6,15 @@ describe('Factory: blueSidebarDatasource - http requests', function () {
 
   let $httpBackend;
   let blueSidebarDatasource;
-  let API_URL;
+  let API_PATH;
   let LOG_HEADERS_KEYS;
 
-  beforeEach(inject(function ($state, _blueSidebarDatasource_, _$httpBackend_, _API_URL_, _LOG_HEADERS_KEYS_) {
+  beforeEach(inject(function ($state, _blueSidebarDatasource_, _$httpBackend_, _API_PATH_, _LOG_HEADERS_KEYS_) {
     mockHelpers.blockUIRouter($state);
 
     blueSidebarDatasource = _blueSidebarDatasource_;
     $httpBackend = _$httpBackend_;
-    API_URL = _API_URL_;
+    API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
   }));
 
@@ -90,8 +90,8 @@ describe('Factory: blueSidebarDatasource - http requests', function () {
       }
     };
 
-    $httpBackend.expectGET(API_URL + 'BlueSidebar/husky/1337', function(headers) {
-      return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'get BlueSidebar for husky:1337';
+    $httpBackend.expectGET(API_PATH + 'sidebar/husky/1337', function(headers) {
+      return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'get sidebar for husky:1337';
     }).respond(mockResponse);
 
     let promiseResolved = false;

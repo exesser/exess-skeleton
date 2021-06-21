@@ -1,5 +1,6 @@
-<?php
-namespace ExEss\Cms\Api\V8_Custom\Sidebar;
+<?php declare(strict_types=1);
+
+namespace ExEss\Cms\Component\Sidebar;
 
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
 
@@ -9,10 +10,7 @@ abstract class AbstractBlueSidebar implements SidebarInterface
 
     abstract protected function getTitleContact(): string;
 
-    /**
-     * @inheritdoc
-     */
-    public function getData(): array
+    public function jsonSerialize(): array
     {
         // @todo implement this
         return [

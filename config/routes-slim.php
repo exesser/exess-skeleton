@@ -12,7 +12,6 @@ use ExEss\Cms\Api\V8_Custom\Params\ListRowbarActionParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
 use ExEss\Cms\Api\V8_Custom\Params\LogParams;
 use ExEss\Cms\Api\V8_Custom\Params\SelectWithSearchParams;
-use ExEss\Cms\Api\V8_Custom\Params\SidebarParams;
 
 /** @var \ExEss\Cms\App $app */
 /** @var ParamObjectConverterFactory $paramsFactory */
@@ -151,12 +150,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
                 'ExEss\Cms\Api\V8_Custom\Controller\SelectWithSearchController:getSelectOptions'
             )
             ->add($paramsFactory->create(SelectWithSearchParams::class));
-
-        /* @see \ExEss\Cms\Api\V8_Custom\Controller\SidebarController::getSidebar() */
-        $app
-            ->get('/BlueSidebar/{object}/{id}', 'ExEss\Cms\Api\V8_Custom\Controller\SidebarController:getSidebar')
-            ->add($paramsFactory->create(SidebarParams::class))
-        ;
 
         /**
          * CRUD
