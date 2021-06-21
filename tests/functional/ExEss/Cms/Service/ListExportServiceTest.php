@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Cms\ListFunctions;
+namespace Test\Functional\ExEss\Cms\Service;
 
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListHeader;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListResponse;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRow;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRowCell;
-use ExEss\Cms\ListFunctions\ListExportService;
+use ExEss\Cms\Service\ListExportService;
 use Helper\Testcase\FunctionalTestCase;
 
 class ListExportServiceTest extends FunctionalTestCase
@@ -31,7 +31,7 @@ class ListExportServiceTest extends FunctionalTestCase
         $this->tester->seeFileFound(\basename($dynamicList->fileName), ListExportService::CSV_DIR);
         $this->tester->assertFileExists($dynamicList->fileName);
         $this->tester->assertEquals(
-            \file_get_contents(__DIR__ . '/resources/expected_csv.csv'),
+            \file_get_contents(__DIR__ . '/resources/ListExportService_expected.csv'),
             \file_get_contents($dynamicList->fileName)
         );
 

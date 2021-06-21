@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Lists;
+namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
 use ExEss\Cms\Entity\User;
@@ -82,13 +82,14 @@ class GetCombinedListCest
 
     public function getCombinedList(ApiTester $I): void
     {
+        // Given
         $I->getAnApiTokenFor('adminUser');
 
-        $I->sendPOST('/Api/V8_Custom/List/' . self::EXTERNAL_LIST_NAME);
+        // When
+        $I->sendPOST('/Api/list/' . self::EXTERNAL_LIST_NAME);
 
-        // assertions
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
+        // Then
+        $I->seeResponseIsDwpResponse(200);
 
         $I->assertTrue(\in_array($I->grabDataFromResponseByJsonPath('$.data.rows[2].id')[0], $this->users));
         $I->assertTrue(\in_array($I->grabDataFromResponseByJsonPath('$.data.rows[3].id')[0], $this->users));
@@ -98,21 +99,20 @@ class GetCombinedListCest
 
     public function filterCombinedList(ApiTester $I): void
     {
+        // Given
         $I->getAnApiTokenFor('adminUser');
 
-        $I->sendPOST('/Api/V8_Custom/List/' . self::EXTERNAL_LIST_NAME, $this->filters);
+        // When
+        $I->sendPOST('/Api/list/' . self::EXTERNAL_LIST_NAME, $this->filters);
 
-        // assertions
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
-
-        $assertPaths = [
-            '$.data.rows[0].id' => $this->users[0],
-        ];
+        // Then
+        $I->seeResponseIsDwpResponse(200);
 
         $failedPath = $I->grabDataFromResponseByJsonPath('$.data.rows[1].id');
         $I->assertTrue(empty($failedPath));
 
-        $I->seeAssertPathsInJson($assertPaths);
+        $I->seeAssertPathsInJson([
+            '$.data.rows[0].id' => $this->users[0],
+        ]);
     }
 }

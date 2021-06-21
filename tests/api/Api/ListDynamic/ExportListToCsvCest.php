@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Lists;
+namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
 use ExEss\Cms\Entity\User;
+use ExEss\Cms\FLW_Flows\Action\Command;
 
 class ExportListToCsvCest
 {
@@ -50,31 +51,31 @@ class ExportListToCsvCest
 
     public function exportDefaultList(ApiTester $I): void
     {
+        // Given
         $I->getAnApiTokenFor('adminUser');
 
-        $I->sendPOST('/Api/V8_Custom/List/' . self::INTERNAL_LIST_NAME . '/export/CSV', ['recordIds' => $this->users]);
+        // When
+        $I->sendPOST('/Api/list/' . self::INTERNAL_LIST_NAME . '/export/csv', ['recordIds' => $this->users]);
 
-        // assertions
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
-
+        // Then
+        $I->seeResponseIsDwpResponse(200);
         $I->seeAssertPathsInJson([
-            '$.data.command' => 'openLink',
+            '$.data.command' => Command::COMMAND_TYPE_OPEN_LINK,
         ]);
     }
 
     public function exportCombinedList(ApiTester $I): void
     {
+        // Given
         $I->getAnApiTokenFor('adminUser');
 
-        $I->sendPOST('/Api/V8_Custom/List/' . self::EXTERNAL_LIST_NAME . '/export/CSV');
+        // When
+        $I->sendPOST('/Api/list/' . self::EXTERNAL_LIST_NAME . '/export/csv');
 
-        // assertions
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
-
+        // Then
+        $I->seeResponseIsDwpResponse(200);
         $I->seeAssertPathsInJson([
-            '$.data.command' => 'openLink',
+            '$.data.command' => Command::COMMAND_TYPE_OPEN_LINK,
         ]);
     }
 }

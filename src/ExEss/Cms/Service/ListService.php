@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace ExEss\Cms\ListFunctions;
+namespace ExEss\Cms\Service;
 
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\Expr\OrderBy;
 use Doctrine\ORM\QueryBuilder;
@@ -37,7 +37,7 @@ use ExEss\Cms\Service\ActionService;
 use ExEss\Cms\Service\FilterService;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class ListFunctions
+class ListService
 {
     use DbTrait;
 
@@ -58,7 +58,7 @@ class ListFunctions
 
     private AclService $aclService;
 
-    private EntityManager $em;
+    private EntityManagerInterface $em;
 
     private FilterService $filterService;
 
@@ -69,7 +69,7 @@ class ListFunctions
         TranslatorInterface $translator,
         Security $security,
         AclService $aclService,
-        EntityManager $em,
+        EntityManagerInterface $em,
         FilterService $filterService
     ) {
         $this->listHelperFunctions = $listHelperFunctions;
@@ -86,9 +86,8 @@ class ListFunctions
      * @throws \DomainException When the baseFatEntity is not an instance of AbstractFatEntity
      * or the table doesn't exist.
      */
-    public function getList(ListParams $params, ?string $combinedListKey = null): DynamicListResponse
+    public function getList(ListDynamic $list, ListParams $params, ?string $combinedListKey = null): DynamicListResponse
     {
-        $list = $params->getList();
         $response = new DynamicListResponse();
 
         $pageSize = $list->getItemsPerPage() ?? self::DEFAULT_PAGE_SIZE;
@@ -113,14 +112,14 @@ class ListFunctions
             $response->settings->actionData->$key = $value;
         }
 
-        $this->fillTopBarOnList($params, $response);
+        $this->fillTopBarOnList($list, $params, $response);
 
         $response->headers = $this->getHeadingsForList($list, $params->needsExportToCSV());
         $response->pagination->page = $params->getPage();
-        $response->pagination->sortBy = (string) $params->getSortBy();
 
         if ($list->getExternalObject() && $list->isCombined()) {
             $this->getCombinedList(
+                $list,
                 $response,
                 $params,
                 $pageSize
@@ -157,7 +156,7 @@ class ListFunctions
                     $response->pagination->total = \count(new Paginator($queryBuilder));
                 }
 
-                $response->pagination->pages = \ceil($response->pagination->total / $pageSize);
+                $response->pagination->pages = (int) \ceil($response->pagination->total / $pageSize);
             } else {
                 //Pagination
                 $response->pagination->size = $pageSize;
@@ -193,7 +192,7 @@ class ListFunctions
     ): QueryBuilder {
         if ($list->isExternal() || $list->isCombined()) {
             throw new \InvalidArgumentException(
-                "List {$params->getList()->getName()} is an external list or a combined one"
+                "List {$list->getName()} is an external list or a combined one"
             );
         }
 
@@ -252,7 +251,7 @@ class ListFunctions
         int $pageSize,
         int $page,
         QueryBuilder $queryBuilder,
-        ?OrderBy $orderBy,
+        OrderBy $orderBy,
         bool $exportToCSV,
         bool $fixPagination = true
     ): array {
@@ -271,9 +270,7 @@ class ListFunctions
         // fetch the id's we need
         $qb = clone $queryBuilder;
         $qb->select('base.id');
-        if ($orderBy) {
-            $qb->orderBy($orderBy);
-        }
+        $qb->orderBy($orderBy);
 
         if (!$exportToCSV) {
             $qb->setFirstResult(($page - 1) * $pageSize);
@@ -307,11 +304,14 @@ class ListFunctions
         $exportToCSV = $params->needsExportToCSV();
         $externalLinks = null;
 
-        if ($externalObject = $params->getList()->getExternalObject()) {
+        $sortBy = $params->getSortBy();
+        $response->pagination->sortBy = (string) $sortBy;
+
+        if ($externalObject = $list->getExternalObject()) {
             $externalLinks = $externalObject->getLinkFields();
 
             $postedData = [
-                'params' => \array_merge($params->getArguments(), $params->getParams(), ['list' => $params->getList()]),
+                'params' => \array_merge($params->getArguments(), $params->getParams(), ['list' => $list]),
                 'baseObject' => $list->getBaseObject(),
             ];
 
@@ -343,7 +343,7 @@ class ListFunctions
                 $pageSize,
                 $params->getPage(),
                 $queryBuilder,
-                $params->getSortBy(),
+                $sortBy,
                 $exportToCSV,
                 $response->pagination->isFixPagination()
             );
@@ -359,7 +359,7 @@ class ListFunctions
             $allBaseFatEntities,
             $list,
             $response,
-            $params->getSortBy(),
+            $sortBy,
             $externalLinks,
             $combinedListKey
         );
@@ -371,7 +371,7 @@ class ListFunctions
         array $allBaseEntities,
         ListDynamic $list,
         DynamicListResponse $response,
-        ?OrderBy $sortBy,
+        OrderBy $sortBy,
         ?Collection $externalLinks,
         ?string $combinedListKey
     ): void {
@@ -409,14 +409,10 @@ class ListFunctions
             if (\method_exists($baseEntity, 'getId') && !empty($baseEntity->getId())) {
                 $dynamicListRow->id = $baseEntity->getId();
             } elseif (!empty($baseEntity->id)) {
-                $dynamicListRow->id = $baseEntity->id;
+                $dynamicListRow->id = (string) $baseEntity->id;
             }
 
-            if (empty($sortBy)) {
-                $sortBy = ListSortingOption::getDefault();
-            }
-
-            $explodedSort = \explode(' ', $sortBy);
+            $explodedSort = \explode(' ', (string) $sortBy);
 
             if (isset($explodedSort[1])) {
                 $dynamicListRow->sortByOrder = $explodedSort[1];
@@ -708,11 +704,10 @@ class ListFunctions
     }
 
     public function fillTopBarOnList(
+        ListDynamic $sourceList,
         ListParams $listParams,
         DynamicListResponse $response
     ): void {
-        $sourceList = $listParams->getList();
-
         if (!($topBar = $sourceList->getTopBar())) {
             $response->topBar = false;
 
@@ -852,6 +847,7 @@ class ListFunctions
     }
 
     private function getCombinedList(
+        ListDynamic $list,
         DynamicListResponse $response,
         ListParams $params,
         int $pageSize = -1
@@ -859,19 +855,19 @@ class ListFunctions
         $response->topBar = null;
         $currentPage = $params->getPage() ?? 1;
 
-        foreach ($params->getList()->getExternalObject()->getLinkFields() as $list) {
+        foreach ($list->getExternalObject()->getLinkFields() as $externalObjectLink) {
             $listParams = clone $params;
             $listParams->configure(
                 $params->getArguments(),
                 [
-                    'list' => $list->getName(),
                     'page' => 1,
                 ]
             );
 
             $result = $this->getList(
+                $this->em->getRepository(ListDynamic::class)->get($externalObjectLink->getName()),
                 $listParams,
-                $params->getList()->getId()
+                $list->getId()
             );
 
             if (empty($response->headers)) {
@@ -912,7 +908,7 @@ class ListFunctions
             $response->pagination->pages = 1;
             $response->pagination->size = $response->pagination->total;
         } else {
-            $response->pagination->pages = \ceil($response->pagination->total / $limit);
+            $response->pagination->pages = (int) \ceil($response->pagination->total / $limit);
             $response->pagination->size = $limit;
 
             $bottomLimit = ($page - 1) * $limit;
