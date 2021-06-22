@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Creates some text that can take a novaExpression.
+ * Creates some text that can take a expression.
  *
  * This type is unique because it doesn't really allow for any
  * user input. It is used to display some helpful string to the user.

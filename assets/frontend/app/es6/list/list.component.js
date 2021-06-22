@@ -20,7 +20,7 @@ angular.module('digitalWorkplaceApp')
     },
     controller: function (listDatasource, $element, $compile, $scope, listObserver, filtersObserver, listStatus,
                           sidebarObserver, SIDEBAR_ELEMENT, actionDatasource, promiseUtils, commandHandler,
-                          novaExpressionTransformer, $interpolate, $window, $timeout, DEBOUNCE_TIME) {
+                          expressionTransformer, $interpolate, $window, $timeout, DEBOUNCE_TIME) {
       const listController = this;
 
       // full data received from backend
@@ -161,12 +161,12 @@ angular.module('digitalWorkplaceApp')
          * from the selected records and attached them to the newAction.
          */
         if (_.has(newAction, 'extraParamsFromRow')) {
-          const extraParamsTemplate = novaExpressionTransformer(angular.toJson(newAction.extraParamsFromRow));
+          const extraParamsTemplate = expressionTransformer(angular.toJson(newAction.extraParamsFromRow));
           const extraParams = listController.selectList.map((rowId) => {
             const rowData = _.get(_.find(listController.getRows(), function (row) {
               return _.toString(row.id) === _.toString(rowId);
             }), 'rowData', []);
-            const rowDataTransformed = angular.fromJson(novaExpressionTransformer(angular.toJson(rowData)));
+            const rowDataTransformed = angular.fromJson(expressionTransformer(angular.toJson(rowData)));
             return angular.fromJson($interpolate(extraParamsTemplate)(rowDataTransformed));
           });
 

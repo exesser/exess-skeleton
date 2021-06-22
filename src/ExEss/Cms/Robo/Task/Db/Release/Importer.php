@@ -36,7 +36,7 @@ class Importer extends AbstractDb
         }
 
         // last, clear the cache
-        $this->taskExec('APP_ENV=' . $_ENV['APP_ENV'] ?? 'prod' . ' php bin/console nova:cache:clear')->run();
+        $this->taskExec('APP_ENV=' . $_ENV['APP_ENV'] ?? 'prod' . ' php bin/console exess:cache:clear')->run();
 
         return new Result($this, Result::EXITCODE_OK);
     }

@@ -74,7 +74,7 @@ describe('Form type: checkbox', function () {
     checkBoxElement = $(element.find("input")[0]);
   }
 
-  it('should create a nova-checkbox with a label', function () {
+  it('should create a checkbox with a label', function () {
     compile();
 
     expect(elementIdGenerator.generateId).toHaveBeenCalledTimes(1);

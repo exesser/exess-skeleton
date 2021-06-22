@@ -62,11 +62,11 @@ describe('Form type: upload', function () {
         archive: {
           "contracts": [{
             name: "Already uploaded file",
-            url: "https://nova/uploads/Already uploaded file.pdf",
+            url: "https://exess/uploads/Already uploaded file.pdf",
             id: "2e4516c9-7289-4745-92b0-a36cbb80c422"
           }, {
             name: "Already uploaded file number 2",
-            url: "https://nova/uploads/Already uploaded file number 2.pdf",
+            url: "https://exess/uploads/Already uploaded file number 2.pdf",
             id: "bdb20fba-fae1-475e-9b69-18a7dce61dbd"
           }]
         }
@@ -140,8 +140,8 @@ describe('Form type: upload', function () {
     const links = element.find('div.uploaded > a:not(.icon-close)');
     expect(links.length).toBe(2);
 
-    expect($(links[0]).attr("href")).toBe("https://nova/uploads/Already uploaded file.pdf");
-    expect($(links[1]).attr("href")).toBe("https://nova/uploads/Already uploaded file number 2.pdf");
+    expect($(links[0]).attr("href")).toBe("https://exess/uploads/Already uploaded file.pdf");
+    expect($(links[1]).attr("href")).toBe("https://exess/uploads/Already uploaded file number 2.pdf");
 
     const spans = element.find('div.uploaded > span');
     expect(spans.length).toBe(2);
@@ -288,7 +288,7 @@ describe('Form type: upload', function () {
         data: {
           data: {
             name: "ExesserIsAwesome.pdf",
-            url: "https://nova/uploads/ExesserIsAwesome.pdf",
+            url: "https://exess/uploads/ExesserIsAwesome.pdf",
             id: "2e453523516c9-7289-4745-92b0-saasdfasdfasdf"
           }
         }
@@ -305,7 +305,7 @@ describe('Form type: upload', function () {
       const links = element.find('div.uploaded > a:not(.icon-close)');
       expect(links.length).toBe(1);
 
-      expect($(links[0]).attr('href')).toBe("https://nova/uploads/ExesserIsAwesome.pdf");
+      expect($(links[0]).attr('href')).toBe("https://exess/uploads/ExesserIsAwesome.pdf");
 
       const spans = element.find('div.uploaded > span');
       expect(spans.length).toBe(1);
@@ -324,7 +324,7 @@ describe('Form type: upload', function () {
         focus: 'archive.contracts',
         value: [{
           name: "ExesserIsAwesome.pdf",
-          url: "https://nova/uploads/ExesserIsAwesome.pdf",
+          url: "https://exess/uploads/ExesserIsAwesome.pdf",
           id: "2e453523516c9-7289-4745-92b0-saasdfasdfasdf"
         }]
       }, false);
@@ -351,7 +351,7 @@ describe('Form type: upload', function () {
         data: {
           data: {
             name: "wky.pdf",
-            url: "https://nova/uploads/wky.pdf",
+            url: "https://exess/uploads/wky.pdf",
             id: "123-456-789"
           }
         }
@@ -363,13 +363,13 @@ describe('Form type: upload', function () {
 
       const links = element.find('div.uploaded > a:not(.icon-close)');
       expect(links.length).toBe(1);
-      expect($(links[0]).attr('href')).toBe("https://nova/uploads/wky.pdf");
+      expect($(links[0]).attr('href')).toBe("https://exess/uploads/wky.pdf");
       expect(guidanceFormObserver.formValueChanged).toHaveBeenCalledTimes(1);
       expect(guidanceFormObserver.formValueChanged).toHaveBeenCalledWith({
         focus: 'archive.contracts',
         value: [{
           name: "wky.pdf",
-          url: "https://nova/uploads/wky.pdf",
+          url: "https://exess/uploads/wky.pdf",
           id: "123-456-789"
         }]
       }, true);
@@ -392,11 +392,11 @@ describe('Form type: upload', function () {
       expect(scope.model.archive.contracts).toEqual([
         {
           name: "Already uploaded file",
-          url: "https://nova/uploads/Already uploaded file.pdf",
+          url: "https://exess/uploads/Already uploaded file.pdf",
           id: "2e4516c9-7289-4745-92b0-a36cbb80c422"
         }, {
           name: 'Already uploaded file number 2',
-          url: 'https://nova/uploads/Already uploaded file number 2.pdf',
+          url: 'https://exess/uploads/Already uploaded file number 2.pdf',
           id: 'bdb20fba-fae1-475e-9b69-18a7dce61dbd'
         }
       ]);
@@ -418,7 +418,7 @@ describe('Form type: upload', function () {
         data: {
           data: {
             name: "Already uploaded file",
-            url: "https://nova/uploads/Already uploaded file.pdf",
+            url: "https://exess/uploads/Already uploaded file.pdf",
             id: "2e4516c9-7289-4745-92b0-a36cbb80c422"
           }
         }
@@ -429,7 +429,7 @@ describe('Form type: upload', function () {
       expect(scope.model.archive.contracts).toEqual([
         {
           name: 'Already uploaded file number 2',
-          url: 'https://nova/uploads/Already uploaded file number 2.pdf',
+          url: 'https://exess/uploads/Already uploaded file number 2.pdf',
           id: 'bdb20fba-fae1-475e-9b69-18a7dce61dbd'
         }
       ]);
@@ -439,7 +439,7 @@ describe('Form type: upload', function () {
         data: {
           data: {
             name: "Already uploaded file number 2",
-            url: "https://nova/uploads/Already uploaded file number 2.pdf",
+            url: "https://exess/uploads/Already uploaded file number 2.pdf",
             id: "bdb20fba-fae1-475e-9b69-18a7dce61dbd"
           }
         }
@@ -461,7 +461,7 @@ describe('Form type: upload', function () {
         archive: {
           "contracts": [{
             name: "Already uploaded file",
-            url: "https://nova/uploads/Already uploaded file.pdf",
+            url: "https://exess/uploads/Already uploaded file.pdf",
             stream: "just-some-random-file-stream"
           }]
         }
@@ -480,7 +480,7 @@ describe('Form type: upload', function () {
         data: {
           data: {
             name: "Already uploaded file",
-            url: "https://nova/uploads/Already uploaded file.pdf",
+            url: "https://exess/uploads/Already uploaded file.pdf",
             stream: "just-some-random-file-stream"
           }
         }
@@ -534,11 +534,11 @@ describe('Form type: upload', function () {
         archive: {
           "contracts": [{
             name: "Already uploaded file",
-            url: "https://nova/uploads/Already uploaded file.pdf",
+            url: "https://exess/uploads/Already uploaded file.pdf",
             id: "2e4516c9-7289-4745-92b0-a36cbb80c422"
           }, {
             name: "Already uploaded file number 2",
-            url: "https://nova/uploads/Already uploaded file number 2.pdf",
+            url: "https://exess/uploads/Already uploaded file number 2.pdf",
             id: "bdb20fba-fae1-475e-9b69-18a7dce61dbd"
           }]
         }
@@ -550,8 +550,8 @@ describe('Form type: upload', function () {
       const links = element.find('div.uploaded > a:not(.icon-close)');
       expect(links.length).toBe(2);
 
-      expect($(links[0]).attr("href")).toBe("https://nova/uploads/Already uploaded file.pdf");
-      expect($(links[1]).attr("href")).toBe("https://nova/uploads/Already uploaded file number 2.pdf");
+      expect($(links[0]).attr("href")).toBe("https://exess/uploads/Already uploaded file.pdf");
+      expect($(links[1]).attr("href")).toBe("https://exess/uploads/Already uploaded file number 2.pdf");
 
       const spans = element.find('div.uploaded > span');
       expect(spans.length).toBe(2);

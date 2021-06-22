@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="Our_Coding_standard">
-    <description>The coding standard for all Nova projects.</description>
+    <description>The coding standard for all ExEss projects.</description>
 
     <!-- Custom project specific config -->
     {{project.custom}}

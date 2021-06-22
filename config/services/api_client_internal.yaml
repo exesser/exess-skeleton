@@ -1,7 +1,7 @@
 #
 # Internal API clients
 #
-# Internal meaning any service that is IN the NOVA infrastructure, which should never use a proxy
+# Internal meaning any service that is IN our infrastructure, which should never use a proxy
 #
 parameters:
   env(LOCAL_PROXY_HOST): null

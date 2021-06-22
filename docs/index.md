@@ -1,4 +1,4 @@
-# Nova CRM docs
+# ExEss CMS docs
 
 - [Installation](installation.md)
 - [Codeception](codeception.md)

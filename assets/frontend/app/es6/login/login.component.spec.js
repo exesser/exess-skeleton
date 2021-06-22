@@ -56,7 +56,7 @@ describe('Component: login', function () {
 
     expect(tokenFactory.hasToken).toHaveBeenCalledTimes(1);
 
-    expect(element.find('h1').text()).toBe('Welcome to NOVA');
+    expect(element.find('h1').text()).toBe('Welcome');
 
     expect($(element.find('div.alert.is-error')).hasClass('ng-hide')).toBe(true);
 

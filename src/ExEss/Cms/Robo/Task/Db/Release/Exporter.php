@@ -87,16 +87,7 @@ class Exporter extends AbstractDb
 
         $this->output()->newLine(5);
         $this->output()->title("Clean config in " . self::TEMP_DB);
-        /*
-         * TODO: add integrity check after we import production leading data.
-         * $this->taskExec(
-         *          "php /var/www/crm/nova-tools/bin/console crm-tools:integrity:keys --database=" . self::TEMP_DATABASE
-         *      )
-         *     ->printOutput(false)
-         *     ->run();
-         */
 
-        // TODO: remove this after we activate the integrity check
         (new SqlFileImport($this->output(), [self::SCRIPT_DIR . '/clean-config.sql'], self::TEMP_DB))->run();
 
         $this->output()->newLine(5);

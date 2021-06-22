@@ -59,65 +59,7 @@ class RoboFile extends \Robo\Tasks
             $this->say('Emptied cache folder');
         }
 
-        $this->taskExec('bin/console nova:cache:clear')->run();
-
-        if ($this->taskExec('bin/console nova:rebuild')->run()->wasSuccessful()) {
-            $this->say('Quick Repair and Rebuild executed');
-        }
-    }
-
-    /**
-     * Prepares a fresh checkout from git for running the application, but DOESN'T do
-     * any database operations yet (as chances are quite big the previously deployed version still uses it!)
-     */
-    public function deployPrepare(
-        string $environment,
-        array $opts = ['no-dev' => false]
-    ): void {
-        $this->stopOnFail();
-
-        $this->checkEnvironment($environment);
-
-        if ($environment === self::ENVIRONMENT_LOCAL) {
-            $this->taskComposerInstall('composer --no-interaction' . ($opts['no-dev'] ? ' --no-dev' : ''))->run();
-            $this->composerClean();
-            $this->_copy('.env.test.local.dist', '.env.test.local');
-        } else {
-            $this->_touch('.env.test.local');
-        }
-
-        // for PR testing, ensure the current dump is loaded BEFORE rebuilding
-        if ($environment === self::ENVIRONMENT_FUNCTIONAL_API_TEST) {
-            $this->dbLoadTestDump();
-        }
-
-        $this->rebuild();
-        $this->generateLightEntities();
-        $this->generateSoapProxies($environment);
-        $this->taskComposerDumpAutoload('composer --no-interaction')->run();
-
-        (new Generate\OpenApiContract())->run();
-    }
-
-    /**
-     * Perform any database alterations / loads in this deployment step
-     */
-    public function deployDatabase(string $environment): void
-    {
-        //update the CRUD config
-        $this->crudInstall();
-    }
-
-    /**
-     * runs all the operations necessary to get a fully up to date local system
-     *
-     * @param string $environment The DTAP environment on which this command is run.
-     * @param string $client The client for which we want to run suite.
-     */
-    public function build(string $environment, array $opts = ['no-dev' => false]): void
-    {
-        $this->deployPrepare($environment, $opts);
-        $this->deployDatabase($environment);
+        $this->taskExec('bin/console exess:cache:clear')->run();
     }
 
     /**

@@ -22,7 +22,7 @@ module.exports = function(appConfig) {
       username: '',
       password: ''
     },
-    API_URL: "/nova-crm/Api/V8_Custom/",
+    API_URL: "/Api/V8_Custom/",
     GTM_CONTAINER: '',
     GTM_ENABLED: false
   }
