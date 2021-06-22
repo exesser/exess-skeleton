@@ -482,9 +482,9 @@ class DashboardService
 
             if ($blockType === self::PANEL_TYPE_LIST) {
                 $list = $value['options']['listKey'] ?? null;
-                $listBean = $this->em->getRepository(ListDynamic::class)->get($list);
-
-                if (!$listBean instanceof ListDynamic) {
+                try {
+                    $this->em->getRepository(ListDynamic::class)->get($list);
+                } catch (\Exception $e) {
                     $grid[$key]['type'] = 'unauthorized-list';
                 }
             } elseif (\is_array($value)) {
