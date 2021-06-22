@@ -40,7 +40,7 @@ modules:
             password: '%DBCONFIG_DB_PASSWORD%'
             # populate: whether the the dump should be loaded before the test suite is started
             populate: '%CODECEPTION_DB_POPULATE%'
-            populator: 'APP_ENV=test php bin/robo db:load-test-dump'
+            populator: 'APP_ENV=test php /usr/local/bin/composer run init-db'
             # whether the dump should be reloaded before each test
             cleanup: false
             reconnect: true

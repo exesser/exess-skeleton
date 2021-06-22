@@ -19,8 +19,9 @@ init:
 	@make composer
 	@make init-db
 
+env?=dev
 init-db:
-	@docker-compose exec -T php bin/robo db:load-test-dump	
+	@docker-compose exec -T --env APP_ENV=$(env) php /usr/local/bin/composer run init-db
 
 composer:
 	@docker-compose exec -T php composer install

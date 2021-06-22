@@ -8,28 +8,6 @@ class LoadTestDump extends AbstractDb
 {
     public function run(): Result
     {
-        // drop database
-        $result = $this
-            ->taskExec('php bin/console doctrine:database:drop --force --if-exists --env=' . $_ENV['APP_ENV'])
-            ->run();
-        if (!$result->wasSuccessful()) {
-            return $result;
-        }
-        // create database
-        $result = $this
-            ->taskExec('php bin/console doctrine:database:create --env=' . $_ENV['APP_ENV'])
-            ->run();
-        if (!$result->wasSuccessful()) {
-            return $result;
-        }
-        // run migrations
-        $result = $this
-            ->taskExec('php bin/console doctrine:migrations:migrate --no-interaction --env=' . $_ENV['APP_ENV'])
-            ->run();
-        if (!$result->wasSuccessful()) {
-            return $result;
-        }
-
         // import the test dump (prod leading config) and fixtures
         $mysqlImportCommand = $this->wrapForCliPipe(
             '{ cat '
