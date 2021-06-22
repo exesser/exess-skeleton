@@ -17,7 +17,7 @@ class MainController
     }
 
     /**
-     * @Route("/Api/menu/", methods={"GET"})
+     * @Route("/Api/menu", methods={"GET"})
      */
     public function __invoke(): SuccessResponse
     {

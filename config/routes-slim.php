@@ -37,7 +37,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
          * this route is currently in use for the lead and account dashboards in the DWP and this was before
          * menus were implemented which give back the ID as well.
          *
-         * @deprecated please use "Detail page of a dashboard."
          * @see \ExEss\Cms\Api\V8_Custom\Controller\DashboardController::getDashboard()
          */
         $app
