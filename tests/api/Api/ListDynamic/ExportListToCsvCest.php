@@ -25,7 +25,7 @@ class ExportListToCsvCest
             ]);
         }
 
-        $I->generateDynamicList([
+        $listId = $I->generateDynamicList([
             'name' => self::INTERNAL_LIST_NAME,
             'items_per_page' => 10,
             'base_object' => User::class,
@@ -40,11 +40,11 @@ class ExportListToCsvCest
             'external_object_id' => $externalObjectId,
         ]);
         $I->generateExternalLinkField([
-            'name' => self::INTERNAL_LIST_NAME,
+            'list_id' => $listId,
             'external_object_id' => $externalObjectId,
         ]);
         $I->generateExternalLinkField([
-            'name' => self::INTERNAL_LIST_NAME,
+            'list_id' => $listId,
             'external_object_id' => $externalObjectId,
         ]);
     }
