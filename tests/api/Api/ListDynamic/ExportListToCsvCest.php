@@ -25,26 +25,23 @@ class ExportListToCsvCest
             ]);
         }
 
-        $I->generateDynamicList([
+        $listId = $I->generateDynamicList([
             'name' => self::INTERNAL_LIST_NAME,
             'items_per_page' => 10,
             'base_object' => User::class,
         ]);
 
-        $externalObjectId = $I->generateListExternalObject([
-            'name' => self::EXTERNAL_LIST_NAME,
-        ]);
         $I->generateDynamicList([
             'name' => self::EXTERNAL_LIST_NAME,
             'combined' => 1,
+            'external_object_id' => $externalObjectId = $I->generateListExternalObject(),
+        ]);
+        $I->generateExternalLinkField([
+            'list_id' => $listId,
             'external_object_id' => $externalObjectId,
         ]);
         $I->generateExternalLinkField([
-            'name' => self::INTERNAL_LIST_NAME,
-            'external_object_id' => $externalObjectId,
-        ]);
-        $I->generateExternalLinkField([
-            'name' => self::INTERNAL_LIST_NAME,
+            'list_id' => $listId,
             'external_object_id' => $externalObjectId,
         ]);
     }

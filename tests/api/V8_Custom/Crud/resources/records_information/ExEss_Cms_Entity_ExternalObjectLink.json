@@ -2,6 +2,11 @@
     "recordName": "ExEss\\Cms\\Entity\\ExternalObjectLink",
     "relations": [
         {
+            "name": "list",
+            "multiRelation": false,
+            "record": "ExEss\\Cms\\Entity\\ListDynamic"
+        },
+        {
             "name": "externalObject",
             "multiRelation": false,
             "record": "ExEss\\Cms\\Entity\\ExternalObject"
@@ -24,11 +29,11 @@
     ],
     "fields": [
         {
-            "name": "suiteBeanName",
+            "name": "entityName",
             "type": "string"
         },
         {
-            "name": "suiteBeanField",
+            "name": "entityField",
             "type": "string"
         },
         {

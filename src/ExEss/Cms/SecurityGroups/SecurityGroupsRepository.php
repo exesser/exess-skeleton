@@ -2,18 +2,15 @@
 namespace ExEss\Cms\SecurityGroups;
 
 use Doctrine\ORM\EntityManagerInterface;
-use ExEss\Cms\Db\DbTrait;
 use ExEss\Cms\Doctrine\Type\HttpMethod;
 
 class SecurityGroupsRepository
 {
-    use DbTrait;
+    private EntityManagerInterface $em;
 
-    private EntityManagerInterface $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $em)
     {
-        $this->entityManager = $entityManager;
+        $this->em = $em;
     }
 
     public function getUserGroupTypes(string $method, string $route): array
@@ -22,11 +19,11 @@ class SecurityGroupsRepository
             "SELECT allowed_usergroups FROM securitygroups_api
                 WHERE name = %s
                 AND http_method = %s",
-            $this->entityManager->getConnection()->quote($route),
-            $this->entityManager->getConnection()->quote($method)
+            $this->em->getConnection()->quote($route),
+            $this->em->getConnection()->quote($method)
         );
 
-        if ($row = $this->entityManager->getConnection()->fetchAssociative($sql)) {
+        if ($row = $this->em->getConnection()->fetchAssociative($sql)) {
             $types = [];
             foreach (\explode(',', $row['allowed_usergroups']) as $type) {
                 $types[] = \trim($type, '^');
@@ -49,17 +46,17 @@ class SecurityGroupsRepository
                 INNER JOIN securitygroups_users ON securitygroups.id = securitygroups_users.securitygroup_id
                 WHERE securitygroups_users.user_id = %s)
             AND securitygroups_api.name = %s",
-            $this->entityManager->getConnection()->quote($userId),
-            $this->entityManager->getConnection()->quote($route)
+            $this->em->getConnection()->quote($userId),
+            $this->em->getConnection()->quote($route)
         );
 
         if ($method !== HttpMethod::OPTIONS) {
             $sql .= \sprintf(
                 " AND securitygroups_api.http_method = %s",
-                $this->entityManager->getConnection()->quote($method)
+                $this->em->getConnection()->quote($method)
             );
         }
 
-        return $this->getAllRecords($this->entityManager, $sql)[0]['total'] > 0;
+        return $this->em->getConnection()->fetchAllAssociative($sql)[0]['total'] > 0;
     }
 }

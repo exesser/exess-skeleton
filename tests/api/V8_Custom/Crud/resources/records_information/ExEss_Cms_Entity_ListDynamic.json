@@ -12,6 +12,11 @@
             "record": "ExEss\\Cms\\Entity\\ListCellLink"
         },
         {
+            "name": "linkFields",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\ExternalObjectLink"
+        },
+        {
             "name": "filter",
             "multiRelation": false,
             "record": "ExEss\\Cms\\Entity\\Filter"

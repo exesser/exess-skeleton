@@ -50,8 +50,7 @@ class ListRowbarRepository
         if ($externalObject && $list->isCombined()) {
             // loop over all combined lists
             foreach ($externalObject->getLinkFields() as $link) {
-                /** @var ListDynamic $linkedList */
-                $linkedList = $this->em->getRepository(ListDynamic::class)->get($link->getName());
+                $linkedList = $link->getList();
 
                 if ($linkedExternalObject = $linkedList->getExternalObject()) {
                     $baseObject = $this->externalObjectHandler->getObject(
