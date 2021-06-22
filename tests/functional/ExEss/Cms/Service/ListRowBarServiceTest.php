@@ -1,20 +1,22 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\Api\V8_Custom\Repository;
+namespace Test\Functional\ExEss\Cms\Service;
 
-use ExEss\Cms\Api\V8_Custom\Repository\ListRowbarRepository;
+use ExEss\Cms\Doctrine\Type\CellType;
+use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Entity\User;
+use ExEss\Cms\Service\ListRowBarService;
 use Helper\Testcase\FunctionalTestCase;
 
-class ListRowbarRepositoryTest extends FunctionalTestCase
+class ListRowBarServiceTest extends FunctionalTestCase
 {
-    private ListRowbarRepository $listRowbarRepository;
-
+    private ListRowBarService $listRowBarService;
     private string $recordId;
+    private string $listId;
 
     public function _before(): void
     {
-        $this->listRowbarRepository = $this->tester->grabService(ListRowbarRepository::class);
+        $this->listRowBarService = $this->tester->grabService(ListRowBarService::class);
 
         // Given
         $this->addListFixtures();
@@ -23,12 +25,16 @@ class ListRowbarRepositoryTest extends FunctionalTestCase
 
     public function testGetListRowBarActionsWithoutActionData(): void
     {
+        // Given
+        /** @var ListDynamic $list */
+        $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $this->listId]);
+
         // When
-        $retVal = $this->listRowbarRepository->findListRowActions('ListTest', $this->recordId, []);
+        $return = $this->listRowBarService->findListRowActions($list, $this->recordId, []);
 
         // Then
-        $this->tester->assertCount(1, $retVal);
-        $action = $retVal[0]->action;
+        $this->tester->assertCount(1, $return);
+        $action = $return[0]->action;
         $this->tester->assertEquals($this->recordId, $action['recordId']);
         $this->tester->assertEquals("ListTest", $action['listKey']);
         $this->tester->assertEquals(User::class, $action['recordType']);
@@ -37,27 +43,28 @@ class ListRowbarRepositoryTest extends FunctionalTestCase
 
     public function testGetListRowBarActionsWithActionData(): void
     {
+        // Given
+        /** @var ListDynamic $list */
+        $list = $this->tester->grabEntityFromRepository(ListDynamic::class, ['id' => $this->listId]);
+        $actionData = ['testName' => 'testValue'];
+
         // When
-        $retVal = $this->listRowbarRepository->findListRowActions(
-            'ListTest',
-            $this->recordId,
-            ["testName" => "testValue"]
-        );
+        $return = $this->listRowBarService->findListRowActions($list, $this->recordId, $actionData);
 
         // Then
-        $this->tester->assertCount(1, $retVal);
-        $this->tester->assertNotEmpty($retVal[0]->label);
-        $action = $retVal[0]->action;
+        $this->tester->assertCount(1, $return);
+        $this->tester->assertNotEmpty($return[0]->label);
+        $action = $return[0]->action;
         $this->tester->assertEquals($this->recordId, $action['recordId']);
         $this->tester->assertEquals("ListTest", $action['listKey']);
         $this->tester->assertEquals(User::class, $action['recordType']);
         $this->tester->assertIsArray($action['actionData']);
-        $this->tester->assertEquals("testValue", $action['actionData']['testName']);
+        $this->tester->assertEquals($actionData, $action['actionData']);
     }
 
     private function addListFixtures(): void
     {
-        $listId = $this->tester->generateDynamicList([
+        $this->listId = $this->tester->generateDynamicList([
             "name" => "ListTest",
             "base_object" => User::class,
             "title" => "Contracts",
@@ -67,14 +74,13 @@ class ListRowbarRepositoryTest extends FunctionalTestCase
 
         $listRowBarId = $this->tester->generateListRowBar([
             "name" => "test rowbar",
-            "created_by" => "1",
         ]);
         $listCellId = $this->tester->generateListCell([
             "name" => "testcell",
-            "type" => "list_plus_cell",
+            "type" => CellType::PLUS,
         ]);
 
-        $this->tester->generateListLinkCell($listId, [
+        $this->tester->generateListLinkCell($this->listId, [
             "name" => "testcells",
             'row_bar_id' => $listRowBarId,
             'cell_id' => $listCellId,
@@ -90,7 +96,6 @@ class ListRowbarRepositoryTest extends FunctionalTestCase
             "icon" => "icon-wijzigen",
             "action_name" => "Update contractline",
             "order_c" => 30,
-            "created_by" => "1",
         ]);
     }
 }

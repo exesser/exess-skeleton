@@ -1,7 +1,8 @@
-<?php
-namespace ExEss\Cms\Api\V8_Custom\Repository;
+<?php declare(strict_types=1);
 
-use Doctrine\ORM\EntityManager;
+namespace ExEss\Cms\Service;
+
+use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
 use ExEss\Cms\Doctrine\Type\CellType;
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
@@ -9,11 +10,10 @@ use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Exception\NotFoundException;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRowBarButton;
 use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
-use ExEss\Cms\Service\ActionService;
 use ExEss\Cms\Servicemix\ExternalObjectHandler;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class ListRowbarRepository
+class ListRowBarService
 {
     private ExternalObjectHandler $externalObjectHandler;
 
@@ -23,10 +23,10 @@ class ListRowbarRepository
 
     private ListHelperFunctions $listHelper;
 
-    private EntityManager $em;
+    private EntityManagerInterface $em;
 
     public function __construct(
-        EntityManager $em,
+        EntityManagerInterface $em,
         ExternalObjectHandler $externalObjectHandler,
         ActionService $actionService,
         TranslatorInterface $translator,
@@ -39,11 +39,8 @@ class ListRowbarRepository
         $this->em = $em;
     }
 
-    public function findListRowActions(string $listName, string $recordId, array $actionData): array
+    public function findListRowActions(ListDynamic $list, string $recordId, array $actionData): array
     {
-        /** @var ListDynamic $list */
-        $list = $this->em->getRepository(ListDynamic::class)->get($listName);
-
         $externalObject = $list->getExternalObject();
         $baseObject = null;
 
@@ -104,7 +101,7 @@ class ListRowbarRepository
                     $button->action = [
                         'id' => $flowAction ? $flowAction->getGuid() : '',
                         'recordId' => $recordId,
-                        'listKey' => $list->getName(),
+                        'listKey' => $listName = $list->getName(),
                         'recordType' => $list->getBaseObject() ?? ($baseObject ? \get_class($baseObject) : null),
                         'actionData' => !empty($actionData) ? $actionData : null,
                     ];

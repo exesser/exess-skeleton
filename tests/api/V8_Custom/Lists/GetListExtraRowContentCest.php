@@ -21,22 +21,18 @@ class GetListExtraRowContentCest
         $I->sendPOST('/Api/V8_Custom/ListExtraRowContent/action-bar/Users/' . $this->userId);
 
         // Then
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
-
-        $assertPaths = [
+        $I->seeResponseIsDwpResponse(200);
+        $I->seeAssertPathsInJson([
             '$.data.grid.columns[0].rows[0].options.recordType' => 'Users',
             '$.data.grid.columns[0].rows[0].options.recordId' => $this->userId,
             '$.data.grid.columns[0].rows[0].options.gridKey' => 'action-bar',
-        ];
-
-        $I->seeAssertPathsInJson($assertPaths);
+        ]);
     }
 
     public function shouldReturnConfiguredGrid(ApiTester $I): void
     {
         // Given
-        $parenId = Uuid::uuid4()->toString();
+        $parentId = Uuid::uuid4()->toString();
         $gridKey = 'grid-test-key';
 
         $I->generateGrid([
@@ -52,21 +48,18 @@ class GetListExtraRowContentCest
 
         // When
         $I->getAnApiTokenFor('adminUser');
-        $I->sendPOST('/Api/V8_Custom/ListExtraRowContent/action-bar/Users/' . $this->userId, [
-            'gridKey' => $gridKey,
-            'actionData' => ['parentId' => $parenId]
+        $I->sendPOST("/Api/V8_Custom/ListExtraRowContent/$gridKey/Users/" . $this->userId, [
+            'actionData' => ['parentId' => $parentId]
         ]);
 
         // Then
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
-
+        $I->seeResponseIsDwpResponse(200);
         $grid = $I->grabDataFromResponseByJsonPath('$.data.grid')[0];
 
         $I->assertArrayEqual(
             $I->loadJsonWithParams(__DIR__ . '/resources/list-external-rows-grid.json', [
                 'recordId' => $this->userId,
-                'parentId' => $parenId,
+                'parentId' => $parentId,
             ]),
             $grid
         );

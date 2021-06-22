@@ -5,7 +5,6 @@ use ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverterFactor
 use ExEss\Cms\Api\V8_Custom\Params\ActionParams;
 use ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetFilterParams;
-use ExEss\Cms\Api\V8_Custom\Params\ListRowbarActionParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
 use ExEss\Cms\Api\V8_Custom\Params\SelectWithSearchParams;
 
@@ -75,15 +74,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
                 'ExEss\Cms\Api\V8_Custom\Controller\ListRowbarController:getListRowBar'
             )
             ->add($paramsFactory->create(ListRowbarParams::class));
-        /**
-         * @see \ExEss\Cms\Api\V8_Custom\Controller\ListRowbarController::getListRowActions()
-         */
-        $app
-            ->post(
-                '/ListRowAction/{listKey}/{recordId}',
-                'ExEss\Cms\Api\V8_Custom\Controller\ListRowbarController:getListRowActions'
-            )
-            ->add($paramsFactory->create(ListRowbarActionParams::class));
 
         $app
             ->post(

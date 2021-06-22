@@ -65,7 +65,7 @@ angular.module('digitalWorkplaceApp')
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = `List | getActionButtons | recordId: ${recordId} | recordType: ${recordType}`;
 
-      return $http.post(API_URL + `ListRowAction/${recordType}/${recordId}`, { actionData }, {headers}).then(function (response) {
+      return $http.post(API_PATH + `list/${recordType}/row/bar/${recordId}`, { actionData }, {headers}).then(function (response) {
         return response.data.data.buttons;
       });
     }
