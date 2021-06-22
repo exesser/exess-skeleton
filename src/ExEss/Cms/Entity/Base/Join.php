@@ -3,7 +3,7 @@
 namespace ExEss\Cms\Entity\Base;
 
 use Doctrine\ORM\Mapping as ORM;
-use ExEss\Cms\Component\Doctrine\Mapping\Annotation\Auditable;
+use ExEss\Bundle\DoctrineExtensionsBundle\Mapping\Annotation\Auditable;
 
 /**
  * @ORM\MappedSuperclass()

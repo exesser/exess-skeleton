@@ -6,7 +6,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\Persistence\Proxy;
-use ExEss\Cms\Component\Doctrine\Type\AbstractEnumType;
+use ExEss\Bundle\DoctrineExtensionsBundle\Type\AbstractEnumType;
 use ExEss\Cms\CRUD\Config\CrudMetadata;
 use ExEss\Cms\Dictionary\Format;
 use ExEss\Cms\Exception\NotFoundException;

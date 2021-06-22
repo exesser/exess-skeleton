@@ -6,8 +6,8 @@ doctrine:
         default_table_options:
             collate: utf8mb4_unicode_ci
         types:
-            datetime_immutable_microseconds: ExEss\Cms\Component\Doctrine\Type\DateTimeImmutableMicroseconds
-            enum_audit_operation: ExEss\Cms\Component\Doctrine\Type\AuditOperationEnumType
+            datetime_immutable_microseconds: ExEss\Bundle\DoctrineExtensionsBundle\Type\DateTimeImmutableMicroseconds
+            enum_audit_operation: ExEss\Bundle\DoctrineExtensionsBundle\Type\AuditOperationEnumType
             enum_user_status: ExEss\Cms\Doctrine\Type\UserStatus
             enum_flow_field_type: ExEss\Cms\Doctrine\Type\FlowFieldType
             enum_order: ExEss\Cms\Doctrine\Type\Order

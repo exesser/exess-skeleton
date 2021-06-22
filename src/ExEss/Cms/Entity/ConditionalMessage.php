@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ExEss\Cms\Doctrine\Type\MessageDomain;
 use ExEss\Cms\Entity\Base\Entity;
-use ExEss\Cms\Component\Doctrine\Mapping\Annotation\Auditable;
+use ExEss\Bundle\DoctrineExtensionsBundle\Mapping\Annotation\Auditable;
 use ExEss\Cms\Entity\Behavior\SecurityGroups;
 
 /**

@@ -59,7 +59,7 @@ class EnumValueListenerTest extends FunctionalTestCase
         // Then
         $this->tester->expectThrowable(
             /**
-             * thrown by @see \ExEss\Cms\Component\Doctrine\Type\AbstractEnumType::convertToDatabaseValue()
+             * thrown by @see \ExEss\Bundle\DoctrineExtensionsBundle\Type\AbstractEnumType::convertToDatabaseValue()
              */
             new \InvalidArgumentException("foo is an invalid option for 'enum_flow_field_type"),
             function () use ($field): void {

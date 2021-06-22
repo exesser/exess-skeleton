@@ -3,7 +3,7 @@ namespace ExEss\Cms\FLW_Flows;
 
 use Doctrine\DBAL\Types\Type;
 use ExEss\Cms\Api\V8_Custom\Service\Security;
-use ExEss\Cms\Component\Doctrine\Type\AbstractEnumType;
+use ExEss\Bundle\DoctrineExtensionsBundle\Type\AbstractEnumType;
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use Symfony\Component\Translation\Translator;
 

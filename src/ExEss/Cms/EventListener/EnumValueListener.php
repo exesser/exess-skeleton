@@ -4,7 +4,7 @@ namespace ExEss\Cms\EventListener;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
-use ExEss\Cms\Component\Doctrine\Type\AbstractEnumType;
+use ExEss\Bundle\DoctrineExtensionsBundle\Type\AbstractEnumType;
 
 class EnumValueListener
 {
