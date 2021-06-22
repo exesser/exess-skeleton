@@ -129,11 +129,11 @@
     },
     "scripts": {
         "set-up-phpcs": [
-            "bin/nova setup:phpcs --root=/exesscms-api --custom='/config/phpcs.custom.xml' --ansi",
+            "bin/console setup:phpcs --root=/exesscms-api --custom='/config/phpcs.custom.xml' --ansi",
             "bin/phpcs --config-set colors 1"
         ],
         "set-up-hooks": [
-            "bin/nova setup:git-hooks --root=/exesscms-api --ansi"
+            "bin/console setup:git-hooks --root=/exesscms-api --ansi"
         ],
         "set-up": [
             "@set-up-phpcs",

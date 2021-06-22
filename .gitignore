@@ -30,8 +30,6 @@ dev/phpcs/windowsvagrantpath
 public/Api/open-api.yml
 
 /bin/*
-!/bin/nova
-!/bin/nova.php
 !/bin/console
 
 # Shared package
