@@ -266,6 +266,10 @@
             "value": "ExEss\\Cms\\Entity\\ListCellLink"
         },
         {
+            "key": "linkFields",
+            "value": "ExEss\\Cms\\Entity\\ExternalObjectLink"
+        },
+        {
             "key": "gridPanels",
             "value": "ExEss\\Cms\\Entity\\GridPanel"
         },
