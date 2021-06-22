@@ -5,7 +5,7 @@ namespace ExEss\Cms\FLW_Flows\Builder;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityManagerInterface;
-use ExEss\Cms\Component\Doctrine\Type\AbstractEnumType;
+use ExEss\Bundle\DoctrineExtensionsBundle\Type\AbstractEnumType;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Doctrine\Type\FlowFieldType;
 use stdClass;

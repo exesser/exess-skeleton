@@ -2,7 +2,7 @@
 
 namespace ExEss\Cms\Doctrine\Type;
 
-use ExEss\Cms\Component\Doctrine\Type\AbstractEnumType;
+use ExEss\Bundle\DoctrineExtensionsBundle\Type\AbstractEnumType;
 
 class GeneratedFieldType extends AbstractEnumType
 {

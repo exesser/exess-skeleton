@@ -5,7 +5,7 @@ namespace ExEss\Cms\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use ExEss\Cms\Component\Doctrine\Mapping\Annotation\Auditable;
+use ExEss\Bundle\DoctrineExtensionsBundle\Mapping\Annotation\Auditable;
 use ExEss\Cms\Doctrine\Type\FlowStepType;
 use ExEss\Cms\Entity\Base\Entity;
 

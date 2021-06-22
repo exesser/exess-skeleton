@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use DomainException;
 use ExEss\Cms\Doctrine\Type\Locale;
-use ExEss\Cms\Component\Doctrine\Mapping\Annotation\Auditable;
+use ExEss\Bundle\DoctrineExtensionsBundle\Mapping\Annotation\Auditable;
 use ExEss\Cms\Component\Session\User\UserInterface as CmsUserInterface;
 use ExEss\Cms\Doctrine\Type\SecurityGroupType;
 use Symfony\Component\Security\Core\Encoder\SodiumPasswordEncoder;

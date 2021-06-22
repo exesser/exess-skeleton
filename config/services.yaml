@@ -7,36 +7,6 @@ services:
     arguments:
       - !tagged_iterator crm.reset
 
-  ExEss\Cms\Component\Doctrine\Event\Subscriber\AuditSubscriber: ~
-  ExEss\Cms\Component\Doctrine\Event\Subscriber\LargeEnumTypeSubscriber: ~
-  ExEss\Cms\Component\Doctrine\Provider\SchemaTool: ~
-  ExEss\Cms\Component\Doctrine\Provider\SchemaProvider: ~
-
-  ExEss\Cms\Component\Doctrine\Factory\DependencyFactory:
-    class: Doctrine\Migrations\DependencyFactory
-    factory: ['ExEss\Cms\Component\Doctrine\Factory\DependencyFactory', 'fromEntityManager']
-    arguments:
-      - '@doctrine.migrations.configuration_loader'
-      - '@doctrine.migrations.entity_manager_registry_loader'
-      - '@ExEss\Cms\Component\Doctrine\Provider\SchemaProvider'
-      - '@logger'
-
-  doctrine_migrations.diff_command:
-    class: Doctrine\Migrations\Tools\Console\Command\DiffCommand
-    arguments:
-      - '@ExEss\Cms\Component\Doctrine\Factory\DependencyFactory'
-      - 'doctrine:migrations:diff'
-    tags:
-      - { name: 'console.command', command: 'doctrine:migrations:diff' }
-
-  doctrine_migrations.dump_schema_command:
-    class: Doctrine\Migrations\Tools\Console\Command\DumpSchemaCommand
-    arguments:
-      - '@ExEss\Cms\Component\Doctrine\Factory\DependencyFactory'
-      - 'doctrine:migrations:dump-schema'
-    tags:
-      - { name: 'console.command', command: 'doctrine:migrations:dump-schema' }
-
   ExEss\Cms\App:
     public: true
     arguments:
