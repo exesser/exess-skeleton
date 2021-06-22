@@ -7,7 +7,6 @@ use ExEss\Cms\Entity\User;
 
 class GetCombinedListCest
 {
-    private const INTERNAL_LIST_NAME = 'Users';
     private const EXTERNAL_LIST_NAME = 'Combined_Users';
 
     /**
@@ -31,38 +30,21 @@ class GetCombinedListCest
             ]);
         }
 
-        $I->generateDynamicList([
-            'name' => self::INTERNAL_LIST_NAME,
+        // create a list with filter
+        $listId = $I->generateDynamicList([
             'items_per_page' => 10,
             'base_object' => User::class,
             'filter_id' => $filterId = $I->generateFilter(),
         ]);
 
-        // create external list and link it
-        $externalObjectId = $I->generateListExternalObject([
-            'name' => self::EXTERNAL_LIST_NAME,
-        ]);
-        $I->generateDynamicList([
-            'name' => self::EXTERNAL_LIST_NAME,
-            'combined' => 1,
-            'external_object_id' => $externalObjectId,
-        ]);
-        $I->generateExternalLinkField([
-            'name' => self::INTERNAL_LIST_NAME,
-            'external_object_id' => $externalObjectId,
-        ]);
-
-        // create filter
         $I->linkFilterToFieldGroup(
             $filterId,
             $filterFieldGroupId = $I->generateFilterFieldGroup()
         );
-        $filterField = 'userName';
-        $filterOperator = '=';
         $I->linkFilterFieldToFieldGroup(
             $filterFieldId = $I->generateFilterField([
-                'operator' => $filterOperator,
-                'field_key_c' => $filterField,
+                'operator' => '=',
+                'field_key_c' => $filterField = 'userName',
             ]),
             $filterFieldGroupId
         );
@@ -78,6 +60,17 @@ class GetCombinedListCest
                 ],
             ],
         ];
+
+        // create external list and link it
+        $I->generateDynamicList([
+            'name' => self::EXTERNAL_LIST_NAME,
+            'combined' => 1,
+            'external_object_id' => $externalObjectId = $I->generateListExternalObject(),
+        ]);
+        $I->generateExternalLinkField([
+            'list_id' => $listId,
+            'external_object_id' => $externalObjectId,
+        ]);
     }
 
     public function getCombinedList(ApiTester $I): void

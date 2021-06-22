@@ -31,13 +31,10 @@ class ExportListToCsvCest
             'base_object' => User::class,
         ]);
 
-        $externalObjectId = $I->generateListExternalObject([
-            'name' => self::EXTERNAL_LIST_NAME,
-        ]);
         $I->generateDynamicList([
             'name' => self::EXTERNAL_LIST_NAME,
             'combined' => 1,
-            'external_object_id' => $externalObjectId,
+            'external_object_id' => $externalObjectId = $I->generateListExternalObject(),
         ]);
         $I->generateExternalLinkField([
             'list_id' => $listId,
