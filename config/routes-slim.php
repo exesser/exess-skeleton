@@ -4,7 +4,6 @@ use ExEss\Cms\Api\V8_Custom\Controller\Middleware\CachedResponseHandler;
 use ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverterFactory;
 use ExEss\Cms\Api\V8_Custom\Params\ActionParams;
 use ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams;
-use ExEss\Cms\Api\V8_Custom\Params\GetDashboardParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetFilterParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarActionParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
@@ -29,28 +28,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
                 ExEss\Cms\Api\V8_Custom\Controller\FetchActionController::class
             )
             ->add($paramsFactory->create(ActionParams::class))
-        ;
-
-        /**
-         * Retrieve a dashboard.
-         *
-         * this route is currently in use for the lead and account dashboards in the DWP and this was before
-         * menus were implemented which give back the ID as well.
-         *
-         * @see \ExEss\Cms\Api\V8_Custom\Controller\DashboardController::getDashboard()
-         */
-        $app
-            ->get('/Dashboard/{dash_name}', 'ExEss\Cms\Api\V8_Custom\Controller\DashboardController:getDashboard')
-            ->add($paramsFactory->create(GetDashboardParams::class))
-            ->add($controllerCache)
-        ;
-
-        $app
-            ->get(
-                '/Dashboard/{dash_name}/{recordId}',
-                'ExEss\Cms\Api\V8_Custom\Controller\DashboardController:getDashboard'
-            )
-            ->add($paramsFactory->create(GetDashboardParams::class))
         ;
 
         /**

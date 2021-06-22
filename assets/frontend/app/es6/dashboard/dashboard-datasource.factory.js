@@ -11,7 +11,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('dashboardDatasource', function (API_URL, $http, LOG_HEADERS_KEYS, $timeout, commandHandler) {
+  .factory('dashboardDatasource', function (API_PATH, $http, LOG_HEADERS_KEYS, $timeout, commandHandler) {
 
     return { get };
 
@@ -23,7 +23,7 @@ angular.module('digitalWorkplaceApp')
      * @return {Promise} A promise which resolves to the data for the dashboard.
      */
     function get({ dashboardId, recordId, queryParams = {} }) {
-      let url = API_URL + `Dashboard/${dashboardId}`;
+      let url = API_PATH + `dashboard/${dashboardId}`;
 
       if (_.isEmpty(recordId) === false) {
         url += `/${recordId}`;

@@ -55,7 +55,7 @@ class DashboardServiceTest extends FunctionalTestCase
     {
         // Given
         $user = $this->tester->grabEntityFromRepository(User::class, ['id' => '1']);
-        $this->tester->haveInRepository(Dashboard::class, [
+        $dashboardId = $this->tester->haveInRepository(Dashboard::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
             'key' => $dashboardKey = $this->tester->generateUuid(),
@@ -70,9 +70,11 @@ class DashboardServiceTest extends FunctionalTestCase
                 'jsonFields' => $grid,
             ],
         ]);
+        /** @var Dashboard $dashboard */
+        $dashboard = $this->tester->grabEntityFromRepository(Dashboard::class, ['id' => $dashboardId]);
 
         // When
-        $dashboard = $this->dashboardService->getDashboard($dashboardKey, []);
+        $dashboard = $this->dashboardService->getDashboard($dashboard);
 
         // Then
         $this->tester->assertArrayHasKey('filters', $dashboard);
@@ -86,7 +88,6 @@ class DashboardServiceTest extends FunctionalTestCase
         $dashboardId = $this->tester->haveInRepository(Dashboard::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
-            'key' => $dashboardKey = $this->tester->generateUuid(),
             'gridTemplate' => [
                 'createdBy' => $user,
                 'dateEntered' => new \DateTime(),
@@ -130,10 +131,11 @@ class DashboardServiceTest extends FunctionalTestCase
         );
 
         // When
-        $dashboard = $this->dashboardService->getDashboard($dashboardKey, [
-            'recordType' => User::class,
-            'recordId' => $this->recordId,
-        ]);
+        $dashboard = $this->dashboardService->getDashboard(
+            $dashboard,
+            ['recordType' => User::class],
+            $this->recordId
+        );
 
         // Then
         $this->tester->assertArrayHasKey('grid', $dashboard);
@@ -161,7 +163,6 @@ class DashboardServiceTest extends FunctionalTestCase
         $dashboardId = $this->tester->haveInRepository(Dashboard::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
-            'key' => $dashboardKey = $this->tester->generateUuid(),
             'dashboardMenu' => [
                 'createdBy' => $user,
                 'dateEntered' => new \DateTime(),
@@ -189,10 +190,11 @@ class DashboardServiceTest extends FunctionalTestCase
         );
 
         // When
-        $dashboard = $this->dashboardService->getDashboard($dashboardKey, [
-            'recordType' => User::class,
-            'recordId' => $this->recordId,
-        ]);
+        $dashboard = $this->dashboardService->getDashboard(
+            $dashboard,
+            ['recordType' => User::class],
+            $this->recordId
+        );
 
         // Then
         $this->tester->assertArrayHasKey('plusMenu', $dashboard);
@@ -221,14 +223,15 @@ class DashboardServiceTest extends FunctionalTestCase
     {
         // Given
         $user = $this->tester->grabEntityFromRepository(User::class, ['id' => '1']);
-        $this->tester->haveInRepository(Dashboard::class, [
+        $dashboardId = $this->tester->haveInRepository(Dashboard::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
-            'key' => $dashboardKey = $this->tester->generateUuid(),
         ]);
+        /** @var Dashboard $dashboard */
+        $dashboard = $this->tester->grabEntityFromRepository(Dashboard::class, ['id' => $dashboardId]);
 
         // When
-        $dashboard = $this->dashboardService->getDashboard($dashboardKey, []);
+        $dashboard = $this->dashboardService->getDashboard($dashboard);
 
         // Then
         $this->tester->assertArrayHasKey('search', $dashboard);
@@ -242,10 +245,9 @@ class DashboardServiceTest extends FunctionalTestCase
         // Given
         $params = ['test' => 'test'];
         $user = $this->tester->grabEntityFromRepository(User::class, ['id' => '1']);
-        $this->tester->haveInRepository(Dashboard::class, [
+        $dashboardId = $this->tester->haveInRepository(Dashboard::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
-            'key' => $dashboardKey = $this->tester->generateUuid(),
             'search' => [
                 'createdBy' => $user,
                 'dateEntered' => new \DateTime(),
@@ -253,9 +255,11 @@ class DashboardServiceTest extends FunctionalTestCase
                 'linkTo' => 'dashboard',
             ],
         ]);
+        /** @var Dashboard $dashboard */
+        $dashboard = $this->tester->grabEntityFromRepository(Dashboard::class, ['id' => $dashboardId]);
 
         // When
-        $dashboard = $this->dashboardService->getDashboard($dashboardKey, []);
+        $dashboard = $this->dashboardService->getDashboard($dashboard);
 
         // Then
         $this->tester->assertArrayHasKey('search', $dashboard);
@@ -270,10 +274,9 @@ class DashboardServiceTest extends FunctionalTestCase
         $this->tester->generateDynamicList(['name' => $listName]);
 
         $user = $this->tester->grabEntityFromRepository(User::class, ['id' => '1']);
-        $this->tester->haveInRepository(Dashboard::class, [
+        $dashboardId = $this->tester->haveInRepository(Dashboard::class, [
             'createdBy' => $user,
             'dateEntered' => new \DateTime(),
-            'key' => $dashboardKey = $this->tester->generateUuid(),
             'gridTemplate' => [
                 'createdBy' => $user,
                 'dateEntered' => new \DateTime(),
@@ -302,9 +305,11 @@ class DashboardServiceTest extends FunctionalTestCase
                 ],
             ],
         ]);
+        /** @var Dashboard $dashboard */
+        $dashboard = $this->tester->grabEntityFromRepository(Dashboard::class, ['id' => $dashboardId]);
 
         // When
-        $dashboard = $this->dashboardService->getDashboard($dashboardKey, [
+        $dashboard = $this->dashboardService->getDashboard($dashboard, [
             'crm-expr' => 'crm',
             'dwp-expr' => 'dwp',
         ]);

@@ -41,7 +41,7 @@ angular.module('digitalWorkplaceApp')
       // give angular some time to render before we fetch the data
       $timeout(function () {
         dashboardDatasource.get(params).then((dashboard) => {
-          const { filters, plusMenu, search, grid, dashboardBaseBean} = dashboard;
+          const { filters, plusMenu, search, grid, baseEntity} = dashboard;
 
           dashboardController.grid = grid;
           dashboardController.loading = false;
@@ -61,8 +61,8 @@ angular.module('digitalWorkplaceApp')
             topSearchObserver.setTopSearchData(search);
           }
 
-          if (dashboardBaseBean) {
-            navigationHistoryContainer.addAction(dashboardBaseBean, $state);
+          if (baseEntity) {
+            navigationHistoryContainer.addAction(baseEntity, $state);
           }
         });
       }, 100);
