@@ -7,16 +7,16 @@ describe('Factory: actionDatasource - http requests', function () {
   let $httpBackend;
   let actionDatasource;
   let commandHandler;
-  let API_URL;
+  let API_PATH;
   let LOG_HEADERS_KEYS;
 
-  beforeEach(inject(function ($state, _actionDatasource_, _commandHandler_, _$httpBackend_, _API_URL_, _LOG_HEADERS_KEYS_) {
+  beforeEach(inject(function ($state, _actionDatasource_, _commandHandler_, _$httpBackend_, _API_PATH_, _LOG_HEADERS_KEYS_) {
     mockHelpers.blockUIRouter($state);
 
     actionDatasource = _actionDatasource_;
     commandHandler = _commandHandler_;
     $httpBackend = _$httpBackend_;
-    API_URL = _API_URL_;
+    API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
   }));
 
@@ -38,7 +38,7 @@ describe('Factory: actionDatasource - http requests', function () {
 
     const postBody = { id: "1337", age: "28", name: "Maarten" };
 
-    $httpBackend.expectPOST(API_URL + 'Action/1337', postBody, function (headers) {
+    $httpBackend.expectPOST(API_PATH + 'action/1337', postBody, function (headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Perform action: 1337';
     }).respond(mockResponse);
 
@@ -81,7 +81,7 @@ describe('Factory: actionDatasource - http requests', function () {
 
     const postBody = { id: "1337", age: "28", name: "Maarten" };
 
-    $httpBackend.expectPOST(API_URL + 'Action/1337', postBody).respond(mockResponse);
+    $httpBackend.expectPOST(API_PATH + 'action/1337', postBody).respond(mockResponse);
 
     actionDatasource.performAndHandle(postBody);
 
@@ -93,7 +93,7 @@ describe('Factory: actionDatasource - http requests', function () {
     expect(commandHandler.handle).toHaveBeenCalledTimes(1);
     expect(commandHandler.handle).toHaveBeenCalledWith(mockResponse.data);
 
-    $httpBackend.expectPOST(API_URL + 'Action/1337', postBody).respond(mockResponse);
+    $httpBackend.expectPOST(API_PATH + 'action/1337', postBody).respond(mockResponse);
     actionDatasource.performAndHandle(postBody, true);
 
     $httpBackend.flush();

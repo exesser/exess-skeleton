@@ -1,28 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Action;
+namespace Test\Api\Api\Action;
 
 use ApiTester;
 use ExEss\Cms\Http\ErrorResponse;
 
-class FetchActionByIdCest
+class ExecuteCest
 {
     public function shouldReturn(ApiTester $I): void
     {
-        // setup
+        // Given
         $I->generateFlowAction([
             'guid' => $key = $I->generateUuid(),
             'json' => '{"command": "reloadPage"}',
         ]);
-
-        // run test
         $I->getAnApiTokenFor('adminUser');
-        $I->sendPOST("/Api/V8_Custom/Action/$key");
 
-        // assertions
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
+        // When
+        $I->sendPost("/Api/action/$key");
 
+        // Then
+        $I->seeResponseIsDwpResponse(200);
         $I->seeAssertPathsInJson([
             '$.data.command' => 'reloadPage',
         ]);
@@ -30,75 +28,68 @@ class FetchActionByIdCest
 
     public function withEmptyId(ApiTester $I): void
     {
-        // setup
+        // Given
         $I->getAnApiTokenFor('adminUser');
 
-        // run test
-        $I->sendPOST('/Api/V8_Custom/Action/0');
+        // When
+        $I->sendPost('/Api/action/0');
 
-        // assertions
-        $I->seeResponseCodeIs(400);
-        $I->seeResponseIsJson();
+        // Then
+        $I->seeResponseIsDwpResponse(404);
         $I->seeAssertPathsInJson([
-            '$.message' => 'No result was found for query although at least one row was expected.'
+            '$.data.message' => 'Not Found'
         ]);
     }
 
     public function withNonExistingId(ApiTester $I): void
     {
-        // setup
+        // Given
         $I->getAnApiTokenFor('adminUser');
 
-        // run test
-        $I->sendPOST('/Api/V8_Custom/Action/huppeldepup');
+        // When
+        $I->sendPost('/Api/action/huppeldepup');
 
-        // assertions
-        $I->seeResponseCodeIs(400);
-        $I->seeResponseIsJson();
+        // Then
+        $I->seeResponseIsDwpResponse(404);
         $I->seeAssertPathsInJson([
-            '$.message' => 'No result was found for query although at least one row was expected.'
+            '$.data.message' => 'Not Found'
         ]);
     }
 
     public function actionHasNoCommand(ApiTester $I): void
     {
-        // setup
+        // Given
         $I->generateFlowAction([
             'guid' => 'my_test_action',
         ]);
-
-        // run test
         $I->getAnApiTokenFor('adminUser');
 
-        $I->sendPOST('/Api/V8_Custom/Action/my_test_action');
+        // When
+        $I->sendPost('/Api/action/my_test_action');
 
-        // assertions
-        $I->seeResponseCodeIs(422);
-        $I->seeResponseIsJson();
-
+        // Then
+        $I->seeResponseIsDwpResponse(404);
         $response = \json_decode($I->grabResponse(), true);
 
         $I->assertEquals($response['message'], ErrorResponse::MESSAGE_ERROR);
-        $I->assertEquals($response['data']['type'], ErrorResponse::TYPE_DOMAIN_EXCEPTION);
+        $I->assertEquals($response['data']['type'], ErrorResponse::TYPE_NOT_FOUND_EXCEPTION);
         $I->assertTrue(\strpos($response['data']['message'], 'my_test_action') !== false);
     }
 
     public function actionHasNonExistingBackendCommand(ApiTester $I): void
     {
-        // setup
+        // Given
         $I->generateFlowAction([
             'guid' => 'my_test_action',
             'json' => '{"command":"yippie", "backendCommand":"ka-yee"}',
         ]);
-
-        // run test
         $I->getAnApiTokenFor('adminUser');
 
-        $I->sendPOST('/Api/V8_Custom/Action/my_test_action');
+        // When
+        $I->sendPost('/Api/action/my_test_action');
 
-        // assertions
-        $I->seeResponseCodeIs(422);
-        $I->seeResponseIsJson();
+        // Then
+        $I->seeResponseIsDwpResponse(422);
         $I->seeAssertPathsInJson([
             '$.message' => ErrorResponse::MESSAGE_ERROR,
         ]);
@@ -106,8 +97,8 @@ class FetchActionByIdCest
 
     public function actionWithPayloadAndWrongConfig(ApiTester $I): void
     {
+        // Given
         $I->loadJsonFixturesFrom(__DIR__  . '/resources/FetchAction.fixtures.json');
-
         $payload = '{
             "id": "some_action",
             "recordId": "VKM1770002708",
@@ -117,16 +108,19 @@ class FetchActionByIdCest
                 "parentId": "67338d36-30aa-249c-b8d8-59dd5800e50a"
             }
         }';
-
         $I->getAnApiTokenFor('adminUser');
-        $I->sendPOST('/Api/V8_Custom/Action/some_action', \json_decode($payload, true));
+
+        // When
+        $I->sendPost('/Api/action/some_action', \json_decode($payload, true));
+
+        // Then
         $I->seeResponseIsDwpResponse(422);
     }
 
     public function actionWithPayloadAndCorrectConfig(ApiTester $I): void
     {
+        // Given
         $I->loadJsonFixturesFrom(__DIR__  . '/resources/FetchAction.fixtures.json');
-
         $payload = '{
             "id": "some_action",
             "recordId": "VKM1770002708",
@@ -136,16 +130,18 @@ class FetchActionByIdCest
                 "parentId": "67338d36-30aa-249c-b8d8-59dd5800e50a"
             }
         }';
-
         $I->updateInDatabase(
             'flw_guidancefields',
             ['field_overwrite_value' => '', 'field_default' => '%recordId%'],
             ['id' => 'field_01']
         );
-
         $I->getAnApiTokenFor('adminUser');
-        $I->sendPOST('/Api/V8_Custom/Action/some_action', \json_decode($payload, true));
-        $I->canSeeResponseCodeIs(200);
+
+        // When
+        $I->sendPost('/Api/action/some_action', \json_decode($payload, true));
+
+        // Then
+        $I->seeResponseIsDwpResponse(200);
         $I->assertEquals(
             'VKM1770002708',
             $I->grabDataFromResponseByJsonPath("$.data.arguments.model['dwp|id']")[0]

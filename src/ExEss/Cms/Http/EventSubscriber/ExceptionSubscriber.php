@@ -16,6 +16,7 @@ use ExEss\Cms\Logger\Logger;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
@@ -57,6 +58,8 @@ class ExceptionSubscriber implements EventSubscriberInterface
     public function transformToResponse(\Throwable $e): Response
     {
         switch (true) {
+            case $e instanceof HttpException:
+                return new ErrorResponse($e->getStatusCode());
             case $e instanceof AccessDeniedException:
             case $e instanceof NotAuthenticatedException:
                 return new ErrorResponse(Response::HTTP_UNAUTHORIZED);

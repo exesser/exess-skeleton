@@ -1,9 +1,7 @@
 <?php
 namespace ExEss\Cms\FLW_Flows\Action;
 
-use ExEss\Cms\Generic\ToArray;
-
-class Command implements ToArray, \JsonSerializable
+class Command implements \JsonSerializable
 {
     public const COMMAND_TYPE_OPEN_LINK = 'openLink';
     public const COMMAND_TYPE_OPEN_MODAL = 'openModal';
@@ -85,19 +83,13 @@ class Command implements ToArray, \JsonSerializable
         return $this;
     }
 
-    public function toArray(): array
+    public function jsonSerialize(): array
     {
-        // @todo check why $this->backendCommand is not in the returned array
         return [
             'command' => $this->command,
             'arguments' => $this->arguments->toArray(),
             'relatedBeans' => $this->relatedBeans,
             'params' => $this->params
         ];
-    }
-
-    public function jsonSerialize(): array
-    {
-        return $this->toArray();
     }
 }

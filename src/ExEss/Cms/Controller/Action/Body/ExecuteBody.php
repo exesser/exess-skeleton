@@ -1,24 +1,18 @@
-<?php
-namespace ExEss\Cms\Api\V8_Custom\Params;
+<?php declare(strict_types=1);
 
-use Doctrine\ORM\EntityManager;
+namespace ExEss\Cms\Controller\Action\Body;
+
 use ExEss\Cms\Api\V8_Custom\Params\Normalizer\Trim;
-use ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory;
+use ExEss\Cms\AwareTrait\ValidatorFactoryAwareTrait;
 use ExEss\Cms\Entity\FlowAction;
+use ExEss\Cms\Http\Request\AbstractJsonBody;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class ActionParams extends AbstractParams
+class ExecuteBody extends AbstractJsonBody
 {
-    private EntityManager $em;
-
-    public function __construct(ValidatorFactory $validatorFactory, EntityManager $em)
-    {
-        parent::__construct($validatorFactory);
-        $this->em = $em;
-    }
-
+    use ValidatorFactoryAwareTrait;
     public function getAction(): FlowAction
     {
         return $this->arguments['action'];
@@ -57,14 +51,7 @@ class ActionParams extends AbstractParams
     protected function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
-            ->setRequired('action')
-            ->setAllowedTypes('action', ['string'])
-            ->setAllowedValues('action', $this->validatorFactory->createClosure([
-                new Assert\NotBlank(),
-            ]))
-            ->setNormalizer('action', function (Options $options, string $value): FlowAction {
-                return $this->em->getRepository(FlowAction::class)->get($value);
-            })
+            ->setDefined('id')
         ;
         $resolver
             ->setDefault('listKey', null)
@@ -75,29 +62,33 @@ class ActionParams extends AbstractParams
             ], true));
         $resolver
             ->setDefault('params', [])
-            ->setAllowedTypes('params', ['array']);
+            ->setAllowedTypes('params', ['array'])
+        ;
         $resolver
             ->setDefault('recordType', null)
             ->setAllowedTypes('recordType', ['string', 'null'])
-            ->setNormalizer('recordType', Trim::asClosure());
+            ->setNormalizer('recordType', function (Options $options, ?string $value): ?string {
+                return (new Trim())->normalize($options['params']['recordType'] ?? $value);
+            })
+        ;
         $resolver
             ->setDefault('recordId', null)
             ->setAllowedTypes('recordId', ['string', 'null', 'int'])
             ->setNormalizer('recordId', Trim::asClosure())
             ->setAllowedValues('recordId', $this->validatorFactory->createClosure([
                 new Assert\NotBlank(),
-                new Assert\Regex(['pattern' => self::REGEX_KEY]),
-            ], true));
+            ], true))
+        ;
         $resolver
             ->setDefault('recordIds', null)
             ->setAllowedTypes('recordIds', ['array', 'null'])
             ->setAllowedValues('recordIds', $this->validatorFactory->createClosureForIterator([
                 new Assert\NotBlank(),
-            ], true));
+            ], true))
+        ;
         $resolver
             ->setDefault('actionData', [])
-            ->setAllowedTypes('actionData', ['array']);
-
-        $resolver->setDefined('id');
+            ->setAllowedTypes('actionData', ['array'])
+        ;
     }
 }
