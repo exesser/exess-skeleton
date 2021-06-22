@@ -28,18 +28,39 @@ class ExternalObjectLink extends Entity
     use SecurityGroups;
 
     /**
-     * @ORM\Column(name="suite_bean_name", type="string", length=255, nullable=true)
+     * @ORM\Column(name="entity_name", type="string", length=255, nullable=true)
      */
-    private ?string $suiteBeanName = null;
+    private ?string $entityName = null;
 
     /**
-     * @ORM\Column(name="suite_bean_field", type="string", length=255, nullable=true)
+     * @ORM\Column(name="entity_field", type="string", length=255, nullable=true)
      */
-    private ?string $suiteBeanField = null;
+    private ?string $entityField = null;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ListDynamic", inversedBy="linkFields")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private ?ListDynamic $list = null;
 
     /**
      * @ORM\ManyToOne(targetEntity="ExternalObject", inversedBy="linkFields")
      * @ORM\JoinColumn(nullable=true)
      */
     private ?ExternalObject $externalObject = null;
+
+    public function getEntityName(): ?string
+    {
+        return $this->entityName;
+    }
+
+    public function getEntityField(): ?string
+    {
+        return $this->entityField;
+    }
+
+    public function getList(): ?ListDynamic
+    {
+        return $this->list;
+    }
 }

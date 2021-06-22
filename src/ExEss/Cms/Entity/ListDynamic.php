@@ -98,6 +98,12 @@ class ListDynamic extends Entity
     private Collection $cellLinks;
 
     /**
+     * @ORM\OneToMany(targetEntity="ExternalObjectLink", mappedBy="list")
+     * @var Collection|ExternalObjectLink[]
+     */
+    private Collection $linkFields;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Filter", inversedBy="lists")
      * @ORM\JoinColumn(nullable=true)
      */

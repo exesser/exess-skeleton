@@ -2,6 +2,8 @@
 namespace ExEss\Cms\Parser\Compiler;
 
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\ClassMetadataFactory;
 use ExEss\Cms\Entity\ExternalObjectLink;
 use ExEss\Cms\Parser\PathResolverOptions;
 use ExEss\Cms\Parser\Resolver\Piece\ListOfFatEntitiesPiece;
@@ -9,38 +11,40 @@ use ExEss\Cms\Parser\Resolver\CompiledPath;
 
 class ExternalLinkCompiler
 {
-    /**
-     * @param mixed $baseFatEntity
-     */
-    public static function shouldHandle($baseFatEntity, string $fatEntityKey, PathResolverOptions $options): bool
+    private static ClassMetadataFactory $classMetadataFactory;
+
+    public function __construct(EntityManagerInterface $em)
     {
-        // @todo re-implement
-        return \is_object($baseFatEntity)
-            && !$baseFatEntity instanceof \AbstractFatEntity
+        self::$classMetadataFactory = $em->getMetadataFactory();
+    }
+
+    /**
+     * @param mixed $baseEntity
+     */
+    public static function shouldHandle($baseEntity, string $fatEntityKey, PathResolverOptions $options): bool
+    {
+        return \is_object($baseEntity)
+            && !self::$classMetadataFactory->hasMetadataFor(\get_class($baseEntity))
             && !empty($options->getExternalLinks())
             && !empty(self::findMatch($options->getExternalLinks(), $fatEntityKey))
         ;
     }
 
-    /**
-     * @param mixed $baseFatEntity
-     */
     public function __invoke(
         CompiledPath $path,
-        string $fatEntityKey,
-        $baseFatEntity,
+        string $key,
+        object $baseEntity,
         PathResolverOptions $options
     ): void {
-        $matchingLinks = self::findMatch($options->getExternalLinks(), $fatEntityKey);
-        $externalLink = \current($matchingLinks);
+        $externalLink = self::findMatch($options->getExternalLinks(), $key);
 
         $piece = new ListOfFatEntitiesPiece(
-            $externalLink->suite_bean_name,
-            "{$externalLink->suite_bean_field}='#PREVIOUS_VALUE#'",
+            $externalLink->getEntityName(),
+            "{$externalLink->getEntityField()}='#PREVIOUS_VALUE#'",
             1,
-            ['#PREVIOUS_VALUE#' => 'get' . \ucfirst($fatEntityKey)]
+            ['#PREVIOUS_VALUE#' => 'get' . \ucfirst($key)]
         );
-        $path[$fatEntityKey] = $piece;
+        $path[$key] = $piece;
     }
 
     private static function findMatch(?Collection $externalLinks, string $relation): ?ExternalObjectLink

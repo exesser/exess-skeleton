@@ -24,14 +24,6 @@
     ],
     "fields": [
         {
-            "name": "suiteBeanName",
-            "type": "string"
-        },
-        {
-            "name": "suiteBeanField",
-            "type": "string"
-        },
-        {
             "name": "id",
             "type": "string"
         },

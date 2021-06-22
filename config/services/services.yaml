@@ -140,7 +140,10 @@ services:
     arguments:
       - '@doctrine.orm.entity_manager'
 
-  ExEss\Cms\Parser\Compiler\ExternalLinkCompiler: ~
+  ExEss\Cms\Parser\Compiler\ExternalLinkCompiler:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
   ExEss\Cms\Parser\Compiler\DateTimeCompiler: ~
   ExEss\Cms\Parser\Compiler\SecurityCompiler: ~
   ExEss\Cms\Parser\Compiler\RelationListCompiler: ~

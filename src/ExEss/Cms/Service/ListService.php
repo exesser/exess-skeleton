@@ -2,7 +2,6 @@
 
 namespace ExEss\Cms\Service;
 
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\Expr\OrderBy;
@@ -20,7 +19,6 @@ use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
 use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
 use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
 use ExEss\Cms\Api\V8_Custom\Service\Security;
-use ExEss\Cms\Db\DbTrait;
 use ExEss\Cms\Entity\SecurityGroup;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListHeader;
@@ -33,20 +31,14 @@ use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
 use ExEss\Cms\Parser\ExpressionGroup;
 use ExEss\Cms\Parser\ExpressionParserOptions;
 use ExEss\Cms\Parser\PathResolverOptions;
-use ExEss\Cms\Service\ActionService;
-use ExEss\Cms\Service\FilterService;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ListService
 {
-    use DbTrait;
-
     private const DEFAULT_PAGE_SIZE = 10;
     private const MAX_PER_PAGE = 100;
 
     private ListHelperFunctions $listHelperFunctions;
-
-    private ListExportService $listExportCSVService;
 
     private ListHandler $listHandler;
 
@@ -302,14 +294,11 @@ class ListService
         $response->pagination->setFixPagination($list->isFixPagination());
 
         $exportToCSV = $params->needsExportToCSV();
-        $externalLinks = null;
 
         $sortBy = $params->getSortBy();
         $response->pagination->sortBy = (string) $sortBy;
 
         if ($externalObject = $list->getExternalObject()) {
-            $externalLinks = $externalObject->getLinkFields();
-
             $postedData = [
                 'params' => \array_merge($params->getArguments(), $params->getParams(), ['list' => $list]),
                 'baseObject' => $list->getBaseObject(),
@@ -360,7 +349,6 @@ class ListService
             $list,
             $response,
             $sortBy,
-            $externalLinks,
             $combinedListKey
         );
     }
@@ -372,13 +360,14 @@ class ListService
         ListDynamic $list,
         DynamicListResponse $response,
         OrderBy $sortBy,
-        ?Collection $externalLinks,
         ?string $combinedListKey
     ): void {
         $listHelper = $this->listHelperFunctions;
 
         $resolverOptions = (new PathResolverOptions)
-            ->setExternalLinks($externalLinks)
+            ->setExternalLinks(
+                ($externalObject = $list->getExternalObject()) ? $externalObject->getLinkFields() : null
+            )
             ->setAllBeans($allBaseEntities);
 
         if (!$list->isExternal()) {
@@ -865,7 +854,7 @@ class ListService
             );
 
             $result = $this->getList(
-                $this->em->getRepository(ListDynamic::class)->get($externalObjectLink->getName()),
+                $externalObjectLink->getList(),
                 $listParams,
                 $list->getId()
             );
