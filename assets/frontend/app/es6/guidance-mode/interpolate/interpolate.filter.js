@@ -28,10 +28,10 @@
  * Filter of the digitalWorkplaceApp
  */
 angular.module('digitalWorkplaceApp')
-  .filter('interpolate', function ($interpolate, orDefaultFilter, novaExpressionTransformer) {
+  .filter('interpolate', function ($interpolate, orDefaultFilter, expressionTransformer) {
     return function (expression, model, defaultValue) {
       // Translate the expression to an angular expression without pipe
-      expression = novaExpressionTransformer(expression);
+      expression = expressionTransformer(expression);
 
       // Translate the model so the keys don't contain a pipe
       const transformedModel = angular.fromJson(_.replace(angular.toJson(model), /\|/g, "_I_"));

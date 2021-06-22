@@ -13,7 +13,7 @@ class CacheClearCommand extends AbstractAdminCommand
      * @var string
      */
     // phpcs:ignore SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint
-    protected static $defaultName = 'nova:cache:clear';
+    protected static $defaultName = 'exess:cache:clear';
 
     private CacheAdapterFactory $cacheAdapterFactory;
 
@@ -29,7 +29,7 @@ class CacheClearCommand extends AbstractAdminCommand
 
     protected function configure(): void
     {
-        $this->setDescription('Clear all the cache including nova specific caches');
+        $this->setDescription('Clear all the cache including exess specific caches');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

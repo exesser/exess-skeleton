@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Creates some text with link that can take a novaExpression.
+ * Creates some text with link that can take a expression.
  *
  * It has the following behavioral properties:
  *

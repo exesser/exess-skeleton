@@ -13,7 +13,7 @@
   "SEARCH": "RECHERCHE DWP",
   "LOADING": "Charger",
 
-  "LOGIN.HEADER": "Bienvenu sur NOVA",
+  "LOGIN.HEADER": "Bienvenu",
   "LOGIN.USERNAME": "Nom d'utilisateur",
   "LOGIN.USERNAME.PLACEHOLDER": "Veuillez entrer votre nom d'utilisateur",
   "LOGIN.PASSWORD": "Mot de passe",

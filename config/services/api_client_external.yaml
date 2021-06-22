@@ -1,7 +1,7 @@
 #
 # External API clients
 #
-# External meaning external for the NOVA infrastructure, which will always need to use the proxy/host
+# External meaning external for our infrastructure, which will always need to use the proxy/host
 # that is present to be able to access outside resources
 #
 parameters:

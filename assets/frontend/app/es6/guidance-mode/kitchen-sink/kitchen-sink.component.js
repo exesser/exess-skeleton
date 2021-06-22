@@ -92,11 +92,11 @@ angular.module('digitalWorkplaceApp')
         },
         "contracts": [{
           name: "Already uploaded file",
-          url: "https://nova/uploads/Already uploaded file.pdf",
+          url: "https://exess/uploads/Already uploaded file.pdf",
           id: "2e4516c9-7289-4745-92b0-a36cbb80c422"
         }, {
           name: "Already uploaded file number 2",
-          url: "https://nova/uploads/Already uploaded file number 2.pdf",
+          url: "https://exess/uploads/Already uploaded file number 2.pdf",
           id: "bdb20fba-fae1-475e-9b69-18a7dce61dbd"
         }],
         "files": [],

@@ -82,7 +82,7 @@ describe('Form type: toggle', function () {
     expect(checkboxElement.attr('id')).toBe('field-fake-id');
   });
 
-  it('should create a nova-toggle with a label', function () {
+  it('should create a toggle with a label', function () {
     compile();
 
     expect(checkboxElement.attr('type')).toBe('checkbox');

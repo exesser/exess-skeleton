@@ -78,7 +78,7 @@ angular.module('digitalWorkplaceApp')
 
       /*
         Convert all 'fieldExpression' to 'unparsedFieldExpression' to
-        indicate that they have yet to be parsed by the novaExpressionTransformer.
+        indicate that they have yet to be parsed by the expressionTransformer.
       */
       if (_.isEmpty(field.fieldExpression) === false) {
         formlyField.templateOptions.unparsedFieldExpression = field.fieldExpression;

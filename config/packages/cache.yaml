@@ -1,3 +1,3 @@
 framework:
     cache:
-        prefix_seed: nova/crm
+        prefix_seed: exess/cms
