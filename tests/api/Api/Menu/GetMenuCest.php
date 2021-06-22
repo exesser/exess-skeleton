@@ -21,7 +21,7 @@ class GetMenuCest
         $expectedItems = $items + 2;
 
         // When
-        $I->sendGET('/Api/menu');
+        $I->sendGet('/Api/menu');
 
         // Then
         $I->seeResponseIsDwpResponse(200);
