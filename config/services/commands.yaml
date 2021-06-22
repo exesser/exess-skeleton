@@ -16,3 +16,9 @@ services:
     parent: ExEss\Cms\Command\AbstractAdminCommand
     resource: '../../src/ExEss/Cms/Command'
     tags: ['console.command']
+
+  ExEss\Cms\Component\PhpCS\Command\:
+    public: true
+    autowire: true  
+    resource: '../../src/ExEss/Cms/Component/PhpCS/Command'
+    tags: ['console.command']
