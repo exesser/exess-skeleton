@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\Api\V8_Custom\Service\User;
+namespace Test\Functional\ExEss\Cms\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Doctrine\Type\Locale;

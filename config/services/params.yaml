@@ -24,10 +24,6 @@ services:
       - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
       - '@ExEss\Cms\Service\GridService'
 
-  ExEss\Cms\Api\V8_Custom\Params\ListRowbarActionParams:
-    arguments:
-      - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
-
   ExEss\Cms\Api\V8_Custom\Params\SelectWithSearchParams:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'

@@ -12,14 +12,6 @@ services:
     arguments:
       - '@doctrine.orm.entity_manager'
 
-  ExEss\Cms\Api\V8_Custom\Repository\ListRowbarRepository:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Servicemix\ExternalObjectHandler'
-      - '@ExEss\Cms\Service\ActionService'
-      - '@Symfony\Component\Translation\Translator'
-      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
-
   # External repositories
   ExEss\Cms\Api\V8_Custom\Repository\AuditRepository:
     arguments:

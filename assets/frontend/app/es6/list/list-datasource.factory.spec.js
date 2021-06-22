@@ -278,7 +278,7 @@ describe('Factory: listDatasource - http requests', function () {
     };
 
     const actionData = { parentId: "mockId" };
-    $httpBackend.expectPOST(API_URL + 'ListRowAction/Account/1337', { actionData }, function(headers) {
+    $httpBackend.expectPOST(API_URL + 'list/Account/row/bar/1337', { actionData }, function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'List | getActionButtons | recordId: 1337 | recordType: Account';
     }).respond(mockResponse);
 
