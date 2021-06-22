@@ -3,7 +3,6 @@
 use ExEss\Cms\Api\V8_Custom\Controller\Middleware\CachedResponseHandler;
 use ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverterFactory;
 use ExEss\Cms\Api\V8_Custom\Params\ActionParams;
-use ExEss\Cms\Api\V8_Custom\Params\ChangeLocaleParams;
 use ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetDashboardParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetFilterParams;
@@ -53,14 +52,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
                 'ExEss\Cms\Api\V8_Custom\Controller\DashboardController:getDashboard'
             )
             ->add($paramsFactory->create(GetDashboardParams::class))
-        ;
-
-        $app
-            ->post(
-                '/user/change-locale/{locale}',
-                \ExEss\Cms\Api\V8_Custom\Controller\User\ChangeLocaleController::class
-            )
-            ->add($paramsFactory->create(ChangeLocaleParams::class))
         ;
 
         /**
