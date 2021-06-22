@@ -8,7 +8,6 @@ use ExEss\Cms\Http\SuccessResponse;
 use ExEss\Cms\Service\ListExportService;
 use ExEss\Cms\Service\ListService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ExportController
@@ -28,7 +27,7 @@ class ExportController
      * @Route("/Api/list/{name}/export/csv", methods={"POST"})
      * @ParamConverter("jsonBody")
      */
-    public function __invoke(Request $request, ListDynamic $list, Body\ListBody $jsonBody): SuccessResponse
+    public function __invoke(ListDynamic $list, Body\ListBody $jsonBody): SuccessResponse
     {
         $link = $this->exportService->export(
             $this->listHandler->getList($list, $jsonBody)

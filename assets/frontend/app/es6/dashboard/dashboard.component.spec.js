@@ -336,7 +336,7 @@ describe('Component: dashboard', function () {
       search: {
         display: false
       },
-      dashboardBaseBean: "recordId (Field)",
+      baseEntity: "recordId (Field)",
       grid: {
         columns: [{
           size: "1-1",

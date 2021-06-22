@@ -1,12 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Crud;
+namespace Test\Api\Api\Dashboard;
 
 use ApiTester;
 use ExEss\Cms\Entity\User;
 use ExEss\Cms\FLW_Flows\SaveFlow;
+use Test\Api\V8_Custom\Crud\CrudTestUser;
 
-class DashboardCest
+class CrudCest
 {
     private CrudTestUser $user;
 
@@ -20,7 +21,10 @@ class DashboardCest
 
     public function shouldSeeCrudDashboard(ApiTester $I): void
     {
-        $I->sendGET('/Api/V8_Custom/Dashboard/CrudAllBeans');
+        // When
+        $I->sendGet('/Api/dashboard/CrudAllBeans');
+
+        // Then
         $I->seeResponseIsDwpResponse(200);
         $I->seeResponseContainsJson(["title" => "Crud Records"]);
         $I->seeResponseContainsJson(["type" => "list"]);
@@ -29,7 +33,10 @@ class DashboardCest
 
     public function shouldSeeCrudRecordsDashboard(ApiTester $I): void
     {
-        $I->sendGET('/Api/V8_Custom/Dashboard/CrudBeanRecords?recordType=' . User::class);
+        // When
+        $I->sendGet('/Api/dashboard/CrudBeanRecords?recordType=' . User::class);
+
+        // Then
         $I->seeResponseIsDwpResponse(200);
         $I->seeResponseContainsJson(["type" => "list"]);
         $I->seeResponseContainsJson(["listKey" => "CrudRecordsList"]);
@@ -37,7 +44,10 @@ class DashboardCest
 
     public function shouldSeeRecordDetailDashboard(ApiTester $I): void
     {
-        $I->sendGET('/Api/V8_Custom/Dashboard/CrudRecordView/1?recordType=' . User::class);
+        // When
+        $I->sendGet('/Api/dashboard/CrudRecordView/1?recordType=' . User::class);
+
+        // Then
         $I->seeResponseIsDwpResponse(200);
         $I->seeResponseContainsJson(["type" => "embeddedGuidance"]);
         $I->seeResponseContainsJson(["flowId" => SaveFlow::CRUD_RECORD_DETAILS]);

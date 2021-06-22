@@ -8,17 +8,17 @@ describe('Factory: dashboardDatasource - http requests', function () {
   let $timeout;
   let dashboardDatasource;
   let commandHandler;
-  let API_URL;
+  let API_PATH;
   let LOG_HEADERS_KEYS;
 
-  beforeEach(inject(function ($state, _dashboardDatasource_, _$httpBackend_, _API_URL_, _LOG_HEADERS_KEYS_, _$timeout_, _commandHandler_) {
+  beforeEach(inject(function ($state, _dashboardDatasource_, _$httpBackend_, _API_PATH_, _LOG_HEADERS_KEYS_, _$timeout_, _commandHandler_) {
     mockHelpers.blockUIRouter($state);
 
     dashboardDatasource = _dashboardDatasource_;
     commandHandler = _commandHandler_;
     $httpBackend = _$httpBackend_;
     $timeout = _$timeout_;
-    API_URL = _API_URL_;
+    API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
   }));
 
@@ -39,7 +39,7 @@ describe('Factory: dashboardDatasource - http requests', function () {
       "message": "Success"
     };
 
-    $httpBackend.expectGET(API_URL + 'Dashboard/leads').respond(mockResponse);
+    $httpBackend.expectGET(API_PATH + 'dashboard/leads').respond(mockResponse);
 
     let promiseResolved = false;
     dashboardDatasource.get({ dashboardId: "leads" }).then(function(data) {
@@ -71,7 +71,7 @@ describe('Factory: dashboardDatasource - http requests', function () {
     };
 
     spyOn(commandHandler, 'handle');
-    $httpBackend.expectGET(API_URL + 'Dashboard/leads').respond(function () {
+    $httpBackend.expectGET(API_PATH + 'dashboard/leads').respond(function () {
       return [404, mockResponse, {}, 'Not found'];
     });
 
@@ -98,7 +98,7 @@ describe('Factory: dashboardDatasource - http requests', function () {
     };
 
     spyOn(commandHandler, 'handle');
-    $httpBackend.expectGET(API_URL + 'Dashboard/leads').respond(function () {
+    $httpBackend.expectGET(API_PATH + 'dashboard/leads').respond(function () {
       return [404, mockResponse, {}, 'Not found'];
     });
 
@@ -118,7 +118,7 @@ describe('Factory: dashboardDatasource - http requests', function () {
   });
 
   it('should send a correct request when it has query params', function () {
-    $httpBackend.expectGET(API_URL + 'Dashboard/leads?query=yolo').respond(true);
+    $httpBackend.expectGET(API_PATH + 'dashboard/leads?query=yolo').respond(true);
 
     dashboardDatasource.get({ dashboardId: "leads", queryParams: { query: 'yolo'} });
 
@@ -172,7 +172,7 @@ describe('Factory: dashboardDatasource - http requests', function () {
       "message": "Success"
     };
 
-    $httpBackend.expectGET(API_URL + 'Dashboard/lead/e0998a48-1137?query=yolo', function(headers) {
+    $httpBackend.expectGET(API_PATH + 'dashboard/lead/e0998a48-1137?query=yolo', function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Dashboard: lead | recordId: e0998a48-1137';
     }).respond(mockResponse);
 

@@ -2,11 +2,9 @@
 
 namespace ExEss\Cms\Controller\Log;
 
-use ExEss\Cms\Controller\Log\Body\ErrorBody;
 use ExEss\Cms\Http\SuccessResponse;
 use ExEss\Cms\Logger\Logger;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ErrorController
@@ -22,7 +20,7 @@ class ErrorController
      * @Route("/Api/log/error")
      * @ParamConverter("jsonBody")
      */
-    public function __invoke(Request $request, ErrorBody $jsonBody): SuccessResponse
+    public function __invoke(Body\ErrorBody $jsonBody): SuccessResponse
     {
         $errorData = [
             'name' => $jsonBody->getName(),

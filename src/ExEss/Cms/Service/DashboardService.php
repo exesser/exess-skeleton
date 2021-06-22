@@ -28,23 +28,14 @@ class DashboardService
     private const PANEL_TYPE_LIST = 'list';
 
     private GridService $gridService;
-
     private TranslatorInterface $translator;
-
     private ActionService $actionService;
-
     private ExternalObjectHandler $externalObjectHandler;
-
     private DashboardCalcFunctions $dashboardCalcFunctions;
-
     private ListHelperFunctions $listHelperFunctions;
-
     private Validator $validator;
-
     private TextFunctionHandler $textFunctionHandler;
-
     private Security $security;
-
     private EntityManagerInterface $em;
 
     public function __construct(
@@ -71,23 +62,19 @@ class DashboardService
         $this->em = $em;
     }
 
-    public function getDashboard(string $dashboardKey, array $arguments): array
+    public function getDashboard(Dashboard $dashboard, array $arguments = [], ?string $recordId = null): array
     {
-        // @todo could have been done by a param converter in the route
-        /** @var Dashboard $dashboard */
-        $dashboard = $this->em->getRepository(Dashboard::class)->get($dashboardKey);
-
         $arguments['recordType'] = $arguments['recordType'] ?? $dashboard->getMainRecordType();
         $arguments['listKey'] = $arguments['listKey'] ?? '';
+        $arguments['recordId'] = $recordId;
         $arguments = $this->gridService->getAllArguments($arguments);
-        $baseObject = $this->getBaseObject($dashboard, $arguments);
 
-        $dashboardBaseBean = [];
-        if ($baseObject) {
+        $baseEntity = [];
+        if ($baseObject = $this->getBaseObject($dashboard, $arguments)) {
             $entityName = \get_class($baseObject);
             if ($this->em->getMetadataFactory()->hasMetadataFor($entityName)) {
-                $dashboardBaseBean = [
-                    'dashboardBaseBean' => \sprintf(
+                $baseEntity = [
+                    'baseEntity' => \sprintf(
                         "[ %s ] - %s",
                         $this->translator->trans($entityName, [], TranslationDomain::MODULE),
                         CrudMetadata::getCrudListC1R1(
@@ -95,7 +82,7 @@ class DashboardService
                             $baseObject
                         ),
                     )
-                    ];
+                ];
             }
         }
 
@@ -113,7 +100,7 @@ class DashboardService
                 'filters' => $this->getFiltersConfig($dashboard, $grid),
                 'grid' => $grid
             ],
-            $dashboardBaseBean
+            $baseEntity
         );
     }
 
@@ -495,9 +482,9 @@ class DashboardService
 
             if ($blockType === self::PANEL_TYPE_LIST) {
                 $list = $value['options']['listKey'] ?? null;
-                $listBean = $this->em->getRepository(ListDynamic::class)->findOneBy(['name' => $list]);
-
-                if (!$listBean instanceof ListDynamic) {
+                try {
+                    $this->em->getRepository(ListDynamic::class)->get($list);
+                } catch (\Exception $e) {
                     $grid[$key]['type'] = 'unauthorized-list';
                 }
             } elseif (\is_array($value)) {

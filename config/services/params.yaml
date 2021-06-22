@@ -8,10 +8,6 @@ services:
       - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
       - '@doctrine.orm.entity_manager'
 
-  ExEss\Cms\Api\V8_Custom\Params\GetDashboardParams:
-    arguments:
-      - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
-
   ExEss\Cms\Api\V8_Custom\Params\GetFilterParams:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
