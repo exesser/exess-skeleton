@@ -232,7 +232,7 @@ class Options implements \JsonSerializable
             $actionData = \json_decode($actionData, true);
         }
 
-        $this->actionData = $actionData;
+        $this->actionData = $actionData ?? [];
     }
 
     public function getRecordId(): ?string
