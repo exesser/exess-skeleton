@@ -21,6 +21,10 @@ class JsonHelper extends \Codeception\Module
         $string = \file_get_contents($file);
 
         if (!empty($parameters)) {
+            $values = \array_map(function ($value) {
+                return \str_replace('\\', '\\\\', $value);
+            }, \array_values($parameters));
+
             $tokens = \array_map(function ($token) {
                 return '{{' . \trim($token) . '}}';
             }, \array_keys($parameters));
@@ -29,8 +33,8 @@ class JsonHelper extends \Codeception\Module
                 return '"<<' . \trim($token) . '>>"';
             }, \array_keys($parameters));
 
-            $string = \str_replace($tokens, \array_values($parameters), $string);
-            $string = \str_replace($tokensInt, \array_values($parameters), $string);
+            $string = \str_replace($tokens, $values, $string);
+            $string = \str_replace($tokensInt, $values, $string);
         }
 
         $parsed = \json_decode($string, $assoc);

@@ -3,7 +3,6 @@
 use ExEss\Cms\Api\V8_Custom\Controller\Middleware\CachedResponseHandler;
 use ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverterFactory;
 use ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams;
-use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
 use ExEss\Cms\Api\V8_Custom\Params\SelectWithSearchParams;
 
 /** @var \ExEss\Cms\App $app */
@@ -47,13 +46,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
             )
             ->add($paramsFactory->create(FlowUpdateParams::class))
         ;
-
-        $app
-            ->post(
-                '/ListExtraRowContent/{gridKey}/{listKey}/{recordId}',
-                'ExEss\Cms\Api\V8_Custom\Controller\ListRowbarController:getListRowBar'
-            )
-            ->add($paramsFactory->create(ListRowbarParams::class));
 
         $app
             ->post(

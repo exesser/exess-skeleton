@@ -118,9 +118,7 @@ class ExpressionParser
     ) {
         return $this->convertLine(
             $this->formatValue(
-                $baseFatEntity,
-                $expression->getField(),
-                $this->getValue($baseFatEntity, $expression),
+                $this->getValue($baseFatEntity, $expression->getField()),
                 $options
             )
         );
@@ -145,9 +143,8 @@ class ExpressionParser
      * @return mixed
      * @throws ConfigInvalidException In case the value can't be retrieved.
      */
-    private function getValue(object $entity, Expression $expression)
+    private function getValue(object $entity, string $field)
     {
-        $field = $expression->getField();
         $class = \get_class($entity);
 
         $metadata = null;
@@ -207,21 +204,21 @@ class ExpressionParser
     }
 
     /**
-     * @param mixed $fatEntity
      * @param mixed $value
      * @return mixed
      */
     private function formatValue(
-        $fatEntity,
-        string $field,
         $value,
         ExpressionParserOptions $options
     ) {
-        if ($options->getContext() === ExpressionParserOptions::CONTEXT_JSON && \is_string($value)) {
-            return \str_replace('\\', '\\\\', $value);
+        if ($options->getContext() === ExpressionParserOptions::CONTEXT_JSON) {
+            if ($value instanceof Model || \is_array($value)) {
+                $value = \json_encode($value);
+            }
+            if (\is_string($value)) {
+                return \str_replace(['\\', '"'], ['\\\\', '\\"'], $value);
+            }
         }
-
-        // @todo implement for doctrine entities? or leave it up to DWP to do the formatting (= preferred)
 
         // leave the value 'as is'
         return $value;

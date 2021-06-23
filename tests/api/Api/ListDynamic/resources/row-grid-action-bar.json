@@ -1,0 +1,26 @@
+{
+  "columns": [
+    {
+      "size": "1-1",
+      "hasMargin": false,
+      "rows": [
+        {
+          "size": "1-1",
+          "type": "listRowActions",
+          "options": {
+            "id": "{{recordId}}",
+            "recordType": "{{recordType}}",
+            "recordId": "{{recordId}}",
+            "gridKey": "action-bar",
+            "actionData": {
+              "foo": "bar"
+            }
+          }
+        }
+      ],
+      "cssClasses": [
+        "row__actions"
+      ]
+    }
+  ]
+}

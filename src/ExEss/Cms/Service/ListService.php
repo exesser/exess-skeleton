@@ -15,7 +15,6 @@ use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Entity\ListSortingOption;
 use ExEss\Cms\Acl\AclService;
-use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
 use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
 use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
 use ExEss\Cms\Api\V8_Custom\Service\Security;
@@ -566,7 +565,7 @@ class ListService
                     case CellType::PLUS:
                         $dynamicListRowCell->class = 'cell__action';
                         $dynamicListRowCell->options->id = $dynamicListRow->id;
-                        $dynamicListRowCell->options->gridKey = $params['grid'] ?? ListRowbarParams::DEFAULT_GRID_KEY;
+                        $dynamicListRowCell->options->gridKey = $params['grid'] ?? GridService::DEFAULT_ACTION_BAR_GRID;
                         $dynamicListRowCell->options->listKey = $combinedListKey ?? $list->getName();
 
                         if (!empty($params['icon-close'])) {

@@ -49,8 +49,7 @@ class Row implements \JsonSerializable
             $this->setPanelKey($panelKey);
             unset($source['panelKey']);
         }
-        $hasMargin = $source['hasMargin'] ?? null;
-        if ($hasMargin !== null) {
+        if (($hasMargin = $source['hasMargin'] ?? null) !== null) {
             $this->setHasMargin($hasMargin);
             unset($source['hasMargin']);
         }
