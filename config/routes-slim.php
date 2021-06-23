@@ -53,13 +53,5 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
                 'ExEss\Cms\Api\V8_Custom\Controller\SelectWithSearchController:getSelectOptions'
             )
             ->add($paramsFactory->create(SelectWithSearchParams::class));
-
-        /**
-         * CRUD
-         */
-        $app->get(
-            '/CRUD/records-information',
-            \ExEss\Cms\Api\V8_Custom\Controller\CrudController::class . ':getRecordsInformation'
-        );
     });
 });

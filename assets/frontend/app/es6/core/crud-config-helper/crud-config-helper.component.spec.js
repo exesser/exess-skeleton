@@ -13,17 +13,17 @@ describe('Component: crudConfigHelper', function () {
   let $compile;
   let $state;
   let element;
-  let API_URL;
+  let API_PATH;
   let LOG_HEADERS_KEYS;
 
   const template = `<crud-config-helper></crud-config-helper>`;
 
-  beforeEach(inject(function (_$rootScope_, _$compile_, _$state_, _$httpBackend_, _API_URL_, _LOG_HEADERS_KEYS_) {
+  beforeEach(inject(function (_$rootScope_, _$compile_, _$state_, _$httpBackend_, _API_PATH_, _LOG_HEADERS_KEYS_) {
     $rootScope = _$rootScope_;
     $state = _$state_;
     $compile = _$compile_;
     $httpBackend = _$httpBackend_;
-    API_URL = _API_URL_;
+    API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
   }));
 
@@ -575,8 +575,8 @@ describe('Component: crudConfigHelper', function () {
         }
       ];
 
-      $httpBackend.expectGET(API_URL + 'CRUD/records-information', function (headers) {
-        return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Crud records information | URL: /Api/V8_Custom/CRUD/records-information';
+      $httpBackend.expectGET(API_PATH + 'crud/record/information', function (headers) {
+        return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Crud records information';
       }).respond({data: mockResponse});
     }
 

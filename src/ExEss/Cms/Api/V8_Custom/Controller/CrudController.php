@@ -1,14 +1,13 @@
 <?php
 namespace ExEss\Cms\Api\V8_Custom\Controller;
 
+use ExEss\Cms\Service\CrudService;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ExEss\Cms\Api\Core\AbstractApiController;
-use ExEss\Cms\CRUD\CrudService;
 
 class CrudController extends AbstractApiController
 {
-
     private CrudService $crudService;
 
     public function __construct(CrudService $crudService)
