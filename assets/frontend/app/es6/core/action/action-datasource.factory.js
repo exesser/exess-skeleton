@@ -11,7 +11,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('actionDatasource', function (API_URL, $http, commandHandler, LOG_HEADERS_KEYS) {
+  .factory('actionDatasource', function (API_PATH, $http, commandHandler, LOG_HEADERS_KEYS) {
 
     return { perform, performAndHandle };
 
@@ -32,7 +32,7 @@ angular.module('digitalWorkplaceApp')
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = `Perform action: ${id}`;
 
-      return $http.post(API_URL + `Action/${id}`, postBody, {headers}).then(function(response) {
+      return $http.post(API_PATH + `action/${id}`, postBody, {headers}).then(function(response) {
         return response.data.data;
       });
     }

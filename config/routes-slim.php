@@ -2,7 +2,6 @@
 
 use ExEss\Cms\Api\V8_Custom\Controller\Middleware\CachedResponseHandler;
 use ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverterFactory;
-use ExEss\Cms\Api\V8_Custom\Params\ActionParams;
 use ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams;
 use ExEss\Cms\Api\V8_Custom\Params\GetFilterParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
@@ -16,18 +15,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
 
     $app->group('/V8_Custom', function () use ($app, $paramsFactory): void {
         $controllerCache = $app->getContainer()->get(CachedResponseHandler::class);
-
-        /**
-         * Retrieve the command of an action
-         * @see \ExEss\Cms\Api\V8_Custom\Controller\FetchActionController::__invoke()
-         */
-        $app
-            ->post(
-                '/Action/{action}',
-                ExEss\Cms\Api\V8_Custom\Controller\FetchActionController::class
-            )
-            ->add($paramsFactory->create(ActionParams::class))
-        ;
 
         /**
          * The POST can be called to get an update / perform a save
