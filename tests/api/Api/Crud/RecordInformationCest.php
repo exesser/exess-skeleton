@@ -1,22 +1,22 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Crud;
+namespace Test\Api\Api\Crud;
 
 use ApiTester;
+use ExEss\Cms\Http\SuccessResponse;
 
-class RecordsInformationCest
+class RecordInformationCest
 {
     public function shouldReturnRecordsInformation(ApiTester $I): void
     {
-        // setup
+        // Given
         $I->getAnApiTokenFor('adminUser');
 
-        // run test
-        $I->sendGET('/Api/V8_Custom/CRUD/records-information');
+        // When
+        $I->sendGet('/Api/crud/record/information');
 
-        // assertions
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
+        // Then
+        $I->seeResponseIsDwpResponse(200);
         $response = \json_decode($I->grabResponse(), true);
 
         // we want this here commented since it's used when changing the structure,
@@ -31,7 +31,7 @@ class RecordsInformationCest
         $response = [
             "status" => 200,
             "data" => [],
-            "message" => "SUCCESS",
+            "message" => SuccessResponse::MESSAGE_SUCCESS,
         ];
         $files = \glob(__DIR__ . '/resources/records_information/*.json');
 

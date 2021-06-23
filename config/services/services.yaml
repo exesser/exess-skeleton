@@ -246,11 +246,6 @@ services:
       - '@ExEss\Cms\Logger\Logger'
       - '@Symfony\Component\Translation\Translator'
 
-  ExEss\Cms\CRUD\CrudService:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder'
-
   ExEss\Cms\Http\Factory\PsrFactory: ~
 
   ExEss\Cms\Http\Factory\JsonBodyFactory:

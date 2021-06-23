@@ -11,7 +11,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('crudConfigHelperDatasource', function (API_URL, $http, LOG_HEADERS_KEYS) {
+  .factory('crudConfigHelperDatasource', function (API_PATH, $http, LOG_HEADERS_KEYS) {
 
     return {
       getRecordsInformation
@@ -24,7 +24,7 @@ angular.module('digitalWorkplaceApp')
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = `Crud records information`;
 
-      return $http.get(API_URL + `CRUD/records-information`, { headers }).then(function (response) {
+      return $http.get(API_PATH + `crud/record/information`, { headers }).then(function (response) {
         return response.data.data;
       });
     }
