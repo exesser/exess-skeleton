@@ -6,16 +6,14 @@ describe('Factory: listDatasource - http requests', function () {
 
   let $httpBackend;
   let listDatasource;
-  let API_URL;
   let API_PATH;
   let LOG_HEADERS_KEYS;
 
-  beforeEach(inject(function ($state, _listDatasource_, _$httpBackend_, _API_URL_, _API_PATH_, _LOG_HEADERS_KEYS_) {
+  beforeEach(inject(function ($state, _listDatasource_, _$httpBackend_, _API_PATH_, _LOG_HEADERS_KEYS_) {
     mockHelpers.blockUIRouter($state);
 
     $httpBackend = _$httpBackend_;
     listDatasource = _listDatasource_;
-    API_URL = _API_URL_;
     API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
   }));
@@ -322,7 +320,7 @@ describe('Factory: listDatasource - http requests', function () {
     };
 
     const actionData = { parentId: "mockId" };
-    $httpBackend.expectPOST(API_URL + 'list/list/row/grid/grid/1337', { actionData }, function(headers) {
+    $httpBackend.expectPOST(API_PATH + 'list/list/row/grid/grid/1337', { actionData }, function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'List: list | getExtraRow: grid | recordId: 1337';
     }).respond(mockResponse);
 
@@ -366,7 +364,7 @@ describe('Factory: listDatasource - http requests', function () {
     };
 
     const actionData = { parentId: "mockId" };
-    $httpBackend.expectPOST(API_URL + 'list/list/row/grid/grid/1337', { actionData }, function(headers) {
+    $httpBackend.expectPOST(API_PATH + 'list/list/row/grid/grid/1337', { actionData }, function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'List: list | getExtraRow: grid | recordId: 1337';
     }).respond(mockResponse);
 
