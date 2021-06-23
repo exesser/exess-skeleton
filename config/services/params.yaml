@@ -3,11 +3,6 @@ services:
     public: true
 
   # V8_Custom routeparams
-  ExEss\Cms\Api\V8_Custom\Params\GetFilterParams:
-    arguments:
-      - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
-      - '@doctrine.orm.entity_manager'
-
   ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'

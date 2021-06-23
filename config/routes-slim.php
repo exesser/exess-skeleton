@@ -3,7 +3,6 @@
 use ExEss\Cms\Api\V8_Custom\Controller\Middleware\CachedResponseHandler;
 use ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverterFactory;
 use ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams;
-use ExEss\Cms\Api\V8_Custom\Params\GetFilterParams;
 use ExEss\Cms\Api\V8_Custom\Params\ListRowbarParams;
 use ExEss\Cms\Api\V8_Custom\Params\SelectWithSearchParams;
 
@@ -47,12 +46,6 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
                 'ExEss\Cms\Api\V8_Custom\Controller\FlowController:getFlowUpdate'
             )
             ->add($paramsFactory->create(FlowUpdateParams::class))
-        ;
-
-        $app
-            ->get('/Filter/{filterKey}/{list}', 'ExEss\Cms\Api\V8_Custom\Controller\FilterController:getFilter')
-            ->add($paramsFactory->create(GetFilterParams::class))
-            ->add($controllerCache)
         ;
 
         $app
