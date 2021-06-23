@@ -6,15 +6,15 @@ describe('Factory: filterDatasource - resource http requests', function () {
 
   let $httpBackend;
   let filterDatasource;
-  let API_URL;
+  let API_PATH;
   let LOG_HEADERS_KEYS;
 
-  beforeEach(inject(function ($state, _filterDatasource_, _$httpBackend_, _API_URL_, _LOG_HEADERS_KEYS_) {
+  beforeEach(inject(function ($state, _filterDatasource_, _$httpBackend_, _API_PATH_, _LOG_HEADERS_KEYS_) {
     mockHelpers.blockUIRouter($state);
 
     $httpBackend = _$httpBackend_;
     filterDatasource = _filterDatasource_;
-    API_URL = _API_URL_;
+    API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
   }));
 
@@ -135,7 +135,7 @@ describe('Factory: filterDatasource - resource http requests', function () {
       message: "Success"
     };
 
-    $httpBackend.expectGET(API_URL + 'Filter/accounts_filter_big/accounts_big', function(headers) {
+    $httpBackend.expectGET(API_PATH + 'filter/accounts_big', function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Filters: accounts_filter_big | for list: accounts_big';
     }).respond(mockResponse);
 

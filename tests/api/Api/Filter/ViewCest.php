@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Filter;
+namespace Test\Api\Api\Filter;
 
 use ApiTester;
 use ExEss\Cms\Doctrine\Type\FilterFieldType;
 
-class GetFilterCest
+class ViewCest
 {
     /**
      * @var array
@@ -28,9 +28,7 @@ class GetFilterCest
 
         foreach ($this->listsToTest as $list) {
             // When
-            $I->sendGET(
-                "/Api/V8_Custom/Filter/irrelevant/$list"
-            );
+            $I->sendGet("/Api/filter/$list");
 
             // Then
             $I->seeResponseIsDwpResponse(200);

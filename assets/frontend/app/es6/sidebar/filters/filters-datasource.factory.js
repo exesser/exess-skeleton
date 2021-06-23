@@ -11,7 +11,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('filterDatasource', function (API_URL, $http, LOG_HEADERS_KEYS) {
+  .factory('filterDatasource', function (API_PATH, $http, LOG_HEADERS_KEYS) {
 
     return { get };
 
@@ -25,7 +25,7 @@ angular.module('digitalWorkplaceApp')
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = `Filters: ${filterKey} | for list: ${listKey}`;
 
-      return $http.get(API_URL + `Filter/${filterKey}/${listKey}`, {headers}).then(function(response) {
+      return $http.get(API_PATH + `filter/${listKey}`, {headers}).then(function(response) {
         return response.data.data;
       });
     }
