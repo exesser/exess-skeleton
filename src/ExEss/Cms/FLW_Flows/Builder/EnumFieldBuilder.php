@@ -8,9 +8,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Bundle\DoctrineExtensionsBundle\Type\AbstractEnumType;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Doctrine\Type\FlowFieldType;
+use ExEss\Cms\Service\SelectWithSearchService;
 use stdClass;
 use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
-use ExEss\Cms\FESelectWithSearch\SelectWithSearchService;
 use ExEss\Cms\FLW_Flows\EnumRecord;
 use ExEss\Cms\FLW_Flows\EnumRecordFactory;
 use ExEss\Cms\FLW_Flows\Response;
@@ -87,10 +87,7 @@ class EnumFieldBuilder
             $enums = [];
             $selectWithSearch = $field->enumValues[0]->enumValueSource;
             $default = $field->enumValues[0]->default ?? '';
-            $result = $this->selectWithSearch->getSelectOptions(
-                $selectWithSearch,
-                ['fullModel' => $model->toArray()]
-            );
+            $result = $this->selectWithSearch->getSelectOptions($selectWithSearch, $model);
             foreach ($result['rows'] as $row) {
                 $item = new stdClass();
                 $item->key = $row['key'];

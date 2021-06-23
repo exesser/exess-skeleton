@@ -5,9 +5,9 @@ namespace ExEss\Cms\FLW_Flows\Suggestions;
 use ExEss\Cms\Doctrine\Type\FlowFieldType;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Exception\ExternalListFetchException;
-use ExEss\Cms\FESelectWithSearch\SelectWithSearchService;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
+use ExEss\Cms\Service\SelectWithSearchService;
 
 class AutoSelectWithSearchSuggestionHandler extends AbstractSuggestionHandler
 {
@@ -30,7 +30,7 @@ class AutoSelectWithSearchSuggestionHandler extends AbstractSuggestionHandler
             try {
                 $selectWithSearchRows = $this->selectWithSearchService->getSelectOptions(
                     $field->datasourceName,
-                    ['fullModel' => $response->getModel()->toArray()]
+                    $response->getModel()
                 );
 
                 if (\count($selectWithSearchRows['rows'] ?? []) === 1) {

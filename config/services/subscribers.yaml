@@ -133,7 +133,7 @@ services:
       - '@ExEss\Cms\MultiLevelTemplate\TextFunctionHandler'
       - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
       - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
-      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+      - '@ExEss\Cms\Service\SelectWithSearchService'
     tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\ValueExpressionsSubscriber' }]
 
   ExEss\Cms\FLW_Flows\Event\Listeners\BreakoutSubscriber:

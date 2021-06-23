@@ -3,10 +3,10 @@ INSERT INTO `securitygroups_api`
 VALUES
 ('d397964b-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_listdynamic_export__invoke', '2018-08-30 20:32:34', NULL, NULL, '1', NULL, 'POST', '^DASHBOARD^'),
 ('d397f3e6-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_filter_view__invoke', '2018-08-30 20:32:34', NULL, NULL, '1', NULL, 'GET', '^DASHBOARD^'),
-('d397fa44-ac93-11e8-8d8c-0a8aac76adce', '/V8_Custom/ListExtraRowContent/{gridKey}/{listKey}/{recordId}', '2018-08-30 20:32:34', NULL, NULL, '1', NULL, 'POST', '^DASHBOARD^'),
+('d397fa44-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_listdynamic_rowgrid__invoke', '2018-08-30 20:32:34', NULL, NULL, '1', NULL, 'POST', '^DASHBOARD^'),
 ('d39800c4-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_listdynamic_rowbar__invoke', '2018-08-30 20:32:34', NULL, NULL, '1', NULL, 'POST', '^DASHBOARD^'),
 ('d3980d7b-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_menu_main__invoke', '2018-08-30 20:32:34', NULL, NULL, '1', NULL, 'GET', '^DASHBOARD^'),
-('d3986954-ac93-11e8-8d8c-0a8aac76adce', '/V8_Custom/SelectWithSearch/{selectWithSearchName}', '2018-08-30 20:32:34', NULL, NULL, '1', NULL, 'POST', '^DASHBOARD^'),
+('d3986954-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_selectwithsearch_view__invoke', '2018-08-30 20:32:34', NULL, NULL, '1', NULL, 'POST', '^DASHBOARD^'),
 ('d3986fc9-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_sidebar__invoke', '2018-08-30 20:32:34', NULL, NULL, '1', NULL, 'GET', '^DASHBOARD^'),
 ('d395fc7d-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_action_execute__invoke', '2018-08-30 20:32:34', '2018-12-05 12:02:59', NULL, '1', NULL, 'POST', '^DASHBOARD^'),
 ('d3978fe0-ac93-11e8-8d8c-0a8aac76adce', 'exess_cms_listdynamic_view__invoke', '2018-08-30 20:32:34', '2018-12-05 12:02:41', NULL, '1', NULL, 'POST', '^DASHBOARD^'),

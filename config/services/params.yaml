@@ -8,7 +8,3 @@ services:
       - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'
       - '@ExEss\Cms\Cleaner\HtmlCleaner'
       - '@doctrine.orm.entity_manager'
-
-  ExEss\Cms\Api\V8_Custom\Params\SelectWithSearchParams:
-    arguments:
-      - '@ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory'

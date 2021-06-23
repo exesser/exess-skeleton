@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Search;
+namespace Test\Api\Api\SelectWithSearch;
 
 use ApiTester;
 use ExEss\Cms\Entity\User;
 
-class SelectWithSearchCest
+class ViewCest
 {
     private string $fieldName;
 
@@ -30,7 +30,7 @@ class SelectWithSearchCest
 
         // When
         $I->sendPOST(
-            "/Api/V8_Custom/SelectWithSearch/{$this->fieldName}",
+            "/Api/select-with-search/{$this->fieldName}",
             [
                 'query' => '',
                 'page' => 1,
@@ -53,7 +53,7 @@ class SelectWithSearchCest
 
         // When
         $I->sendPOST(
-            "/Api/V8_Custom/SelectWithSearch/{$this->fieldName}",
+            "/Api/select-with-search/{$this->fieldName}",
             [
                 'query' => $prefix,
                 'page' => 1,

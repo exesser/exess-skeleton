@@ -165,7 +165,7 @@ services:
       - '@doctrine.orm.entity_manager'
       - '@ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder'
       - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
-      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+      - '@ExEss\Cms\Service\SelectWithSearchService'
       - '@Symfony\Component\Translation\Translator'
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
       - '@ExEss\Cms\FLW_Flows\Field'
@@ -181,17 +181,11 @@ services:
       - '@ExEss\Cms\Logger\Logger'
       - '@ExEss\Cms\Api\V8_Custom\Repository\ListHandler'
       - '@ExEss\Cms\FLW_Flows\EnumRecordFactory'
-      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+      - '@ExEss\Cms\Service\SelectWithSearchService'
 
   ExEss\Cms\Component\Sidebar\Factory\SidebarFactory: ~
 
   ExEss\Cms\DASH_Dashboard\DashboardCalcFunctions: ~
-
-  ExEss\Cms\FESelectWithSearch\SelectWithSearchService:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
-      - '@ExEss\Cms\Api\V8_Custom\Repository\ListHandler'
 
   ExEss\Cms\Api\V8_Custom\Service\User\CommandService:
     arguments:

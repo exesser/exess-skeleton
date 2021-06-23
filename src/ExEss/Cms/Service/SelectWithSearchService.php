@@ -1,11 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace ExEss\Cms\FESelectWithSearch;
+namespace ExEss\Cms\Service;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use Doctrine\Persistence\Mapping\MappingException;
 use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
 use ExEss\Cms\Entity\SelectWithSearch;
 use ExEss\Cms\FLW_Flows\Response\Model;
@@ -14,13 +13,11 @@ use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
 class SelectWithSearchService
 {
     private ListHelperFunctions $listHelperFunctions;
-
     private ListHandler $listHandler;
-
-    private EntityManager $em;
+    private EntityManagerInterface $em;
 
     public function __construct(
-        EntityManager $em,
+        EntityManagerInterface $em,
         ListHelperFunctions $listHelperFunctions,
         ListHandler $listHandler
     ) {
@@ -29,14 +26,22 @@ class SelectWithSearchService
         $this->em = $em;
     }
 
-    public function getSelectOptions(string $name, array $args): array
-    {
-        $selectWithSearch = $this->getSelectWithSearchRecord($name, $args);
+    /**
+     * @param SelectWithSearch|string $selectWithSearch
+     */
+    public function getSelectOptions(
+        $selectWithSearch,
+        Model $model,
+        int $page = 1,
+        ?string $query = null,
+        array $keys = [],
+        ?string $baseObject = null
+    ): array {
+        $selectWithSearch = $this->getSelectWithSearchRecord($selectWithSearch, $baseObject);
 
-        $page = (int) ($args['page'] ?? 1);
         $pageSize = $selectWithSearch->getItemsOnPage();
 
-        if ($selectWithSearch->isNeedsQuery() && empty($args['query'])) {
+        if ($selectWithSearch->isNeedsQuery() && empty($query)) {
             return [
                 'rows' => [],
                 'pagination' => [
@@ -48,8 +53,8 @@ class SelectWithSearchService
             ];
         }
 
-        try {
-            $qb = $this->getQueryBuilder($selectWithSearch, $args);
+        if ($this->em->getMetadataFactory()->hasMetadataFor($selectWithSearch->getBaseObject())) {
+            $qb = $this->getQueryBuilder($selectWithSearch, $model, $keys, $query);
             $qb->setFirstResult(($page - 1) * $pageSize);
             $qb->setMaxResults($pageSize);
             if (!empty($order = $selectWithSearch->getOrderBy())) {
@@ -71,70 +76,78 @@ class SelectWithSearchService
                     'total' => $total,
                 ]
             ];
-        } catch (MappingException $e) {
-            $args['fullModel']['query'] = $args['query'] ?? null;
-            $baseFatEntity = $this->listHandler->getList(
-                $selectWithSearch->getBaseObject(),
-                ['params' => $args['fullModel']],
-                $page,
-                $pageSize
-            );
-
-            return [
-                'rows' => $this->generateRows(
-                    $baseFatEntity['list'],
-                    $selectWithSearch->getOptionLabel(),
-                    $selectWithSearch->getOptionKey()
-                ),
-                'pagination' => [
-                    'page' => $page,
-                    'pages' => (int) \ceil($baseFatEntity['total'] / $pageSize),
-                    'pageSize' => $pageSize,
-                    'total' => (int) $baseFatEntity['total'],
-                ],
-            ];
         }
+
+        $model['query'] = $query;
+        $baseFatEntity = $this->listHandler->getList(
+            $selectWithSearch->getBaseObject(),
+            ['params' => $model->toArray()],
+            $page,
+            $pageSize
+        );
+
+        return [
+            'rows' => $this->generateRows(
+                $baseFatEntity['list'],
+                $selectWithSearch->getOptionLabel(),
+                $selectWithSearch->getOptionKey()
+            ),
+            'pagination' => [
+                'page' => $page,
+                'pages' => (int) \ceil($baseFatEntity['total'] / $pageSize),
+                'pageSize' => $pageSize,
+                'total' => (int) $baseFatEntity['total'],
+            ],
+        ];
     }
 
-    public function getLabelsForValues(string $name, array $keys, array $args = []): array
-    {
+    public function getLabelsForValues(
+        string $name,
+        array $keys,
+        ?Model $model = null,
+        ?string $baseObject = null
+    ): array {
         if (empty($keys)) {
             throw new \InvalidArgumentException("Please provide at least one key to look for!");
         }
-        $selectWithSearch = $this->getSelectWithSearchRecord($name, $args);
+        $selectWithSearch = $this->getSelectWithSearchRecord($name, $baseObject);
 
-        try {
-            $args['keys'] = $keys;
-            $qb = $this->getQueryBuilder($selectWithSearch, $args);
+        if ($this->em->getMetadataFactory()->hasMetadataFor($selectWithSearch->getBaseObject())) {
+            $qb = $this->getQueryBuilder($selectWithSearch, $model, $keys);
 
             return $this->generateRows(
                 $qb->getQuery()->execute(),
                 $selectWithSearch->getOptionLabel(),
                 $selectWithSearch->getOptionKey()
             );
-        } catch (MappingException $e) {
-            $args['fullModel']['query'] = $args['query'] ?? null;
-            $args['fullModel']['keys'] = $keys;
-
-            $baseFatEntity = $this->listHandler->getList(
-                $selectWithSearch->getBaseObject(),
-                ['params' => $args['fullModel']]
-            );
-
-            return $this->generateRows(
-                $baseFatEntity['list'] ?? [],
-                $selectWithSearch->getOptionLabel(),
-                $selectWithSearch->getOptionKey()
-            );
         }
+
+        $model = $model ?? new Model();
+        $model['query'] = null;
+        $model['keys'] = $keys;
+
+        $baseFatEntity = $this->listHandler->getList(
+            $selectWithSearch->getBaseObject(),
+            ['params' => $model->toArray()]
+        );
+
+        return $this->generateRows(
+            $baseFatEntity['list'] ?? [],
+            $selectWithSearch->getOptionLabel(),
+            $selectWithSearch->getOptionKey()
+        );
     }
 
-    private function getQueryBuilder(SelectWithSearch $selectWithSearch, array $args): QueryBuilder
-    {
+    private function getQueryBuilder(
+        SelectWithSearch $selectWithSearch,
+        ?Model $model,
+        array $keys,
+        ?string $query = null
+    ): QueryBuilder {
         $baseObject = $selectWithSearch->getBaseObject();
         $qb = $this->em->getRepository($baseObject)->createQueryBuilder('sws');
 
-        if (!empty($args['query'])) {
+        if (!empty($query)) {
             $filterString = $selectWithSearch->getFilterString();
             if (empty($filterString)) {
                 throw new \InvalidArgumentException(
@@ -146,23 +159,18 @@ class SelectWithSearchService
             if ($trimmed === $filterString) {
                 // no percentage signs so we only allow an exact match search
                 $qb->andWhere("sws.$filterString = :query");
-                $qb->setParameter('query', $args['query']);
+                $qb->setParameter('query', $query);
             } else {
                 $qb->andWhere(
                     " CONCAT('" . $this->generateWhereClauseFromString($filterString, 'sws') . "') LIKE :query"
                 );
-                $qb->setParameter('query', "%$args[query]%");
+                $qb->setParameter('query', "%$query%");
             }
         }
 
         if (!empty($fixedFilters = $selectWithSearch->getFilters())) {
-            if (isset($args['fullModel'])) {
-                $fullModel = \is_array($args['fullModel']) ? new Model($args['fullModel']) : $args['fullModel'];
-                if (!$fullModel instanceof Model) {
-                    throw new \InvalidArgumentException("fullModel should be an array or a Model");
-                }
-
-                $fixedFilters = $this->listHelperFunctions->parseListValue($fullModel, $fixedFilters);
+            if ($model instanceof Model) {
+                $fixedFilters = $this->listHelperFunctions->parseListValue($model, $fixedFilters);
             }
 
             $parts = \explode(' WHERE ', $fixedFilters);
@@ -189,26 +197,27 @@ class SelectWithSearchService
             }
         }
 
-        if (!empty($args['keys'])) {
+        if (!empty($keys)) {
             $qb->andWhere("sws.id IN (:keys)");
-            $qb->setParameter('keys', $args['keys']);
+            $qb->setParameter('keys', $keys);
         }
 
         return $qb;
     }
 
-    private function getSelectWithSearchRecord(string $name, array $args): SelectWithSearch
+    /**
+     * @param SelectWithSearch|string $selectWithSearch
+     */
+    private function getSelectWithSearchRecord($selectWithSearch, ?string $baseObject = null): SelectWithSearch
     {
-        $selectWithSearch = $this->em
-            ->getRepository(SelectWithSearch::class)
-            ->get($name);
+        if (!$selectWithSearch instanceof SelectWithSearch) {
+            $selectWithSearch = $this->em
+                ->getRepository(SelectWithSearch::class)
+                ->get($selectWithSearch);
+        }
 
-        foreach ($args['params'] ?? [] as $paramKey => $paramValue) {
-            if ($paramKey === 'baseObject') {
-                $selectWithSearch->setBaseObject($paramValue);
-            } else {
-                throw new \DomainException("No idea (yet) how to handle param $paramKey");
-            }
+        if ($baseObject) {
+            $selectWithSearch->setBaseObject($baseObject);
         }
 
         return $selectWithSearch;

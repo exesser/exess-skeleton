@@ -35,14 +35,14 @@ services:
   ExEss\Cms\FLW_Flows\Suggestions\AutoExpandSelectWithSearch:
     lazy: true
     arguments:
-      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+      - '@ExEss\Cms\Service\SelectWithSearchService'
     tags:
       - { name: 'suggestions', priority: 200 }
 
   ExEss\Cms\FLW_Flows\Suggestions\AutoSelectWithSearchSuggestionHandler:
     lazy: true
     arguments:
-      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+      - '@ExEss\Cms\Service\SelectWithSearchService'
     tags:
       - { name: 'suggestions', priority:  100 }
 
@@ -71,7 +71,7 @@ services:
     lazy: true
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+      - '@ExEss\Cms\Service\SelectWithSearchService'
     tags:
       - { name: 'suggestions', priority: -1 }
 
@@ -97,4 +97,4 @@ services:
     arguments:
       - '@doctrine.orm.entity_manager'
       - '@ExEss\Cms\FLW_Flows\EnumRecordFactory'
-      - '@ExEss\Cms\FESelectWithSearch\SelectWithSearchService'
+      - '@ExEss\Cms\Service\SelectWithSearchService'

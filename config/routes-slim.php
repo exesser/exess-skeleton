@@ -3,7 +3,6 @@
 use ExEss\Cms\Api\V8_Custom\Controller\Middleware\CachedResponseHandler;
 use ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverterFactory;
 use ExEss\Cms\Api\V8_Custom\Params\FlowUpdateParams;
-use ExEss\Cms\Api\V8_Custom\Params\SelectWithSearchParams;
 
 /** @var \ExEss\Cms\App $app */
 /** @var ParamObjectConverterFactory $paramsFactory */
@@ -46,12 +45,5 @@ $app->group('/Api', function () use ($app, $paramsFactory): void {
             )
             ->add($paramsFactory->create(FlowUpdateParams::class))
         ;
-
-        $app
-            ->post(
-                '/SelectWithSearch/{selectWithSearchName}',
-                'ExEss\Cms\Api\V8_Custom\Controller\SelectWithSearchController:getSelectOptions'
-            )
-            ->add($paramsFactory->create(SelectWithSearchParams::class));
     });
 });

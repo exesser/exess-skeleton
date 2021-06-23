@@ -8,7 +8,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('loginFactory', function ($http, API_URL, LOG_HEADERS_KEYS) {
+  .factory('loginFactory', function ($http, API_PATH, LOG_HEADERS_KEYS) {
     // Which state the user should goto after the login.
     const defaultAfterLoginState = { name: 'dashboard', params: { mainMenuKey: 'start', dashboardId: 'home' } };
 
@@ -21,7 +21,7 @@ angular.module('digitalWorkplaceApp')
     function login(username, password) {
       var req = {
         method: 'POST',
-        url: '/Api/login',
+        url: API_PATH + 'login',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
@@ -36,7 +36,7 @@ angular.module('digitalWorkplaceApp')
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = 'logout';
 
-      return $http.get('/Api/logout', {}, {headers}).then(function(response) {
+      return $http.get(API_PATH + 'logout', {}, {headers}).then(function(response) {
           return response;
       });
     }
