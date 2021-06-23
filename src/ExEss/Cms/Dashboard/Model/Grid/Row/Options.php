@@ -223,11 +223,16 @@ class Options implements \JsonSerializable
         return $this->actionData;
     }
 
-    public function setActionData(array $actionData): Options
+    /**
+     * @param string|array $actionData
+     */
+    public function setActionData($actionData): void
     {
-        $this->actionData = $actionData;
+        if (\is_string($actionData)) {
+            $actionData = \json_decode($actionData, true);
+        }
 
-        return $this;
+        $this->actionData = $actionData;
     }
 
     public function getRecordId(): ?string

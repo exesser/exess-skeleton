@@ -17,7 +17,7 @@ class GridService
 {
     public const DWP_EXP_START = '{%';
     public const DWP_EXP_END = '%}';
-
+    public const DEFAULT_ACTION_BAR_GRID = 'action-bar';
     public const TO_TRANSLATE_OPTIONS = [
         'primaryButtonTitle',
         'defaultTitle',
@@ -46,11 +46,8 @@ class GridService
         $this->em = $em;
     }
 
-    public function getGridByKey(string $gridKey, array $arguments = []): Grid
+    public function getGridByKey(GridTemplate $grid, array $arguments = []): Grid
     {
-        /** @var GridTemplate $grid */
-        $grid = $this->em->getRepository(GridTemplate::class)->get($gridKey);
-
         $gridJson = $this->replaceArguments(
             $this->encodeJson(\json_encode($grid->getJsonFields())),
             $this->getAllArguments($arguments)

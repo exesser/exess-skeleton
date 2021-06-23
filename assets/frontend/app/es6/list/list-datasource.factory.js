@@ -11,7 +11,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('listDatasource', function (API_PATH, API_URL, $http, LOG_HEADERS_KEYS) {
+  .factory('listDatasource', function (API_PATH, $http, LOG_HEADERS_KEYS) {
 
     return {
       getList,
@@ -48,7 +48,7 @@ angular.module('digitalWorkplaceApp')
       const headers = {};
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = `List: ${listKey} | getExtraRow: ${gridKey} | recordId: ${itemId}`;
 
-      return $http.post(API_URL + `ListExtraRowContent/${gridKey}/${listKey}/${itemId}`,  { actionData }, {headers}).then(function (response) {
+      return $http.post(API_PATH + `list/${listKey}/row/grid/${gridKey}/${itemId}`,  { actionData }, {headers}).then(function (response) {
         return response.data.data;
       });
     }

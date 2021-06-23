@@ -322,7 +322,7 @@ describe('Factory: listDatasource - http requests', function () {
     };
 
     const actionData = { parentId: "mockId" };
-    $httpBackend.expectPOST(API_URL + 'ListExtraRowContent/grid/list/1337', { actionData }, function(headers) {
+    $httpBackend.expectPOST(API_URL + 'list/list/row/grid/grid/1337', { actionData }, function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'List: list | getExtraRow: grid | recordId: 1337';
     }).respond(mockResponse);
 
@@ -366,7 +366,7 @@ describe('Factory: listDatasource - http requests', function () {
     };
 
     const actionData = { parentId: "mockId" };
-    $httpBackend.expectPOST(API_URL + 'ListExtraRowContent/grid/list/1337', { actionData }, function(headers) {
+    $httpBackend.expectPOST(API_URL + 'list/list/row/grid/grid/1337', { actionData }, function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'List: list | getExtraRow: grid | recordId: 1337';
     }).respond(mockResponse);
 
