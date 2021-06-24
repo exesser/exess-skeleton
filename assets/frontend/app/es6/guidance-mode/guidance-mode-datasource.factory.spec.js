@@ -314,7 +314,7 @@ describe('Factory: guidanceModeDatasource', function () {
       checkInputParametersCreateUrl(['', '', '', 'd'], API_PATH + "flow/d");
 
       //No filled in variable
-      checkInputParametersCreateUrl(['', '', '', ''], API_PATH + "Flow");
+      checkInputParametersCreateUrl(['', '', '', ''], API_PATH + "flow");
 
       /*
        There are 2^4=16 options (4 variables that can either be empty
@@ -697,7 +697,7 @@ describe('Factory: guidanceModeDatasource', function () {
       checkInputParametersCreateUrl(['', 'b'], API_PATH + "flow/b");
 
       //No filled in variable
-      checkInputParametersCreateUrl(['', ''], API_PATH + "Flow");
+      checkInputParametersCreateUrl(['', ''], API_PATH + "flow");
 
       //There are 2^2=4 options (2 variables that can either be empty or non-empty) so we should in total have that many calls.
       expect($http.post).toHaveBeenCalledTimes(4);
