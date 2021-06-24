@@ -23,9 +23,6 @@ class Dwp
     // This is used to store the parent model on child model to be able to access it on validation
     // usage: "dwp|parentModel.key|on|parent|model"
     public const PARENT_MODEL = self::PREFIX . 'parentModel';
-    public const REPLACE_FLOW_ACTION = self::PREFIX . 'replace|flowAction';
-    public const REPLACE_RECORD_ID = self::PREFIX . 'replace|recordId';
-    public const REPLACE_RECORD_TYPE = self::PREFIX . 'replace|recordType';
     public const RELATIONS_FIELD = self::PREFIX . 'dynamicRelation';
     public const FLAG_CONFIRM_ACTION_KEY = self::PREFIX . 'flag|confirmCommandKey';
     public const CONTACT_PERSON_GROUP = self::PREFIX . 'contactPerson';

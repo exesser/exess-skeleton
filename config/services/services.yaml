@@ -43,9 +43,9 @@ services:
   event_dispatcher: '@Symfony\Component\EventDispatcher\EventDispatcher'
 
   ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher:
-    class: ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher
     arguments:
       - '@Symfony\Component\EventDispatcher\EventDispatcher'
+      - '@ExEss\Cms\FLW_Flows\Action\BackendCommandExecutor'
 
   ExEss\Cms\FLW_Flows\Validator:
     class: ExEss\Cms\FLW_Flows\Validator
@@ -263,7 +263,6 @@ imports:
   - { resource: 'health.yaml' }
   - { resource: 'logging.yaml' }
   - { resource: 'middleware.yaml' }
-  - { resource: 'params.yaml' }
   - { resource: 'repositories.yaml' }
   - { resource: 'security.yaml' }
   - { resource: 'slim_defaults.yaml' }
@@ -271,5 +270,4 @@ imports:
   - { resource: 'suggestions.yaml' }
   - { resource: 'translators.yaml' }
   - { resource: 'validation.yaml' }
-  - { resource: 'controllers.yaml' }
   - { resource: 'entity_listeners.yaml' }

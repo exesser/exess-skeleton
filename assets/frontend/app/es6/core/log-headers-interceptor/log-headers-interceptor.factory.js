@@ -17,11 +17,11 @@ angular.module('digitalWorkplaceApp')
     MODE: 'X-LOG-MODE',
     DWP_FULL_PATH: 'X-DWP-FULL-PATH'
   })
-  .factory('logHeadersInterceptor', function (rfc4122, LOG_HEADERS_KEYS, API_URL, $log, $injector, $location) {
+  .factory('logHeadersInterceptor', function (rfc4122, LOG_HEADERS_KEYS, API_PATH, $log, $injector, $location) {
     return {request};
 
     function request(config) {
-      if (_.startsWith(config.url, API_URL) === false) {
+      if (_.startsWith(config.url, API_PATH) === false) {
         return config;
       }
 
