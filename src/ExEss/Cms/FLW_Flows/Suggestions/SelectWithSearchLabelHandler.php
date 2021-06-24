@@ -4,10 +4,10 @@ namespace ExEss\Cms\FLW_Flows\Suggestions;
 use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Doctrine\Type\FlowFieldType;
 use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\FESelectWithSearch\SelectWithSearchService;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Service\SelectWithSearchService;
 
 class SelectWithSearchLabelHandler extends AbstractSuggestionHandler
 {
@@ -72,7 +72,7 @@ class SelectWithSearchLabelHandler extends AbstractSuggestionHandler
             \array_map(function ($item) {
                 return $item['key'];
             }, $items),
-            ['fullModel' => $model->toArray()]
+            $model
         );
     }
 

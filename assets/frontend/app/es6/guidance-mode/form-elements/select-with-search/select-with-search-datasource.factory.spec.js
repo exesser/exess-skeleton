@@ -6,15 +6,15 @@ describe('Factory: selectWithSearchDatasource - http requests', function () {
 
   let $httpBackend;
   let selectWithSearchDatasource;
-  let API_URL;
+  let API_PATH;
   let LOG_HEADERS_KEYS;
 
-  beforeEach(inject(function ($state, _selectWithSearchDatasource_, _$httpBackend_, _API_URL_, _LOG_HEADERS_KEYS_) {
+  beforeEach(inject(function ($state, _selectWithSearchDatasource_, _$httpBackend_, _API_PATH_, _LOG_HEADERS_KEYS_) {
     mockHelpers.blockUIRouter($state);
 
     $httpBackend = _$httpBackend_;
     selectWithSearchDatasource = _selectWithSearchDatasource_;
-    API_URL = _API_URL_;
+    API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
   }));
 
@@ -74,7 +74,7 @@ describe('Factory: selectWithSearchDatasource - http requests', function () {
       message: "Success"
     };
 
-    $httpBackend.expectPOST(API_URL + 'SelectWithSearch/Users', {page: 1, query: ''}, function(headers) {
+    $httpBackend.expectPOST(API_PATH + 'select-with-search/Users', {page: 1, query: ''}, function(headers) {
       return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Select with search: Users';
     }).respond(mockResponse);
 

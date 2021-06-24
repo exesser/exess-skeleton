@@ -2,9 +2,9 @@
 namespace ExEss\Cms\FLW_Flows\Suggestions;
 
 use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\FESelectWithSearch\SelectWithSearchService;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
+use ExEss\Cms\Service\SelectWithSearchService;
 
 class AutoExpandSelectWithSearch extends AbstractSuggestionHandler
 {
@@ -36,7 +36,7 @@ class AutoExpandSelectWithSearch extends AbstractSuggestionHandler
                 if ($field->type === 'selectWithSearch' && ($field->preFill ?? '' === 'all')) {
                     $options = $this->selectWithSearch->getSelectOptions(
                         $field->datasourceName,
-                        ['fullModel' => $response->getModel()->toArray()]
+                        $response->getModel()
                     );
                     $response->getModel()->setFieldValue($field->id, $options['rows']);
                 }

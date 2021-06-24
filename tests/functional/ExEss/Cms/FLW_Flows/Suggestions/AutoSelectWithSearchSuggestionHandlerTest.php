@@ -4,8 +4,8 @@ namespace Test\Functional\ExEss\Cms\FLW_Flows\Suggestions;
 
 use ExEss\Cms\Doctrine\Type\FlowFieldType;
 use ExEss\Cms\Entity\Flow;
+use ExEss\Cms\Service\SelectWithSearchService;
 use Mockery\Mock;
-use ExEss\Cms\FESelectWithSearch\SelectWithSearchService;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Response\Model;
@@ -31,18 +31,18 @@ class AutoSelectWithSearchSuggestionHandlerTest extends FunctionalTestCase
 
     public function testHandle(): void
     {
-        $model = [
+        // Given
+        $model = new Model([
             "testflow" => true,
             "alreadyInModel" => true,
-        ];
+        ]);
 
-        // arrange
         $response = new Response();
         $action = new FlowAction([
             'event' => FlowAction::EVENT_CHANGED,
             'focus' => 'id',
         ]);
-        $response->setModel(new Model($model));
+        $response->setModel($model);
         $response->setForm(
             (new Response\Form('id', 'DEFAULT', 'key', 'name'))
                 ->setGroup(
@@ -78,27 +78,21 @@ class AutoSelectWithSearchSuggestionHandlerTest extends FunctionalTestCase
             ->shouldNotReceive('getSelectOptions')
             ->with(
                 'shouldNotBeInModelNoAutoSelect',
-                [
-                    'fullModel' => ["testflow" => true],
-                ]
+                new Model(["testflow" => true])
             );
 
         $this->selectWithSearchService
             ->shouldNotReceive('getSelectOptions')
             ->with(
                 'alreadyInModel',
-                [
-                    'fullModel' => ["testflow" => true],
-                ]
+                new Model(["testflow" => true])
             );
 
         $this->selectWithSearchService
             ->shouldReceive('getSelectOptions')
             ->with(
                 'testDataSourceMultipleReturn',
-                [
-                    'fullModel' => $model,
-                ]
+                $model
             )
             ->once()
             ->andReturn([
@@ -112,9 +106,7 @@ class AutoSelectWithSearchSuggestionHandlerTest extends FunctionalTestCase
             ->shouldReceive('getSelectOptions')
             ->with(
                 'testDataSourceSingleReturn',
-                [
-                    'fullModel' => $model,
-                ]
+                $model
             )
             ->once()
             ->andReturn([
@@ -123,8 +115,10 @@ class AutoSelectWithSearchSuggestionHandlerTest extends FunctionalTestCase
                 ]
             ]);
 
+        // When
         $this->handler->handleModel($response, $action, new Flow());
 
+        // Then
         $model = $response->getModel()->toArray();
         $this->tester->assertArrayHasKey('shouldBeInModel', $model);
         $this->tester->assertEquals([1 => 'shouldBeInModel'], $model['shouldBeInModel']);

@@ -1,11 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Cms\FE_SelectWithSearch;
+namespace Test\Functional\ExEss\Cms\Service;
 
 use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\User;
+use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Service\SelectWithSearchService;
 use Helper\Testcase\FunctionalTestCase;
-use ExEss\Cms\FESelectWithSearch\SelectWithSearchService;
 
 class SelectWithSearchServiceTest extends FunctionalTestCase
 {
@@ -18,6 +19,7 @@ class SelectWithSearchServiceTest extends FunctionalTestCase
 
     public function testGetMultiSelectItems(): void
     {
+        // Given
         $this->tester->generateSelectWithSearchDatasource([
             'name' => "Users12345",
             'items_on_page' => 45,
@@ -51,6 +53,18 @@ class SelectWithSearchServiceTest extends FunctionalTestCase
             'status' => UserStatus::INACTIVE,
         ]);
 
+        // When
+        $result = $this->selectWithSearchService->getSelectOptions(
+            'Users12345',
+            new Model([
+                'for_pg' => $primaryGroup,
+                'dwp|bla|for_pg' => null,
+            ]),
+            1,
+            'Terzea'
+        );
+
+        // Then
         $this->tester->assertSame(
             [
                 'rows' => [
@@ -66,16 +80,18 @@ class SelectWithSearchServiceTest extends FunctionalTestCase
                     'total' => 1
                 ]
             ],
-            $this->selectWithSearchService->getSelectOptions('Users12345', [
-                "page" => 1,
-                'fullModel' => [
-                    'for_pg' => $primaryGroup,
-                    'dwp|bla|for_pg' => null,
-                ],
-                'query' => 'Terzea',
+            $result
+        );
+
+        // When
+        $result = $this->selectWithSearchService->getSelectOptions(
+            'Users12345',
+            new Model([
+                'for_pg' => $primaryGroup,
             ])
         );
 
+        // Then
         $this->tester->assertSame(
             [
                 'rows' => [
@@ -95,12 +111,7 @@ class SelectWithSearchServiceTest extends FunctionalTestCase
                     'total' => 2
                 ]
             ],
-            $this->selectWithSearchService->getSelectOptions('Users12345', [
-                "page" => 1,
-                'fullModel' => [
-                    'for_pg' => $primaryGroup,
-                ],
-            ])
+            $result
         );
     }
 
@@ -170,6 +181,7 @@ class SelectWithSearchServiceTest extends FunctionalTestCase
 
     public function testEquals(): void
     {
+        // Given
         $this->tester->generateSelectWithSearchDatasource([
             'name' => 'ContactPersons12345',
             'items_on_page' => 45,
@@ -189,16 +201,22 @@ class SelectWithSearchServiceTest extends FunctionalTestCase
             'last_name' => 'Hansenworst',
         ]);
 
-        $result = $this->selectWithSearchService->getSelectOptions('ContactPersons12345', [
-            'query' => 'Hansen',
-        ]);
+        // When
+        $result = $this->selectWithSearchService->getSelectOptions(
+            'ContactPersons12345',
+            new Model(),
+            1,
+            'Hansen'
+        );
 
+        // Then
         $this->tester->assertCount(1, $result['rows']);
         $this->tester->assertEquals('Timmy Hansen', $result['rows'][0]['label']);
     }
 
     public function testNeedsQuery(): void
     {
+        // Given
         $this->tester->generateSelectWithSearchDatasource([
             'name' => "Users12345",
             'items_on_page' => 45,
@@ -206,6 +224,10 @@ class SelectWithSearchServiceTest extends FunctionalTestCase
             'base_object' => User::class,
         ]);
 
+        // When
+        $result = $this->selectWithSearchService->getSelectOptions('Users12345', new Model());
+
+        // Then
         $this->tester->assertSame(
             [
                 'rows' => [],
@@ -216,10 +238,7 @@ class SelectWithSearchServiceTest extends FunctionalTestCase
                     'total' => 0
                 ]
             ],
-            $this->selectWithSearchService->getSelectOptions('Users12345', [
-                "page" => 1,
-                'fullModel' => [],
-            ])
+            $result
         );
     }
 }

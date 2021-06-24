@@ -11,7 +11,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('selectWithSearchDatasource', function (API_URL, $http, LOG_HEADERS_KEYS) {
+  .factory('selectWithSearchDatasource', function (API_PATH, $http, LOG_HEADERS_KEYS) {
 
     return {getSelectOptions};
 
@@ -27,7 +27,7 @@ angular.module('digitalWorkplaceApp')
       headers[LOG_HEADERS_KEYS.DESCRIPTION] = `Select with search: ${datasourceName}`;
 
       return $http.post(
-        API_URL + "SelectWithSearch/" + datasourceName,
+        API_PATH + "select-with-search/" + datasourceName,
         params,
         {headers}
       ).then(function (response) {

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Utility;
+namespace Test\Api\Api\Logout;
 
 use ApiTester;
 
@@ -8,12 +8,13 @@ class LogoutCest
 {
     public function shouldReturn(ApiTester $I): void
     {
+        // Given
         $I->getAnApiTokenFor('adminUser');
 
+        // When
         $I->sendGet('/Api/logout');
 
-        // assertions
-        $I->seeResponseCodeIs(200);
-        $I->seeResponseIsJson();
+        // Then
+        $I->seeResponseIsDwpResponse(200);
     }
 }

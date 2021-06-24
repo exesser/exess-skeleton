@@ -11,7 +11,6 @@ use ExEss\Cms\CRUD\Config\CrudMetadata;
 use ExEss\Cms\Dictionary\Format;
 use ExEss\Cms\Exception\NotFoundException;
 use ExEss\Cms\Dictionary\Model\Dwp;
-use ExEss\Cms\FESelectWithSearch\SelectWithSearchService;
 use ExEss\Cms\FLW_Flows\EnumRecordFactory;
 use ExEss\Cms\FLW_Flows\Response\Form\DateField;
 use ExEss\Cms\FLW_Flows\Response\Form\DateTimeField;
@@ -24,6 +23,7 @@ use ExEss\Cms\FLW_Flows\Response\Form\TextareaField;
 use ExEss\Cms\FLW_Flows\Response\Form\TextField;
 use ExEss\Cms\FLW_Flows\Response\Form\ToggleField;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Service\SelectWithSearchService;
 
 class FieldFactory
 {
@@ -185,9 +185,8 @@ class FieldFactory
                 $value = $this->selectWithSearchService->getLabelsForValues(
                     $field->getDatasourceName(),
                     [$value->getId()],
-                    [
-                        'params' => $field->getParams(),
-                    ]
+                    null,
+                    $field->getParams()['baseObject'] ?? null
                 );
             }
         } else {
