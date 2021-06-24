@@ -3,6 +3,7 @@ namespace ExEss\Cms\FLW_Flows\Event;
 
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvent;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvents;
+use ExEss\Cms\FLW_Flows\Action\BackendCommandExecutor;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -11,14 +12,16 @@ class FlowEventDispatcher
 {
     private EventDispatcher $eventDispatcher;
 
-    public function __construct(EventDispatcher $eventDispatcher)
+    private BackendCommandExecutor $commandExecutor;
+
+    public function __construct(EventDispatcher $eventDispatcher, BackendCommandExecutor $commandExecutor)
     {
         $this->eventDispatcher = $eventDispatcher;
+        $this->commandExecutor = $commandExecutor;
     }
 
     /**
      * @return \ExEss\Cms\FLW_Flows\Action\Command|\ExEss\Cms\FLW_Flows\Response
-     * @throws \UnexpectedValueException If no Response or Command is returned.
      */
     public function dispatch(
         string $flowKey,
@@ -40,17 +43,14 @@ class FlowEventDispatcher
             $guidanceAction,
             $route
         );
-        $eventName = FlowEvents::fromDwpEvent($action->getEvent());
 
-        $this->eventDispatcher->dispatch($event, $eventName);
+        $this->eventDispatcher->dispatch($event, FlowEvents::fromDwpEvent($action->getEvent()));
 
-        if ($event->getResponse() === null && $event->getCommand() === null) {
-            throw new \UnexpectedValueException(\sprintf(
-                'Dispatched flow event %s did not return a response or command, something went wrong.',
-                $action->getEvent()
-            ));
+        if ($command = $event->getCommand()) {
+            $this->commandExecutor->execute($command, $command->getArguments()->recordIds, $model);
+            return $command;
         }
 
-        return $event->getCommand() ?? $event->getResponse();
+        return $event->getResponse();
     }
 }

@@ -47,13 +47,6 @@ class Command implements \JsonSerializable
         return $this->arguments;
     }
 
-    public function setArguments(Arguments $arguments): Command
-    {
-        $this->arguments = $arguments;
-
-        return $this;
-    }
-
     public function getBackendCommand(): ?string
     {
         return $this->backendCommand;
@@ -64,23 +57,9 @@ class Command implements \JsonSerializable
         return $this->relatedBeans;
     }
 
-    public function setRelatedBeans(array $relatedBeans): Command
+    public function setRelatedBeans(array $relatedBeans): void
     {
         $this->relatedBeans = $relatedBeans;
-
-        return $this;
-    }
-
-    public function getParams(): array
-    {
-        return $this->params;
-    }
-
-    public function setParams(array $params): Command
-    {
-        $this->params = $params;
-
-        return $this;
     }
 
     public function jsonSerialize(): array
@@ -89,7 +68,7 @@ class Command implements \JsonSerializable
             'command' => $this->command,
             'arguments' => $this->arguments->toArray(),
             'relatedBeans' => $this->relatedBeans,
-            'params' => $this->params
+            'params' => $this->params,
         ];
     }
 }

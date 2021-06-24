@@ -2,7 +2,6 @@
 
 namespace ExEss\Cms\Api\V8_Custom\Params;
 
-use ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Service\ResetInterface;
 
@@ -11,18 +10,9 @@ use Symfony\Contracts\Service\ResetInterface;
  */
 abstract class AbstractParams implements \JsonSerializable, ResetInterface
 {
-    public const REGEX_KEY = '/[A-Za-z0-9-_]*/';
-
     protected array $arguments = [];
 
-    protected ValidatorFactory $validatorFactory;
-
     protected static array $resolversByClass = [];
-
-    public function __construct(ValidatorFactory $validatorFactory)
-    {
-        $this->validatorFactory = $validatorFactory;
-    }
 
     public function configure(array ...$arguments): self
     {

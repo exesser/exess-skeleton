@@ -49,7 +49,6 @@ class BreakoutSubscriber implements EventSubscriberInterface
         if ($event->getAction()->getEvent() === FlowAction::EVENT_CONFIRM_CREATE_LIST_ROW) {
             // for this event we're done here
             $event->stopPropagation();
-            return;
         }
     }
 

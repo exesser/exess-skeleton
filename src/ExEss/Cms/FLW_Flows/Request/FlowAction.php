@@ -18,7 +18,6 @@ class FlowAction extends AbstractParams
     public const EVENT_INIT = 'INIT';
     public const EVENT_INIT_CHILD_FLOW = 'INIT-CHILD-FLOW';
 
-    public const BREAKOUT = 'breakout';
     public const READONLY = 'readOnly';
 
     public function __construct(array $options)
@@ -49,49 +48,48 @@ class FlowAction extends AbstractParams
         ;
 
         $resolver
-            ->setDefined('recordIds')
-            ->setAllowedTypes('recordIds', ['array'])
             ->setDefault('recordIds', [])
+            ->setAllowedTypes('recordIds', ['array'])
         ;
 
         $resolver
-            ->setDefined('previousValue')
-            ->setAllowedTypes('previousValue', ['null', 'string', 'boolean', 'array', 'integer'])
             ->setDefault('previousValue', null)
+            ->setAllowedTypes('previousValue', ['null', 'string', 'boolean', 'array', 'integer'])
         ;
 
         $resolver
-            ->setDefined('focus')
-            ->setAllowedTypes('focus', ['null', 'string'])
             ->setDefault('focus', null)
+            ->setAllowedTypes('focus', ['null', 'string'])
             ->setNormalizer('focus', function (Options $options, $value) {
                 return empty($value) ? null : $value;
             })
         ;
 
         $resolver
-            ->setDefined('changedFields')
-            ->setAllowedTypes('changedFields', ['array'])
             ->setDefault('changedFields', [])
+            ->setAllowedTypes('changedFields', ['array'])
         ;
 
         $resolver
-            ->setDefined('currentStep')
-            ->setAllowedTypes('currentStep', ['null', 'string'])
             ->setDefault('currentStep', null)
+            ->setAllowedTypes('currentStep', ['null', 'string'])
             ->setNormalizer('currentStep', function (Options $options, $value) {
                 return empty($value) ? null : $value;
             })
         ;
 
         $resolver
-            ->setDefined('nextStep')
-            ->setAllowedTypes('nextStep', ['null', 'string'])
             ->setDefault('nextStep', null)
+            ->setAllowedTypes('nextStep', ['null', 'string'])
             ->setNormalizer('nextStep', function (Options $options, $value) {
                 return empty($value) ? null : $value;
             })
         ;
+    }
+
+    public function setRecordIds(array $recordIds): void
+    {
+        $this->arguments['recordIds'] = $recordIds;
     }
 
     public function getRecordIds(): array
@@ -145,10 +143,5 @@ class FlowAction extends AbstractParams
     public function isFieldChanged(string $fieldKey): bool
     {
         return \array_key_exists($fieldKey, $this->arguments['changedFields']);
-    }
-
-    public function setFocus(string $focus): void
-    {
-        $this->arguments['focus'] = $focus;
     }
 }

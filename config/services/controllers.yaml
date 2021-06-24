@@ -1,9 +1,0 @@
-services:
-  _defaults:
-    public: true
-    autowire: true
-
-  # V8_Custom
-  ExEss\Cms\Api\V8_Custom\Controller\:
-    resource: '../../src/ExEss/Cms/Api/V8_Custom/Controller'
-    exclude: '../../src/ExEss/Cms/Api/V8_Custom/Controller/{Middleware,ParamConverter}'

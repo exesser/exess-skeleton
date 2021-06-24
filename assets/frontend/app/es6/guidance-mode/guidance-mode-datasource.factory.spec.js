@@ -7,7 +7,7 @@ describe('Factory: guidanceModeDatasource', function () {
   // instantiate service
   let guidanceModeDatasource;
 
-  let API_URL;
+  let API_PATH;
   let LOG_HEADERS_KEYS;
   let $http;
   let $httpBackend;
@@ -15,10 +15,10 @@ describe('Factory: guidanceModeDatasource', function () {
   let modelSession;
   let replaceSpecialCharacters;
 
-  beforeEach(inject(function (_guidanceModeDatasource_, _API_URL_, _LOG_HEADERS_KEYS_, _$http_, _$httpBackend_, _$q_,
+  beforeEach(inject(function (_guidanceModeDatasource_, _API_PATH_, _LOG_HEADERS_KEYS_, _$http_, _$httpBackend_, _$q_,
                               _modelSession_, _replaceSpecialCharacters_) {
     guidanceModeDatasource = _guidanceModeDatasource_;
-    API_URL = _API_URL_;
+    API_PATH = _API_PATH_;
     LOG_HEADERS_KEYS = _LOG_HEADERS_KEYS_;
     $http = _$http_;
     $httpBackend = _$httpBackend_;
@@ -217,7 +217,7 @@ describe('Factory: guidanceModeDatasource', function () {
         "message": "Success"
       };
 
-      $httpBackend.expectPOST(API_URL + 'Flow/Accounts/CQFA', { useFilters: true }, function (headers) {
+      $httpBackend.expectPOST(API_PATH + 'flow/Accounts/CQFA', { useFilters: true }, function (headers) {
         return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Guidance: CQFA';
       }).respond(mockResponse);
       expect(replaceSpecialCharacters.replaceArraySign).not.toHaveBeenCalled();
@@ -258,7 +258,7 @@ describe('Factory: guidanceModeDatasource', function () {
         "message": "Success"
       };
 
-      $httpBackend.expectPOST(API_URL + 'Flow/Accounts/CQFA', {
+      $httpBackend.expectPOST(API_PATH + 'flow/Accounts/CQFA', {
         useFilters: true,
         model: { name: "Ken Block", number: "43" }
       }, function (headers) {
@@ -291,30 +291,30 @@ describe('Factory: guidanceModeDatasource', function () {
       spyOn($http, 'post').and.returnValue($q.defer().promise);
 
       //Four filled in variables
-      checkInputParametersCreateUrl(['a', 'b', 'c', 'd'], API_URL + "Flow/a/b/c/d");
+      checkInputParametersCreateUrl(['a', 'b', 'c', 'd'], API_PATH + "flow/a/b/c/d");
 
       //Three filled in variables
-      checkInputParametersCreateUrl(['a', '', 'c', 'd'], API_URL + "Flow/a/c/d");
-      checkInputParametersCreateUrl(['a', 'b', '', 'd'], API_URL + "Flow/a/b/d");
-      checkInputParametersCreateUrl(['a', 'b', 'c', ''], API_URL + "Flow/a/b/c");
-      checkInputParametersCreateUrl(['', 'b', 'c', 'd'], API_URL + "Flow/b/c/d");
+      checkInputParametersCreateUrl(['a', '', 'c', 'd'], API_PATH + "flow/a/c/d");
+      checkInputParametersCreateUrl(['a', 'b', '', 'd'], API_PATH + "flow/a/b/d");
+      checkInputParametersCreateUrl(['a', 'b', 'c', ''], API_PATH + "flow/a/b/c");
+      checkInputParametersCreateUrl(['', 'b', 'c', 'd'], API_PATH + "flow/b/c/d");
 
       //Two filled in variables
-      checkInputParametersCreateUrl(['a', 'b', '', ''], API_URL + "Flow/a/b");
-      checkInputParametersCreateUrl(['a', '', 'c', ''], API_URL + "Flow/a/c");
-      checkInputParametersCreateUrl(['a', '', '', 'd'], API_URL + "Flow/a/d");
-      checkInputParametersCreateUrl(['', 'b', 'c', ''], API_URL + "Flow/b/c");
-      checkInputParametersCreateUrl(['', 'b', '', 'd'], API_URL + "Flow/b/d");
-      checkInputParametersCreateUrl(['', '', 'c', 'd'], API_URL + "Flow/c/d");
+      checkInputParametersCreateUrl(['a', 'b', '', ''], API_PATH + "flow/a/b");
+      checkInputParametersCreateUrl(['a', '', 'c', ''], API_PATH + "flow/a/c");
+      checkInputParametersCreateUrl(['a', '', '', 'd'], API_PATH + "flow/a/d");
+      checkInputParametersCreateUrl(['', 'b', 'c', ''], API_PATH + "flow/b/c");
+      checkInputParametersCreateUrl(['', 'b', '', 'd'], API_PATH + "flow/b/d");
+      checkInputParametersCreateUrl(['', '', 'c', 'd'], API_PATH + "flow/c/d");
 
       //One filled in variable
-      checkInputParametersCreateUrl(['a', '', '', ''], API_URL + "Flow/a");
-      checkInputParametersCreateUrl(['', 'b', '', ''], API_URL + "Flow/b");
-      checkInputParametersCreateUrl(['', '', 'c', ''], API_URL + "Flow/c");
-      checkInputParametersCreateUrl(['', '', '', 'd'], API_URL + "Flow/d");
+      checkInputParametersCreateUrl(['a', '', '', ''], API_PATH + "flow/a");
+      checkInputParametersCreateUrl(['', 'b', '', ''], API_PATH + "flow/b");
+      checkInputParametersCreateUrl(['', '', 'c', ''], API_PATH + "flow/c");
+      checkInputParametersCreateUrl(['', '', '', 'd'], API_PATH + "flow/d");
 
       //No filled in variable
-      checkInputParametersCreateUrl(['', '', '', ''], API_URL + "Flow");
+      checkInputParametersCreateUrl(['', '', '', ''], API_PATH + "flow");
 
       /*
        There are 2^4=16 options (4 variables that can either be empty
@@ -668,7 +668,7 @@ describe('Factory: guidanceModeDatasource', function () {
       _.unset(expected, 'parentModel.name'); //the name field is same as payload
       _.unset(expected, 'parentModel.car.mark'); //the mark field is same as payload
 
-      $httpBackend.expectPOST(API_URL + 'Flow/CQFA/42', payload, function (headers) {
+      $httpBackend.expectPOST(API_PATH + 'flow/CQFA/42', payload, function (headers) {
         return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Guidance: CQFA | step | recordId: 42';
       }).respond(mockResponse);
 
@@ -690,14 +690,14 @@ describe('Factory: guidanceModeDatasource', function () {
       spyOn($http, 'post').and.returnValue($q.defer().promise);
 
       //Two filled in variables
-      checkInputParametersCreateUrl(['a', 'b'], API_URL + "Flow/a/b");
+      checkInputParametersCreateUrl(['a', 'b'], API_PATH + "flow/a/b");
 
       //One filled in variable
-      checkInputParametersCreateUrl(['a', ''], API_URL + "Flow/a");
-      checkInputParametersCreateUrl(['', 'b'], API_URL + "Flow/b");
+      checkInputParametersCreateUrl(['a', ''], API_PATH + "flow/a");
+      checkInputParametersCreateUrl(['', 'b'], API_PATH + "flow/b");
 
       //No filled in variable
-      checkInputParametersCreateUrl(['', ''], API_URL + "Flow");
+      checkInputParametersCreateUrl(['', ''], API_PATH + "flow");
 
       //There are 2^2=4 options (2 variables that can either be empty or non-empty) so we should in total have that many calls.
       expect($http.post).toHaveBeenCalledTimes(4);

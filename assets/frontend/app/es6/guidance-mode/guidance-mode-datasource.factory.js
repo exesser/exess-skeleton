@@ -11,7 +11,7 @@
  * Factory in the digitalWorkplaceApp.
  */
 angular.module('digitalWorkplaceApp')
-  .factory('guidanceModeDatasource', function (API_URL, $http, LOG_HEADERS_KEYS, modelSession, replaceSpecialCharacters) {
+  .factory('guidanceModeDatasource', function (API_PATH, $http, LOG_HEADERS_KEYS, modelSession, replaceSpecialCharacters) {
 
     return {get, step};
 
@@ -74,7 +74,7 @@ angular.module('digitalWorkplaceApp')
       return _.reduce(parameters, function (url, parameter) {
         const stringParameter = _.toString(parameter);
         return _.isEmpty(stringParameter) ? url : url + `/${parameter}`;
-      }, API_URL + 'Flow');
+      }, API_PATH + 'flow');
     }
 
     function difference(object, base) {

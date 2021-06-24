@@ -576,7 +576,7 @@ describe('Component: crudConfigHelper', function () {
       ];
 
       $httpBackend.expectGET(API_PATH + 'crud/record/information', function (headers) {
-        return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Crud records information';
+        return headers[LOG_HEADERS_KEYS.DESCRIPTION] === 'Crud records information | URL: /Api/crud/record/information';
       }).respond({data: mockResponse});
     }
 
