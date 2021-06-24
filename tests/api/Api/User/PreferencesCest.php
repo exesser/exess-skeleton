@@ -21,7 +21,7 @@ class PreferencesCest
         $I->getAnApiTokenFor('adminUser');
 
         // When
-        $I->sendGET('/Api/user/preferences');
+        $I->sendGet('/Api/user/preferences');
 
         // Then
         $I->seeResponseIsDwpResponse(200);
@@ -37,7 +37,7 @@ class PreferencesCest
         $I->getAnApiTokenFor($userName, $this->user->getPassword());
 
         // When
-        $I->sendGET('/Api/user/preferences');
+        $I->sendGet('/Api/user/preferences');
 
         // Then
         $I->seeResponseIsDwpResponse(200);
@@ -54,7 +54,7 @@ class PreferencesCest
         $I->getAnApiTokenFor($userName, $this->user->getPassword());
 
         // When
-        $I->sendGET('/Api/user/preferences');
+        $I->sendGet('/Api/user/preferences');
 
         // Then
         $I->seeResponseIsDwpResponse(200);
@@ -71,7 +71,7 @@ class PreferencesCest
         $I->haveHttpHeader('Content-Type', 'application/json;charset=utf-8');
 
         // When
-        $I->sendGET('/Api/user/preferences');
+        $I->sendGet('/Api/user/preferences');
 
         // Then
         $I->seeResponseIsDwpResponse(401);

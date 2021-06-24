@@ -18,19 +18,4 @@ class Container extends BaseContainer
             $this->set($id, $service);
         }
     }
-
-    /**
-     * @inheritDoc
-     */
-    public function get($id, $invalidBehavior = /* self::EXCEPTION_ON_INVALID_REFERENCE */ 1)
-    {
-        if ($id === 'router') {
-            $backtrace = \debug_backtrace(\DEBUG_BACKTRACE_PROVIDE_OBJECT, 1);
-            if (\substr($backtrace[0]['file'], -\strlen('Slim/App.php')) === 'Slim/App.php') {
-                return parent::get('Slim\Router', $invalidBehavior);
-            }
-        }
-
-        return parent::get($id, $invalidBehavior);
-    }
 }

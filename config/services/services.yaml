@@ -24,10 +24,6 @@ services:
     arguments:
       - '@monolog.logger'
 
-  ExEss\Cms\Api\V8_Custom\Service\RequestResponseLogger:
-    arguments:
-      - '@monolog.logger.request'
-
   ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer:
     lazy: true
     factory: [ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer, get]
@@ -190,11 +186,6 @@ services:
   ExEss\Cms\Api\V8_Custom\Service\User\CommandService:
     arguments:
       - '@ExEss\Cms\Api\V8_Custom\Service\SimpleActionFactory'
-      - '@ExEss\Cms\Api\V8_Custom\Service\User\RedirectPathCookieService'
-
-  ExEss\Cms\Api\V8_Custom\Service\User\RedirectPathCookieService:
-    arguments:
-      - '@ExEss\Cms\Http\Cookies'
 
   ExEss\Cms\FieldFormatter\VatNumberFormatter: ~
 
@@ -262,10 +253,8 @@ imports:
   - { resource: 'handlers.yaml' }
   - { resource: 'health.yaml' }
   - { resource: 'logging.yaml' }
-  - { resource: 'middleware.yaml' }
   - { resource: 'repositories.yaml' }
   - { resource: 'security.yaml' }
-  - { resource: 'slim_defaults.yaml' }
   - { resource: 'subscribers.yaml' }
   - { resource: 'suggestions.yaml' }
   - { resource: 'translators.yaml' }

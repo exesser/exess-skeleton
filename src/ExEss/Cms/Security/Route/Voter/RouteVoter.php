@@ -11,9 +11,6 @@ class RouteVoter implements VoterInterface
     public const WHITELISTED_ROUTES = [
         'exesscms_login',
         'exess_cms_user_preferences__invoke',
-        // @todo remove these
-        'exess_cms_slimfallback__invoke',
-        'exess_cms_slimfallback__invoke_1',
     ];
 
     private Security $security;

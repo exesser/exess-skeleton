@@ -9,7 +9,7 @@ class RequiredCest
     public function anAuthenticationErrorShouldBeRaised(ApiTester $I): void
     {
         // When
-        $I->sendPOST('/Api/user/preferences');
+        $I->sendGet('/Api/user/preferences');
 
         // Then
         $I->seeResponseIsDwpResponse(401);
