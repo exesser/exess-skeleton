@@ -3,6 +3,7 @@
 namespace Test\Api\Api\Action;
 
 use ApiTester;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Http\ErrorResponse;
 
 class ExecuteCest
@@ -69,7 +70,7 @@ class ExecuteCest
 
         // Then
         $I->seeResponseIsDwpResponse(404);
-        $response = \json_decode($I->grabResponse(), true);
+        $response = DataCleaner::jsonDecode($I->grabResponse());
 
         $I->assertEquals($response['message'], ErrorResponse::MESSAGE_ERROR);
         $I->assertEquals($response['data']['type'], ErrorResponse::TYPE_NOT_FOUND_EXCEPTION);
@@ -111,7 +112,7 @@ class ExecuteCest
         $I->getAnApiTokenFor('adminUser');
 
         // When
-        $I->sendPost('/Api/action/some_action', \json_decode($payload, true));
+        $I->sendPost('/Api/action/some_action', DataCleaner::jsonDecode($payload));
 
         // Then
         $I->seeResponseIsDwpResponse(422);
@@ -138,7 +139,7 @@ class ExecuteCest
         $I->getAnApiTokenFor('adminUser');
 
         // When
-        $I->sendPost('/Api/action/some_action', \json_decode($payload, true));
+        $I->sendPost('/Api/action/some_action', DataCleaner::jsonDecode($payload));
 
         // Then
         $I->seeResponseIsDwpResponse(200);

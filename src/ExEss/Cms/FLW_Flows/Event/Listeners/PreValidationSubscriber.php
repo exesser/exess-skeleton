@@ -4,6 +4,7 @@ namespace ExEss\Cms\FLW_Flows\Event\Listeners;
 
 use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Entity\Flow;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Service\GridService;
 use Psr\Container\ContainerInterface;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvent;
@@ -145,7 +146,7 @@ class PreValidationSubscriber implements EventSubscriberInterface
             }
 
             // don't keep object references to the possible original (sub)models in the parent
-            $childKeysInParent = \json_decode(\json_encode($model->getNamespace($modelKey)), true);
+            $childKeysInParent = DataCleaner::jsonDecode(\json_encode($model->getNamespace($modelKey)));
             unset($childKeysInParent[$modelKey]);
 
             // merge parent data into the child's model

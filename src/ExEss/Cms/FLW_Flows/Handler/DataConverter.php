@@ -8,6 +8,7 @@ use ExEss\Cms\Collection\ObjectCollection;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Entity\User;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Helper\DataCleaner;
 
 class DataConverter extends AbstractSaveHandler
 {
@@ -298,8 +299,8 @@ class DataConverter extends AbstractSaveHandler
                             break;
                         case 'json':
                             // @todo if json-editor sends us an array here instead of a string we can remove it
-                            if (\is_string($value)) {
-                                $value = \json_decode($value, true);
+                            if (DataCleaner::isJson($value)) {
+                                $value = DataCleaner::jsonDecode($value);
                             }
                             break;
                         default:

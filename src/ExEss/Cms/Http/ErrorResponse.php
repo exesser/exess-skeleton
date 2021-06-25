@@ -2,6 +2,7 @@
 
 namespace ExEss\Cms\Http;
 
+use ExEss\Cms\Helper\DataCleaner;
 use Symfony\Component\HttpFoundation\Response;
 
 class ErrorResponse extends AbstractJsonResponse
@@ -40,7 +41,7 @@ class ErrorResponse extends AbstractJsonResponse
 
     public function addDebugInformation(\Throwable $e): void
     {
-        $data = \json_decode($this->data, true);
+        $data = DataCleaner::jsonDecode($this->data);
         $data['data']['debug'] = [
             'file' => $e->getFile(),
             'line' => $e->getLine(),

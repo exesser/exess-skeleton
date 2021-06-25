@@ -2,12 +2,12 @@
 
 namespace ExEss\Cms\Component\ExpressionParser\Parser\Compiler;
 
-use ExEss\Cms\Adapter\Exception\DecodeException;
 use ExEss\Cms\Component\ExpressionParser\Parser\PathResolverOptions;
 use ExEss\Cms\Component\ExpressionParser\Parser\Query\Conditions;
 use ExEss\Cms\Component\ExpressionParser\Parser\Resolver\Piece\ExternalObjectPiece;
 use ExEss\Cms\Component\ExpressionParser\Parser\Resolver\CompiledPath;
 use ExEss\Cms\Component\ExpressionParser\Parser\Resolver\Piece\MethodPiece;
+use ExEss\Cms\Helper\DataCleaner;
 
 class ExternalObjectCompiler
 {
@@ -52,17 +52,11 @@ class ExternalObjectCompiler
         if (self::hasJsonFormat($conditions->getRelation())) {
             $conditions->setRelation(\str_replace(self::JSON_ENCLOSURE, '', $conditions->getRelation()));
             $explodedRelation = \explode('|', $conditions->getRelation());
-
             $arguments = \implode(' AND ', $conditions->getWhere());
-            $decodedArguments = \json_decode($arguments, true);
-
-            if (\json_last_error()) {
-                throw new DecodeException('Error decoding json arguments '. $arguments .': ' . \json_last_error_msg());
-            }
 
             $piece = new ExternalObjectPiece([
                 \current($explodedRelation),
-                $decodedArguments,
+                DataCleaner::jsonDecode($arguments),
                 $conditions->getLimit() ?? -1
             ]);
         } else {

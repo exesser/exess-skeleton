@@ -2,7 +2,7 @@
 
 namespace ExEss\Cms\Base\Request;
 
-use ExEss\Cms\Exception\JsonDecodeException;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Servicemix\Request\Filters\Filter;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -109,11 +109,7 @@ abstract class AbstractRequest extends AbstractRequestBase
             ->setAllowedTypes('filters', ['null', 'string', 'array'])
             ->setNormalizer('filters', function (Options $options, $value) {
                 if (\is_string($value)) {
-                    $decoded = \json_decode($value, true);
-                    if (\json_last_error() !== \JSON_ERROR_NONE) {
-                        throw new JsonDecodeException('Filter string contains invalid json: ' . $value);
-                    }
-                    return $decoded;
+                    return DataCleaner::jsonDecode($value);
                 }
                 return $value;
             })

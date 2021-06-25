@@ -60,8 +60,6 @@ services:
       - '@ExEss\Cms\FLW_Flows\Validator'
       - '@ExEss\Cms\Service\GridService'
 
-  ExEss\Cms\JsonValidator\JsonValidator: ~
-
   ExEss\Cms\Component\Health\PingService: ~
 
   ExEss\Cms\Config\Cache\ConfigCacheFactory:
@@ -119,8 +117,6 @@ services:
       - '@ExEss\Cms\Service\SelectWithSearchService'
 
   ExEss\Cms\Component\Sidebar\Factory\SidebarFactory: ~
-
-  ExEss\Cms\DASH_Dashboard\DashboardCalcFunctions: ~
 
   ExEss\Cms\Api\V8_Custom\Service\User\CommandService:
     arguments:

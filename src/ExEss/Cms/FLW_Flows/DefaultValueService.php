@@ -6,6 +6,7 @@ use ExEss\Cms\Dictionary\Format;
 use ExEss\Cms\Doctrine\Type\FlowFieldType;
 use ExEss\Cms\Exception\ConfigErrorException;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\MultiLevelTemplate\TextFunctionHandler;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
@@ -23,8 +24,7 @@ class DefaultValueService
     public function hasConditionalDefault(\stdClass $field): bool
     {
         return !empty($field->default)
-            && \is_string($field->default)
-            && \is_array(\json_decode($this->htmlEntityDecodeUtf8($field->default), true))
+            && DataCleaner::isJson($this->htmlEntityDecodeUtf8($field->default))
             && (!isset($field->type) || $field->type !== FlowFieldType::FIELD_TYPE_JSON);
     }
 
@@ -33,15 +33,13 @@ class DefaultValueService
      */
     public function getConditions(\stdClass $field): array
     {
-        $conditions = \json_decode($this->htmlEntityDecodeUtf8($field->default), true);
-
         // make sure we have at least a "condition" and "value" key in each condition
         return \array_map(function ($el) use ($field) {
             if (!\is_array($el)) {
                 throw new ConfigErrorException("default value configuration for field {$field->id} is incorrect");
             }
             return \array_merge(['condition' => null, 'value' => null], $el);
-        }, $conditions);
+        }, DataCleaner::jsonDecode($this->htmlEntityDecodeUtf8($field->default)));
     }
 
     public function isConditionMet(Model $model, string $condition): bool

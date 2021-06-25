@@ -1,12 +1,14 @@
 <?php
 namespace ExEss\Cms\Robo\Task;
 
+use ExEss\Cms\Helper\DataCleaner;
+
 trait CrudAware
 {
     protected function yieldCrudRecords(): \Generator
     {
         foreach (\glob('src/ExEss/Cms/CRUD/Config/records' . \DIRECTORY_SEPARATOR . '*.json') as $file) {
-            $tables = \json_decode(\file_get_contents($file), true, 512, \JSON_THROW_ON_ERROR);
+            $tables = DataCleaner::jsonDecode(\file_get_contents($file));
             foreach ($tables as $table => $records) {
                 foreach ($records as $record) {
                     yield $table => $record;

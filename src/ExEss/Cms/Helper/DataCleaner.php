@@ -1,9 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace ExEss\Cms\Api\V8_Custom\Service;
+namespace ExEss\Cms\Helper;
 
 use ExEss\Cms\Dictionary\Model\Dwp;
-use ExEss\Cms\Exception\JsonDecodeException;
 
 /**
  * This is a class use to decode data before it's passed to the dwp, activiti or ...
@@ -134,21 +133,28 @@ class DataCleaner
             }
         }
 
-        return \json_decode($json, true);
+        return self::jsonDecode($json);
     }
 
     /**
      * @return \stdClass|array
-     * @throws JsonDecodeException When $json is not a valid json string.
+     * @throws \JsonException When $json is not a valid json string.
      */
-    public static function jsonDecode(string $json, bool $assoc = false, int $depth = 512, int $options = 1)
+    public static function jsonDecode(string $json, bool $assoc = true, int $depth = 512, int $options = 1)
     {
-        $decoded = \json_decode($json, $assoc, $depth, $options);
-        if (\json_last_error() !== \JSON_ERROR_NONE) {
-            throw new JsonDecodeException(\json_last_error_msg());
-        }
+        return \json_decode($json, $assoc, $depth, \JSON_THROW_ON_ERROR | $options);
+    }
 
-        return $decoded;
+    /**
+     * @param mixed $json
+     */
+    public static function isJson($json): bool
+    {
+        try {
+            return \is_string($json) && \is_array(self::jsonDecode($json));
+        } catch (\JsonException $e) {
+            return false;
+        }
     }
 
     public static function getCleanedModel(array $model, bool $removeCompleteFile = false): array

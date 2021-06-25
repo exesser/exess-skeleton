@@ -2,6 +2,7 @@
 
 namespace ExEss\Cms\Component\Client\Adapter;
 
+use ExEss\Cms\Helper\DataCleaner;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Response as GuzzleResponse;
@@ -49,10 +50,7 @@ class GuzzleClientAdapter implements ClientAdapterInterface
             ($request->getHeaders()['Accept'][0] ?? null) === GuzzleRequest::CONTENT_TYPE_JSON
             && !empty($responseData)
         ) {
-            \json_decode($responseData);
-            if (\json_last_error() !== \JSON_ERROR_NONE) {
-                throw new \RuntimeException('JSON ERROR: ' . \json_last_error_msg() . ', decoding: ' . $responseData);
-            }
+            DataCleaner::jsonDecode($responseData);
         }
 
         return $response;

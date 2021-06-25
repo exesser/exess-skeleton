@@ -1,6 +1,8 @@
 <?php
 namespace ExEss\Cms\Robo\Credentials;
 
+use ExEss\Cms\Helper\DataCleaner;
+
 class CredentialStorage
 {
     private string $credentialFile = '.credentials.json';
@@ -19,7 +21,7 @@ class CredentialStorage
             return [];
         }
 
-        $credentials = \json_decode(\file_get_contents($this->credentialFile), true);
+        $credentials = DataCleaner::jsonDecode(\file_get_contents($this->credentialFile));
 
         if (!\is_array($credentials)) {
             throw new \RuntimeException('cannot read credential file');

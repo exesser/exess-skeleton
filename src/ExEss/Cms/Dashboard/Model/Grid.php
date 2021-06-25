@@ -1,6 +1,8 @@
 <?php
 namespace ExEss\Cms\Dashboard\Model;
 
+use ExEss\Cms\Helper\DataCleaner;
+
 class Grid implements \JsonSerializable
 {
     use StripEmptyOnEncodeTrait;
@@ -22,7 +24,7 @@ class Grid implements \JsonSerializable
     public function __construct($source)
     {
         if (\is_string($source)) {
-            $source = \json_decode($source, true, 512, \JSON_THROW_ON_ERROR);
+            $source = DataCleaner::jsonDecode($source);
         }
 
         if (!\is_array($source)) {

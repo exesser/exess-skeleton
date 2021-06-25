@@ -10,6 +10,7 @@ use ExEss\Cms\Doctrine\Type\GeneratedFieldType;
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\FlowStep;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Service\SelectWithSearchService;
 use stdClass;
 use ExEss\Cms\Api\V8_Custom\Service\Security;
@@ -454,7 +455,7 @@ class FormBuilder
                             $actionJson = \str_replace('%' . $key . '%', $value, $actionJson);
                         }
                     }
-                    $field->action = \json_decode($actionJson, true);
+                    $field->action = DataCleaner::jsonDecode($actionJson);
                 }
             }
         }

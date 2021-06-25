@@ -2,6 +2,8 @@
 
 namespace Helper;
 
+use ExEss\Cms\Helper\DataCleaner;
+
 class JsonHelper extends \Codeception\Module
 {
     /**
@@ -37,12 +39,6 @@ class JsonHelper extends \Codeception\Module
             $string = \str_replace($tokensInt, $values, $string);
         }
 
-        $parsed = \json_decode($string, $assoc);
-
-        if (false === $parsed) {
-            throw new \InvalidArgumentException('Json could not be parsed');
-        }
-
-        return $parsed;
+        return DataCleaner::jsonDecode($string, $assoc);
     }
 }

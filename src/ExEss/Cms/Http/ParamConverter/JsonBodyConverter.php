@@ -2,6 +2,7 @@
 
 namespace ExEss\Cms\Http\ParamConverter;
 
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Http\Factory\JsonBodyFactory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface;
@@ -30,7 +31,7 @@ class JsonBodyConverter implements ParamConverterInterface
             $this->factory
                 ->create($configuration->getClass())
                 ->configure(
-                    \json_decode($request->getContent(), true, 512, \JSON_THROW_ON_ERROR)
+                    DataCleaner::jsonDecode($request->getContent())
                 )
         );
     }

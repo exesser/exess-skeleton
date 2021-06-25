@@ -1,9 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Test\Unit\Api\V8_Custom\Service;
+namespace Test\Unit\ExEss\Cms\Helper;
 
-use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
-use ExEss\Cms\Exception\JsonDecodeException;
+use ExEss\Cms\Helper\DataCleaner;
 use Helper\Testcase\UnitTestCase;
 use stdClass;
 
@@ -102,11 +101,11 @@ class DataCleanerTest extends UnitTestCase
 
     public function testJsonDecodeError(): void
     {
-        $this->tester->expectThrowable(JsonDecodeException::class, function (): void {
+        $this->tester->expectThrowable(\JsonException::class, function (): void {
             DataCleaner::jsonDecode('azerty', true);
         });
 
-        $this->tester->expectThrowable(JsonDecodeException::class, function (): void {
+        $this->tester->expectThrowable(\JsonException::class, function (): void {
             DataCleaner::jsonDecode('', true);
         });
     }

@@ -7,6 +7,7 @@ use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Service\SelectWithSearchService;
 
 class SelectWithSearchLabelHandler extends AbstractSuggestionHandler
@@ -93,7 +94,7 @@ class SelectWithSearchLabelHandler extends AbstractSuggestionHandler
      */
     private function transformItemsToRequestedFormat($items): array
     {
-        $items = \json_decode(\json_encode($items), true);
+        $items = DataCleaner::jsonDecode(\json_encode($items));
         if (\is_array($items)) {
             foreach ($items as $itemKey => $itemValue) {
                 if (!\is_array($itemValue)) {

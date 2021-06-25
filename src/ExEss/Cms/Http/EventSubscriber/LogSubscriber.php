@@ -2,9 +2,9 @@
 
 namespace ExEss\Cms\Http\EventSubscriber;
 
-use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
 use ExEss\Cms\Doctrine\Type\HttpMethod;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Http\Factory\PsrFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -93,7 +93,7 @@ class LogSubscriber implements EventSubscriberInterface
             $message .= ', body: ' . $this->getTruncated($response->getBody());
         } elseif ($mode === self::LOG_MODEL) {
             $responseModel = DataCleaner::getCleanedModel(
-                \json_decode($response->getBody()->getContents(), true)['data']['model'] ?? []
+                DataCleaner::jsonDecode($response->getBody()->getContents())['data']['model'] ?? []
             );
             $message .= ', model: ' . \json_encode($responseModel);
         }
