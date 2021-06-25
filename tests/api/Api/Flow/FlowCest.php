@@ -4,6 +4,7 @@ namespace Test\Api\Api\Flow;
 
 use ApiTester;
 use ExEss\Cms\FLW_Flows\SaveFlow;
+use ExEss\Cms\Helper\DataCleaner;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
 class FlowCest
@@ -98,6 +99,6 @@ class FlowCest
             "dashboardMenuId" => $this->dashboardMenuId,
             "gridId" => $this->gridId,
         ]);
-        $I->assertArrayEqual($expectedResponse, \json_decode($I->grabResponse(), true));
+        $I->assertArrayEqual($expectedResponse, DataCleaner::jsonDecode($I->grabResponse()));
     }
 }

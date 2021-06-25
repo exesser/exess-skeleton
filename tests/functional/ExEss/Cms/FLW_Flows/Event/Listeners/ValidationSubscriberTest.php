@@ -13,6 +13,7 @@ use ExEss\Cms\FLW_Flows\FlowValidator;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Response\ValidationResult;
+use ExEss\Cms\Helper\DataCleaner;
 use Helper\Testcase\FunctionalTestCase;
 
 class ValidationSubscriberTest extends FunctionalTestCase
@@ -67,7 +68,7 @@ class ValidationSubscriberTest extends FunctionalTestCase
             ->with(
                 \Mockery::type(Flow::class),
                 \Mockery::on(function (Model $model) {
-                    return \json_decode(\json_encode($model), true) === [
+                    return DataCleaner::jsonDecode(\json_encode($model)) === [
                             "child-field" => "value",
                             Dwp::PARENT_MODEL => ["parent-field" => "value"]
                         ];

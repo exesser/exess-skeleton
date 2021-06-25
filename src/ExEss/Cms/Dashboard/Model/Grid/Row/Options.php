@@ -3,6 +3,7 @@ namespace ExEss\Cms\Dashboard\Model\Grid\Row;
 
 use ExEss\Cms\Dashboard\Model\Grid;
 use ExEss\Cms\Dashboard\Model\StripEmptyOnEncodeTrait;
+use ExEss\Cms\Helper\DataCleaner;
 
 class Options implements \JsonSerializable
 {
@@ -228,10 +229,12 @@ class Options implements \JsonSerializable
      */
     public function setActionData($actionData): void
     {
-        if (\is_string($actionData)) {
-            $actionData = \json_decode($actionData, true);
+        if (DataCleaner::isJson($actionData)) {
+            $actionData = DataCleaner::jsonDecode($actionData);
         }
-
+        if (!\is_array($actionData)) {
+            $actionData = [];
+        }
         $this->actionData = $actionData ?? [];
     }
 

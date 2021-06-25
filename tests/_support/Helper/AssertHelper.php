@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 namespace Helper;
 
+use ExEss\Cms\Helper\DataCleaner;
 use Helper\Constraint\ArraySubset;
 
 class AssertHelper extends \Codeception\Module
@@ -39,7 +40,10 @@ class AssertHelper extends \Codeception\Module
 
     public function assertJsonEquals(string $expected, string $actual): void
     {
-        $this->assertArrayEqual(\json_decode($expected, true), \json_decode($actual, true));
+        $this->assertArrayEqual(
+            DataCleaner::jsonDecode($expected),
+            DataCleaner::jsonDecode($actual)
+        );
     }
 
     public function assertValidGuid(string $guid): void

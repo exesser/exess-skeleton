@@ -6,6 +6,7 @@ if (!\class_exists('FunctionalTester')) {
 }
 
 use Codeception\TestCase\Test;
+use ExEss\Cms\Helper\DataCleaner;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
 /**
@@ -27,7 +28,7 @@ class FunctionalTestCase extends Test
         $testFiles = \glob($location . $name . '*.json');
         if (!empty($testFiles)) {
             foreach ($testFiles as $file) {
-                $testValues = \json_decode(\file_get_contents($file));
+                $testValues = DataCleaner::jsonDecode(\file_get_contents($file), false);
                 \preg_match('/' . $name . '([^\/]*?).json/', $file, $match);
                 $key = $match[1] . (!empty($testValues->_description) ? ' - ' . $testValues->_description : '');
                 $data[$key] = [$testValues];

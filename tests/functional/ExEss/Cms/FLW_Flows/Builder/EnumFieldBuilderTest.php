@@ -8,6 +8,7 @@ use ExEss\Cms\Entity\User;
 use ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder;
 use ExEss\Cms\FLW_Flows\EnumRecord;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Helper\DataCleaner;
 use Helper\Testcase\FunctionalTestCase;
 
 class EnumFieldBuilderTest extends FunctionalTestCase
@@ -23,7 +24,7 @@ class EnumFieldBuilderTest extends FunctionalTestCase
     {
         $formSections = [
             'r1c1' => [
-                \json_decode(
+                DataCleaner::jsonDecode(
                     '{
                             "guid": "77d12147-c399-b50d-3b40-59dc74b18113",
                             "required": false,

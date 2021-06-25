@@ -4,6 +4,7 @@ namespace Test\Api\Api\Filter;
 
 use ApiTester;
 use ExEss\Cms\Doctrine\Type\FilterFieldType;
+use ExEss\Cms\Helper\DataCleaner;
 
 class ViewCest
 {
@@ -32,7 +33,7 @@ class ViewCest
 
             // Then
             $I->seeResponseIsDwpResponse(200);
-            $response = \json_decode($I->grabResponse());
+            $response = DataCleaner::jsonDecode($I->grabResponse(), false);
 
             $I->assertTrue(\property_exists($response, 'data'));
 

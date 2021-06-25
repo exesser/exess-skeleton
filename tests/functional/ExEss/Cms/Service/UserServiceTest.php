@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Doctrine\Type\Locale;
 use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\User;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Service\UserService;
 use Helper\Testcase\FunctionalTestCase;
 
@@ -42,7 +43,7 @@ class UserServiceTest extends FunctionalTestCase
             [
                 'preferredLanguage' => Locale::EN,
             ],
-            \json_decode(\json_encode($result), true)
+            DataCleaner::jsonDecode(\json_encode($result))
         );
     }
 }

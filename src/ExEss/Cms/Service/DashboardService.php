@@ -5,7 +5,6 @@ namespace ExEss\Cms\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Api\V8_Custom\Service\Security;
 use ExEss\Cms\CRUD\Config\CrudMetadata;
-use ExEss\Cms\DASH_Dashboard\DashboardCalcFunctions;
 use ExEss\Cms\Doctrine\Type\DashboardType;
 use ExEss\Cms\Doctrine\Type\GridType;
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
@@ -17,6 +16,7 @@ use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Validator;
 use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\MultiLevelTemplate\TextFunctionHandler;
 use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
 use ExEss\Cms\Servicemix\ExternalObjectHandler;
@@ -31,7 +31,6 @@ class DashboardService
     private TranslatorInterface $translator;
     private ActionService $actionService;
     private ExternalObjectHandler $externalObjectHandler;
-    private DashboardCalcFunctions $dashboardCalcFunctions;
     private ParserService $parserService;
     private Validator $validator;
     private TextFunctionHandler $textFunctionHandler;
@@ -43,7 +42,6 @@ class DashboardService
         GridService $gridService,
         TranslatorInterface $translator,
         ActionService $actionService,
-        DashboardCalcFunctions $dashboardCalcFunctions,
         ParserService $parserService,
         Validator $validator,
         TextFunctionHandler $textFunctionHandler,
@@ -54,7 +52,6 @@ class DashboardService
         $this->translator = $translator;
         $this->actionService = $actionService;
         $this->externalObjectHandler = $externalObjectHandler;
-        $this->dashboardCalcFunctions = $dashboardCalcFunctions;
         $this->parserService = $parserService;
         $this->validator = $validator;
         $this->textFunctionHandler = $textFunctionHandler;
@@ -231,9 +228,8 @@ class DashboardService
         if (!empty($params = $menuAction->getParams())) {
             $parserOptions = (new ExpressionParserOptions(new Model($arguments)))
                 ->setContext(ExpressionParserOptions::CONTEXT_JSON);
-            $params = \json_decode(
-                $this->parserService->parseListValue($parserOptions, \json_encode($params)),
-                true
+            $params = DataCleaner::jsonDecode(
+                $this->parserService->parseListValue($parserOptions, \json_encode($params))
             );
 
             /* check if the recordType of the dashboard is the same
@@ -318,7 +314,7 @@ class DashboardService
         $gridJson = $this->replaceDashboardProperties($gridJson, $dashboard, $arguments, $baseEntity);
         $gridJson = $this->gridService->replaceArguments($gridJson, $arguments);
 
-        $decodedGrid = \json_decode($gridJson, true, 512, \JSON_THROW_ON_ERROR);
+        $decodedGrid = DataCleaner::jsonDecode($gridJson);
         if (\is_array($decodedGrid)) {
             try {
                 $decodedGrid = $this->replacePanelKey($decodedGrid, $dashboard, $arguments, $baseEntity);
@@ -419,7 +415,7 @@ class DashboardService
         $panel = \json_encode($panel);
         $panel = $this->gridService->replaceArguments($panel, $arguments);
         $panel = $this->replaceDashboardProperties($panel, $dashboard, $arguments, $baseFatEntity);
-        $panel = \json_decode($panel, true);
+        $panel = DataCleaner::jsonDecode($panel);
 
         if (empty($panel['options']['recordId']) && empty($panel['options']['params']['recordId'])) {
             throw new \UnexpectedValueException("The defined grid panel $key has no recordId.");
@@ -451,8 +447,6 @@ class DashboardService
             $value = $property->getValue();
             if (empty($value)) {
                 $replaceVar = $value;
-            } elseif (\strpos($property->getName(), 'calc:') !== false && !empty($arguments['recordId'])) {
-                $replaceVar = $this->dashboardCalcFunctions->handleProperty($property, $arguments['recordId']);
             } elseif ($value === 'recordId' && !empty($arguments['recordId'])) {
                 $replaceVar = $arguments['recordId'];
             } elseif (\preg_match('/\%([^%.]*)\%/', $value) !== false) {
@@ -463,7 +457,7 @@ class DashboardService
 
             $propertyName = '%' . $property->getName() . '%';
             if (!empty($replaceVar)
-                && \in_array(\gettype(\json_decode($replaceVar)), ['array', 'object'], true)
+                && DataCleaner::isJson($replaceVar)
             ) {
                 $propertyName = '"' . $propertyName . '"';
             }

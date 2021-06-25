@@ -4,6 +4,7 @@ namespace Helper;
 
 use ExEss\Cms\Api\V8_Custom\Repository\AbstractRepository;
 use ExEss\Cms\Base\Response\BaseListResponse;
+use ExEss\Cms\Helper\DataCleaner;
 
 class TestRepository extends AbstractRepository
 {
@@ -18,7 +19,7 @@ class TestRepository extends AbstractRepository
     {
         $rows = [
             'list' => [
-                \json_decode(\json_encode([
+                DataCleaner::jsonDecode(\json_encode([
                     'id' => 12345678,
                     'agentBlock' => true,
                     'billingAccount' => 'billingAccount',
@@ -40,7 +41,7 @@ class TestRepository extends AbstractRepository
                     'dunningStatus' => 'blub',
                     'allowInPaymentPlan' => true,
                     'allowToReverseDunningCost' => true,
-                ])),
+                ]), false),
             ],
         ];
 

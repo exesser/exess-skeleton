@@ -1,6 +1,8 @@
 <?php
 namespace ExEss\Cms\FLW_Flows\Response;
 
+use ExEss\Cms\Helper\DataCleaner;
+
 class Model implements \JsonSerializable, \ArrayAccess, \Countable, \Iterator
 {
     /**
@@ -125,7 +127,7 @@ class Model implements \JsonSerializable, \ArrayAccess, \Countable, \Iterator
      */
     public function toArray(): array
     {
-        return \json_decode(\json_encode($this), true);
+        return DataCleaner::jsonDecode(\json_encode($this));
     }
 
     /**

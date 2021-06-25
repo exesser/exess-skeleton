@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Entity\SecurityGroup;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Helper\DataCleaner;
 
 class ModelConverter extends AbstractSaveHandler
 {
@@ -45,7 +46,7 @@ class ModelConverter extends AbstractSaveHandler
         foreach ($model as $key => $val) {
             $tempModule = $this->createModuleStructure($key, $model, $baseModule);
             //Remove the stdClasses since they cause the array_replace_recursive to malfunction
-            $tempModule = \json_decode(\json_encode($tempModule), true);
+            $tempModule = DataCleaner::jsonDecode(\json_encode($tempModule));
             // in case this is belongs on the baseModule (key already exists), put it there
             $firstKey = \key($tempModule);
             if (isset($modules[$baseModule][$firstKey])) {

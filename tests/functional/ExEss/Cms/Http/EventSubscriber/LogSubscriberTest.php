@@ -2,8 +2,8 @@
 
 namespace Test\Functional\ExEss\Cms\Http\EventSubscriber;
 
-use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
 use ExEss\Cms\Doctrine\Type\HttpMethod;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Http\EventSubscriber\LogSubscriber;
 use Mockery\MockInterface;
 use Nyholm\Psr7\Stream;

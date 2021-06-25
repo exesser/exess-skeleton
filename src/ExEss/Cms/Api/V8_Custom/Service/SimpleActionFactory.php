@@ -7,6 +7,7 @@ use ExEss\Cms\Entity\FlowAction;
 use ExEss\Cms\FLW_Flows\Action\Arguments;
 use ExEss\Cms\FLW_Flows\Action\Command;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Logger\Logger;
 use ExEss\Cms\Users\Service\GuidanceRecoveryService;
 
@@ -69,7 +70,7 @@ class SimpleActionFactory
                 $json = \str_replace('%' . $paramKey . '%', \str_replace('\\', '\\\\', $paramValue), $json);
             }
         }
-        $data = \json_decode($json);
+        $data = DataCleaner::jsonDecode($json, false);
         if (!$data) {
             return null;
         }

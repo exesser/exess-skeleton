@@ -6,6 +6,7 @@ use ExEss\Cms\Dashboard\Model\Grid;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\FlowStep;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Service\GridService;
 use Helper\Testcase\FunctionalTestCase;
 
@@ -43,7 +44,7 @@ class GridServiceTest extends FunctionalTestCase
 
         // assert
         $this->tester->assertInstanceOf(Grid::class, $grid);
-        $expectedModel = \json_decode(\file_get_contents(__DIR__ . "/resources/$expectedModelFile"), true);
+        $expectedModel = DataCleaner::jsonDecode(\file_get_contents(__DIR__ . "/resources/$expectedModelFile"));
         $this->tester->assertEquals(\json_encode($expectedModel), \json_encode($grid));
     }
 

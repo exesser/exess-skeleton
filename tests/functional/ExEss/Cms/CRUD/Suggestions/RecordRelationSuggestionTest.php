@@ -10,6 +10,7 @@ use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\SaveFlow;
+use ExEss\Cms\Helper\DataCleaner;
 use Helper\Testcase\FunctionalTestCase;
 
 class RecordRelationSuggestionTest extends FunctionalTestCase
@@ -42,7 +43,7 @@ class RecordRelationSuggestionTest extends FunctionalTestCase
 
         // assert
         $this->tester->assertEquals(
-            \json_decode(\file_get_contents(self::RESOURCE_FILE), true)[$module],
+            DataCleaner::jsonDecode(\file_get_contents(self::RESOURCE_FILE))[$module],
             $response->getModel()->getFieldValue(Dwp::RELATIONS_FIELD)->toArray()
         );
     }
@@ -73,7 +74,7 @@ class RecordRelationSuggestionTest extends FunctionalTestCase
     private function fixTestExpectedData(Response $response): void
     {
         $relations = $response->getModel()->getFieldValue(Dwp::RELATIONS_FIELD)->toArray();
-        $expectedData = \json_decode(\file_get_contents(self::RESOURCE_FILE), true);
+        $expectedData = DataCleaner::jsonDecode(\file_get_contents(self::RESOURCE_FILE));
         $expectedData[$response->getModel()->getFieldValue(Dwp::PREFIX . 'recordTypeOfRecordId')] = $relations;
 
         \file_put_contents(self::RESOURCE_FILE, \json_encode($expectedData, \JSON_PRETTY_PRINT));

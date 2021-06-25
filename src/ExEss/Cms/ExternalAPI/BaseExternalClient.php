@@ -5,6 +5,7 @@ namespace ExEss\Cms\ExternalAPI;
 use ExEss\Cms\Component\Client\Client;
 use ExEss\Cms\Component\Client\Request\GuzzleRequest;
 use ExEss\Cms\Doctrine\Type\HttpMethod;
+use ExEss\Cms\Helper\DataCleaner;
 
 abstract class BaseExternalClient
 {
@@ -34,6 +35,6 @@ abstract class BaseExternalClient
             )
         );
 
-        return \json_decode($response->getData()) ?? null;
+        return DataCleaner::jsonDecode($response->getData(), false);
     }
 }

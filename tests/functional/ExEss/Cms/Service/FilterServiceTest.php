@@ -9,6 +9,7 @@ use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\FilterField;
 use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Entity\User;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Service\FilterService;
 use Helper\Testcase\FunctionalTestCase;
 
@@ -180,7 +181,7 @@ class FilterServiceTest extends FunctionalTestCase
                     'fieldId2' => $this->fieldId2,
                 ]
             ),
-            \json_decode(\json_encode($filters), true)
+            DataCleaner::jsonDecode(\json_encode($filters))
         );
     }
 }

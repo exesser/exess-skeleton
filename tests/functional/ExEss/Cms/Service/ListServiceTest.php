@@ -14,6 +14,7 @@ use ExEss\Cms\Entity\ListTopAction;
 use ExEss\Cms\Entity\ListTopBar;
 use ExEss\Cms\Entity\Translation;
 use ExEss\Cms\Entity\User;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Http\Factory\JsonBodyFactory;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListResponse;
 use ExEss\Cms\Service\ListService;
@@ -275,7 +276,7 @@ class ListServiceTest extends FunctionalTestCase
         $response = $this->listService->getList($list, $this->body);
 
         // Then
-        $responsePagination = \json_decode(\json_encode($response->pagination), true);
+        $responsePagination = DataCleaner::jsonDecode(\json_encode($response->pagination));
         unset($responsePagination['total']);
         $this->tester->assertGreaterThan(1, $responsePagination['pages']);
         unset($responsePagination['pages']);

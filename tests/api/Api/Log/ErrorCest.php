@@ -3,6 +3,7 @@
 namespace Test\Api\Api\Log;
 
 use ApiTester;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Http\SuccessResponse;
 
 class ErrorCest
@@ -27,7 +28,7 @@ JSON;
         $I->getAnApiTokenFor('adminUser');
 
         // When
-        $I->sendPOST('/Api/log/error', \json_decode($this->body, true));
+        $I->sendPOST('/Api/log/error', DataCleaner::jsonDecode($this->body));
 
         // Then
         $I->seeResponseIsDwpResponse(200);

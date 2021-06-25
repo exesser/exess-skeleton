@@ -16,10 +16,10 @@ use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Entity\ListSortingOption;
 use ExEss\Cms\Acl\AclService;
 use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
-use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
 use ExEss\Cms\Api\V8_Custom\Service\Security;
 use ExEss\Cms\Entity\SecurityGroup;
 use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListHeader;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListResponse;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRow;
@@ -445,8 +445,8 @@ class ListService
                         $resolverOptions
                     );
 
-                    if (\is_string($params)) {
-                        $params = \json_decode($params, true, 512, \JSON_THROW_ON_ERROR);
+                    if (DataCleaner::isJson($params)) {
+                        $params = DataCleaner::jsonDecode($params);
                     }
 
                     if (!empty($params) && isset($params['visible']) && !$params['visible']) {
@@ -525,7 +525,7 @@ class ListService
                                     'command' => 'navigate',
                                     'arguments' => [
                                         'linkTo' => \str_replace('_', '-', $cell->getLinkto()),
-                                        'params' => \json_decode($params[$optionKey]),
+                                        'params' => DataCleaner::jsonDecode($params[$optionKey], false),
                                     ],
                                 ];
                             }
@@ -684,7 +684,7 @@ class ListService
             if (isset($baseEntity->parsedData)) {
                 $raw = $baseEntity->parsedData;
             } elseif ($baseEntity instanceof \JsonSerializable || $baseEntity instanceof \stdClass) {
-                $raw = \json_decode(\json_encode($baseEntity));
+                $raw = DataCleaner::jsonDecode(\json_encode($baseEntity), false);
             }
             $dynamicListRow->rowData = $raw;
             $response->rows[] = $dynamicListRow;
@@ -734,7 +734,7 @@ class ListService
                             ->setContext(ExpressionParserOptions::CONTEXT_JSON),
                         \json_encode($params)
                     );
-                    $params = \json_decode($params, true, 512, \JSON_THROW_ON_ERROR);
+                    $params = DataCleaner::jsonDecode($params);
 
                     if (isset($params['recordId'])) {
                         $params['recordId'] = $this->parserService->parseListValue(

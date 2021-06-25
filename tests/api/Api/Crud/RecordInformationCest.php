@@ -3,6 +3,7 @@
 namespace Test\Api\Api\Crud;
 
 use ApiTester;
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Http\SuccessResponse;
 
 class RecordInformationCest
@@ -17,7 +18,7 @@ class RecordInformationCest
 
         // Then
         $I->seeResponseIsDwpResponse(200);
-        $response = \json_decode($I->grabResponse(), true);
+        $response = DataCleaner::jsonDecode($I->grabResponse());
 
         // we want this here commented since it's used when changing the structure,
         // Bogdan can explain this to you in detail
@@ -36,7 +37,7 @@ class RecordInformationCest
         $files = \glob(__DIR__ . '/resources/records_information/*.json');
 
         foreach ($files as $file) {
-            $recordData = \json_decode(\file_get_contents($file), true);
+            $recordData = DataCleaner::jsonDecode(\file_get_contents($file));
             $response['data'][$recordData['recordName']] = $recordData;
         }
 

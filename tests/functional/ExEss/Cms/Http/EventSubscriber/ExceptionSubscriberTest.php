@@ -2,6 +2,7 @@
 
 namespace Test\Functional\ExEss\Cms\Http\EventSubscriber;
 
+use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Http\ErrorResponse;
 use ExEss\Cms\Http\EventSubscriber\ExceptionSubscriber;
 use ExEss\Cms\Exception\NotAllowedException;
@@ -31,7 +32,7 @@ class ExceptionSubscriberTest extends FunctionalTestCase
         $response = $this->exceptionSubscriber->transformToResponse($e);
 
         // Then
-        $body = \json_decode((string) $response->getContent(), true);
+        $body = DataCleaner::jsonDecode((string) $response->getContent());
 
         // Check status
         $this->tester->assertEquals($status, $response->getStatusCode(), "Response should have $status status");

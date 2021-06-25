@@ -220,9 +220,6 @@
     "hamcrest/hamcrest-php": {
         "version": "v2.0.1"
     },
-    "jdorn/sql-formatter": {
-        "version": "v1.2.17"
-    },
     "justinrainbow/json-schema": {
         "version": "5.2.9"
     },

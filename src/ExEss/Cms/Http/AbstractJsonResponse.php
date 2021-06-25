@@ -3,6 +3,7 @@
 namespace ExEss\Cms\Http;
 
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
+use ExEss\Cms\Helper\DataCleaner;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class AbstractJsonResponse extends JsonResponse
@@ -12,7 +13,7 @@ class AbstractJsonResponse extends JsonResponse
      */
     public function addFlashMessages(array $message): void
     {
-        $data = \json_decode($this->data, true);
+        $data = DataCleaner::jsonDecode($this->data);
         $data['flashMessages'] = $message;
 
         $this->setData($data);

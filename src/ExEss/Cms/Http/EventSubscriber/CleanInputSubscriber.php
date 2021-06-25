@@ -2,7 +2,7 @@
 
 namespace ExEss\Cms\Http\EventSubscriber;
 
-use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
+use ExEss\Cms\Helper\DataCleaner;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;

@@ -7,6 +7,7 @@ use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Suggestions\AutoExpandSelectWithSearch;
+use ExEss\Cms\Helper\DataCleaner;
 use Helper\Testcase\FunctionalTestCase;
 
 class AutoExpandSelectWithSearchTest extends FunctionalTestCase
@@ -61,7 +62,7 @@ class AutoExpandSelectWithSearchTest extends FunctionalTestCase
 
             //assert
             $this->tester->assertEquals(
-                \json_decode(\json_encode($data->expectedOnModel), true),
+                DataCleaner::jsonDecode(\json_encode($data->expectedOnModel)),
                 $response->getModel()->toArray()
             );
         }

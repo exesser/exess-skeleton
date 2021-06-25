@@ -2,6 +2,7 @@
 namespace Helper;
 
 use Codeception\TestInterface;
+use ExEss\Cms\Helper\DataCleaner;
 use Helper\Module\Db;
 
 /**
@@ -78,8 +79,7 @@ class FixturesHelper extends \Codeception\Module
 
     private function haveJsonFixtures(string $fixtures): void
     {
-        $data = \json_decode($fixtures, true);
-        $this->haveArrayFixtures($data);
+        $this->haveArrayFixtures(DataCleaner::jsonDecode($fixtures));
     }
 
     /**

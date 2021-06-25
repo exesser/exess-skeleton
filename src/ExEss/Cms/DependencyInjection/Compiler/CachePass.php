@@ -2,9 +2,9 @@
 
 namespace ExEss\Cms\DependencyInjection\Compiler;
 
-use ExEss\Cms\Api\V8_Custom\Service\DataCleaner;
 use ExEss\Cms\Cache\Cache;
 use ExEss\Cms\Cache\CacheAdapterFactory;
+use ExEss\Cms\Helper\DataCleaner;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
