@@ -9,7 +9,7 @@ use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Exception\NotFoundException;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRowBarButton;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Servicemix\ExternalObjectHandler;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -21,7 +21,7 @@ class ListRowBarService
 
     private TranslatorInterface $translator;
 
-    private ListHelperFunctions $listHelper;
+    private ParserService $parserService;
 
     private EntityManagerInterface $em;
 
@@ -30,12 +30,12 @@ class ListRowBarService
         ExternalObjectHandler $externalObjectHandler,
         ActionService $actionService,
         TranslatorInterface $translator,
-        ListHelperFunctions $listHelper
+        ParserService $parserService
     ) {
         $this->externalObjectHandler = $externalObjectHandler;
         $this->actionService = $actionService;
         $this->translator = $translator;
-        $this->listHelper = $listHelper;
+        $this->parserService = $parserService;
         $this->em = $em;
     }
 
@@ -116,7 +116,7 @@ class ListRowBarService
                         );
 
                         if (isset($actionParams['recordId'])) {
-                            $actionParams['recordId'] = $this->listHelper->parseListValue(
+                            $actionParams['recordId'] = $this->parserService->parseListValue(
                                 $baseObject,
                                 $actionParams['recordId'],
                                 $actionParams['recordId']

@@ -7,20 +7,20 @@ use ExEss\Cms\FLW_Flows\Field;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
 use ExEss\Cms\FLW_Flows\Response;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
 
 class OverrideDefaultHandler extends AbstractSuggestionHandler
 {
     protected Field $field;
 
-    protected ListHelperFunctions $listHelperFunctions;
+    protected ParserService $parserService;
 
     public function __construct(
         Field $field,
-        ListHelperFunctions $listHelperFunctions
+        ParserService $parserService
     ) {
         $this->field = $field;
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
     }
 
     public static function shouldHandle(Response $response, FlowAction $action, Flow $flow): bool
@@ -49,7 +49,7 @@ class OverrideDefaultHandler extends AbstractSuggestionHandler
                         }
                         $model->offsetSet(
                             $field->id,
-                            $this->listHelperFunctions->parseListValue(
+                            $this->parserService->parseListValue(
                                 $model,
                                 $field->overwrite_value,
                                 null

@@ -10,7 +10,7 @@ use ExEss\Cms\Api\V8_Custom\Events\FlowEvents;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
 use ExEss\Cms\MultiLevelTemplate\TextFunctionHandler;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -20,19 +20,19 @@ class ValueExpressionsSubscriber implements EventSubscriberInterface
 
     private FlashMessageContainer $flashMessageContainer;
 
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
 
     private SelectWithSearchService $selectWithSearchService;
 
     public function __construct(
         TextFunctionHandler $textFunctionHandler,
         FlashMessageContainer $flashMessageContainer,
-        ListHelperFunctions $listHelperFunctions,
+        ParserService $parserService,
         SelectWithSearchService $selectWithSearchService
     ) {
         $this->textFunctionHandler = $textFunctionHandler;
         $this->flashMessageContainer = $flashMessageContainer;
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->selectWithSearchService = $selectWithSearchService;
     }
 
@@ -176,7 +176,7 @@ class ValueExpressionsSubscriber implements EventSubscriberInterface
             }
         }
 
-        return $this->listHelperFunctions->parseListValue(
+        return $this->parserService->parseListValue(
             $baseEntity ?? $model,
             $formulaString
         );
@@ -220,7 +220,7 @@ class ValueExpressionsSubscriber implements EventSubscriberInterface
         $originalValue = $value;
         foreach ($foundItems as $item) {
             $value = $originalValue;
-            $value = $this->listHelperFunctions->parseListValue($item, $value);
+            $value = $this->parserService->parseListValue($item, $value);
             $totalValue .= $value;
         }
 

@@ -4,7 +4,7 @@ namespace ExEss\Cms\Security;
 
 use ExEss\Cms\Api\V8_Custom\Events\AfterLoginEvent;
 use ExEss\Cms\Api\V8_Custom\Events\UserEvents;
-use ExEss\Cms\Api\V8_Custom\Service\User\RefreshTokenService;
+use ExEss\Cms\Api\V8_Custom\Service\User\TokenService;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,11 +13,10 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerI
 
 class JsonLoginAuthenticator implements AuthenticationSuccessHandlerInterface
 {
-    private RefreshTokenService $tokenService;
-
+    private TokenService $tokenService;
     private EventDispatcher $dispatcher;
 
-    public function __construct(RefreshTokenService $tokenService, EventDispatcher $dispatcher)
+    public function __construct(TokenService $tokenService, EventDispatcher $dispatcher)
     {
         $this->tokenService = $tokenService;
         $this->dispatcher = $dispatcher;

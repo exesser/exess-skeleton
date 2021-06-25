@@ -22,7 +22,7 @@ services:
     arguments:
       - '@ExEss\Cms\Servicemix\ExternalObjectHandler'
       - '@ExEss\Cms\Api\V8_Custom\Repository\ListHandler'
-      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
+      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
 
   # Crud related repositories
   ExEss\Cms\CRUD\Handlers\CrudAllBeansRepository:

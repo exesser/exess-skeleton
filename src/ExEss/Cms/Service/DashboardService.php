@@ -16,9 +16,9 @@ use ExEss\Cms\Entity\GridPanel;
 use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Validator;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
 use ExEss\Cms\MultiLevelTemplate\TextFunctionHandler;
-use ExEss\Cms\Parser\ExpressionParserOptions;
+use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
 use ExEss\Cms\Servicemix\ExternalObjectHandler;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -32,7 +32,7 @@ class DashboardService
     private ActionService $actionService;
     private ExternalObjectHandler $externalObjectHandler;
     private DashboardCalcFunctions $dashboardCalcFunctions;
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
     private Validator $validator;
     private TextFunctionHandler $textFunctionHandler;
     private Security $security;
@@ -44,7 +44,7 @@ class DashboardService
         TranslatorInterface $translator,
         ActionService $actionService,
         DashboardCalcFunctions $dashboardCalcFunctions,
-        ListHelperFunctions $listHelperFunctions,
+        ParserService $parserService,
         Validator $validator,
         TextFunctionHandler $textFunctionHandler,
         Security $security,
@@ -55,7 +55,7 @@ class DashboardService
         $this->actionService = $actionService;
         $this->externalObjectHandler = $externalObjectHandler;
         $this->dashboardCalcFunctions = $dashboardCalcFunctions;
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->validator = $validator;
         $this->textFunctionHandler = $textFunctionHandler;
         $this->security = $security;
@@ -232,7 +232,7 @@ class DashboardService
             $parserOptions = (new ExpressionParserOptions(new Model($arguments)))
                 ->setContext(ExpressionParserOptions::CONTEXT_JSON);
             $params = \json_decode(
-                $this->listHelperFunctions->parseListValue($parserOptions, \json_encode($params)),
+                $this->parserService->parseListValue($parserOptions, \json_encode($params)),
                 true
             );
 
@@ -456,7 +456,7 @@ class DashboardService
             } elseif ($value === 'recordId' && !empty($arguments['recordId'])) {
                 $replaceVar = $arguments['recordId'];
             } elseif (\preg_match('/\%([^%.]*)\%/', $value) !== false) {
-                $replaceVar = $this->listHelperFunctions->parseListValue($baseEntity, $value, null);
+                $replaceVar = $this->parserService->parseListValue($baseEntity, $value, null);
             } else {
                 $replaceVar = $value;
             }

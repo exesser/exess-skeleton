@@ -7,7 +7,7 @@ use ExEss\Cms\Entity\DashboardMenuAction;
 use ExEss\Cms\Entity\DashboardMenuActionGroup;
 use ExEss\Cms\Entity\ListRowAction;
 use ExEss\Cms\Entity\ListTopAction;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Logger\Logger;
 use ExEss\Cms\Validators\Exception\ConstraintNotFoundException;
 use ExEss\Cms\Validators\Factory\ConstraintFactory;
@@ -18,7 +18,7 @@ class ActionService
     private const CONDITION_ENABLED = 'enableConditions';
     private const CONDITION_HIDDEN = 'hideConditions';
 
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
 
     private ValidatorInterface $validatorInterface;
 
@@ -30,12 +30,12 @@ class ActionService
 
     public function __construct(
         EntityManagerInterface $em,
-        ListHelperFunctions $listHelperFunctions,
+        ParserService $parserService,
         ValidatorInterface $validatorInterface,
         ConstraintFactory $constraintFactory,
         Logger $logger
     ) {
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->validatorInterface = $validatorInterface;
         $this->logger = $logger;
         $this->constraintFactory = $constraintFactory;
@@ -147,7 +147,7 @@ class ActionService
             }
         }
 
-        $fieldValue = $this->listHelperFunctions->parseListValue($entity, $condition['field'], null);
+        $fieldValue = $this->parserService->parseListValue($entity, $condition['field'], null);
         $fieldValue = $this->checkForDateValue($fieldValue);
 
         if ($fieldValue === null) {
@@ -177,7 +177,7 @@ class ActionService
         }
 
         return $this->checkForDateValue(
-            $this->listHelperFunctions->parseListValue($entity, $paramValue, null)
+            $this->parserService->parseListValue($entity, $paramValue, null)
         );
     }
 

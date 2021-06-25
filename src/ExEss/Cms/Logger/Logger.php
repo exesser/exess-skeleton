@@ -17,8 +17,6 @@ class Logger implements LoggerInterface
     public const CHANNEL_AUTHENTICATION = 'authentication';
     public const CHANNEL_REQUEST = 'request';
 
-    public const BUSINESS = ['business' => 1];
-
     private LoggerBridge $logger;
 
     private static array $loggers = [];

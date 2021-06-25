@@ -2,7 +2,7 @@
 
 namespace ExEss\Cms\Controller\Security;
 
-use ExEss\Cms\Api\V8_Custom\Service\User\RefreshTokenService;
+use ExEss\Cms\Api\V8_Custom\Service\User\TokenService;
 use ExEss\Cms\Exception\NotAuthenticatedException;
 use ExEss\Cms\Http\SuccessResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,11 +10,10 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class LoginController
 {
-    private RefreshTokenService $tokenService;
-
+    private TokenService $tokenService;
     private TokenStorageInterface $tokenStorage;
 
-    public function __construct(RefreshTokenService $tokenService, TokenStorageInterface $tokenStorage)
+    public function __construct(TokenService $tokenService, TokenStorageInterface $tokenStorage)
     {
         $this->tokenService = $tokenService;
         $this->tokenStorage = $tokenStorage;

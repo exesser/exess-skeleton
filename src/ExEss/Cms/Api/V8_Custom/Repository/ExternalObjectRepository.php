@@ -1,8 +1,8 @@
 <?php
 namespace ExEss\Cms\Api\V8_Custom\Repository;
 
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
-use ExEss\Cms\Parser\PathResolverOptions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Cms\Component\ExpressionParser\Parser\PathResolverOptions;
 use ExEss\Cms\Servicemix\ExternalObjectHandler;
 
 class ExternalObjectRepository
@@ -11,16 +11,16 @@ class ExternalObjectRepository
 
     private ListHandler $listHandler;
 
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
 
     public function __construct(
         ExternalObjectHandler $externalObjectHandler,
         ListHandler $listHandler,
-        ListHelperFunctions $listHelperFunctions
+        ParserService $parserService
     ) {
         $this->externalObjectHandler = $externalObjectHandler;
         $this->listHandler = $listHandler;
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
     }
 
     /**
@@ -47,10 +47,10 @@ class ExternalObjectRepository
                     if (!isset($postedData[$key])) {
                         $postedData[$key] = [];
                     }
-                    $postedData[$key][] = $this->listHelperFunctions->parseListValue($oneBean, '%'.$value.'%');
+                    $postedData[$key][] = $this->parserService->parseListValue($oneBean, '%'.$value.'%');
                 }
             }
-            $postedData['recordId'] = $this->listHelperFunctions->parseListValue($linkedEntity, '%id%');
+            $postedData['recordId'] = $this->parserService->parseListValue($linkedEntity, '%id%');
         } else {
             $postedData = [];
             foreach ($arguments as $key => $value) {
@@ -59,7 +59,7 @@ class ExternalObjectRepository
                 } elseif (\trim($value, '"') !== $value) {
                     $postedData[$key] = \trim($value, '"');
                 } else {
-                    $postedData[$key] = $this->listHelperFunctions->parseListValue($linkedEntity, '%'.$value.'%');
+                    $postedData[$key] = $this->parserService->parseListValue($linkedEntity, '%'.$value.'%');
                 }
             }
         }

@@ -19,8 +19,8 @@ use ExEss\Cms\FLW_Flows\Field;
 use ExEss\Cms\FLW_Flows\Response\Form;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\Response\ValidationResult;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
-use ExEss\Cms\Parser\ExpressionParserOptions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class FormBuilder
@@ -31,7 +31,7 @@ class FormBuilder
 
     private SelectWithSearchService $selectWithSearchService;
 
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
 
     private Security $security;
 
@@ -42,7 +42,7 @@ class FormBuilder
     public function __construct(
         EntityManagerInterface $em,
         EnumFieldBuilder $enumFieldBuilder,
-        ListHelperFunctions $listHelperFunctions,
+        ParserService $parserService,
         SelectWithSearchService $selectWithSearchService,
         TranslatorInterface $translator,
         Security $security,
@@ -51,7 +51,7 @@ class FormBuilder
         $this->translator = $translator;
         $this->field = $field;
         $this->selectWithSearchService = $selectWithSearchService;
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->security = $security;
         $this->enumFieldBuilder = $enumFieldBuilder;
         $this->em = $em;
@@ -174,7 +174,7 @@ class FormBuilder
                 $field->default = $field->overwrite_value;
 
                 if (!\is_null($baseEntity) && !empty($field->default) && \is_string($field->default)) {
-                    $field->default = $this->listHelperFunctions->parseListValue(
+                    $field->default = $this->parserService->parseListValue(
                         $baseEntity,
                         $field->default,
                         $field->default
@@ -262,7 +262,7 @@ class FormBuilder
                 $parserOptions = (new ExpressionParserOptions($params['recordBean']))
                     ->setContext($field->type)
                 ;
-                $field->default = $this->listHelperFunctions->parseListValue(
+                $field->default = $this->parserService->parseListValue(
                     $parserOptions,
                     '%' . $subKey . '%',
                     $field->default
@@ -275,7 +275,7 @@ class FormBuilder
                     '',
                     $field->valueExpression
                 );
-                $field->default = $this->listHelperFunctions->parseListValue(
+                $field->default = $this->parserService->parseListValue(
                     $params['recordBean'],
                     '%' . $subKey . '%',
                     $field->default
@@ -288,7 +288,7 @@ class FormBuilder
                 && \is_string($field->default)
                 && $field->default !== '%recordId%'
             ) {
-                $field->default = $this->listHelperFunctions->parseListValue(
+                $field->default = $this->parserService->parseListValue(
                     $baseEntity,
                     $field->default,
                     $field->default
@@ -337,7 +337,7 @@ class FormBuilder
                                 $field->type === FlowFieldType::FIELD_TYPE_LABEL_AND_TEXT
                             )
                         ;
-                        $nestedField->default = $this->listHelperFunctions->parseListValue(
+                        $nestedField->default = $this->parserService->parseListValue(
                             $parserOptions,
                             '%' . $field->id . '|' . $nestedField->id . '%'
                         );
@@ -348,7 +348,7 @@ class FormBuilder
                     ->setContext($field->type)
                 ;
                 $field->moduleField = $field->moduleField ?? null;
-                $dbValue = $this->listHelperFunctions->parseListValue(
+                $dbValue = $this->parserService->parseListValue(
                     $parserOptions,
                     $field->moduleField,
                     $field->default
@@ -362,7 +362,7 @@ class FormBuilder
                         ->setReplaceEnumValueWithLabel(true)
                         ->setContext($field->type)
                     ;
-                    $dbValue = $this->listHelperFunctions->parseListValue(
+                    $dbValue = $this->parserService->parseListValue(
                         $parserOptions,
                         '%' . $field->id . '%',
                         $field->default
@@ -382,7 +382,7 @@ class FormBuilder
                         if (!\is_string($actionParam) || \substr($field->id, 0, 4) === Dwp::PREFIX) {
                             continue;
                         }
-                        $field->action['params'][$actionParamKey] = $this->listHelperFunctions->parseListValue(
+                        $field->action['params'][$actionParamKey] = $this->parserService->parseListValue(
                             $baseEntity,
                             $actionParam,
                             $actionParam

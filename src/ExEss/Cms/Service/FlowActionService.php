@@ -9,24 +9,24 @@ use ExEss\Cms\FLW_Flows\Action\BackendCommandExecutor;
 use ExEss\Cms\FLW_Flows\Action\Command;
 use ExEss\Cms\FLW_Flows\ActionFactory;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
 
 class FlowActionService
 {
     private BackendCommandExecutor $backendCommandExecutor;
     private ActionFactory $actionFactory;
-    private ListHelperFunctions $listHelper;
+    private ParserService $parserService;
     private EntityManagerInterface $em;
 
     public function __construct(
         ActionFactory $actionFactory,
         BackendCommandExecutor $backendCommandExecutor,
         EntityManagerInterface $em,
-        ListHelperFunctions $listHelperFunctions
+        ParserService $parserService
     ) {
         $this->backendCommandExecutor = $backendCommandExecutor;
         $this->actionFactory = $actionFactory;
-        $this->listHelper = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->em = $em;
     }
 
@@ -53,7 +53,7 @@ class FlowActionService
         ) {
             foreach ($parsedRecordIds as &$recordId) {
                 $baseEntity = $this->em->getRepository($params['recordType'])->find($recordId);
-                $recordId = $this->listHelper->parseListValue($baseEntity, $params['fetchRecordId']);
+                $recordId = $this->parserService->parseListValue($baseEntity, $params['fetchRecordId']);
             }
         }
 

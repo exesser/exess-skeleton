@@ -26,10 +26,10 @@ use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRow;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRowCell;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListTopBarButton;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListTopBarSorting;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
-use ExEss\Cms\Parser\ExpressionGroup;
-use ExEss\Cms\Parser\ExpressionParserOptions;
-use ExEss\Cms\Parser\PathResolverOptions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionGroup;
+use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
+use ExEss\Cms\Component\ExpressionParser\Parser\PathResolverOptions;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ListService
@@ -37,7 +37,7 @@ class ListService
     private const DEFAULT_PAGE_SIZE = 10;
     private const MAX_PER_PAGE = 100;
 
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
 
     private ListHandler $listHandler;
 
@@ -54,7 +54,7 @@ class ListService
     private FilterService $filterService;
 
     public function __construct(
-        ListHelperFunctions $listHelperFunctions,
+        ParserService $parserService,
         ListHandler $listHandler,
         ActionService $actionService,
         TranslatorInterface $translator,
@@ -63,7 +63,7 @@ class ListService
         EntityManagerInterface $em,
         FilterService $filterService
     ) {
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->listHandler = $listHandler;
         $this->actionService = $actionService;
         $this->translator = $translator;
@@ -361,7 +361,7 @@ class ListService
         OrderBy $sortBy,
         ?string $combinedListKey
     ): void {
-        $listHelper = $this->listHelperFunctions;
+        $listHelper = $this->parserService;
 
         $resolverOptions = (new PathResolverOptions)
             ->setExternalLinks(
@@ -370,7 +370,7 @@ class ListService
             ->setAllBeans($allBaseEntities);
 
         if (!$list->isExternal()) {
-            $allBaseEntities = $this->listHelperFunctions->parseListQuery(
+            $allBaseEntities = $this->parserService->parseListQuery(
                 $metadata,
                 ExpressionGroup::createForCellsAndTopActions(
                     $list->getCellLinks(),
@@ -729,7 +729,7 @@ class ListService
                 $dynamicListTopBarButton->enabled = $this->actionService->isEnabled($action, $baseEntity);
 
                 if (!empty($params = $action->getParams())) {
-                    $params = $this->listHelperFunctions->parseListValue(
+                    $params = $this->parserService->parseListValue(
                         (new ExpressionParserOptions(new Model($listParams->getArguments())))
                             ->setContext(ExpressionParserOptions::CONTEXT_JSON),
                         \json_encode($params)
@@ -737,7 +737,7 @@ class ListService
                     $params = \json_decode($params, true, 512, \JSON_THROW_ON_ERROR);
 
                     if (isset($params['recordId'])) {
-                        $params['recordId'] = $this->listHelperFunctions->parseListValue(
+                        $params['recordId'] = $this->parserService->parseListValue(
                             $baseEntity,
                             $params['recordId'],
                             $params['recordId']

@@ -10,7 +10,7 @@ use ExEss\Cms\Dashboard\Model\Grid;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\FLW_Flows\SaveFlow;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Servicemix\ExternalObjectHandler;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -18,7 +18,7 @@ class RepeatableRowService
 {
     private TranslatorInterface $translator;
 
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
 
     private ExternalObjectHandler $externalObjectHandler;
 
@@ -27,11 +27,11 @@ class RepeatableRowService
     public function __construct(
         EntityManager $em,
         TranslatorInterface $translator,
-        ListHelperFunctions $listHelperFunctions,
+        ParserService $parserService,
         ExternalObjectHandler $externalObjectHandler
     ) {
         $this->translator = $translator;
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->externalObjectHandler = $externalObjectHandler;
         $this->em = $em;
     }
@@ -135,7 +135,7 @@ class RepeatableRowService
             $repeatsByParams = [];
             foreach ($childModelParams as $paramKey => &$param) {
                 if (\strpos($param, '%repeatsBy|') === 0) {
-                    $param = $this->listHelperFunctions->parseListValue(
+                    $param = $this->parserService->parseListValue(
                         $repeatsByBean,
                         \str_replace('%repeatsBy|', '%', $param)
                     );
@@ -173,7 +173,7 @@ class RepeatableRowService
                             ' AND ',
                             $fieldsWithModelId
                         ) . '}|id%';
-                        $recordId = $this->listHelperFunctions->parseListValue(
+                        $recordId = $this->parserService->parseListValue(
                             $baseObject,
                             $magicWhere
                         );

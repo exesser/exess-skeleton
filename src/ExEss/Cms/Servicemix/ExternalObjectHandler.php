@@ -7,7 +7,6 @@ use ExEss\Cms\Api\V8_Custom\Repository\RepositoryInterface;
 use ExEss\Cms\Base\Response\BaseResponse;
 use ExEss\Cms\Exception\NotFoundException;
 use ExEss\Cms\Logger\Logger;
-use ExEss\Cms\Logger\Message\BusinessMessage;
 
 class ExternalObjectHandler
 {
@@ -44,8 +43,7 @@ class ExternalObjectHandler
 
             return $response;
         } catch (\Throwable $e) {
-            $this->logger->critical(new BusinessMessage($e->getMessage()));
-            $this->logger->critical($e->getTraceAsString());
+            $this->logger->critical($e->getMessage());
             $this->flashMessageContainer->addFlashMessage(
                 new FlashMessage($e->getMessage())
             );
