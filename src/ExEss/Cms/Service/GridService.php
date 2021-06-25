@@ -10,8 +10,8 @@ use ExEss\Cms\Entity\FlowStep;
 use ExEss\Cms\Entity\GridTemplate;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\Grid\RepeatableRowService;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
-use ExEss\Cms\Parser\ExpressionParserOptions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
 
 class GridService
 {
@@ -26,7 +26,7 @@ class GridService
         'confirmLabel',
     ];
 
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
 
     private Security $security;
 
@@ -36,11 +36,11 @@ class GridService
 
     public function __construct(
         EntityManagerInterface $em,
-        ListHelperFunctions $listHelperFunctions,
+        ParserService $parserService,
         Security $security,
         RepeatableRowService $repeatableRowService
     ) {
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->security = $security;
         $this->repeatableRowService = $repeatableRowService;
         $this->em = $em;
@@ -104,7 +104,7 @@ class GridService
     {
         $json = \str_replace([self::DWP_EXP_START, self::DWP_EXP_END], ['DWP_EXP_START', 'DWP_EXP_END'], $json);
 
-        $json = $this->listHelperFunctions->parseListValue(
+        $json = $this->parserService->parseListValue(
             (new ExpressionParserOptions(new Model($arguments)))->setContext(ExpressionParserOptions::CONTEXT_JSON),
             $json
         );
@@ -219,7 +219,7 @@ class GridService
         foreach ($flowStep->getProperties() as $property) {
             $value = $property->getValue();
             if (isset($baseObject)) {
-                $value = $this->listHelperFunctions->parseListValue($baseObject, $value, null);
+                $value = $this->parserService->parseListValue($baseObject, $value, null);
             }
             $json = \str_replace(
                 '%' . $property->getName() . '%',

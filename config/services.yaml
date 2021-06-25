@@ -3,10 +3,6 @@ services:
     autowire: true
     autoconfigure: true
 
-  ExEss\Cms\DependencyInjection\ServicesResetter:
-    arguments:
-      - !tagged_iterator crm.reset
-
   ExEss\Cms\Controller\:
     public: true
     autowire: true

@@ -8,17 +8,15 @@ use stdClass;
 class TokenService
 {
     public const JWT_ALG = 'HS512';
-
     public int $timeout;
-
-    public string $uniqueKey;
+    public string $secret;
 
     public function __construct(
         int $timeout,
-        string $uniqueKey
+        string $secret
     ) {
         $this->timeout = $timeout;
-        $this->uniqueKey = $uniqueKey;
+        $this->secret = $secret;
     }
 
     public function generateToken(string $userId): string
@@ -28,13 +26,13 @@ class TokenService
             'exp' => \time() + $this->timeout,
         ];
 
-        return JWT::encode($token, $this->uniqueKey, self::JWT_ALG);
+        return JWT::encode($token, $this->secret, self::JWT_ALG);
     }
 
     public function decodeToken(string $jwt): ?stdClass
     {
         try {
-            return JWT::decode($jwt, $this->uniqueKey, \array_keys(JWT::$supported_algs));
+            return JWT::decode($jwt, $this->secret, \array_keys(JWT::$supported_algs));
         } catch (\Exception $exception) {
             return null;
         }

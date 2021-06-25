@@ -8,20 +8,20 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
 use ExEss\Cms\Entity\SelectWithSearch;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
 
 class SelectWithSearchService
 {
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
     private ListHandler $listHandler;
     private EntityManagerInterface $em;
 
     public function __construct(
         EntityManagerInterface $em,
-        ListHelperFunctions $listHelperFunctions,
+        ParserService $parserService,
         ListHandler $listHandler
     ) {
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->listHandler = $listHandler;
         $this->em = $em;
     }
@@ -170,7 +170,7 @@ class SelectWithSearchService
 
         if (!empty($fixedFilters = $selectWithSearch->getFilters())) {
             if ($model instanceof Model) {
-                $fixedFilters = $this->listHelperFunctions->parseListValue($model, $fixedFilters);
+                $fixedFilters = $this->parserService->parseListValue($model, $fixedFilters);
             }
 
             $parts = \explode(' WHERE ', $fixedFilters);
@@ -233,8 +233,8 @@ class SelectWithSearchService
         $items = [];
         foreach ($listItems as $item) {
             $items[] = [
-                'key' => $this->listHelperFunctions->parseListValue($item, $key, null),
-                'label' => $this->listHelperFunctions->parseListValue($item, $label, null)
+                'key' => $this->parserService->parseListValue($item, $key, null),
+                'label' => $this->parserService->parseListValue($item, $label, null)
             ];
         }
 

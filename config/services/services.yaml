@@ -50,7 +50,7 @@ services:
       - '@Symfony\Component\Validator\Validator\ValidatorInterface'
       - '@ExEss\Cms\Validators\Factory\ConstraintFactory'
       - '@ExEss\Cms\Logger\Logger'
-      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
+      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
       - '@Symfony\Component\Translation\Translator'
       - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
 
@@ -68,7 +68,7 @@ services:
     arguments:
       - '%config_cache%'
       - '@=service(constant("ExEss\\Cms\\Cache\\Cache::CONFIG"))'
-      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
+      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
 
   ExEss\Cms\Users\Service\GuidanceRecoveryService:
@@ -91,67 +91,6 @@ services:
       - '%env_url%'
       - '%kernel.cache_dir%/htmlcleaner'
 
-  ExEss\Cms\Parser\Translator\FatEntityTranslator:
-    arguments:
-      - '@service_container'
-
-  ExEss\Cms\Parser\Translator\QueryTranslator:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Acl\AclService'
-
-  ExEss\Cms\Parser\PathResolver:
-    arguments:
-      - '@ExEss\Cms\Parser\PathCompiler'
-      -
-        ExEss\Cms\Parser\Translator\FatEntityTranslator: '@ExEss\Cms\Parser\Translator\FatEntityTranslator'
-        ExEss\Cms\Parser\Translator\QueryTranslator: '@ExEss\Cms\Parser\Translator\QueryTranslator'
-
-  ExEss\Cms\Parser\ExpressionGroupParser:
-    arguments:
-      - '@ExEss\Cms\Parser\ExpressionParser'
-
-  ExEss\Cms\Parser\ExpressionParser:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Parser\PathResolver'
-
-  ExEss\Cms\Parser\PathCompiler:
-    arguments:
-      - '@=service(constant("ExEss\\Cms\\Cache\\Cache::COMPILER_PATHS"))'
-      - '@ExEss\Cms\Parser\Compiler\ExternalObjectCompiler'
-      - '@ExEss\Cms\Parser\Compiler\ObjectMethodCompiler'
-      - '@ExEss\Cms\Parser\Compiler\ObjectPropertyCompiler'
-      - '@ExEss\Cms\Parser\Compiler\ExternalLinkCompiler'
-      - '@ExEss\Cms\Parser\Compiler\DateTimeCompiler'
-      - '@ExEss\Cms\Parser\Compiler\SecurityCompiler'
-      - '@ExEss\Cms\Parser\Compiler\RelationListCompiler'
-      - '@ExEss\Cms\Parser\Compiler\AssociationCompiler'
-
-  ExEss\Cms\Parser\Compiler\ExternalObjectCompiler: ~
-
-  ExEss\Cms\Parser\Compiler\ObjectMethodCompiler: ~
-  ExEss\Cms\Parser\Compiler\ObjectPropertyCompiler: ~
-  ExEss\Cms\Parser\Compiler\AssociationCompiler:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-
-  ExEss\Cms\Parser\Compiler\ExternalLinkCompiler:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-
-  ExEss\Cms\Parser\Compiler\DateTimeCompiler: ~
-  ExEss\Cms\Parser\Compiler\SecurityCompiler: ~
-  ExEss\Cms\Parser\Compiler\RelationListCompiler: ~
-
-  ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@=service(constant("ExEss\\Cms\\Cache\\Cache::PARSED_QUERY_USER"))'
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
-      - '@ExEss\Cms\MultiLevelTemplate\TextFunctionHandler'
-      - '@ExEss\Cms\Parser\ExpressionGroupParser'
-
   JsonMapper:
     class: JsonMapper
     factory: [ExEss\Cms\Factory\JsonMapperFactory, create]
@@ -160,7 +99,7 @@ services:
     arguments:
       - '@doctrine.orm.entity_manager'
       - '@ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder'
-      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
+      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
       - '@ExEss\Cms\Service\SelectWithSearchService'
       - '@Symfony\Component\Translation\Translator'
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
@@ -223,7 +162,7 @@ services:
     arguments:
       - '@doctrine.orm.entity_manager'
       - '@Symfony\Component\Translation\Translator'
-      - '@ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions'
+      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
       - '@ExEss\Cms\Servicemix\ExternalObjectHandler'
 
   ExEss\Cms\MultiLevelTemplate\TextFunctionHandler:
@@ -260,3 +199,4 @@ imports:
   - { resource: 'translators.yaml' }
   - { resource: 'validation.yaml' }
   - { resource: 'entity_listeners.yaml' }
+  - { resource: 'component/expression_parser.yaml' }

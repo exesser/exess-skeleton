@@ -7,7 +7,7 @@ use stdClass;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Logger\Logger;
 use ExEss\Cms\Validators\Exception\ConstraintNotFoundException;
 use ExEss\Cms\Validators\Factory\ConstraintFactory;
@@ -29,7 +29,7 @@ class Validator
 
     private Logger $logger;
 
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
 
     private TranslatorInterface $translator;
 
@@ -39,14 +39,14 @@ class Validator
         ValidatorInterface $validator,
         ConstraintFactory $constraintFactory,
         Logger $logger,
-        ListHelperFunctions $listHelperFunctions,
+        ParserService $parserService,
         TranslatorInterface $translator,
         FlashMessageContainer $flashMessageContainer
     ) {
         $this->validator = $validator;
         $this->constraintFactory = $constraintFactory;
         $this->logger = $logger;
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->translator = $translator;
         $this->flashMessageContainer = $flashMessageContainer;
     }
@@ -316,8 +316,8 @@ class Validator
                 $value = $rule->getValue();
 
                 /**
-                 * The following code is alike the "parseListValues" (ListHelperFunctions) except this uses the model
-                 * and parseListValues uses a fat entity to replace the value.
+                 * The following code is alike the "parseListValues" (ParserService) except this uses the model
+                 * and parseListValues uses an entity to replace the value.
                  * Maybe it can be merged into a single piece of code at a certain moment?
                  */
                 \preg_match_all('/\%([^%.]*)\%/', $value, $matches);
@@ -377,7 +377,7 @@ class Validator
         } elseif (\method_exists($model, 'get'.\ucfirst($field))) {
             return $model->{'get'.\ucfirst($field)}();
         } else {
-            return $this->listHelperFunctions->parseListValue($model, $field);
+            return $this->parserService->parseListValue($model, $field);
         }
     }
 
@@ -402,7 +402,7 @@ class Validator
             }
         }
         if ($fieldValue === '--not--set--') {
-            $fieldValue = $this->listHelperFunctions->parseListValue($model, $fieldName);
+            $fieldValue = $this->parserService->parseListValue($model, $fieldName);
         }
 
         // in case of empty string coming in we regard it as null, so certain validators will not fail.

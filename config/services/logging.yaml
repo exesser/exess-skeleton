@@ -20,13 +20,11 @@ services:
             - { name: monolog.processor }
 
     ExEss\Cms\Component\Logger\Processor\EnvironmentProcessor:
-        class: ExEss\Cms\Component\Logger\Processor\EnvironmentProcessor
         arguments:  ['%logger_tag%']
         tags:
             - { name: monolog.processor }
 
     ExEss\Cms\Logger\Processor\NeededHeadersProcessor:
-        class: ExEss\Cms\Logger\Processor\NeededHeadersProcessor
         arguments:
             - '@ExEss\Cms\Component\Session\Headers'
             - '@ExEss\Cms\Api\V8_Custom\Service\Security'
@@ -34,7 +32,6 @@ services:
             - { name: monolog.processor }
 
     ExEss\Cms\Component\Logger\Processor\XLogIdProcessor:
-        class: ExEss\Cms\Component\Logger\Processor\XLogIdProcessor
         arguments:  ['@ExEss\Cms\Component\Session\Headers']
         tags:
             - { name: monolog.processor }

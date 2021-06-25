@@ -2,7 +2,7 @@
 namespace ExEss\Cms\Config\Cache;
 
 use ExEss\Cms\Api\V8_Custom\Service\Security;
-use ExEss\Cms\ListFunctions\HelperClasses\ListHelperFunctions;
+use ExEss\Cms\Component\ExpressionParser\ParserService;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 
 class ConfigCacheFactory
@@ -36,7 +36,7 @@ class ConfigCacheFactory
 
     private AdapterInterface $cache;
 
-    private ListHelperFunctions $listHelperFunctions;
+    private ParserService $parserService;
 
     private bool $cacheEnabled;
 
@@ -45,11 +45,11 @@ class ConfigCacheFactory
     public function __construct(
         bool $cacheEnabled,
         AdapterInterface $cache,
-        ListHelperFunctions $listHelperFunctions,
+        ParserService $parserService,
         Security $security
     ) {
         $this->cache = $cache;
-        $this->listHelperFunctions = $listHelperFunctions;
+        $this->parserService = $parserService;
         $this->cacheEnabled = $cacheEnabled;
         $this->security = $security;
     }
