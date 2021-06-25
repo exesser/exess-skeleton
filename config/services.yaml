@@ -7,12 +7,6 @@ services:
     arguments:
       - !tagged_iterator crm.reset
 
-  ExEss\Cms\App:
-    public: true
-    arguments:
-      - '@service_container'
-      - '@ExEss\Cms\Loader\MiddlewareLoader'
-
   ExEss\Cms\Controller\:
     public: true
     autowire: true

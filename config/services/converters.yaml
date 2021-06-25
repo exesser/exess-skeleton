@@ -7,13 +7,3 @@ services:
   ExEss\Cms\Http\ParamConverter\BaseEntityConverter: ~
   ExEss\Cms\Http\ParamConverter\JsonBodyConverter: ~
 
-  # Controller middleware
-
-  ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverter: ~
-
-  # Controller middleware converter factories
-
-  ExEss\Cms\Api\V8_Custom\Controller\ParamConverter\ParamObjectConverterFactory:
-    arguments:
-      - '@service_container'
-

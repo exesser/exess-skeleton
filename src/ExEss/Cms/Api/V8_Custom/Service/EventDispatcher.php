@@ -10,8 +10,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class EventDispatcher extends \Symfony\Component\EventDispatcher\EventDispatcher
 {
-    public const EVENT_DISPATCHER_INVOICE_ATTACHMENTS = 'event_dispatcher.invoice.attachments';
-
     protected ContainerInterface $container;
 
     /**
