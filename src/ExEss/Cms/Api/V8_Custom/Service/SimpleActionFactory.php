@@ -9,23 +9,16 @@ use ExEss\Cms\Component\Flow\Action\Command;
 use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Logger\Logger;
-use ExEss\Cms\Users\Service\GuidanceRecoveryService;
 
 class SimpleActionFactory
 {
     private Logger $logger;
 
-    private GuidanceRecoveryService $guidanceRecoveryService;
-
     private EntityManager $em;
 
-    public function __construct(
-        EntityManager $em,
-        Logger $logger,
-        GuidanceRecoveryService $guidanceRecoveryService
-    ) {
+    public function __construct(EntityManager $em, Logger $logger)
+    {
         $this->logger = $logger;
-        $this->guidanceRecoveryService = $guidanceRecoveryService;
         $this->em = $em;
     }
 
@@ -80,11 +73,6 @@ class SimpleActionFactory
         }
 
         $this->handleJson($data);
-
-        // special action
-        if ($action->getGuid() === 'navigate_to_recovery_guidance') {
-            $data->arguments = $this->guidanceRecoveryService->getNavigateArguments();
-        }
 
         return new Command(
             $data->command,
