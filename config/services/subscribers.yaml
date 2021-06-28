@@ -139,7 +139,7 @@ services:
   ExEss\Cms\FLW_Flows\Event\Listeners\BreakoutSubscriber:
     lazy: true
     arguments:
-      - '@ExEss\Cms\Grid\RepeatableRowService'
+      - '@ExEss\Cms\Service\RepeatableRowService'
       - '@ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher'
     tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\FLW_Flows\Event\Listeners\BreakoutSubscriber' }]
 

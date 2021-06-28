@@ -7,14 +7,18 @@ use ExEss\Cms\Base\Request\AbstractRequest;
 use ExEss\Cms\Api\V8_Custom\Repository\Request\AuditRequest;
 use ExEss\Cms\Api\V8_Custom\Repository\Response\AuditList;
 use ExEss\Cms\Base\Response\Pagination;
+use JsonMapper;
 
 class AuditRepository extends AbstractRepository
 {
     private EntityManagerInterface $em;
 
-    public function __construct(EntityManagerInterface $em)
+    private JsonMapper $jsonMapper;
+
+    public function __construct(EntityManagerInterface $em, JsonMapper $jsonMapper)
     {
         $this->em = $em;
+        $this->jsonMapper = $jsonMapper;
     }
 
     /**
@@ -30,12 +34,10 @@ class AuditRepository extends AbstractRepository
 
         $auditList = new AuditList();
 
-        $mapper = new \JsonMapper();
-        $mapper->bIgnoreVisibility = true;
-        $mapper->bStrictNullTypes = false;
-        $mapper->bEnforceMapType = false;
+        $this->jsonMapper->bStrictNullTypes = false;
+        $this->jsonMapper->bEnforceMapType = false;
 
-        return $mapper->map($auditObject, $auditList);
+        return $this->jsonMapper->map($auditObject, $auditList);
     }
 
     public function getRequest(array $requestData): AbstractRequest

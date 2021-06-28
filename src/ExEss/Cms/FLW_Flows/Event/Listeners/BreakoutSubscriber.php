@@ -5,7 +5,7 @@ use ExEss\Cms\Api\V8_Custom\Events\FlowEvent;
 use ExEss\Cms\Api\V8_Custom\Events\FlowEvents;
 use ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher;
 use ExEss\Cms\FLW_Flows\Request\FlowAction;
-use ExEss\Cms\Grid\RepeatableRowService;
+use ExEss\Cms\Service\RepeatableRowService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class BreakoutSubscriber implements EventSubscriberInterface

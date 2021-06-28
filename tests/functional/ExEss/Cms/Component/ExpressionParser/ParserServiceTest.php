@@ -19,16 +19,20 @@ use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionGroup;
 use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
 use ExEss\Cms\Component\ExpressionParser\Parser\PathResolverOptions;
 use Helper\Testcase\FunctionalTestCase;
+use JsonMapper;
 
 class ParserServiceTest extends FunctionalTestCase
 {
     protected ParserService $parserService;
     private EntityManager $em;
 
+    private JsonMapper $jsonMapper;
+
     public function _before(): void
     {
         $this->em = $this->tester->grabService('doctrine.orm.entity_manager');
         $this->parserService = $this->tester->grabService(ParserService::class);
+        $this->jsonMapper = $this->tester->grabService(JsonMapper::class);
     }
 
     public function testParseWithInStatement(): void
@@ -51,10 +55,7 @@ class ParserServiceTest extends FunctionalTestCase
     public function testParseDateOnExternal(): void
     {
         // Given
-        $mapper = new \JsonMapper();
-        $mapper->bIgnoreVisibility = true;
-
-        $object = $mapper->map((object) [
+        $object = $this->jsonMapper->map((object) [
             "effectiveDate" => new \DateTime("2020-01-01 10:25"),
             "creationDateTime" => new \DateTime("2020-02-28"),
         ], new TestObject());

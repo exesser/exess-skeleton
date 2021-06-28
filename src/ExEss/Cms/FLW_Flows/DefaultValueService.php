@@ -4,7 +4,7 @@ namespace ExEss\Cms\FLW_Flows;
 
 use ExEss\Cms\Dictionary\Format;
 use ExEss\Cms\Doctrine\Type\FlowFieldType;
-use ExEss\Cms\Exception\ConfigErrorException;
+use ExEss\Cms\Exception\ConfigInvalidException;
 use ExEss\Cms\FLW_Flows\Response\Model;
 use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\MultiLevelTemplate\TextFunctionHandler;
@@ -29,14 +29,14 @@ class DefaultValueService
     }
 
     /**
-     * @throws \ExEss\Cms\Exception\ConfigErrorException If a default value condition is incorrect.
+     * @throws ConfigInvalidException If a default value condition is incorrect.
      */
     public function getConditions(\stdClass $field): array
     {
         // make sure we have at least a "condition" and "value" key in each condition
         return \array_map(function ($el) use ($field) {
             if (!\is_array($el)) {
-                throw new ConfigErrorException("default value configuration for field {$field->id} is incorrect");
+                throw new ConfigInvalidException("default value configuration for field {$field->id} is incorrect");
             }
             return \array_merge(['condition' => null, 'value' => null], $el);
         }, DataCleaner::jsonDecode($this->htmlEntityDecodeUtf8($field->default)));

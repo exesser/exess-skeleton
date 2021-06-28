@@ -154,13 +154,6 @@ services:
       - '@Symfony\Component\Translation\Translator'
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
 
-  ExEss\Cms\Grid\RepeatableRowService:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@Symfony\Component\Translation\Translator'
-      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
-      - '@ExEss\Cms\Servicemix\ExternalObjectHandler'
-
   ExEss\Cms\MultiLevelTemplate\TextFunctionHandler:
     arguments:
       - '@ExEss\Cms\Logger\Logger'
