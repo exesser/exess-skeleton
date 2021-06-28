@@ -2,9 +2,6 @@
 
 namespace ExEss\Cms\FieldFormatter;
 
-/**
- * Vat number formatter
- */
 class VatNumberFormatter implements FieldFormatter
 {
     /**

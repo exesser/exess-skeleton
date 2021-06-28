@@ -3,7 +3,7 @@
 namespace ExEss\Cms\Http\EventSubscriber;
 
 use ExEss\Cms\Doctrine\Type\HttpMethod;
-use ExEss\Cms\FLW_Flows\Request\FlowAction;
+use ExEss\Cms\Component\Flow\Request\FlowAction;
 use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Http\Factory\PsrFactory;
 use Psr\Http\Message\ResponseInterface;

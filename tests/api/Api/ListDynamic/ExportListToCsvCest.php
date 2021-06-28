@@ -4,7 +4,7 @@ namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\FLW_Flows\Action\Command;
+use ExEss\Cms\Component\Flow\Action\Command;
 
 class ExportListToCsvCest
 {

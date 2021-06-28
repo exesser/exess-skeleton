@@ -358,48 +358,48 @@
     ],
     "ExEss\\Cms\\Entity\\SecurityGroup": [
         {
-            "key": "dashboards",
-            "value": "ExEss\\Cms\\Entity\\Dashboard"
-        },
-        {
             "key": "listCellLinks",
             "value": "ExEss\\Cms\\Entity\\ListCellLink"
-        },
-        {
-            "key": "dashboardMenuActionGroups",
-            "value": "ExEss\\Cms\\Entity\\DashboardMenuActionGroup"
         },
         {
             "key": "apis",
             "value": "ExEss\\Cms\\Entity\\SecurityGroupApi"
         },
         {
-            "key": "listTopActions",
-            "value": "ExEss\\Cms\\Entity\\ListTopAction"
+            "key": "roles",
+            "value": "ExEss\\Cms\\Entity\\AclRole"
         },
         {
             "key": "dashboardMenuActions",
             "value": "ExEss\\Cms\\Entity\\DashboardMenuAction"
         },
         {
-            "key": "listRowActions",
-            "value": "ExEss\\Cms\\Entity\\ListRowAction"
+            "key": "dashboardMenuActionGroups",
+            "value": "ExEss\\Cms\\Entity\\DashboardMenuActionGroup"
         },
         {
             "key": "gridPanels",
             "value": "ExEss\\Cms\\Entity\\GridPanel"
         },
         {
-            "key": "listTopBars",
-            "value": "ExEss\\Cms\\Entity\\ListTopBar"
+            "key": "listTopActions",
+            "value": "ExEss\\Cms\\Entity\\ListTopAction"
         },
         {
             "key": "validators",
             "value": "ExEss\\Cms\\Entity\\Validator"
         },
         {
+            "key": "listRowActions",
+            "value": "ExEss\\Cms\\Entity\\ListRowAction"
+        },
+        {
             "key": "flowActions",
             "value": "ExEss\\Cms\\Entity\\FlowAction"
+        },
+        {
+            "key": "listTopBars",
+            "value": "ExEss\\Cms\\Entity\\ListTopBar"
         },
         {
             "key": "filters",
@@ -408,6 +408,10 @@
         {
             "key": "properties",
             "value": "ExEss\\Cms\\Entity\\Property"
+        },
+        {
+            "key": "dashboards",
+            "value": "ExEss\\Cms\\Entity\\Dashboard"
         },
         {
             "key": "findSearches",
@@ -462,8 +466,8 @@
             "value": "ExEss\\Cms\\Entity\\ExternalObjectLink"
         },
         {
-            "key": "roles",
-            "value": "ExEss\\Cms\\Entity\\AclRole"
+            "key": "userGroups",
+            "value": "ExEss\\Cms\\Entity\\SecurityGroupUser"
         }
     ],
     "ExEss\\Cms\\Entity\\SecurityGroupApi": [

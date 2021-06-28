@@ -2,7 +2,7 @@
 
 namespace ExEss\Cms\Component\ExpressionParser\Parser\Compiler;
 
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Component\ExpressionParser\Parser\Resolver\Piece\NamespacePiece;
 use ExEss\Cms\Component\ExpressionParser\Parser\Resolver\CompiledPath;
 

@@ -2,9 +2,10 @@
 
 namespace ExEss\Cms\Security\Route\Voter;
 
+use Doctrine\ORM\EntityManagerInterface;
+use ExEss\Cms\Entity\SecurityGroupApi;
 use Psr\Http\Message\ServerRequestInterface;
 use ExEss\Cms\Api\V8_Custom\Service\Security;
-use ExEss\Cms\SecurityGroups\SecurityGroupsRepository;
 
 class RouteVoter implements VoterInterface
 {
@@ -15,12 +16,12 @@ class RouteVoter implements VoterInterface
 
     private Security $security;
 
-    private SecurityGroupsRepository $securityGroupsRepository;
+    private EntityManagerInterface $em;
 
-    public function __construct(Security $security, SecurityGroupsRepository $securityGroupsRepository)
+    public function __construct(Security $security, EntityManagerInterface $em)
     {
         $this->security = $security;
-        $this->securityGroupsRepository = $securityGroupsRepository;
+        $this->em = $em;
     }
 
     public function supports(ServerRequestInterface $request): bool
@@ -39,7 +40,8 @@ class RouteVoter implements VoterInterface
 
     private function routeIsAllowed(string $method, string $route): bool
     {
-        $userGroupTypes = $this->securityGroupsRepository->getUserGroupTypes($method, $route);
+        $repository = $this->em->getRepository(SecurityGroupApi::class);
+        $userGroupTypes = $repository->getUserGroupTypes($method, $route);
 
         // these routes are always allowed
         if (\in_array($route, self::WHITELISTED_ROUTES, true)) {
@@ -62,8 +64,8 @@ class RouteVoter implements VoterInterface
             return true;
         }
 
-        return $this->securityGroupsRepository->hasMatchedSecurityGroups(
-            $currentUser->getId(),
+        return $repository->hasMatchedSecurityGroups(
+            $currentUser,
             $route,
             $method
         );

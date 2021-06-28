@@ -2,7 +2,7 @@
 
 namespace ExEss\Cms\Controller\SelectWithSearch\Body;
 
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Http\Request\AbstractJsonBody;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;

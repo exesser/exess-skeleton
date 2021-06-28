@@ -7,7 +7,7 @@ use ExEss\Cms\Component\ExpressionParser\Parser\Compiler\AssociationCompiler;
 use ExEss\Cms\Component\ExpressionParser\Parser\Query\Conditions;
 use InvalidArgumentException;
 use Psr\Cache\CacheItemInterface;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Component\ExpressionParser\Parser\Compiler\DateTimeCompiler;
 use ExEss\Cms\Component\ExpressionParser\Parser\Compiler\ExternalLinkCompiler;
 use ExEss\Cms\Component\ExpressionParser\Parser\Compiler\ExternalObjectCompiler;

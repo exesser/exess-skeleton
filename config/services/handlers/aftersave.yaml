@@ -2,8 +2,8 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\FLW_Flows\AfterSave\Handler\AfterSaveHandlerQueue:
-    class: ExEss\Cms\FLW_Flows\AfterSave\Handler\AfterSaveHandlerQueue
+  ExEss\Cms\Component\Flow\AfterSave\Handler\AfterSaveHandlerQueue:
+    class: ExEss\Cms\Component\Flow\AfterSave\Handler\AfterSaveHandlerQueue
     arguments:
       - !tagged_iterator handler.aftersave
 

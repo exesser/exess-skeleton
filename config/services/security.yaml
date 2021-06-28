@@ -36,12 +36,9 @@ services:
   # Route voters
 
   ExEss\Cms\Security\Route\Voter\RouteVoter:
-    arguments:
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
-      - '@ExEss\Cms\SecurityGroups\SecurityGroupsRepository'
+    autowire: true
     tags: ['route.voter']
 
   # CRUD
-  ExEss\Cms\CRUD\Helpers\SecurityService:
-    arguments:
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+
+  ExEss\Cms\CRUD\Helpers\SecurityService: ~

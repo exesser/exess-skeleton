@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
 use ExEss\Cms\Dictionary\Model\Dwp;
-use ExEss\Cms\FLW_Flows\Request\FlowAction;
+use ExEss\Cms\Component\Flow\Request\FlowAction;
 use ExEss\Cms\Logger\Logger;
 use Helper\Testcase\FunctionalTestCase;
 

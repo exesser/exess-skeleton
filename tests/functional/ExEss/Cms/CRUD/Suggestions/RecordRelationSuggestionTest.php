@@ -2,14 +2,14 @@
 
 namespace Test\Functional\ExEss\Cms\CRUD\Suggestions;
 
+use ExEss\Cms\Component\Flow\Request\FlowAction;
+use ExEss\Cms\Component\Flow\Response;
+use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Cms\Component\Flow\SaveFlow;
 use ExEss\Cms\CRUD\Helpers\SecurityService;
 use ExEss\Cms\CRUD\Suggestions\RecordRelationSuggestion;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\FLW_Flows\Request\FlowAction;
-use ExEss\Cms\FLW_Flows\Response;
-use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\FLW_Flows\SaveFlow;
 use ExEss\Cms\Helper\DataCleaner;
 use Helper\Testcase\FunctionalTestCase;
 

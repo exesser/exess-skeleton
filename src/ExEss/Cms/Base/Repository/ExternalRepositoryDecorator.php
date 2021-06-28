@@ -3,9 +3,6 @@ namespace ExEss\Cms\Base\Repository;
 
 use ExEss\Cms\Api\V8_Custom\Repository\RepositoryInterface;
 
-/**
- * Abstract class ExternalRepositoryInterface
- */
 abstract class ExternalRepositoryDecorator implements RepositoryInterface
 {
     protected RepositoryInterface $externalRepository;

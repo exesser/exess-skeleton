@@ -3,7 +3,7 @@
 namespace ExEss\Cms\Controller\ListDynamic;
 
 use ExEss\Cms\Entity\ListDynamic;
-use ExEss\Cms\FLW_Flows\Action\Command;
+use ExEss\Cms\Component\Flow\Action\Command;
 use ExEss\Cms\Http\SuccessResponse;
 use ExEss\Cms\Service\ListExportService;
 use ExEss\Cms\Service\ListService;

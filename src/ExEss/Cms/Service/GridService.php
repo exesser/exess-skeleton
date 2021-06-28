@@ -8,7 +8,7 @@ use ExEss\Cms\Dashboard\Model\Grid;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\FlowStep;
 use ExEss\Cms\Entity\GridTemplate;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
 

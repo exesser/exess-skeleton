@@ -3,8 +3,8 @@
 namespace ExEss\Cms\CRUD\Handlers\SaveHandlers;
 
 use ExEss\Cms\CRUD\Helpers\CrudFlowHelper;
-use ExEss\Cms\FLW_Flows\Handler\AbstractSaveHandler;
-use ExEss\Cms\FLW_Flows\Handler\FlowData;
+use ExEss\Cms\Component\Flow\Handler\AbstractSaveHandler;
+use ExEss\Cms\Component\Flow\Handler\FlowData;
 
 class RecordTypeHandler extends AbstractSaveHandler
 {

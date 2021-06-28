@@ -8,10 +8,6 @@ services:
       - '@ExEss\Cms\Service\FilterService'
     tags: [{ name: 'handler.list', alias: 'relationsHandler' }]
 
-  ExEss\Cms\SecurityGroups\SecurityGroupsRepository:
-    arguments:
-      - '@doctrine.orm.entity_manager'
-
   # External repositories
   ExEss\Cms\Api\V8_Custom\Repository\AuditRepository:
     arguments:

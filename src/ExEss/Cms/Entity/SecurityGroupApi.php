@@ -22,7 +22,7 @@ use ExEss\Cms\Entity\Behavior\SecurityGroups;
  *          )
  *      )
  * })
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ExEss\Cms\Repository\SecurityGroupApiRepository")
  */
 class SecurityGroupApi extends Entity
 {
@@ -42,4 +42,14 @@ class SecurityGroupApi extends Entity
      * @ORM\Column(name="allowed_usergroups", type="text", length=65535, nullable=true)
      */
     private ?string $allowedGroupTypes = null;
+
+    public function getHttpMethod(): ?string
+    {
+        return $this->httpMethod;
+    }
+
+    public function getAllowedGroupTypes(): ?string
+    {
+        return $this->allowedGroupTypes;
+    }
 }

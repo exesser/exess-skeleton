@@ -5,7 +5,7 @@ namespace ExEss\Cms\Api\V8_Custom\Service\User;
 use ExEss\Cms\Api\V8_Custom\Service\SimpleActionFactory;
 use ExEss\Cms\Entity\FlowAction;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\FLW_Flows\Action\Command;
+use ExEss\Cms\Component\Flow\Action\Command;
 
 class CommandService
 {

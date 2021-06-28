@@ -6,9 +6,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Exception\NotFoundException;
-use ExEss\Cms\FLW_Flows\Handler\AbstractSaveHandler;
-use ExEss\Cms\FLW_Flows\Handler\FlowData;
-use ExEss\Cms\FLW_Flows\SaveFlow;
+use ExEss\Cms\Component\Flow\Handler\AbstractSaveHandler;
+use ExEss\Cms\Component\Flow\Handler\FlowData;
+use ExEss\Cms\Component\Flow\SaveFlow;
 
 class SaveRelationHandler extends AbstractSaveHandler
 {
