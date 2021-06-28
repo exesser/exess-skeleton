@@ -6,8 +6,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Exception\NotFoundException;
-use ExEss\Cms\FLW_Flows\Action\BackendCommand\BackendCommand;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Action\BackendCommand\BackendCommand;
+use ExEss\Cms\Component\Flow\Response\Model;
 
 class CrudDeleteRelationshipCommand implements BackendCommand
 {

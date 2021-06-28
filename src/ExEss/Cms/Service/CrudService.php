@@ -7,7 +7,7 @@ use ExEss\Cms\CRUD\Helpers\RecordInfo\FieldInfo;
 use ExEss\Cms\CRUD\Helpers\RecordInfo\RecordInfo;
 use ExEss\Cms\CRUD\Helpers\RecordInfo\RecordInfoCollection;
 use ExEss\Cms\CRUD\Helpers\RecordInfo\RelationInfo;
-use ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder;
+use ExEss\Cms\Component\Flow\Builder\EnumFieldBuilder;
 
 class CrudService
 {

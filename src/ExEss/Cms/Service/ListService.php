@@ -18,7 +18,7 @@ use ExEss\Cms\Acl\AclService;
 use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
 use ExEss\Cms\Api\V8_Custom\Service\Security;
 use ExEss\Cms\Entity\SecurityGroup;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListHeader;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListResponse;

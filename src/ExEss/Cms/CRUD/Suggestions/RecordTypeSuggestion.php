@@ -4,9 +4,9 @@ namespace ExEss\Cms\CRUD\Suggestions;
 
 use ExEss\Cms\CRUD\Helpers\CrudFlowHelper;
 use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\FLW_Flows\Request\FlowAction;
-use ExEss\Cms\FLW_Flows\Response;
-use ExEss\Cms\FLW_Flows\Suggestions\AbstractSuggestionHandler;
+use ExEss\Cms\Component\Flow\Request\FlowAction;
+use ExEss\Cms\Component\Flow\Response;
+use ExEss\Cms\Component\Flow\Suggestions\AbstractSuggestionHandler;
 
 class RecordTypeSuggestion extends AbstractSuggestionHandler
 {

@@ -13,7 +13,7 @@ use ExEss\Cms\Entity\ListCellLink;
 use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Entity\User;
 use ExEss\Cms\Exception\ConfigInvalidException;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionGroup;
 use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;

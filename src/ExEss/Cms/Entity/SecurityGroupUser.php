@@ -23,7 +23,7 @@ class SecurityGroupUser extends Join
     protected ?bool $primaryGroup = null;
 
     /**
-     * @ORM\ManyToOne(targetEntity="SecurityGroup")
+     * @ORM\ManyToOne(targetEntity="SecurityGroup", inversedBy="userGroups")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="securitygroup_id", referencedColumnName="id")
      * })

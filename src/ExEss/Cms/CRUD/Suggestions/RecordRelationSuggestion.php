@@ -9,12 +9,12 @@ use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\SecurityGroup;
 use ExEss\Cms\CRUD\Helpers\CrudFlowHelper;
 use ExEss\Cms\CRUD\Helpers\SecurityService;
-use ExEss\Cms\FLW_Flows\EnumRecord;
-use ExEss\Cms\FLW_Flows\Request\FlowAction;
-use ExEss\Cms\FLW_Flows\Response;
-use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\FLW_Flows\SaveFlow;
-use ExEss\Cms\FLW_Flows\Suggestions\AbstractSuggestionHandler;
+use ExEss\Cms\Component\Flow\EnumRecord;
+use ExEss\Cms\Component\Flow\Request\FlowAction;
+use ExEss\Cms\Component\Flow\Response;
+use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Cms\Component\Flow\SaveFlow;
+use ExEss\Cms\Component\Flow\Suggestions\AbstractSuggestionHandler;
 
 class RecordRelationSuggestion extends AbstractSuggestionHandler
 {

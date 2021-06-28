@@ -8,7 +8,7 @@ use ExEss\Cms\Api\V8_Custom\Service\Security;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Doctrine\Type\SecurityGroupType;
 use ExEss\Cms\Entity\UserGuidanceRecovery;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Helper\DataCleaner;
 
 class GuidanceRecoveryService

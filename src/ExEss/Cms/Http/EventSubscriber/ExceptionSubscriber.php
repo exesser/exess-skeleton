@@ -9,7 +9,7 @@ use ExEss\Cms\Exception\NotAllowedException;
 use ExEss\Cms\Exception\NotAuthenticatedException;
 use ExEss\Cms\Exception\NotAuthorizedException;
 use ExEss\Cms\Exception\NotFoundException;
-use ExEss\Cms\FLW_Flows\Event\Exception\CommandException;
+use ExEss\Cms\Component\Flow\Event\Exception\CommandException;
 use ExEss\Cms\Http\ErrorResponse;
 use ExEss\Cms\Logger\Logger;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

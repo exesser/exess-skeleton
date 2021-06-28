@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\ClassMetadataFactory;
 use Doctrine\Persistence\Proxy;
 use ExEss\Cms\Component\ExpressionParser\Parser\Resolver\Piece\AssociationPiece;
 use Psr\Container\ContainerInterface;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Component\ExpressionParser\Parser\PathResolverOptions;
 use ExEss\Cms\Component\ExpressionParser\Parser\Resolver\Piece\CompiledPathPiece;
 use ExEss\Cms\Component\ExpressionParser\Parser\Resolver\Piece\ContainerMethodPiece;

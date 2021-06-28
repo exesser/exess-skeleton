@@ -4,7 +4,7 @@ namespace Test\Api\Api\Dashboard;
 
 use ApiTester;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\FLW_Flows\SaveFlow;
+use ExEss\Cms\Component\Flow\SaveFlow;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
 class CrudCest

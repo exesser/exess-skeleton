@@ -3,8 +3,8 @@
 namespace ExEss\Cms\CRUD\Helpers;
 
 use ExEss\Cms\Dictionary\Model\Dwp;
-use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\FLW_Flows\SaveFlow;
+use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Cms\Component\Flow\SaveFlow;
 
 class CrudFlowHelper
 {

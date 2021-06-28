@@ -7,7 +7,7 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
 use ExEss\Cms\Entity\SelectWithSearch;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Component\ExpressionParser\ParserService;
 
 class SelectWithSearchService

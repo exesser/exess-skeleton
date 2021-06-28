@@ -51,6 +51,12 @@ class SecurityGroup extends Entity
     private ?User $assignedUser;
 
     /**
+     * @ORM\OneToMany(targetEntity="SecurityGroupUser", mappedBy="securityGroup")
+     * @var Collection|SecurityGroupUser[]
+     */
+    private Collection $userGroups;
+
+    /**
      * @ORM\ManyToMany(targetEntity="AclRole", inversedBy="groups")
      * @ORM\JoinTable(name="securitygroups_acl_roles")
      * @Auditable

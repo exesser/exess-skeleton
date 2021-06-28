@@ -9,7 +9,6 @@ class Dwp
     public const DYNAMIC_LOADED_FIELDS = self::PREFIX . 'dynamicLoadedFields';
     public const BINARY_FILE = self::PREFIX . 'binaryFile';
     public const CRUD_DUPLICATE_RECORD_ID = self::PREFIX . 'duplicateRecordId';
-    public const RELATION_ADDITIONAL_VALUES = self::PREFIX . 'relationAdditionalValues';
     public const ROW_OPTIONS_PREFIX = self::PREFIX . 'rowOptions';
     public const ROW_OPTIONS_MODEL_KEY = self::ROW_OPTIONS_PREFIX . '|modelKey';
     public const ROW_OPTIONS_REPEATS_BY = self::ROW_OPTIONS_PREFIX . '|repeatsBy';

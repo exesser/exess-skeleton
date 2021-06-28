@@ -5,10 +5,10 @@ namespace ExEss\Cms\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Entity\FlowAction;
 use ExEss\Cms\Exception\NotFoundException;
-use ExEss\Cms\FLW_Flows\Action\BackendCommandExecutor;
-use ExEss\Cms\FLW_Flows\Action\Command;
-use ExEss\Cms\FLW_Flows\ActionFactory;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Action\BackendCommandExecutor;
+use ExEss\Cms\Component\Flow\Action\Command;
+use ExEss\Cms\Component\Flow\ActionFactory;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Component\ExpressionParser\ParserService;
 
 class FlowActionService

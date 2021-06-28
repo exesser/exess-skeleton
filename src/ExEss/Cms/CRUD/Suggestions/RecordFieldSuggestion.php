@@ -9,13 +9,13 @@ use ExEss\Cms\CRUD\Helpers\CrudFlowHelper;
 use ExEss\Cms\CRUD\Helpers\SecurityService;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Exception\NotAllowedException;
-use ExEss\Cms\FLW_Flows\Request\FlowAction;
-use ExEss\Cms\FLW_Flows\Response;
-use ExEss\Cms\FLW_Flows\Response\Form\JsonField;
-use ExEss\Cms\FLW_Flows\Response\Form\TextareaField;
-use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\FLW_Flows\SaveFlow;
-use ExEss\Cms\FLW_Flows\Suggestions\AbstractSuggestionHandler;
+use ExEss\Cms\Component\Flow\Request\FlowAction;
+use ExEss\Cms\Component\Flow\Response;
+use ExEss\Cms\Component\Flow\Response\Form\JsonField;
+use ExEss\Cms\Component\Flow\Response\Form\TextareaField;
+use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Cms\Component\Flow\SaveFlow;
+use ExEss\Cms\Component\Flow\Suggestions\AbstractSuggestionHandler;
 
 class RecordFieldSuggestion extends AbstractSuggestionHandler
 {

@@ -2,29 +2,29 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\FLW_Flows\Suggestions\DynamicEnumHandler:
+  ExEss\Cms\Component\Flow\Suggestions\DynamicEnumHandler:
     lazy: true
     arguments:
-      - '@ExEss\Cms\FLW_Flows\EnumRecordFactory'
-      - '@ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder'
+      - '@ExEss\Cms\Component\Flow\EnumRecordFactory'
+      - '@ExEss\Cms\Component\Flow\Builder\EnumFieldBuilder'
     tags:
       - { name: 'suggestions', priority: 750 }
 
-  ExEss\Cms\FLW_Flows\Suggestions\DefaultValueHandler:
+  ExEss\Cms\Component\Flow\Suggestions\DefaultValueHandler:
     lazy: true
     arguments:
-      - '@ExEss\Cms\FLW_Flows\DefaultValueService'
+      - '@ExEss\Cms\Component\Flow\DefaultValueService'
     tags:
       - { name: 'suggestions', priority: 620 }
 
-  ExEss\Cms\FLW_Flows\Suggestions\AutoSelectSuggestionHandler:
+  ExEss\Cms\Component\Flow\Suggestions\AutoSelectSuggestionHandler:
     lazy: true
     arguments:
       - '@doctrine.orm.entity_manager'
     tags:
       - { name: 'suggestions', priority: 110 } # one last time
 
-  ExEss\Cms\FLW_Flows\Suggestions\IbanFormatterSuggestionHandler:
+  ExEss\Cms\Component\Flow\Suggestions\IbanFormatterSuggestionHandler:
     lazy: true
     arguments:
       - '@ExEss\Cms\FieldFormatter\IbanFormatter'
@@ -32,14 +32,14 @@ services:
       - { name: 'suggestions', priority: 270 }
       - { name: 'pre-validation-suggestion', priority:  130 }       # Format IBAN on confirm
 
-  ExEss\Cms\FLW_Flows\Suggestions\AutoExpandSelectWithSearch:
+  ExEss\Cms\Component\Flow\Suggestions\AutoExpandSelectWithSearch:
     lazy: true
     arguments:
       - '@ExEss\Cms\Service\SelectWithSearchService'
     tags:
       - { name: 'suggestions', priority: 200 }
 
-  ExEss\Cms\FLW_Flows\Suggestions\AutoSelectWithSearchSuggestionHandler:
+  ExEss\Cms\Component\Flow\Suggestions\AutoSelectWithSearchSuggestionHandler:
     lazy: true
     arguments:
       - '@ExEss\Cms\Service\SelectWithSearchService'
@@ -67,7 +67,7 @@ services:
     tags:
       - { name: 'suggestions', priority:  10 }
 
-  ExEss\Cms\FLW_Flows\Suggestions\SelectWithSearchLabelHandler:
+  ExEss\Cms\Component\Flow\Suggestions\SelectWithSearchLabelHandler:
     lazy: true
     arguments:
       - '@doctrine.orm.entity_manager'
@@ -77,15 +77,15 @@ services:
 
   ### PRE VALIDATION SUGGESTIONS
 
-  ExEss\Cms\FLW_Flows\Suggestions\OverrideDefaultHandler:
+  ExEss\Cms\Component\Flow\Suggestions\OverrideDefaultHandler:
     lazy: true
     arguments:
-      - '@ExEss\Cms\FLW_Flows\Field'
+      - '@ExEss\Cms\Component\Flow\Field'
       - '@ExEss\Cms\Component\ExpressionParser\ParserService'
     tags:
       - { name: 'pre-validation-suggestion', priority:  330 } # Should go first, can update the model
 
-  ExEss\Cms\FLW_Flows\Suggestions\FieldFormattingHandler:
+  ExEss\Cms\Component\Flow\Suggestions\FieldFormattingHandler:
     lazy: true
     arguments:
       - '@ExEss\Cms\FieldFormatter\VatNumberFormatter'
@@ -96,5 +96,5 @@ services:
   ExEss\Cms\CRUD\Factory\FieldFactory:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\FLW_Flows\EnumRecordFactory'
+      - '@ExEss\Cms\Component\Flow\EnumRecordFactory'
       - '@ExEss\Cms\Service\SelectWithSearchService'

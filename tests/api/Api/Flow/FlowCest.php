@@ -3,7 +3,7 @@
 namespace Test\Api\Api\Flow;
 
 use ApiTester;
-use ExEss\Cms\FLW_Flows\SaveFlow;
+use ExEss\Cms\Component\Flow\SaveFlow;
 use ExEss\Cms\Helper\DataCleaner;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 

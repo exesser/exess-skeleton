@@ -3,7 +3,7 @@
 namespace ExEss\Cms\Users;
 
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\FLW_Flows\Action\Command;
+use ExEss\Cms\Component\Flow\Action\Command;
 use JsonSerializable;
 
 class PreferencesData implements JsonSerializable

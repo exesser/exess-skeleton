@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\Proxy;
 use ExEss\Cms\CRUD\Config\CrudMetadata;
 use ExEss\Cms\Exception\ConfigInvalidException;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Component\ExpressionParser\Parser\Translator\QueryTranslator;
 
 class ExpressionParser

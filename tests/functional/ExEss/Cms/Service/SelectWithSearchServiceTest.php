@@ -4,7 +4,7 @@ namespace Test\Functional\ExEss\Cms\Service;
 
 use ExEss\Cms\Doctrine\Type\UserStatus;
 use ExEss\Cms\Entity\User;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Service\SelectWithSearchService;
 use Helper\Testcase\FunctionalTestCase;
 

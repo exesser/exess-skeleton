@@ -38,13 +38,13 @@ services:
   Symfony\Component\EventDispatcher\EventDispatcherInterface: '@Symfony\Component\EventDispatcher\EventDispatcher'
   event_dispatcher: '@Symfony\Component\EventDispatcher\EventDispatcher'
 
-  ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher:
+  ExEss\Cms\Component\Flow\Event\FlowEventDispatcher:
     arguments:
       - '@Symfony\Component\EventDispatcher\EventDispatcher'
-      - '@ExEss\Cms\FLW_Flows\Action\BackendCommandExecutor'
+      - '@ExEss\Cms\Component\Flow\Action\BackendCommandExecutor'
 
-  ExEss\Cms\FLW_Flows\Validator:
-    class: ExEss\Cms\FLW_Flows\Validator
+  ExEss\Cms\Component\Flow\Validator:
+    class: ExEss\Cms\Component\Flow\Validator
     lazy: true
     arguments:
       - '@Symfony\Component\Validator\Validator\ValidatorInterface'
@@ -54,10 +54,10 @@ services:
       - '@Symfony\Component\Translation\Translator'
       - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
 
-  ExEss\Cms\FLW_Flows\FlowValidator:
+  ExEss\Cms\Component\Flow\FlowValidator:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\FLW_Flows\Validator'
+      - '@ExEss\Cms\Component\Flow\Validator'
       - '@ExEss\Cms\Service\GridService'
 
   ExEss\Cms\Component\Health\PingService: ~
@@ -80,7 +80,7 @@ services:
       - '@security.token_storage'
       - '%default_locale%'
 
-  ExEss\Cms\FLW_Flows\DefaultValueService:
+  ExEss\Cms\Component\Flow\DefaultValueService:
     arguments:
       - '@ExEss\Cms\MultiLevelTemplate\TextFunctionHandler'
 
@@ -93,27 +93,27 @@ services:
     class: JsonMapper
     factory: [ExEss\Cms\Factory\JsonMapperFactory, create]
 
-  ExEss\Cms\FLW_Flows\Builder\FormBuilder:
+  ExEss\Cms\Component\Flow\Builder\FormBuilder:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder'
+      - '@ExEss\Cms\Component\Flow\Builder\EnumFieldBuilder'
       - '@ExEss\Cms\Component\ExpressionParser\ParserService'
       - '@ExEss\Cms\Service\SelectWithSearchService'
       - '@Symfony\Component\Translation\Translator'
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
-      - '@ExEss\Cms\FLW_Flows\Field'
+      - '@ExEss\Cms\Component\Flow\Field'
 
-  ExEss\Cms\FLW_Flows\Field:
+  ExEss\Cms\Component\Flow\Field:
     arguments:
       - '%max_upload_file_size_mb%'
 
-  ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder:
+  ExEss\Cms\Component\Flow\Builder\EnumFieldBuilder:
     lazy: true
     arguments:
       - '@doctrine.orm.entity_manager'
       - '@ExEss\Cms\Logger\Logger'
       - '@ExEss\Cms\Api\V8_Custom\Repository\ListHandler'
-      - '@ExEss\Cms\FLW_Flows\EnumRecordFactory'
+      - '@ExEss\Cms\Component\Flow\EnumRecordFactory'
       - '@ExEss\Cms\Service\SelectWithSearchService'
 
   ExEss\Cms\Component\Sidebar\Factory\SidebarFactory: ~
@@ -141,15 +141,15 @@ services:
       - '@ExEss\Cms\Logger\Logger'
       - '@ExEss\Cms\Users\Service\GuidanceRecoveryService'
 
-  ExEss\Cms\FLW_Flows\ActionFactory:
+  ExEss\Cms\Component\Flow\ActionFactory:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\FLW_Flows\Event\FlowEventDispatcher'
+      - '@ExEss\Cms\Component\Flow\Event\FlowEventDispatcher'
       - '@ExEss\Cms\Logger\Logger'
       - '@ExEss\Cms\Users\Service\GuidanceRecoveryService'
       - '@Symfony\Component\Translation\Translator'
 
-  ExEss\Cms\FLW_Flows\EnumRecordFactory:
+  ExEss\Cms\Component\Flow\EnumRecordFactory:
     arguments:
       - '@Symfony\Component\Translation\Translator'
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'

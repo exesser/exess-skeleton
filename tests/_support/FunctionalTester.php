@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
 use ExEss\Cms\Component\Codeception\Traits\ServiceActions;
-use ExEss\Cms\FLW_Flows\Action\Arguments;
-use ExEss\Cms\FLW_Flows\Action\BackendCommandExecutor;
-use ExEss\Cms\FLW_Flows\Action\Command;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Action\Arguments;
+use ExEss\Cms\Component\Flow\Action\BackendCommandExecutor;
+use ExEss\Cms\Component\Flow\Action\Command;
+use ExEss\Cms\Component\Flow\Response\Model;
 
 /**
  * Inherited Methods

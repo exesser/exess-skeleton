@@ -5,7 +5,7 @@ namespace Test\Functional\ExEss\Cms\Service;
 use ExEss\Cms\Dashboard\Model\Grid;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\FlowStep;
-use ExEss\Cms\FLW_Flows\Response\Model;
+use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\Service\GridService;
 use Helper\Testcase\FunctionalTestCase;

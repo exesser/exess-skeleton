@@ -2,12 +2,12 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\FLW_Flows\ResponseHandler\HandlerStack:
+  ExEss\Cms\Component\Flow\ResponseHandler\HandlerStack:
     arguments:
       - !tagged_iterator crm.response_handler
 
-  ExEss\Cms\FLW_Flows\ResponseHandler\HiddenFieldRemoveHandler:
+  ExEss\Cms\Component\Flow\ResponseHandler\HiddenFieldRemoveHandler:
     tags: [ 'crm.response_handler' ]
 
-  ExEss\Cms\FLW_Flows\ResponseHandler\RemoveNonBlankUnchangedNodesHandler:
+  ExEss\Cms\Component\Flow\ResponseHandler\RemoveNonBlankUnchangedNodesHandler:
     tags: [ 'crm.response_handler' ]

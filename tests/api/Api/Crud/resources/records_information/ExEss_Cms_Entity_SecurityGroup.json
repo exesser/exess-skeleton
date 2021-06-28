@@ -7,6 +7,11 @@
             "record": "ExEss\\Cms\\Entity\\User"
         },
         {
+            "name": "userGroups",
+            "multiRelation": true,
+            "record": "ExEss\\Cms\\Entity\\SecurityGroupUser"
+        },
+        {
             "name": "roles",
             "multiRelation": true,
             "record": "ExEss\\Cms\\Entity\\AclRole"

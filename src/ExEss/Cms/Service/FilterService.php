@@ -13,7 +13,7 @@ use ExEss\Cms\Entity\Filter;
 use ExEss\Cms\Entity\FilterField;
 use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Entity\SecurityGroup;
-use ExEss\Cms\FLW_Flows\Builder\EnumFieldBuilder;
+use ExEss\Cms\Component\Flow\Builder\EnumFieldBuilder;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class FilterService

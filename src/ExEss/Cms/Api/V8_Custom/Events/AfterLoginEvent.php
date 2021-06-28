@@ -2,22 +2,22 @@
 
 namespace ExEss\Cms\Api\V8_Custom\Events;
 
-use ExEss\Cms\Entity\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
 class AfterLoginEvent extends Event
 {
-    private User $user;
+    private UserInterface $user;
 
     private string $jwt;
 
-    public function __construct(User $user, string $jwt)
+    public function __construct(UserInterface $user, string $jwt)
     {
         $this->user = $user;
         $this->jwt = $jwt;
     }
 
-    public function getUser(): User
+    public function getUser(): UserInterface
     {
         return $this->user;
     }

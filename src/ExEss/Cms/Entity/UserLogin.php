@@ -4,6 +4,7 @@ namespace ExEss\Cms\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ExEss\Bundle\DoctrineExtensionsBundle\Mapping\Annotation\Auditable;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Table(name="user_login")
@@ -30,9 +31,9 @@ class UserLogin
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
-    private User $id;
+    private UserInterface $id;
 
-    public function __construct(User $id)
+    public function __construct(UserInterface $id)
     {
         $this->id = $id;
     }
@@ -59,7 +60,7 @@ class UserLogin
         $this->jwt = $jwt;
     }
 
-    public function getId(): ?User
+    public function getId(): ?UserInterface
     {
         return $this->id;
     }
