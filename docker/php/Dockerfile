@@ -3,7 +3,7 @@ FROM php:7.4-fpm-alpine
 RUN apk update && apk upgrade
 RUN apk add --no-cache git make
 RUN apk add --no-cache curl-dev libzip-dev libcurl libxml2-dev
-RUN apk add --no-cache pkgconfig libressl-dev openssl openssl-dev zlib-dev
+RUN apk add --no-cache pkgconfig openssl openssl-dev zlib-dev
 RUN apk add --no-cache libintl icu icu-dev musl-dev
 RUN apk add --no-cache mariadb-client
 
@@ -25,7 +25,7 @@ RUN if [ "$XDEBUG" = "1" ] ; then set -x \
     && apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
-    && apk del .phpize-deps ; fi    
+    && apk del .phpize-deps ; fi
 
 STOPSIGNAL SIGQUIT
 
