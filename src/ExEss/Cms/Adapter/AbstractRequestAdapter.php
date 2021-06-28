@@ -6,6 +6,7 @@ use ExEss\Cms\Adapter\Request\Request;
 use ExEss\Cms\Adapter\Response\Response;
 use ExEss\Cms\Adapter\Transport\Transport;
 use ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory;
+use JsonMapper;
 
 abstract class AbstractRequestAdapter implements RequestAdapter
 {
@@ -13,9 +14,9 @@ abstract class AbstractRequestAdapter implements RequestAdapter
 
     protected ValidatorFactory $validatorFactory;
 
-    protected \JsonMapper $jsonMapper;
+    protected JsonMapper $jsonMapper;
 
-    public function __construct(Transport $transport, ValidatorFactory $validatorFactory, \JsonMapper $jsonMapper)
+    public function __construct(Transport $transport, ValidatorFactory $validatorFactory, JsonMapper $jsonMapper)
     {
         $this->transport = $transport;
         $this->validatorFactory = $validatorFactory;

@@ -2,11 +2,13 @@
 
 namespace ExEss\Cms\Factory;
 
+use JsonMapper;
+
 final class JsonMapperFactory
 {
-    public static function create(): \JsonMapper
+    public static function create(): JsonMapper
     {
-        $mapper = new \JsonMapper();
+        $mapper = new JsonMapper();
         $mapper->bIgnoreVisibility = true;
 
         return $mapper;

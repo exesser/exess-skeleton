@@ -9,14 +9,14 @@ use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\FlowStep;
 use ExEss\Cms\Entity\GridTemplate;
 use ExEss\Cms\FLW_Flows\Response\Model;
-use ExEss\Cms\Grid\RepeatableRowService;
 use ExEss\Cms\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
 
 class GridService
 {
-    public const DWP_EXP_START = '{%';
-    public const DWP_EXP_END = '%}';
+    private const DWP_EXP_START = '{%';
+    private const DWP_EXP_END = '%}';
+
     public const DEFAULT_ACTION_BAR_GRID = 'action-bar';
     public const TO_TRANSLATE_OPTIONS = [
         'primaryButtonTitle',

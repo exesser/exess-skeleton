@@ -4,7 +4,6 @@ namespace ExEss\Cms\Http\EventSubscriber;
 
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
-use ExEss\Cms\Exception\EmailForExportNotFoundException;
 use ExEss\Cms\Exception\ExternalListFetchException;
 use ExEss\Cms\Exception\NotAllowedException;
 use ExEss\Cms\Exception\NotAuthenticatedException;
@@ -76,7 +75,6 @@ class ExceptionSubscriber implements EventSubscriberInterface
                     ErrorResponse::errorData(ErrorResponse::TYPE_NOT_FOUND_EXCEPTION, $e->getMessage())
                 );
             case $e instanceof CommandException:
-            case $e instanceof EmailForExportNotFoundException:
             case $e instanceof \LogicException:
             case $e instanceof \DomainException:
                 return new ErrorResponse(
@@ -100,7 +98,6 @@ class ExceptionSubscriber implements EventSubscriberInterface
                 $this->logger->warning($e->getMessage() . \PHP_EOL . $e->getTraceAsString());
                 break;
             case $e instanceof CommandException:
-            case $e instanceof EmailForExportNotFoundException:
             case $e instanceof \LogicException:
             case $e instanceof \DomainException:
                 $this->logger->error($e->getMessage() . \PHP_EOL . $e->getTraceAsString());
@@ -122,7 +119,6 @@ class ExceptionSubscriber implements EventSubscriberInterface
                 ));
                 break;
             case $e instanceof CommandException:
-            case $e instanceof EmailForExportNotFoundException:
             case $e instanceof ExternalListFetchException:
                 $this->flashMessages->addFlashMessage(new FlashMessage($e->getMessage()));
                 break;

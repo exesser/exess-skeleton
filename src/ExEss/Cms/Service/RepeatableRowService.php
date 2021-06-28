@@ -1,7 +1,8 @@
-<?php
-namespace ExEss\Cms\Grid;
+<?php declare(strict_types=1);
 
-use Doctrine\ORM\EntityManager;
+namespace ExEss\Cms\Service;
+
+use Doctrine\ORM\EntityManagerInterface;
 use ExEss\Cms\Doctrine\Type\TranslationDomain;
 use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\FlowStep;
@@ -22,10 +23,10 @@ class RepeatableRowService
 
     private ExternalObjectHandler $externalObjectHandler;
 
-    private EntityManager $em;
+    private EntityManagerInterface $em;
 
     public function __construct(
-        EntityManager $em,
+        EntityManagerInterface $em,
         TranslatorInterface $translator,
         ParserService $parserService,
         ExternalObjectHandler $externalObjectHandler
@@ -134,10 +135,13 @@ class RepeatableRowService
             $childModelParams = $guidanceParams['model'] ?? [];
             $repeatsByParams = [];
             foreach ($childModelParams as $paramKey => &$param) {
-                if (\strpos($param, '%repeatsBy|') === 0) {
+                if ($param === null) {
+                    continue;
+                } elseif (\strpos($param, '%repeatsBy|') === 0) {
                     $param = $this->parserService->parseListValue(
                         $repeatsByBean,
-                        \str_replace('%repeatsBy|', '%', $param)
+                        \str_replace('%repeatsBy|', '%', $param),
+                        null
                     );
                     if ($param === "") {
                         $param = null;
