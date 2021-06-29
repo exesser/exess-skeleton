@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Bundle\CmsBundle\Component\ExpressionParser;
+namespace Test\Functional\ExEss\Cms\Component\ExpressionParser;
 
 use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Dictionary\Format;

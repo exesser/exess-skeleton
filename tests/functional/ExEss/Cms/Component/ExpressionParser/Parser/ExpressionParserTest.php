@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser;
+namespace Test\Functional\ExEss\Cms\Component\ExpressionParser\Parser;
 
 use ExEss\Cms\Doctrine\Type\FlowType;
 use ExEss\Cms\Entity\Flow;
