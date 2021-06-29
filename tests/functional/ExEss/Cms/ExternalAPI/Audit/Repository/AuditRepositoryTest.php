@@ -25,28 +25,9 @@ class AuditRepositoryTest extends FunctionalTestCase
     public function testFindBy(): void
     {
         // Given
-        $userId = $this->tester->generateUser('user name', [
-            'preferred_locale' => Locale::NL,
-            'status' => UserStatus::ACTIVE,
-            'date_entered' => \date(Format::DB_DATETIME_FORMAT),
-            'date_modified' => \date(Format::DB_DATETIME_FORMAT),
-        ]);
-        $this->tester->updateInDatabase(
-            'users',
-            [
-                'preferred_locale' => null,
-                'status' => UserStatus::INACTIVE,
-            ],
-            ['id' => $userId]
-        );
-        $this->tester->updateInDatabase(
-            'users',
-            [
-                'modified_user_id' => "1",
-                'preferred_locale' =>  Locale::EN,
-            ],
-            ['id' => $userId]
-        );
+        $userId = $this->createAndUpdateUser();
+        $this->createAndUpdateUser();
+        $this->createAndUpdateUser();
 
         // When
         /** @var AuditList $response */
@@ -85,5 +66,33 @@ class AuditRepositoryTest extends FunctionalTestCase
         $this->tester->assertInstanceOf(AuditRow::class, $audit);
         $this->tester->assertEquals(User::USERNAME_ADMIN, $audit->getUsername());
         $this->tester->assertEquals('INSERT', $audit->getOperation());
+    }
+
+    private function createAndUpdateUser(): string
+    {
+        $userId = $this->tester->generateUser('user name', [
+            'preferred_locale' => Locale::NL,
+            'status' => UserStatus::ACTIVE,
+            'date_entered' => \date(Format::DB_DATETIME_FORMAT),
+            'date_modified' => \date(Format::DB_DATETIME_FORMAT),
+        ]);
+        $this->tester->updateInDatabase(
+            'users',
+            [
+                'preferred_locale' => null,
+                'status' => UserStatus::INACTIVE,
+            ],
+            ['id' => $userId]
+        );
+        $this->tester->updateInDatabase(
+            'users',
+            [
+                'modified_user_id' => "1",
+                'preferred_locale' =>  Locale::EN,
+            ],
+            ['id' => $userId]
+        );
+
+        return $userId;
     }
 }
