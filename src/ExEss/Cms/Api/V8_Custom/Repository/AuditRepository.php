@@ -57,7 +57,8 @@ class AuditRepository extends AbstractRepository
             $metadata,
             $request->getRecordId(),
             $request->getFilters(),
-            "LIMIT $offset,$limit"
+            "LIMIT $offset,$limit",
+            "ORDER BY aud.audit_timestamp DESC"
         );
     }
 
@@ -140,7 +141,8 @@ class AuditRepository extends AbstractRepository
         ClassMetadata $metadata,
         string $id,
         array $filters,
-        string $limit = ''
+        string $limit = '',
+        string $order = ''
     ): array {
         $table = $metadata->getTableName() . '_aud';
         [$where, $parameters] = $this->getWhereConditions($filters);
@@ -195,6 +197,7 @@ class AuditRepository extends AbstractRepository
                     )
                 )
                 AND $where
+            $order
             $limit
           ";
 
