@@ -14,7 +14,7 @@ services:
   ExEss\Cms\Factory\TranslatorFactory:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@=service(constant("ExEss\\Cms\\Cache\\Cache::TRANSLATION"))'
+      - '@=service(constant("ExEss\\Bundle\\CmsBundle\\Component\\Cache\\Dictionary::TRANSLATION"))'
       - '@ExEss\Cms\Api\V8_Custom\Translator\DatabaseLoader'
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
 

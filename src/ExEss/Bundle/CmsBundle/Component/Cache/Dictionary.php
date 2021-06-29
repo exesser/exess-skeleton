@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace ExEss\Cms\Cache;
+namespace ExEss\Bundle\CmsBundle\Component\Cache;
 
-class Cache
+class Dictionary
 {
     public const DEFAULT = 'caches.default'; // not cleanable through DWP
     public const CONFIG = 'caches.config';
@@ -15,7 +15,6 @@ class Cache
     public const TTL_ONE_WEEK = 60 * 60 * 24 * 7;
     public const TTL_ONE_DAY = 60 * 60 * 24;
     public const TTL_ONE_HOUR = 60 * 60;
-    public const TTL_TILL_MIDNIGHT = 'ttl-till-midnight';
 
     public const CACHE_POOLS = [
         self::DEFAULT => self::TTL_DEFAULT,
@@ -25,16 +24,4 @@ class Cache
         self::TRANSLATION => 0,
         self::PARSED_QUERY_USER => self::TTL_DEFAULT,
     ];
-
-    /**
-     * @param string|int $ttl
-     */
-    public static function getTtl($ttl): int
-    {
-        if ($ttl === Cache::TTL_TILL_MIDNIGHT) {
-            return \strtotime('tomorrow') - \time();
-        }
-
-        return $ttl;
-    }
 }

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Cms\Command;
+namespace Test\Functional\ExEss\Cms\Component\Cache\Command;
 
-use ExEss\Cms\Command\CacheClearCommand;
+use ExEss\Bundle\CmsBundle\Component\Cache\CacheAdapterFactory;
+use ExEss\Bundle\CmsBundle\Component\Cache\Command\CacheClearCommand;
+use ExEss\Bundle\CmsBundle\Component\Cache\Dictionary;
 use Mockery;
-use ExEss\Cms\Cache\Cache;
-use ExEss\Cms\Cache\CacheAdapterFactory;
 use Helper\Testcase\FunctionalTestCase;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -24,7 +24,7 @@ class CacheClearCommandTest extends FunctionalTestCase
         // Given
         $cacheAdapterFactory = Mockery::mock(CacheAdapterFactory::class);
         $this->tester->mockService(CacheAdapterFactory::class, $cacheAdapterFactory);
-        $totalPools = \count(Cache::CACHE_POOLS);
+        $totalPools = \count(Dictionary::CACHE_POOLS);
 
         $cacheAdapter = Mockery::mock(AdapterInterface::class);
         $cacheAdapter->shouldReceive('clear')->times($totalPools)->andReturn($success);
@@ -49,7 +49,7 @@ class CacheClearCommandTest extends FunctionalTestCase
             $this->tester->assertEquals(1, $commandTester->getStatusCode(), 'Expected error code');
         }
 
-        foreach (\array_keys(Cache::CACHE_POOLS) as $pool) {
+        foreach (\array_keys(Dictionary::CACHE_POOLS) as $pool) {
             $this->tester->assertStringContainsString(
                 \sprintf($message, $pool),
                 $output

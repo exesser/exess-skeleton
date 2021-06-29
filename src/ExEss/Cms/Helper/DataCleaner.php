@@ -175,11 +175,4 @@ class DataCleaner
 
         return $model;
     }
-
-    public static function translateConstantToVar(string $constant, string $suffix): string
-    {
-        return \preg_replace_callback('/[._-][a-z]?/', function (array $matches): string {
-            return \strtoupper(\ltrim($matches[0], '._-'));
-        }, \strtolower($constant)) . $suffix;
-    }
 }

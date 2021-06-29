@@ -17,7 +17,7 @@ services:
 
   ExEss\Cms\Component\ExpressionParser\Parser\PathCompiler:
     bind:
-      $cache: '@=service(constant("ExEss\\Cms\\Cache\\Cache::COMPILER_PATHS"))'
+      $cache: '@=service(constant("ExEss\\Bundle\\CmsBundle\\Component\\Cache\\Dictionary::COMPILER_PATHS"))'
 
   ExEss\Cms\Component\ExpressionParser\Parser\Compiler\ExternalObjectCompiler: ~
   ExEss\Cms\Component\ExpressionParser\Parser\Compiler\ObjectMethodCompiler: ~
@@ -30,5 +30,5 @@ services:
 
   ExEss\Cms\Component\ExpressionParser\ParserService:
     bind:
-      $cache: '@=service(constant("ExEss\\Cms\\Cache\\Cache::PARSED_QUERY_USER"))'
+      $cache: '@=service(constant("ExEss\\Bundle\\CmsBundle\\Component\\Cache\\Dictionary::PARSED_QUERY_USER"))'
 

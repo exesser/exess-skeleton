@@ -1,0 +1,24 @@
+parameters:
+  env(EXTERNAL_CACHE_DISABLE): false
+  cache_disabled: '%env(bool:EXTERNAL_CACHE_DISABLE)%'
+  cache_host: '%env(string:EXTERNAL_CACHE_REDIS_HOST)%'
+  cache_port: '%env(int:EXTERNAL_CACHE_REDIS_PORT)%'
+
+services:
+  _defaults:
+    public: true
+    autowire: true
+
+  ExEss\Bundle\CmsBundle\Component\Cache\BackendCommand\ClearCacheCommand:
+    autowire: true
+    tags: [{ name: 'backend.command', alias: 'clearCacheCommand' }]
+
+  ExEss\Bundle\CmsBundle\Component\Cache\Command\CacheClearCommand:
+    autowire: true
+    tags: ['console.command']
+
+  ExEss\Bundle\CmsBundle\Component\Cache\CacheAdapterFactory:
+    bind:
+      $disabled: '%cache_disabled%'
+      $host: '%cache_host%'
+      $port: '%cache_port%'

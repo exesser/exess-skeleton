@@ -4,12 +4,12 @@ namespace ExEss\Cms\CRUD\BackendCommand;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
+use ExEss\Bundle\CmsBundle\Component\Core\Flow\Action\BackendCommandInterface;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Exception\NotFoundException;
-use ExEss\Cms\Component\Flow\Action\BackendCommand\BackendCommand;
 use ExEss\Cms\Component\Flow\Response\Model;
 
-class CrudDeleteRelationshipCommand implements BackendCommand
+class CrudDeleteRelationshipCommand implements BackendCommandInterface
 {
     private EntityManagerInterface $em;
 

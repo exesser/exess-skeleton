@@ -2,8 +2,8 @@
 
 namespace ExEss\Bundle\CmsBundle;
 
+use ExEss\Bundle\CmsBundle\Component\Cache\DependencyInjection\Compiler\CachePass;
 use ExEss\Bundle\CmsBundle\DependencyInjection\CmsExtension;
-use ExEss\Bundle\CmsBundle\DependencyInjection\Compiler\CachePass;
 use ExEss\Bundle\CmsBundle\DependencyInjection\Compiler\GuzzleClientPass;
 use ExEss\Bundle\CmsBundle\DependencyInjection\Compiler\SoapServicesClientPass;
 use ExEss\Bundle\CmsBundle\DependencyInjection\Compiler\SoapServicesPass;

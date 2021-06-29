@@ -1,15 +1,16 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace ExEss\Cms\Component\Flow\Action\BackendCommand;
+namespace ExEss\Bundle\CmsBundle\Component\Cache\BackendCommand;
 
+use ExEss\Bundle\CmsBundle\Component\Cache\CacheAdapterFactory;
+use ExEss\Bundle\CmsBundle\Component\Core\Flow\Action\BackendCommandInterface;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
-use ExEss\Cms\Cache\CacheAdapterFactory;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Component\Flow\Response\Model;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 
-class ClearCacheCommand implements BackendCommand
+class ClearCacheCommand implements BackendCommandInterface
 {
     private CacheAdapterFactory $cacheAdapterFactory;
 
@@ -29,10 +30,7 @@ class ClearCacheCommand implements BackendCommand
         }
 
         if (empty($types)) {
-            $this->flashMessageContainer->addFlashMessage(
-                new FlashMessage('Please pass a type when clearing the cache', FlashMessage::TYPE_ERROR)
-            );
-            return;
+            throw new \InvalidArgumentException('Please pass a type when clearing the cache');
         }
 
         if (\is_string($types)) {
@@ -42,17 +40,15 @@ class ClearCacheCommand implements BackendCommand
         foreach ($types as $type) {
             $cache = $this->cacheAdapterFactory->create($type);
 
-            if ($cache instanceof AdapterInterface) {
-                $cache->clear();
-
-                $this->flashMessageContainer->addFlashMessage(
-                    new FlashMessage('Cache of type ' . $type . ' have been cleared', FlashMessage::TYPE_SUCCESS)
-                );
-            } else {
-                $this->flashMessageContainer->addFlashMessage(
-                    new FlashMessage('Can\'t clear cache of type ' . $type, FlashMessage::TYPE_ERROR)
-                );
+            if (!$cache instanceof AdapterInterface) {
+                throw new \InvalidArgumentException("Can't clear cache of type $type");
             }
+
+            $cache->clear();
+
+            $this->flashMessageContainer->addFlashMessage(
+                new FlashMessage("Cache of type $type has been cleared", FlashMessage::TYPE_SUCCESS)
+            );
         }
     }
 }

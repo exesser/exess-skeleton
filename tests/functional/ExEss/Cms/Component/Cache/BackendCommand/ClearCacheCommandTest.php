@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Cms\Component\Flow\Action\BackendCommand;
+namespace Test\Functional\ExEss\Cms\Component\Cache\BackendCommand;
 
+use ExEss\Bundle\CmsBundle\Component\Cache\BackendCommand\ClearCacheCommand;
+use ExEss\Bundle\CmsBundle\Component\Cache\CacheAdapterFactory;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
-use ExEss\Cms\Cache\CacheAdapterFactory;
 use ExEss\Cms\Dictionary\Model\Dwp;
-use ExEss\Cms\Component\Flow\Action\BackendCommand\ClearCacheCommand;
 use ExEss\Cms\Component\Flow\Response\Model;
 use Helper\Testcase\FunctionalTestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
@@ -45,10 +45,10 @@ class ClearCacheCommandTest extends FunctionalTestCase
 
         // Then
         $this->tester->assertFalse($cache->getItem($cacheItemKey)->isHit());
-        $this->tester->assertCount(1, $flashMessageContainer->getFlashMessages());
-        $this->tester->assertTrue($flashMessageContainer->getFlashMessages()[0]->equals(
+        $this->tester->assertCount(1, $messages = $flashMessageContainer->getFlashMessages());
+        $this->tester->assertTrue($messages[0]->equals(
             new FlashMessage(
-                "Cache of type $cacheNamespace have been cleared",
+                "Cache of type $cacheNamespace has been cleared",
                 FlashMessage::TYPE_SUCCESS
             )
         ));

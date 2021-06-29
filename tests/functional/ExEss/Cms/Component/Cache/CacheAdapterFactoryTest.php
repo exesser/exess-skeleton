@@ -1,37 +1,46 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Cms\Cache;
+namespace Test\Functional\ExEss\Cms\Component\Cache;
 
-use ExEss\Cms\Cache\CacheAdapterFactory;
+use ExEss\Bundle\CmsBundle\Component\Cache\CacheAdapterFactory;
 use Helper\Testcase\FunctionalTestCase;
 
-class CacheTest extends FunctionalTestCase
+class CacheAdapterFactoryTest extends FunctionalTestCase
 {
     public function testActiveCache(): void
     {
+        // Given
         $cache = (new CacheAdapterFactory(
             $this->tester->grabService('test.monolog.logger'),
             false,
             $this->tester->grabParameter('cache_host'),
             $this->tester->grabParameter('cache_port')
         ))->create('');
-        $cache->deleteItem('test');
 
-        $key = 'test';
+        $key = $this->tester->generateUuid();
+
+        // When
         $item = $cache->getItem($key);
 
+        // Then
         $this->tester->assertFalse($item->isHit());
 
-        $item->set('test-value');
+        // Given
+        $value = $this->tester->generateUuid();
+        $item->set($value);
+
+        // When
         $cache->save($item);
 
+        // Then
         $item = $cache->getItem($key);
         $this->tester->assertTrue($item->isHit());
-        $this->tester->assertEquals('test-value', $item->get());
+        $this->tester->assertEquals($value, $item->get());
 
-        $cache->deleteItem('test');
-        $item = $cache->getItem($key);
+        // When
+        $cache->deleteItem($key);
 
-        $this->tester->assertFalse($item->isHit());
+        // Then
+        $this->tester->assertFalse($cache->getItem($key)->isHit());
     }
 }

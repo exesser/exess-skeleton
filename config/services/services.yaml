@@ -65,7 +65,7 @@ services:
   ExEss\Cms\Config\Cache\ConfigCacheFactory:
     arguments:
       - '%config_cache%'
-      - '@=service(constant("ExEss\\Cms\\Cache\\Cache::CONFIG"))'
+      - '@=service(constant("ExEss\\Bundle\\CmsBundle\\Component\\Cache\\Dictionary::CONFIG"))'
       - '@ExEss\Cms\Component\ExpressionParser\ParserService'
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
 
@@ -174,7 +174,6 @@ imports:
   - { resource: 'api_client_external.yaml' }
   - { resource: 'api_client_internal.yaml' }
   - { resource: 'backendCommands.yaml' }
-  - { resource: 'caches.yaml' }
   - { resource: 'commands.yaml' }
   - { resource: 'converters.yaml' }
   - { resource: 'database.yaml' }
