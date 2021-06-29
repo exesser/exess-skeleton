@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ExEss\Cms\DependencyInjection\Compiler;
+namespace ExEss\Bundle\CmsBundle\DependencyInjection\Compiler;
 
 use ExEss\Cms\Component\Client\Adapter\SoapServiceAdapter;
 use ExEss\Cms\Component\Client\Client;

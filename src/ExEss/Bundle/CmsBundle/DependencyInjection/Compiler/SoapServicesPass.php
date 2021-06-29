@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ExEss\Cms\DependencyInjection\Compiler;
+namespace ExEss\Bundle\CmsBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

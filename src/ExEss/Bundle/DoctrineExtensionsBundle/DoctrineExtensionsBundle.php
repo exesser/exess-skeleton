@@ -2,7 +2,7 @@
 
 namespace ExEss\Bundle\DoctrineExtensionsBundle;
 
-use ExEss\Bundle\DoctrineExtensionsBundle\DependencyInjection\BundleExtension;
+use ExEss\Bundle\DoctrineExtensionsBundle\DependencyInjection\DoctrineExtensionsExtension;
 use ExEss\Bundle\DoctrineExtensionsBundle\DependencyInjection\Compiler\MigrationsDiffPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -16,8 +16,8 @@ class DoctrineExtensionsBundle extends Bundle
         $container->addCompilerPass(new MigrationsDiffPass());
     }
 
-    public function getContainerExtension(): BundleExtension
+    public function getContainerExtension(): DoctrineExtensionsExtension
     {
-        return new BundleExtension();
+        return new DoctrineExtensionsExtension();
     }
 }

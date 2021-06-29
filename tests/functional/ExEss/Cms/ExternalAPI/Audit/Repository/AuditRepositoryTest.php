@@ -18,13 +18,53 @@ class AuditRepositoryTest extends FunctionalTestCase
     public function _before(): void
     {
         $this->repository = $this->tester->grabService(AuditRepository::class);
-
-        $this->tester->emptyTable('users_aud');
     }
 
     public function testFindBy(): void
     {
         // Given
+        $userId = $this->createAndUpdateUser();
+        $this->createAndUpdateUser();
+        $this->createAndUpdateUser();
+
+        // When
+        /** @var AuditList $response */
+        $response = $this->repository->findBy([
+            'recordId' => $userId,
+            'recordType' => User::class,
+            'page' => 1,
+            'limit' => 10,
+        ]);
+
+        // Then
+        $this->tester->assertInstanceOf(AuditList::class, $response);
+        $this->tester->assertEquals(3, $response->getPagination()->getTotal());
+
+        $audit = $response->getList()[0];
+        $this->tester->assertInstanceOf(AuditRow::class, $audit);
+        $this->tester->assertEquals('UPDATE', $audit->getOperation());
+        $this->tester->assertEquals(User::USERNAME_ADMIN, $audit->getUsername());
+        $changes = \explode('<br>', $audit->getChanges());
+        $this->tester->assertCount(2, $changes);
+        $this->tester->assertEquals('<b>preferred_locale</b>(varchar): <i>empty</i> -> en_BE', $changes[0]);
+
+        $audit = $response->getList()[1];
+        $this->tester->assertInstanceOf(AuditRow::class, $audit);
+        $this->tester->assertEquals('UPDATE', $audit->getOperation());
+        $this->tester->assertEquals(null, $audit->getUsername());
+        $changes = \explode('<br>', $audit->getChanges());
+        $this->tester->assertCount(3, $changes);
+        $this->tester->assertEquals('<b>status</b>(varchar): Active -> Inactive', $changes[0]);
+        $this->tester->assertEquals('<b>preferred_locale</b>(varchar): nl_BE -> <i>empty</i>', $changes[1]);
+
+        $audit = $response->getList()[2];
+        $this->tester->assertInstanceOf(AuditRow::class, $audit);
+        $this->tester->assertEquals('INSERT', $audit->getOperation());
+        $this->tester->assertEquals(User::USERNAME_ADMIN, $audit->getUsername());
+    }
+
+    private function createAndUpdateUser(): string
+    {
         $userId = $this->tester->generateUser('user name', [
             'preferred_locale' => Locale::NL,
             'status' => UserStatus::ACTIVE,
@@ -48,42 +88,6 @@ class AuditRepositoryTest extends FunctionalTestCase
             ['id' => $userId]
         );
 
-        // When
-        /** @var AuditList $response */
-        $response = $this->repository->findBy([
-            'recordId' => $userId,
-            'recordType' => User::class,
-            'page' => 1,
-            'limit' => 10,
-        ]);
-
-        // Then
-        $this->tester->assertInstanceOf(AuditList::class, $response);
-        $this->tester->assertEquals(
-            3,
-            $response->getPagination()->getTotal()
-        );
-
-        $audit = $response->getList()[0];
-        $this->tester->assertInstanceOf(AuditRow::class, $audit);
-        $changes = \explode('<br>', $audit->getChanges());
-        $this->tester->assertCount(3, $changes);
-        $this->tester->assertEquals(null, $audit->getUsername());
-        $this->tester->assertEquals('UPDATE', $audit->getOperation());
-        $this->tester->assertEquals('<b>status</b>(varchar): Active -> Inactive', $changes[0]);
-        $this->tester->assertEquals('<b>preferred_locale</b>(varchar): nl_BE -> <i>empty</i>', $changes[1]);
-
-        $audit = $response->getList()[1];
-        $this->tester->assertInstanceOf(AuditRow::class, $audit);
-        $changes = \explode('<br>', $audit->getChanges());
-        $this->tester->assertCount(2, $changes);
-        $this->tester->assertEquals(User::USERNAME_ADMIN, $audit->getUsername());
-        $this->tester->assertEquals('UPDATE', $audit->getOperation());
-        $this->tester->assertEquals('<b>preferred_locale</b>(varchar): <i>empty</i> -> en_BE', $changes[0]);
-
-        $audit = $response->getList()[2];
-        $this->tester->assertInstanceOf(AuditRow::class, $audit);
-        $this->tester->assertEquals(User::USERNAME_ADMIN, $audit->getUsername());
-        $this->tester->assertEquals('INSERT', $audit->getOperation());
+        return $userId;
     }
 }

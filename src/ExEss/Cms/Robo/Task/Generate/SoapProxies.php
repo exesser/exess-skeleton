@@ -2,7 +2,7 @@
 
 namespace ExEss\Cms\Robo\Task\Generate;
 
-use ExEss\Cms\DependencyInjection\Compiler\SoapServicesPass;
+use ExEss\Bundle\CmsBundle\DependencyInjection\Compiler\SoapServicesPass;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use Robo\Result;
