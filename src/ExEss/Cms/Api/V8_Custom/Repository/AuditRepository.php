@@ -13,12 +13,9 @@ class AuditRepository extends AbstractRepository
 {
     private EntityManagerInterface $em;
 
-    private JsonMapper $jsonMapper;
-
-    public function __construct(EntityManagerInterface $em, JsonMapper $jsonMapper)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
-        $this->jsonMapper = $jsonMapper;
     }
 
     /**
@@ -34,10 +31,12 @@ class AuditRepository extends AbstractRepository
 
         $auditList = new AuditList();
 
-        $this->jsonMapper->bStrictNullTypes = false;
-        $this->jsonMapper->bEnforceMapType = false;
+        $mapper = new JsonMapper();
+        $mapper->bIgnoreVisibility = true;
+        $mapper->bStrictNullTypes = false;
+        $mapper->bEnforceMapType = false;
 
-        return $this->jsonMapper->map($auditObject, $auditList);
+        return $mapper->map($auditObject, $auditList);
     }
 
     public function getRequest(array $requestData): AbstractRequest
