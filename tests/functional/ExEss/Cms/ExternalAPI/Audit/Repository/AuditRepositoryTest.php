@@ -18,8 +18,6 @@ class AuditRepositoryTest extends FunctionalTestCase
     public function _before(): void
     {
         $this->repository = $this->tester->grabService(AuditRepository::class);
-
-        $this->tester->emptyTable('users_aud');
     }
 
     public function testFindBy(): void
