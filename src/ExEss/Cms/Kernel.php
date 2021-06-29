@@ -2,10 +2,6 @@
 
 namespace ExEss\Cms;
 
-use ExEss\Cms\DependencyInjection\Compiler\CachePass;
-use ExEss\Cms\DependencyInjection\Compiler\GuzzleClientPass;
-use ExEss\Cms\DependencyInjection\Compiler\SoapServicesClientPass;
-use ExEss\Cms\DependencyInjection\Compiler\SoapServicesPass;
 use ExEss\Cms\DependencyInjection\Container;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -30,14 +26,6 @@ class Kernel extends BaseKernel
     protected function getContainerBaseClass(): string
     {
         return Container::class;
-    }
-
-    protected function build(ContainerBuilder $container): void
-    {
-        $container->addCompilerPass(new CachePass());
-        $container->addCompilerPass(new SoapServicesPass());
-        $container->addCompilerPass(new SoapServicesClientPass());
-        $container->addCompilerPass(new GuzzleClientPass());
     }
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
