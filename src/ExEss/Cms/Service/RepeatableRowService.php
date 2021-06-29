@@ -11,7 +11,7 @@ use ExEss\Cms\Dashboard\Model\Grid;
 use ExEss\Cms\Dictionary\Model\Dwp;
 use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Component\Flow\SaveFlow;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Servicemix\ExternalObjectHandler;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

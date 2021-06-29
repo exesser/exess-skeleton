@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Cms\Component\ExpressionParser\Parser;
+namespace Test\Functional\ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser;
 
 use ExEss\Cms\Entity\ListCell;
-use ExEss\Cms\Component\ExpressionParser\Parser\PathCompiler;
-use ExEss\Cms\Component\ExpressionParser\Parser\PathResolverOptions;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\PathCompiler;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\PathResolverOptions;
 use Helper\Testcase\FunctionalTestCase;
 
 class PathCompilerTest extends FunctionalTestCase

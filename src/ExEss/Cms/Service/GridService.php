@@ -9,8 +9,8 @@ use ExEss\Cms\Entity\Flow;
 use ExEss\Cms\Entity\FlowStep;
 use ExEss\Cms\Entity\GridTemplate;
 use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
-use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\ExpressionParserOptions;
 
 class GridService
 {

@@ -7,7 +7,7 @@ use ExEss\Cms\Entity\DashboardMenuAction;
 use ExEss\Cms\Entity\DashboardMenuActionGroup;
 use ExEss\Cms\Entity\ListRowAction;
 use ExEss\Cms\Entity\ListTopAction;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Logger\Logger;
 use ExEss\Cms\Validators\Exception\ConstraintNotFoundException;
 use ExEss\Cms\Validators\Factory\ConstraintFactory;

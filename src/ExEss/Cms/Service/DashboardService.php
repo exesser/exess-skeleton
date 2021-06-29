@@ -15,10 +15,10 @@ use ExEss\Cms\Entity\GridPanel;
 use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Component\Flow\Response\Model;
 use ExEss\Cms\Component\Flow\Validator;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\MultiLevelTemplate\TextFunctionHandler;
-use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\ExpressionParserOptions;
 use ExEss\Cms\Servicemix\ExternalObjectHandler;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

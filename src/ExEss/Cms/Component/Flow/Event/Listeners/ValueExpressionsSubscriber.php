@@ -4,7 +4,7 @@ namespace ExEss\Cms\Component\Flow\Event\Listeners;
 
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Doctrine\Type\FlowFieldType;
 use ExEss\Cms\Component\Flow\Event\FlowEvent;
 use ExEss\Cms\Component\Flow\Event\FlowEvents;

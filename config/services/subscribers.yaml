@@ -132,7 +132,7 @@ services:
     arguments:
       - '@ExEss\Cms\MultiLevelTemplate\TextFunctionHandler'
       - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
-      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
+      - '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService'
       - '@ExEss\Cms\Service\SelectWithSearchService'
     tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\Component\Flow\Event\Listeners\ValueExpressionsSubscriber' }]
 

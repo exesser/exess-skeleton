@@ -1,8 +1,8 @@
 <?php
 namespace ExEss\Cms\Api\V8_Custom\Repository;
 
-use ExEss\Cms\Component\ExpressionParser\ParserService;
-use ExEss\Cms\Component\ExpressionParser\Parser\PathResolverOptions;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\PathResolverOptions;
 use ExEss\Cms\Servicemix\ExternalObjectHandler;
 
 class ExternalObjectRepository

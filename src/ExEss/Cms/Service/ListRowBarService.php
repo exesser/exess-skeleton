@@ -9,7 +9,7 @@ use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Exception\NotFoundException;
 use ExEss\Cms\Helper\DataCleaner;
 use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRowBarButton;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Servicemix\ExternalObjectHandler;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

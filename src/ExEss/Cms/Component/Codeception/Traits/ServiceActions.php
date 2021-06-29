@@ -2,7 +2,7 @@
 
 namespace ExEss\Cms\Component\Codeception\Traits;
 
-use ExEss\Cms\DependencyInjection\Container;
+use ExEss\Bundle\CmsBundle\DependencyInjection\Container;
 
 trait ServiceActions
 {

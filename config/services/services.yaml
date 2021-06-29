@@ -50,7 +50,7 @@ services:
       - '@Symfony\Component\Validator\Validator\ValidatorInterface'
       - '@ExEss\Cms\Validators\Factory\ConstraintFactory'
       - '@ExEss\Cms\Logger\Logger'
-      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
+      - '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService'
       - '@Symfony\Component\Translation\Translator'
       - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
 
@@ -66,7 +66,7 @@ services:
     arguments:
       - '%config_cache%'
       - '@=service(constant("ExEss\\Cms\\Cache\\Cache::CONFIG"))'
-      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
+      - '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService'
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
 
   ExEss\Cms\Users\Service\GuidanceRecoveryService:
@@ -97,7 +97,7 @@ services:
     arguments:
       - '@doctrine.orm.entity_manager'
       - '@ExEss\Cms\Component\Flow\Builder\EnumFieldBuilder'
-      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
+      - '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService'
       - '@ExEss\Cms\Service\SelectWithSearchService'
       - '@Symfony\Component\Translation\Translator'
       - '@ExEss\Cms\Api\V8_Custom\Service\Security'
@@ -188,4 +188,3 @@ imports:
   - { resource: 'translators.yaml' }
   - { resource: 'validation.yaml' }
   - { resource: 'entity_listeners.yaml' }
-  - { resource: 'component/expression_parser.yaml' }

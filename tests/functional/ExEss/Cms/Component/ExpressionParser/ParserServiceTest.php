@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Cms\Component\ExpressionParser;
+namespace Test\Functional\ExEss\Bundle\CmsBundle\Component\ExpressionParser;
 
 use Doctrine\ORM\EntityManager;
 use ExEss\Cms\Dictionary\Format;
@@ -14,10 +14,10 @@ use ExEss\Cms\Entity\ListDynamic;
 use ExEss\Cms\Entity\User;
 use ExEss\Cms\Exception\ConfigInvalidException;
 use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
-use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionGroup;
-use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
-use ExEss\Cms\Component\ExpressionParser\Parser\PathResolverOptions;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\ExpressionGroup;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\ExpressionParserOptions;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\PathResolverOptions;
 use Helper\Testcase\FunctionalTestCase;
 use JsonMapper;
 

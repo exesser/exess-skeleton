@@ -81,7 +81,7 @@ services:
     lazy: true
     arguments:
       - '@ExEss\Cms\Component\Flow\Field'
-      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
+      - '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService'
     tags:
       - { name: 'pre-validation-suggestion', priority:  330 } # Should go first, can update the model
 

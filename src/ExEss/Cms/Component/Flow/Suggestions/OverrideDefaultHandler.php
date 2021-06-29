@@ -7,7 +7,7 @@ use ExEss\Cms\Component\Flow\Field;
 use ExEss\Cms\Component\Flow\Request\FlowAction;
 use ExEss\Cms\Component\Flow\Response;
 use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
 
 class OverrideDefaultHandler extends AbstractSuggestionHandler
 {

@@ -1,0 +1,30 @@
+services:
+  _defaults:
+    public: true
+    autowire: true
+
+  ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\Translator\EntityTranslator: ~
+  ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\Translator\QueryTranslator: ~
+
+  ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\PathResolver:
+    bind:
+      $translators:
+        ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\Translator\EntityTranslator: '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\Translator\EntityTranslator'
+        ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\Translator\QueryTranslator: '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\Translator\QueryTranslator'
+
+  ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\ExpressionGroupParser: ~
+  ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\ExpressionParser: ~
+
+  ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\PathCompiler:
+    bind:
+      $cache: '@=service(constant("ExEss\\Cms\\Cache\\Cache::COMPILER_PATHS"))'
+
+  ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService:
+    bind:
+      $cache: '@=service(constant("ExEss\\Cms\\Cache\\Cache::PARSED_QUERY_USER"))'
+
+  # Autowired compilers directory
+  ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\Compiler\:
+    public: true
+    autowire: true
+    resource: '../../../Component/ExpressionParser/Parser/Compiler/'

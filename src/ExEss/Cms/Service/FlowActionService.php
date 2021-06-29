@@ -9,7 +9,7 @@ use ExEss\Cms\Component\Flow\Action\BackendCommandExecutor;
 use ExEss\Cms\Component\Flow\Action\Command;
 use ExEss\Cms\Component\Flow\ActionFactory;
 use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
 
 class FlowActionService
 {

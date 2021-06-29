@@ -7,7 +7,7 @@ use stdClass;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
 use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
 use ExEss\Cms\Logger\Logger;
 use ExEss\Cms\Validators\Exception\ConstraintNotFoundException;
 use ExEss\Cms\Validators\Factory\ConstraintFactory;

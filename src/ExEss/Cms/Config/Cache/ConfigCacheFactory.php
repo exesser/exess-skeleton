@@ -2,7 +2,7 @@
 namespace ExEss\Cms\Config\Cache;
 
 use ExEss\Cms\Api\V8_Custom\Service\Security;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 
 class ConfigCacheFactory

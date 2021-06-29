@@ -2,11 +2,7 @@
 
 namespace ExEss\Cms;
 
-use ExEss\Cms\DependencyInjection\Compiler\CachePass;
-use ExEss\Cms\DependencyInjection\Compiler\GuzzleClientPass;
-use ExEss\Cms\DependencyInjection\Compiler\SoapServicesClientPass;
-use ExEss\Cms\DependencyInjection\Compiler\SoapServicesPass;
-use ExEss\Cms\DependencyInjection\Container;
+use ExEss\Bundle\CmsBundle\DependencyInjection\Container;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -19,7 +15,6 @@ class Kernel extends BaseKernel
     use MicroKernelTrait;
 
     private const CONFIG_EXTS = '.{php,xml,yaml,yml}';
-
     /**
      * We definitely don't want this as a base container here but oh well, our test are just awesomely crazy fucked up
      * We mock services after the container has already initialized that same services, and things like that,
@@ -30,14 +25,6 @@ class Kernel extends BaseKernel
     protected function getContainerBaseClass(): string
     {
         return Container::class;
-    }
-
-    protected function build(ContainerBuilder $container): void
-    {
-        $container->addCompilerPass(new CachePass());
-        $container->addCompilerPass(new SoapServicesPass());
-        $container->addCompilerPass(new SoapServicesClientPass());
-        $container->addCompilerPass(new GuzzleClientPass());
     }
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void

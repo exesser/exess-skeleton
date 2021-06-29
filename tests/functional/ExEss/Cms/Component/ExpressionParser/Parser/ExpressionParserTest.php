@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Cms\Component\ExpressionParser\Parser;
+namespace Test\Functional\ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser;
 
 use ExEss\Cms\Doctrine\Type\FlowType;
 use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\Component\ExpressionParser\Parser\Expression;
-use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParser;
-use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\Expression;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\ExpressionParser;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\ExpressionParserOptions;
 use Helper\Testcase\FunctionalTestCase;
 
 class ExpressionParserTest extends FunctionalTestCase
