@@ -46,6 +46,6 @@ final class CachePass implements CompilerPassInterface
     {
         return \preg_replace_callback('/[._-][a-z]?/', function (array $matches): string {
                 return \strtoupper(\ltrim($matches[0], '._-'));
-            }, \strtolower($constant)) . $suffix;
+        }, \strtolower($constant)) . $suffix;
     }
 }
