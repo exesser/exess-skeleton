@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping\ClassMetadata;
 use ExEss\Cms\Base\Request\AbstractRequest;
 use ExEss\Cms\Api\V8_Custom\Repository\Request\AuditRequest;
 use ExEss\Cms\Api\V8_Custom\Repository\Response\AuditList;
+use ExEss\Cms\Base\Response\BaseListResponse;
 use ExEss\Cms\Base\Response\Pagination;
 use JsonMapper;
 
@@ -21,13 +22,15 @@ class AuditRepository extends AbstractRepository
     /**
      * @inheritdoc
      */
-    public function findBy(array $requestData)
+    public function findBy(array $requestData): BaseListResponse
     {
         $request = $this->getRequest($requestData);
 
+        $metadata = $this->em->getClassMetadata($request->getRecordType());
+
         $auditObject = new \stdClass();
-        $auditObject->audits = $this->getRows($request);
-        $auditObject->pagination = $this->getPagination($request);
+        $auditObject->audits = $this->getRows($metadata, $request);
+        $auditObject->pagination = $this->getPagination($metadata, $request);
 
         $auditList = new AuditList();
 
@@ -44,17 +47,17 @@ class AuditRepository extends AbstractRepository
         return AuditRequest::createFrom($requestData);
     }
 
-    private function getRows(AuditRequest $request): array
+    private function getRows(ClassMetadata $metadata, AuditRequest $request): array
     {
-        $metadata = $this->em->getClassMetadata($request->getRecordType());
+        $offset = ($request->getPage() - 1) * $request->getLimit();
+        $limit = $request->getLimit();
 
-        return $this->retrieve(
+        return $this->queryAuditTable(
+            "aud.audit_timestamp as timestamp, u.user_name as username",
             $metadata,
-            $this->getAuditedFields($metadata),
             $request->getRecordId(),
             $request->getFilters(),
-            ($request->getPage() - 1) * $request->getLimit(),
-            $request->getLimit()
+            "LIMIT $offset,$limit"
         );
     }
 
@@ -100,15 +103,19 @@ class AuditRepository extends AbstractRepository
         }
 
         return [
-            $conditions,
+            \implode(' AND ', $conditions),
             $parameters,
         ];
     }
 
-    private function getPagination(AuditRequest $request): Pagination
+    private function getPagination(ClassMetadata $metadata, AuditRequest $request): Pagination
     {
-        $numOfRows = $this->em->getConnection()->fetchAllAssociative('SELECT FOUND_ROWS()');
-        $total = (int) \current(\array_pop($numOfRows));
+        $total = $this->queryAuditTable(
+            "COUNT(*) as cnt",
+            $metadata,
+            $request->getRecordId(),
+            $request->getFilters()
+        )[0]['cnt'];
 
         return new Pagination(
             $request->getPage(),
@@ -128,30 +135,16 @@ class AuditRepository extends AbstractRepository
         );
     }
 
-    private function retrieve(
+    private function queryAuditTable(
+        string $select,
         ClassMetadata $metadata,
-        array $fields,
         string $id,
         array $filters,
-        int $offset,
-        int $limit
+        string $limit = ''
     ): array {
         $table = $metadata->getTableName() . '_aud';
-        [$whereConditions, $parameters] = $this->getWhereConditions($filters);
-        $whereConditions = \implode(' AND ', $whereConditions);
-
-        $selectFields = \implode(
-            ", ",
-            \array_map(
-                function (string $field) {
-                    return \sprintf(
-                        'IFNULL(newRecord.%1$s, "") as %1$s, IFNULL(oldRecord.%1$s, "") as %1$s_old',
-                        $field
-                    );
-                },
-                $fields
-            )
-        );
+        [$where, $parameters] = $this->getWhereConditions($filters);
+        $fields = $this->getAuditedFields($metadata);
 
         $concat = \implode(
             ", ",
@@ -184,42 +177,14 @@ class AuditRepository extends AbstractRepository
                 $fields
             )
         );
+        $from = $this->getFrom($id, $table, $fields);
 
         $query = "
-            SELECT SQL_CALC_FOUND_ROWS
-                aud.audit_timestamp as timestamp,
+            SELECT             
                 aud.audit_operation as operation,
-                u.user_name as username,
-                CONCAT($concat) as changes
-            FROM (
-                SELECT
-                    IF(newRecord.audit_operation = 'INSERT', newRecord.created_by, newRecord.modified_user_id) 
-                      as aud_user_id,
-                    newRecord.audit_timestamp,
-                    newRecord.audit_operation,
-                    $selectFields
-                FROM (
-                    SELECT 
-                        record.id, 
-                        record.audit_timestamp as newRecordTimeStamp,
-                        (
-                            SELECT oldRecord.audit_timestamp
-                            FROM $table oldRecord
-                            WHERE oldRecord.id = record.id AND oldRecord.audit_timestamp < record.audit_timestamp
-                            ORDER BY oldRecord.audit_timestamp DESC
-                            LIMIT 1
-                        ) as oldRecordTimeStamp
-                    FROM $table record
-                    WHERE record.id = '$id'
-                ) AS timeStamps
-                LEFT JOIN $table as newRecord ON 
-                    newRecord.id = timeStamps.id 
-                    AND newRecord.audit_timestamp = timeStamps.newRecordTimeStamp
-                LEFT JOIN $table as oldRecord ON 
-                    oldRecord.id = timeStamps.id 
-                    AND oldRecord.audit_timestamp = timeStamps.oldRecordTimeStamp
-                     
-            ) as aud
+                CONCAT($concat) as changes,
+                $select
+            FROM ($from) as aud
             LEFT JOIN users as u ON u.id = aud.aud_user_id
             HAVING 
                 (
@@ -229,10 +194,55 @@ class AuditRepository extends AbstractRepository
                         AND changes <> ''
                     )
                 )
-                AND $whereConditions
-            LIMIT $offset,$limit
+                AND $where
+            $limit
           ";
 
         return $this->em->getConnection()->fetchAllAssociative($query, $parameters);
+    }
+
+    private function getFrom(string $id, string $table, array $fields): string
+    {
+        $selectFields = \implode(
+            ", ",
+            \array_map(
+                function (string $field) {
+                    return \sprintf(
+                        'IFNULL(newRecord.%1$s, "") as %1$s, IFNULL(oldRecord.%1$s, "") as %1$s_old',
+                        $field
+                    );
+                },
+                $fields
+            )
+        );
+
+        return "
+            SELECT
+                IF(newRecord.audit_operation = 'INSERT', newRecord.created_by, newRecord.modified_user_id) 
+                  as aud_user_id,
+                newRecord.audit_timestamp,
+                newRecord.audit_operation,
+                $selectFields
+            FROM (
+                SELECT 
+                    record.id, 
+                    record.audit_timestamp as newRecordTimeStamp,
+                    (
+                        SELECT oldRecord.audit_timestamp
+                        FROM $table oldRecord
+                        WHERE oldRecord.id = record.id AND oldRecord.audit_timestamp < record.audit_timestamp
+                        ORDER BY oldRecord.audit_timestamp DESC
+                        LIMIT 1
+                    ) as oldRecordTimeStamp
+                FROM $table record
+                WHERE record.id = '$id'
+            ) AS timeStamps
+            LEFT JOIN $table as newRecord ON 
+                newRecord.id = timeStamps.id 
+                AND newRecord.audit_timestamp = timeStamps.newRecordTimeStamp
+            LEFT JOIN $table as oldRecord ON 
+                oldRecord.id = timeStamps.id 
+                AND oldRecord.audit_timestamp = timeStamps.oldRecordTimeStamp
+        ";
     }
 }
