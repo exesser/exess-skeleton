@@ -186,7 +186,7 @@ class AuditRepository extends AbstractRepository
         );
 
         $query = "
-            SELECT
+            SELECT SQL_CALC_FOUND_ROWS
                 aud.audit_timestamp as timestamp,
                 aud.audit_operation as operation,
                 u.user_name as username,
