@@ -3,8 +3,8 @@
 namespace Test\Functional\ExEss\Cms\EventListener;
 
 use Doctrine\ORM\EntityManager;
-use ExEss\Cms\Entity\FilterField;
-use ExEss\Cms\Entity\FilterFieldGroup;
+use ExEss\Bundle\CmsBundle\Entity\FilterField;
+use ExEss\Bundle\CmsBundle\Entity\FilterFieldGroup;
 use Helper\Testcase\FunctionalTestCase;
 
 /**

@@ -2,9 +2,9 @@
 
 namespace ExEss\Bundle\CmsBundle\DependencyInjection\Compiler;
 
-use ExEss\Cms\Component\Client\Adapter\SoapServiceAdapter;
-use ExEss\Cms\Component\Client\Client;
-use ExEss\Cms\ExternalAPI\AbstractSoapClientService;
+use ExEss\Bundle\CmsBundle\Component\Client\Adapter\SoapServiceAdapter;
+use ExEss\Bundle\CmsBundle\Component\Client\Client;
+use ExEss\Bundle\CmsBundle\ExternalAPI\AbstractSoapClientService;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;

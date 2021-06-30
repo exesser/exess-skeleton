@@ -2,14 +2,14 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow\Subscribers;
 
-use ExEss\Cms\Doctrine\Type\FlowFieldType;
-use ExEss\Cms\Entity\ListCellLink;
-use ExEss\Cms\Entity\ListDynamic;
-use ExEss\Cms\Component\Flow\Event\FlowEvent;
-use ExEss\Cms\Component\Flow\Event\Listeners\ValueExpressionsSubscriber;
-use ExEss\Cms\Component\Flow\Request\FlowAction;
-use ExEss\Cms\Component\Flow\Response;
-use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\FlowFieldType;
+use ExEss\Bundle\CmsBundle\Entity\ListCellLink;
+use ExEss\Bundle\CmsBundle\Entity\ListDynamic;
+use ExEss\Bundle\CmsBundle\Component\Flow\Event\FlowEvent;
+use ExEss\Bundle\CmsBundle\Component\Flow\Event\Listeners\ValueExpressionsSubscriber;
+use ExEss\Bundle\CmsBundle\Component\Flow\Request\FlowAction;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
 use Helper\Testcase\FunctionalTestCase;
 
 class ValueExpressionsTest extends FunctionalTestCase

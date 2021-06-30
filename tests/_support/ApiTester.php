@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 use Codeception\Util\Fixtures;
-use ExEss\Cms\Component\Codeception\Traits\ServiceActions;
+use ExEss\Bundle\CmsBundle\Component\Codeception\Traits\ServiceActions;
 
 /**
  * Inherited Methods

@@ -1,13 +1,14 @@
 <?php
 
+use ExEss\Bundle\CmsBundle\CRUD\Config\ConfigurationTask;
+use ExEss\Bundle\CmsBundle\Robo\Task\Db\LoadTestDump;
+use ExEss\Bundle\CmsBundle\Robo\Task\Db\Release\Exporter;
+use ExEss\Bundle\CmsBundle\Robo\Task\Db\Release\Importer;
+use ExEss\Bundle\CmsBundle\Robo\Task\Db\Remove\Audits;
+use ExEss\Bundle\CmsBundle\Robo\Task\Db\TableSizes;
+use ExEss\Bundle\CmsBundle\Robo\Task\Debug\Events;
+use ExEss\Bundle\CmsBundle\Robo\Task\Generate\SoapProxies;
 use Robo\Result;
-use ExEss\Cms\CRUD\Config\ConfigurationTask;
-use ExEss\Cms\Robo\Task\Db\LoadTestDump;
-use ExEss\Cms\Robo\Task\Db\Release\Exporter;
-use ExEss\Cms\Robo\Task\Db\Release\Importer;
-use ExEss\Cms\Robo\Task\Db\TableSizes;
-use ExEss\Cms\Robo\Task\Debug;
-use ExEss\Cms\Robo\Task\Generate;
 
 /**
  * This is project's console commands configuration for Robo task runner.
@@ -89,7 +90,7 @@ class RoboFile extends \Robo\Tasks
      */
     public function debugEvents(?string $filter = null): Result
     {
-        return (new Debug\Events($this->io(), $filter))->run();
+        return (new Events($this->io(), $filter))->run();
     }
 
     private function removeAndRecreate(string $dir, bool $onlySubfolders = false): void
@@ -107,9 +108,9 @@ class RoboFile extends \Robo\Tasks
     public function generateSoapProxies(string $environment): Result
     {
         $storeWsdl = $environment === self::ENVIRONMENT_LOCAL;
-        $this->removeAndRecreate(Generate\SoapProxies::PROXY_DIR, $storeWsdl);
+        $this->removeAndRecreate(SoapProxies::PROXY_DIR, $storeWsdl);
 
-        return (new Generate\SoapProxies($this->io(), $storeWsdl))->run();
+        return (new SoapProxies($this->io(), $storeWsdl))->run();
     }
 
     /**
@@ -125,7 +126,7 @@ class RoboFile extends \Robo\Tasks
      */
     public function dbAuditsRemove(): Result
     {
-        return (new \ExEss\Cms\Robo\Task\Db\Remove\Audits($this->io()))->run();
+        return (new Audits($this->io()))->run();
     }
 
     /**

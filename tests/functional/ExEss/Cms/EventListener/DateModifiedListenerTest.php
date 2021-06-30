@@ -3,7 +3,7 @@
 namespace Test\Functional\ExEss\Cms\EventListener;
 
 use Doctrine\ORM\EntityManager;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Helper\Testcase\FunctionalTestCase;
 
 /**

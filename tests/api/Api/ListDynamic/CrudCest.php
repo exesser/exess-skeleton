@@ -3,8 +3,8 @@
 namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
-use ExEss\Cms\Entity\Dashboard;
-use ExEss\Cms\Entity\Property;
+use ExEss\Bundle\CmsBundle\Entity\Dashboard;
+use ExEss\Bundle\CmsBundle\Entity\Property;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
 class CrudCest

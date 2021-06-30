@@ -3,8 +3,8 @@
 namespace Test\Api\Api\Dashboard;
 
 use ApiTester;
-use ExEss\Cms\Entity\Dashboard;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Entity\Dashboard;
+use ExEss\Bundle\CmsBundle\Entity\User;
 
 class ViewCest
 {

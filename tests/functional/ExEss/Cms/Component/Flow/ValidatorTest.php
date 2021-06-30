@@ -3,12 +3,13 @@
 namespace Test\Functional\ExEss\Cms\Component\Flow;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Entity\Validator;
-use stdClass;
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\Flow\Validator as ValidatorService;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\Flow\Validator as ValidatorService;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Validator as ValidatorType;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Entity\Validator;
 use Helper\Testcase\FunctionalTestCase;
+use stdClass;
 
 class ValidatorTest extends FunctionalTestCase
 {
@@ -94,7 +95,7 @@ class ValidatorTest extends FunctionalTestCase
 
     public function validatorProvider(): array
     {
-        $notBlankValidator = $this->selfFieldValidator(\ExEss\Cms\Doctrine\Type\Validator::NOT_BLANK);
+        $notBlankValidator = $this->selfFieldValidator(ValidatorType::NOT_BLANK);
         $notBlankMessage = 'This value should not be blank.';
 
         return [
@@ -122,7 +123,7 @@ class ValidatorTest extends FunctionalTestCase
                 'fieldName' => 'email',
                 'validators' => [
                     $notBlankValidator,
-                    $this->selfFieldValidator(\ExEss\Cms\Doctrine\Type\Validator::EMAIL),
+                    $this->selfFieldValidator(ValidatorType::EMAIL),
                 ],
                 'fieldValuesAndExpectations' => [
                     ['model' => ['email' => ''], 'result' => [$notBlankMessage]],
@@ -293,7 +294,7 @@ class ValidatorTest extends FunctionalTestCase
     private function notBlankValidator(string $field): array
     {
         return [
-            'validator' => \ExEss\Cms\Doctrine\Type\Validator::NOT_BLANK,
+            'validator' => ValidatorType::NOT_BLANK,
             'field' => $field,
             'mode' => 1,
         ];

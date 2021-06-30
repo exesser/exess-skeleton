@@ -3,7 +3,7 @@
 namespace Test\Api\Api\User;
 
 use ApiTester;
-use ExEss\Cms\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
 class PreferencesCest

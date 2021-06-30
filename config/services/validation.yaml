@@ -2,15 +2,15 @@ parameters:
   default_country_code: 'BE'
   constraints:
     # Custom constraints
-    FixedPhoneNumber: ExEss\Cms\Validators\FixedPhoneNumber
-    InList: ExEss\Cms\Validators\InList
-    IsEndOfMonth: ExEss\Cms\Validators\IsEndOfMonth
-    MobilePhoneNumber: ExEss\Cms\Validators\MobilePhoneNumber
-    NotInList: ExEss\Cms\Validators\NotInList
-    MultiEmail: ExEss\Cms\Validators\MultiEmail
-    PhoneNumber: ExEss\Cms\Validators\PhoneNumber
-    UserId: ExEss\Cms\Validators\UserId
-    Vat: ExEss\Cms\Validators\Vat
+    FixedPhoneNumber: ExEss\Bundle\CmsBundle\Validators\FixedPhoneNumber
+    InList: ExEss\Bundle\CmsBundle\Validators\InList
+    IsEndOfMonth: ExEss\Bundle\CmsBundle\Validators\IsEndOfMonth
+    MobilePhoneNumber: ExEss\Bundle\CmsBundle\Validators\MobilePhoneNumber
+    NotInList: ExEss\Bundle\CmsBundle\Validators\NotInList
+    MultiEmail: ExEss\Bundle\CmsBundle\Validators\MultiEmail
+    PhoneNumber: ExEss\Bundle\CmsBundle\Validators\PhoneNumber
+    UserId: ExEss\Bundle\CmsBundle\Validators\UserId
+    Vat: ExEss\Bundle\CmsBundle\Validators\Vat
 
     # Symfony constraints
     All: Symfony\Component\Validator\Constraints\All
@@ -64,15 +64,15 @@ parameters:
     Valid: Symfony\Component\Validator\Constraints\Valid
 
   validators:
-    - ExEss\Cms\Validators\FixedPhoneNumberValidator
-    - ExEss\Cms\Validators\InListValidator
-    - ExEss\Cms\Validators\IsEndOfMonthValidator
-    - ExEss\Cms\Validators\MobilePhoneNumberValidator
-    - ExEss\Cms\Validators\MultiEmailValidator
-    - ExEss\Cms\Validators\NotInListValidator
-    - ExEss\Cms\Validators\PhoneNumberValidator
-    - ExEss\Cms\Validators\UserIdValidator
-    - ExEss\Cms\Validators\VatValidator
+    - ExEss\Bundle\CmsBundle\Validators\FixedPhoneNumberValidator
+    - ExEss\Bundle\CmsBundle\Validators\InListValidator
+    - ExEss\Bundle\CmsBundle\Validators\IsEndOfMonthValidator
+    - ExEss\Bundle\CmsBundle\Validators\MobilePhoneNumberValidator
+    - ExEss\Bundle\CmsBundle\Validators\MultiEmailValidator
+    - ExEss\Bundle\CmsBundle\Validators\NotInListValidator
+    - ExEss\Bundle\CmsBundle\Validators\PhoneNumberValidator
+    - ExEss\Bundle\CmsBundle\Validators\UserIdValidator
+    - ExEss\Bundle\CmsBundle\Validators\VatValidator
 
 services:
   _defaults:
@@ -80,52 +80,52 @@ services:
 
   Symfony\Component\Validator\Validator\ValidatorInterface:
     class: Symfony\Component\Validator\Validator\ValidatorInterface
-    factory: ['ExEss\Cms\Factory\ValidatorFactory', create]
+    factory: ['ExEss\Bundle\CmsBundle\Factory\ValidatorFactory', create]
     arguments:
       - '@service_container'
 
-  ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Params\Validator\ValidatorFactory:
     lazy: true
-    class: ExEss\Cms\Api\V8_Custom\Params\Validator\ValidatorFactory
+    class: ExEss\Bundle\CmsBundle\Api\V8_Custom\Params\Validator\ValidatorFactory
     arguments:
       - '@Symfony\Component\Validator\Validator\ValidatorInterface'
 
   # Validators
-  ExEss\Cms\Validators\FixedPhoneNumberValidator:
+  ExEss\Bundle\CmsBundle\Validators\FixedPhoneNumberValidator:
     arguments:
       - '%default_country_code%'
       - '@libphonenumber\PhoneNumberUtil'
 
-  ExEss\Cms\Validators\InListValidator: ~
-  ExEss\Cms\Validators\IsEndOfMonthValidator: ~
+  ExEss\Bundle\CmsBundle\Validators\InListValidator: ~
+  ExEss\Bundle\CmsBundle\Validators\IsEndOfMonthValidator: ~
 
-  ExEss\Cms\Validators\MobilePhoneNumberValidator:
+  ExEss\Bundle\CmsBundle\Validators\MobilePhoneNumberValidator:
     arguments:
       - '%default_country_code%'
       - '@libphonenumber\PhoneNumberUtil'
 
-  ExEss\Cms\Validators\MultiEmailValidator: ~
-  ExEss\Cms\Validators\NotInListValidator: ~
+  ExEss\Bundle\CmsBundle\Validators\MultiEmailValidator: ~
+  ExEss\Bundle\CmsBundle\Validators\NotInListValidator: ~
 
-  ExEss\Cms\Validators\PhoneNumberValidator:
+  ExEss\Bundle\CmsBundle\Validators\PhoneNumberValidator:
     arguments:
       - '%default_country_code%'
       - '@libphonenumber\PhoneNumberUtil'
 
-  ExEss\Cms\Validators\UserIdValidator:
+  ExEss\Bundle\CmsBundle\Validators\UserIdValidator:
     arguments:
       - '@doctrine.orm.entity_manager'
 
-  ExEss\Cms\Validators\VatValidator:
+  ExEss\Bundle\CmsBundle\Validators\VatValidator:
     arguments:
-      - '@ExEss\Cms\FieldFormatter\VatNumberFormatter'
+      - '@ExEss\Bundle\CmsBundle\FieldFormatter\VatNumberFormatter'
 
   # Factories
-  ExEss\Cms\Validators\Factory\ConstraintValidatorFactory:
+  ExEss\Bundle\CmsBundle\Validators\Factory\ConstraintValidatorFactory:
     arguments:
       - '@service_container'
       - '%validators%'
 
-  ExEss\Cms\Validators\Factory\ConstraintFactory:
+  ExEss\Bundle\CmsBundle\Validators\Factory\ConstraintFactory:
     arguments:
       - '%constraints%'

@@ -2,13 +2,13 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow\Builder;
 
-use ExEss\Cms\Doctrine\Type\FlowFieldType;
-use ExEss\Cms\Doctrine\Type\UserStatus;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Component\Flow\Builder\EnumFieldBuilder;
-use ExEss\Cms\Component\Flow\EnumRecord;
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\FlowFieldType;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Component\Flow\Builder\EnumFieldBuilder;
+use ExEss\Bundle\CmsBundle\Component\Flow\EnumRecord;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
 use Helper\Testcase\FunctionalTestCase;
 
 class EnumFieldBuilderTest extends FunctionalTestCase

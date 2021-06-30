@@ -2,17 +2,17 @@
 
 namespace Test\Functional\ExEss\Cms\Http\EventSubscriber;
 
-use ExEss\Cms\Doctrine\Type\HttpMethod;
-use ExEss\Cms\Helper\DataCleaner;
-use ExEss\Cms\Http\EventSubscriber\LogSubscriber;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\HttpMethod;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Http\EventSubscriber\LogSubscriber;
 use Mockery\MockInterface;
 use Nyholm\Psr7\Stream;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
-use ExEss\Cms\Dictionary\Model\Dwp;
-use ExEss\Cms\Component\Flow\Request\FlowAction;
-use ExEss\Cms\Logger\Logger;
+use ExEss\Bundle\CmsBundle\Dictionary\Model\Dwp;
+use ExEss\Bundle\CmsBundle\Component\Flow\Request\FlowAction;
+use ExEss\Bundle\CmsBundle\Logger\Logger;
 use Helper\Testcase\FunctionalTestCase;
 
 class LogSubscriberTest extends FunctionalTestCase

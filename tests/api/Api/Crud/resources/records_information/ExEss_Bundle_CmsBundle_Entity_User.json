@@ -1,0 +1,139 @@
+{
+    "recordName": "ExEss\\Bundle\\CmsBundle\\Entity\\User",
+    "relations": [
+        {
+            "name": "roles",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\AclRole"
+        },
+        {
+            "name": "lastLogin",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\UserLogin"
+        },
+        {
+            "name": "guidanceRecovery",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\UserGuidanceRecovery"
+        },
+        {
+            "name": "userGroups",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\SecurityGroupUser"
+        }
+    ],
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "userName",
+            "type": "string"
+        },
+        {
+            "name": "userHash",
+            "type": "string"
+        },
+        {
+            "name": "salt",
+            "type": "string"
+        },
+        {
+            "name": "systemGeneratedPassword",
+            "type": "boolean"
+        },
+        {
+            "name": "pwdLastChanged",
+            "type": "datetime"
+        },
+        {
+            "name": "sugarLogin",
+            "type": "boolean"
+        },
+        {
+            "name": "firstName",
+            "type": "string"
+        },
+        {
+            "name": "lastName",
+            "type": "string"
+        },
+        {
+            "name": "externalAuthOnly",
+            "type": "boolean"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "modifiedUserId",
+            "type": "string"
+        },
+        {
+            "name": "createdBy",
+            "type": "string"
+        },
+        {
+            "name": "status",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "Active",
+                    "value": "Active"
+                },
+                {
+                    "key": "Inactive",
+                    "value": "Inactive"
+                }
+            ]
+        },
+        {
+            "name": "portalOnly",
+            "type": "boolean"
+        },
+        {
+            "name": "employeeStatus",
+            "type": "string"
+        },
+        {
+            "name": "isGroup",
+            "type": "boolean"
+        },
+        {
+            "name": "selfcareToc",
+            "type": "boolean"
+        },
+        {
+            "name": "preferredLocale",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "nl_BE",
+                    "value": "Dutch (Belgium)"
+                },
+                {
+                    "key": "en_BE",
+                    "value": "English (Belgium)"
+                },
+                {
+                    "key": "fr_BE",
+                    "value": "French (Belgium)"
+                },
+                {
+                    "key": "de_DE",
+                    "value": "German (Germany)"
+                }
+            ]
+        }
+    ]
+}

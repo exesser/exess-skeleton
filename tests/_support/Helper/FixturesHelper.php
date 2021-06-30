@@ -2,7 +2,7 @@
 namespace Helper;
 
 use Codeception\TestInterface;
-use ExEss\Cms\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
 use Helper\Module\Db;
 
 /**

@@ -2,12 +2,12 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow\Suggestions;
 
-use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\Entity\ListDynamic;
-use ExEss\Cms\Component\Flow\Request\FlowAction;
-use ExEss\Cms\Component\Flow\Response;
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\Flow\Suggestions\DynamicEnumHandler;
+use ExEss\Bundle\CmsBundle\Entity\Flow;
+use ExEss\Bundle\CmsBundle\Entity\ListDynamic;
+use ExEss\Bundle\CmsBundle\Component\Flow\Request\FlowAction;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\Flow\Suggestions\DynamicEnumHandler;
 use Helper\Testcase\FunctionalTestCase;
 
 class DynamicEnumHandlerTest extends FunctionalTestCase

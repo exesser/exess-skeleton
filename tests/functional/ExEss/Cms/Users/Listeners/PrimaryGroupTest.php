@@ -3,11 +3,11 @@
 namespace Test\Functional\ExEss\Cms\Users\Listeners;
 
 use Helper\Testcase\FunctionalTestCase;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Entity\SecurityGroupUser;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Entity\SecurityGroupUser;
 
 /**
- * @see \ExEss\Cms\EvenListener\PrimaryGroupListener
+ * @see \ExEss\Bundle\CmsBundle\EvenListener\PrimaryGroupListener
  */
 class PrimaryGroupTest extends FunctionalTestCase
 {

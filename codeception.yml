@@ -23,9 +23,6 @@ coverage:
     enabled: true
     whitelist:
         include:
-            - Api/*.php
-            - include/*.php
-            - vardefs/*.php
             - src/*.php
         exclude:
             - var/*

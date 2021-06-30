@@ -2,7 +2,7 @@
 
 namespace Test\Unit\ExEss\Cms\Component\Logger\Processor;
 
-use ExEss\Cms\Component\Logger\Processor\XLogIdProcessor;
+use ExEss\Bundle\CmsBundle\Component\Logger\Processor\XLogIdProcessor;
 use Helper\Testcase\UnitTestCase;
 
 class XLogIdProcessorTest extends UnitTestCase

@@ -19,5 +19,5 @@ services:
     public: true
 
   _instanceof:
-    ExEss\Cms\ExternalAPI\AbstractSoapClientService:
+    ExEss\Bundle\CmsBundle\ExternalAPI\AbstractSoapClientService:
       tags: ['client.soap']

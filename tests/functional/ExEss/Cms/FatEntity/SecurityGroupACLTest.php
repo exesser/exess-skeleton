@@ -2,9 +2,9 @@
 
 namespace Test\Functional\ExEss\Cms\FatEntity;
 
-use ExEss\Cms\Acl\AclService;
-use ExEss\Cms\Doctrine\Type\UserStatus;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Acl\AclService;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Helper\Testcase\FunctionalTestCase;
 
 class SecurityGroupACLTest extends FunctionalTestCase

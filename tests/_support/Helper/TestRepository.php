@@ -2,9 +2,9 @@
 
 namespace Helper;
 
-use ExEss\Cms\Api\V8_Custom\Repository\AbstractRepository;
-use ExEss\Cms\Base\Response\BaseListResponse;
-use ExEss\Cms\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\AbstractRepository;
+use ExEss\Bundle\CmsBundle\Base\Response\BaseListResponse;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
 
 class TestRepository extends AbstractRepository
 {

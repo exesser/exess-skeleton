@@ -2,9 +2,9 @@
 
 namespace Test\Functional\ExEss\Cms\Component\ExpressionParser\Parser;
 
-use ExEss\Cms\Entity\ListCell;
-use ExEss\Cms\Component\ExpressionParser\Parser\PathCompiler;
-use ExEss\Cms\Component\ExpressionParser\Parser\PathResolverOptions;
+use ExEss\Bundle\CmsBundle\Entity\ListCell;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\PathCompiler;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\PathResolverOptions;
 use Helper\Testcase\FunctionalTestCase;
 
 class PathCompilerTest extends FunctionalTestCase

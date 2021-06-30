@@ -3,8 +3,8 @@
 namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Component\Flow\Action\Command;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Component\Flow\Action\Command;
 
 class ExportListToCsvCest
 {

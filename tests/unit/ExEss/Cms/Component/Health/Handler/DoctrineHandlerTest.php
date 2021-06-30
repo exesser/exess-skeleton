@@ -3,8 +3,8 @@
 namespace Test\Unit\ExEss\Cms\Component\Health\Handler;
 
 use Doctrine\DBAL\Connection;
-use ExEss\Cms\Component\Health\Handler\DoctrineHandler;
-use ExEss\Cms\Component\Health\Model\HealthCheckResult;
+use ExEss\Bundle\CmsBundle\Component\Health\Handler\DoctrineHandler;
+use ExEss\Bundle\CmsBundle\Component\Health\Model\HealthCheckResult;
 use Helper\Testcase\UnitTestCase;
 
 class DoctrineHandlerTest extends UnitTestCase

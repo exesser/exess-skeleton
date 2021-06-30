@@ -2,9 +2,9 @@
 
 namespace Test\Unit\ExEss\Cms\Component\Flow\Response\Suggestion;
 
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\Flow\Response\Suggestion\ModelSuggestion;
-use ExEss\Cms\Component\Flow\Response\Suggestion\SuggestionCollection;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Suggestion\ModelSuggestion;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Suggestion\SuggestionCollection;
 use Helper\Testcase\UnitTestCase;
 use JsonSerializable;
 

@@ -3,7 +3,7 @@
 namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Entity\User;
 
 class GetCombinedListCest
 {

@@ -5,20 +5,20 @@ services:
     autowire: true
 
   # General CRM commands
-  ExEss\Cms\Command\AbstractAdminCommand:
+  ExEss\Bundle\CmsBundle\Command\AbstractAdminCommand:
     abstract: true
     calls:
-      - login: ['@security.token_storage', '@ExEss\Cms\Api\V8_Custom\Service\User\DefaultUser']
+      - login: ['@security.token_storage', '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\DefaultUser']
 
-  ExEss\Cms\Command\:
+  ExEss\Bundle\CmsBundle\Command\:
     public: true
     autowire: true
-    parent: ExEss\Cms\Command\AbstractAdminCommand
-    resource: '../../src/ExEss/Cms/Command'
+    parent: ExEss\Bundle\CmsBundle\Command\AbstractAdminCommand
+    resource: '../../src/ExEss/Bundle/CmsBundle/Command'
     tags: ['console.command']
 
-  ExEss\Cms\Component\PhpCS\Command\:
+  ExEss\Bundle\CmsBundle\Component\PhpCS\Command\:
     public: true
-    autowire: true  
-    resource: '../../src/ExEss/Cms/Component/PhpCS/Command'
+    autowire: true
+    resource: '../../src/ExEss/Bundle/CmsBundle/Component/PhpCS/Command'
     tags: ['console.command']

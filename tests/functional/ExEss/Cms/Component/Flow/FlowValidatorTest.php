@@ -2,10 +2,10 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow;
 
-use ExEss\Cms\Component\Flow\FlowValidator;
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\Flow\Response\ValidationResult;
-use ExEss\Cms\Entity\FlowStep;
+use ExEss\Bundle\CmsBundle\Component\Flow\FlowValidator;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\ValidationResult;
+use ExEss\Bundle\CmsBundle\Entity\FlowStep;
 use Helper\Testcase\FunctionalTestCase;
 use Test\Functional\ExEss\Cms\Service\GridServiceTest;
 

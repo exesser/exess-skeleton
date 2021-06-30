@@ -2,14 +2,14 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow\Handler;
 
-use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\Entity\ListCell;
-use ExEss\Cms\Entity\ListCellLink;
-use ExEss\Cms\Entity\ListDynamic;
-use ExEss\Cms\Component\Flow\Handler\DataConverter;
-use ExEss\Cms\Component\Flow\Handler\FlowData;
-use ExEss\Cms\Component\Flow\Handler\ModelConverter;
-use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Entity\Flow;
+use ExEss\Bundle\CmsBundle\Entity\ListCell;
+use ExEss\Bundle\CmsBundle\Entity\ListCellLink;
+use ExEss\Bundle\CmsBundle\Entity\ListDynamic;
+use ExEss\Bundle\CmsBundle\Component\Flow\Handler\DataConverter;
+use ExEss\Bundle\CmsBundle\Component\Flow\Handler\FlowData;
+use ExEss\Bundle\CmsBundle\Component\Flow\Handler\ModelConverter;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
 use Helper\Testcase\FunctionalTestCase;
 
 class DataConverterTest extends FunctionalTestCase

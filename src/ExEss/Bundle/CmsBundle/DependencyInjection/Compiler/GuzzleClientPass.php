@@ -2,8 +2,8 @@
 
 namespace ExEss\Bundle\CmsBundle\DependencyInjection\Compiler;
 
-use ExEss\Cms\Component\Client\Adapter\GuzzleClientAdapter;
-use ExEss\Cms\Component\Client\Client;
+use ExEss\Bundle\CmsBundle\Component\Client\Adapter\GuzzleClientAdapter;
+use ExEss\Bundle\CmsBundle\Component\Client\Client;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -22,7 +22,7 @@ class GuzzleClientPass implements CompilerPassInterface
     {
         foreach ($this->getMappedClients() as $clientKey => $clientParamsKey) {
             $guzzleClient = (new Definition(\GuzzleHttp\Client::class))
-                ->setFactory([\ExEss\Cms\Factory\GuzzleClientFactory::class, 'create'])
+                ->setFactory([\ExEss\Bundle\CmsBundle\Factory\GuzzleClientFactory::class, 'create'])
                 ->setArguments(['%' . $clientParamsKey . '%'])
                 ->setPublic(true);
 

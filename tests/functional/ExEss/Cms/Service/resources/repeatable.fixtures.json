@@ -14,7 +14,7 @@
       "field_default": null,
       "field_type": "selectWithSearch",
       "field_generatebyserver": 1,
-      "field_module": "ExEss\\Cms\\Entity\\User",
+      "field_module": "ExEss\\Bundle\\CmsBundle\\Entity\\User",
       "field_modulefield": null,
       "field_generatetype": null,
       "field_hideexpression": null,

@@ -11,13 +11,13 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\Component\Client\Serializer\Normalizer\GuzzleResponseNormalizer:
+  ExEss\Bundle\CmsBundle\Component\Client\Serializer\Normalizer\GuzzleResponseNormalizer:
     tags: ['serializer.normalizer']
 
-  ExEss\Cms\Component\Client\Event\Listeners\EnhanceHeadersSubscriber:
+  ExEss\Bundle\CmsBundle\Component\Client\Event\Listeners\EnhanceHeadersSubscriber:
     autowire: true
-    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\Component\Client\Event\Listeners\EnhanceHeadersSubscriber' }]
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Bundle\CmsBundle\Component\Client\Event\Listeners\EnhanceHeadersSubscriber' }]
 
-  ExEss\Cms\Component\Client\Event\Listeners\LogSubscriber:
+  ExEss\Bundle\CmsBundle\Component\Client\Event\Listeners\LogSubscriber:
     autowire: true
-    tags: [{ name: 'crm.subscriber', key: 'ExEss\Cms\Component\Client\Event\Listeners\LogSubscriber' }]
+    tags: [{ name: 'crm.subscriber', key: 'ExEss\Bundle\CmsBundle\Component\Client\Event\Listeners\LogSubscriber' }]

@@ -11,23 +11,23 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\Factory\TranslatorFactory:
+  ExEss\Bundle\CmsBundle\Factory\TranslatorFactory:
     arguments:
       - '@doctrine.orm.entity_manager'
       - '@=service(constant("ExEss\\Bundle\\CmsBundle\\Component\\Cache\\Dictionary::TRANSLATION"))'
-      - '@ExEss\Cms\Api\V8_Custom\Translator\DatabaseLoader'
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Translator\DatabaseLoader'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\Security'
 
   Symfony\Component\Translation\Translator:
     lazy: true
-    class: ExEss\Cms\Api\V8_Custom\Translator\LoggedTranslator
-    factory: [ '@ExEss\Cms\Factory\TranslatorFactory', create ]
+    class: ExEss\Bundle\CmsBundle\Api\V8_Custom\Translator\LoggedTranslator
+    factory: [ '@ExEss\Bundle\CmsBundle\Factory\TranslatorFactory', create ]
     arguments:
       - '%translator_untranslated_database%'
       - '%translator_cache%'
       - '%default_locale%'
   Symfony\Contracts\Translation\TranslatorInterface: '@Symfony\Component\Translation\Translator'
 
-  ExEss\Cms\Api\V8_Custom\Translator\DatabaseLoader:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Translator\DatabaseLoader:
     arguments:
       - '@doctrine.orm.entity_manager'

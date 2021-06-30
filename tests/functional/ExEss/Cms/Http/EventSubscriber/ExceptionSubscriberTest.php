@@ -2,11 +2,11 @@
 
 namespace Test\Functional\ExEss\Cms\Http\EventSubscriber;
 
-use ExEss\Cms\Helper\DataCleaner;
-use ExEss\Cms\Http\ErrorResponse;
-use ExEss\Cms\Http\EventSubscriber\ExceptionSubscriber;
-use ExEss\Cms\Exception\NotAllowedException;
-use ExEss\Cms\Exception\NotFoundException;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Http\ErrorResponse;
+use ExEss\Bundle\CmsBundle\Http\EventSubscriber\ExceptionSubscriber;
+use ExEss\Bundle\CmsBundle\Exception\NotAllowedException;
+use ExEss\Bundle\CmsBundle\Exception\NotFoundException;
 use Helper\Testcase\FunctionalTestCase;
 
 class ExceptionSubscriberTest extends FunctionalTestCase

@@ -3,7 +3,7 @@
 namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
-use ExEss\Cms\Service\GridService;
+use ExEss\Bundle\CmsBundle\Service\GridService;
 
 class RowGridCest
 {

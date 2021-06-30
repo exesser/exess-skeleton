@@ -1,0 +1,164 @@
+{
+    "recordName": "ExEss\\Bundle\\CmsBundle\\Entity\\ListCell",
+    "relations": [
+        {
+            "name": "cellLinks",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\ListCellLink"
+        },
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        }
+    ],
+    "fields": [
+        {
+            "name": "type",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "list_action_cell",
+                    "value": "list-action-cell"
+                },
+                {
+                    "key": "list_checkbox_cell",
+                    "value": "list-checkbox-cell"
+                },
+                {
+                    "key": "list_icon_link_cell",
+                    "value": "list-icon-link-cell"
+                },
+                {
+                    "key": "list_icon_text_cell",
+                    "value": "list-icon-text-cell"
+                },
+                {
+                    "key": "list_link_bold_top_two_liner_cell",
+                    "value": "list-link-bold-top-two-liner-cell"
+                },
+                {
+                    "key": "list_link_pink_down_two_liner_cell",
+                    "value": "list-link-pink-down-two-liner-cell"
+                },
+                {
+                    "key": "list_plus_cell",
+                    "value": "list-plus-cell"
+                },
+                {
+                    "key": "list_simple_two_liner_cell",
+                    "value": "list-simple-two-liner-cell"
+                },
+                {
+                    "key": "list_dropdown_cell",
+                    "value": "list-dropdown-cell"
+                }
+            ]
+        },
+        {
+            "name": "line1",
+            "type": "string"
+        },
+        {
+            "name": "line2",
+            "type": "string"
+        },
+        {
+            "name": "line3",
+            "type": "string"
+        },
+        {
+            "name": "actionKey",
+            "type": "string"
+        },
+        {
+            "name": "columnLabel",
+            "type": "string"
+        },
+        {
+            "name": "linkto",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "dashboard",
+                    "value": "dashboard"
+                },
+                {
+                    "key": "guidance_mode",
+                    "value": "guidance-mode"
+                },
+                {
+                    "key": "focus_mode",
+                    "value": "focus-mode"
+                }
+            ]
+        },
+        {
+            "name": "link",
+            "type": "string"
+        },
+        {
+            "name": "params",
+            "type": "json"
+        },
+        {
+            "name": "icon",
+            "type": "string"
+        },
+        {
+            "name": "line1CsvHeader",
+            "type": "string"
+        },
+        {
+            "name": "line2CsvHeader",
+            "type": "string"
+        },
+        {
+            "name": "line3CsvHeader",
+            "type": "string"
+        },
+        {
+            "name": "visible",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "DEFAULT",
+                    "value": "Default"
+                },
+                {
+                    "key": "IN_DWP",
+                    "value": "In DWP"
+                },
+                {
+                    "key": "IN_CSV",
+                    "value": "In CSV"
+                }
+            ]
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

@@ -3,8 +3,8 @@
 namespace Test\Unit\ExEss\Cms\Component\Flow\Response;
 
 use Helper\Testcase\UnitTestCase;
-use ExEss\Cms\Component\Flow\Response\Form\ToggleField;
-use ExEss\Cms\Component\Flow\Response\Form;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Form\ToggleField;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Form;
 
 class FormTest extends UnitTestCase
 {

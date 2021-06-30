@@ -3,10 +3,10 @@
 namespace Test\Functional\Api\V8_Custom\Repository;
 
 use Helper\TestRepository;
-use ExEss\Cms\Api\V8_Custom\Repository\ListHandler;
-use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
-use ExEss\Cms\Base\Response\BaseListResponse;
-use ExEss\Cms\Exception\ExternalListFetchException;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\ListHandler;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
+use ExEss\Bundle\CmsBundle\Base\Response\BaseListResponse;
+use ExEss\Bundle\CmsBundle\Exception\ExternalListFetchException;
 use Helper\Testcase\FunctionalTestCase;
 
 class ListHandlerTest extends FunctionalTestCase

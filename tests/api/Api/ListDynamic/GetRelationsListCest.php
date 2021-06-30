@@ -4,9 +4,9 @@ namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
 use Codeception\Example;
-use ExEss\Cms\Doctrine\Type\CellType;
-use ExEss\Cms\Entity\FlowField;
-use ExEss\Cms\Entity\ListSortingOption;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\CellType;
+use ExEss\Bundle\CmsBundle\Entity\FlowField;
+use ExEss\Bundle\CmsBundle\Entity\ListSortingOption;
 
 /**
  * tests @see RelationsRepository::findBy()

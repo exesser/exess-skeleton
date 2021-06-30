@@ -3,7 +3,7 @@
 namespace Test\Functional\ExEss\Cms\Validators;
 
 use Helper\Testcase\FunctionalTestCase;
-use ExEss\Cms\Validators\MultiEmail;
+use ExEss\Bundle\CmsBundle\Validators\MultiEmail;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class MultiEmailValidatorTest extends FunctionalTestCase

@@ -2,14 +2,14 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow\Event\Listeners;
 
-use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\Entity\ListCell;
-use ExEss\Cms\Component\Flow\Event\FlowEvent;
-use ExEss\Cms\Component\Flow\Event\Listeners\SaveSubscriber;
-use ExEss\Cms\Component\Flow\Handler\FlowData;
-use ExEss\Cms\Component\Flow\Request\FlowAction;
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\Flow\SaveFlow;
+use ExEss\Bundle\CmsBundle\Entity\Flow;
+use ExEss\Bundle\CmsBundle\Entity\ListCell;
+use ExEss\Bundle\CmsBundle\Component\Flow\Event\FlowEvent;
+use ExEss\Bundle\CmsBundle\Component\Flow\Event\Listeners\SaveSubscriber;
+use ExEss\Bundle\CmsBundle\Component\Flow\Handler\FlowData;
+use ExEss\Bundle\CmsBundle\Component\Flow\Request\FlowAction;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\Flow\SaveFlow;
 use Helper\Testcase\FunctionalTestCase;
 
 class SaveSubscriberTest extends FunctionalTestCase

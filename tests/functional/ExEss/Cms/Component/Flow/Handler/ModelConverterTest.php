@@ -2,12 +2,12 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow\Handler;
 
-use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\Entity\ListDynamic;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Component\Flow\Handler\FlowData;
-use ExEss\Cms\Component\Flow\Handler\ModelConverter;
-use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Entity\Flow;
+use ExEss\Bundle\CmsBundle\Entity\ListDynamic;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Component\Flow\Handler\FlowData;
+use ExEss\Bundle\CmsBundle\Component\Flow\Handler\ModelConverter;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
 use Helper\Testcase\FunctionalTestCase;
 
 class ModelConverterTest extends FunctionalTestCase

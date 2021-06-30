@@ -4,6 +4,6 @@ services:
     autowire: true
     autoconfigure: true
 
-  ExEss\Cms\Http\ParamConverter\BaseEntityConverter: ~
-  ExEss\Cms\Http\ParamConverter\JsonBodyConverter: ~
+  ExEss\Bundle\CmsBundle\Http\ParamConverter\BaseEntityConverter: ~
+  ExEss\Bundle\CmsBundle\Http\ParamConverter\JsonBodyConverter: ~
 

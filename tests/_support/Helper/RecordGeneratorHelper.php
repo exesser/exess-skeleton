@@ -2,9 +2,9 @@
 
 namespace Helper;
 
-use ExEss\Cms\Dictionary\Format;
-use ExEss\Cms\Doctrine\Type\UserStatus;
-use ExEss\Cms\Entity\AclRole;
+use ExEss\Bundle\CmsBundle\Dictionary\Format;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus;
+use ExEss\Bundle\CmsBundle\Entity\AclRole;
 use Ramsey\Uuid\Uuid;
 use Helper\Module\Db;
 

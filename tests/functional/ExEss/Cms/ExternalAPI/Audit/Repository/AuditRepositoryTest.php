@@ -2,13 +2,13 @@
 
 namespace Test\Functional\ExEss\Cms\ExternalAPI\Audit\Repository;
 
-use ExEss\Cms\Api\V8_Custom\Repository\AuditRepository;
-use ExEss\Cms\Api\V8_Custom\Repository\Response\AuditList;
-use ExEss\Cms\Api\V8_Custom\Repository\Response\AuditRow;
-use ExEss\Cms\Dictionary\Format;
-use ExEss\Cms\Doctrine\Type\Locale;
-use ExEss\Cms\Doctrine\Type\UserStatus;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\AuditRepository;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\Response\AuditList;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\Response\AuditRow;
+use ExEss\Bundle\CmsBundle\Dictionary\Format;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Helper\Testcase\FunctionalTestCase;
 
 class AuditRepositoryTest extends FunctionalTestCase

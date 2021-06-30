@@ -2,8 +2,8 @@
 
 namespace Test\Api\Api\User;
 
-use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
-use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessage;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
 
 class FlashMessageCest
 {

@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 namespace Helper;
 
-use ExEss\Cms\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
 use Helper\Constraint\ArraySubset;
 
 class AssertHelper extends \Codeception\Module

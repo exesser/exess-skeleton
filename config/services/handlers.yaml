@@ -2,16 +2,16 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\Api\V8_Custom\Repository\ListHandler:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\ListHandler:
     arguments:
       - !tagged { tag: 'handler.list', index_by: 'alias' }
-      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
 
-  ExEss\Cms\Servicemix\ExternalObjectHandler:
+  ExEss\Bundle\CmsBundle\Servicemix\ExternalObjectHandler:
     arguments:
       - !tagged { tag: 'handler.flow', index_by: 'alias' }
-      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
-      - '@ExEss\Cms\Logger\Logger'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
+      - '@ExEss\Bundle\CmsBundle\Logger\Logger'
 
 imports:
   - { resource: 'handlers/aftersave.yaml' }

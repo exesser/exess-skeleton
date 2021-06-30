@@ -2,12 +2,12 @@
 
 namespace Test\Functional\ExEss\Cms\Service;
 
-use ExEss\Cms\Dashboard\Model\Grid;
-use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\Entity\FlowStep;
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Helper\DataCleaner;
-use ExEss\Cms\Service\GridService;
+use ExEss\Bundle\CmsBundle\Dashboard\Model\Grid;
+use ExEss\Bundle\CmsBundle\Entity\Flow;
+use ExEss\Bundle\CmsBundle\Entity\FlowStep;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Service\GridService;
 use Helper\Testcase\FunctionalTestCase;
 
 class GridServiceTest extends FunctionalTestCase

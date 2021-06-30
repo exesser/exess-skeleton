@@ -3,7 +3,7 @@
 namespace Test\Functional\ExEss\Cms\Validators;
 
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use ExEss\Cms\Validators\NotInList;
+use ExEss\Bundle\CmsBundle\Validators\NotInList;
 use Helper\Testcase\FunctionalTestCase;
 
 class NotInListValidatorTest extends FunctionalTestCase

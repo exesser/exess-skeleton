@@ -2,9 +2,9 @@
 
 namespace Test\Functional\ExEss\Cms\Repository;
 
-use ExEss\Cms\Doctrine\Type\Locale;
-use ExEss\Cms\Doctrine\Type\TranslationDomain;
-use ExEss\Cms\Repository\TranslationRepository;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\TranslationDomain;
+use ExEss\Bundle\CmsBundle\Repository\TranslationRepository;
 use Helper\Testcase\FunctionalTestCase;
 
 class TranslationRepositoryTest extends FunctionalTestCase

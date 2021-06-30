@@ -4,10 +4,10 @@ namespace Test\Functional\ExEss\Cms\Component\Cache\BackendCommand;
 
 use ExEss\Bundle\CmsBundle\Component\Cache\BackendCommand\ClearCacheCommand;
 use ExEss\Bundle\CmsBundle\Component\Cache\CacheAdapterFactory;
-use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
-use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
-use ExEss\Cms\Dictionary\Model\Dwp;
-use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessage;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer;
+use ExEss\Bundle\CmsBundle\Dictionary\Model\Dwp;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
 use Helper\Testcase\FunctionalTestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 

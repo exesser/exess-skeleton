@@ -3,8 +3,8 @@
 namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
-use ExEss\Cms\Doctrine\Type\CellType;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\CellType;
+use ExEss\Bundle\CmsBundle\Entity\User;
 
 class RowBarCest
 {

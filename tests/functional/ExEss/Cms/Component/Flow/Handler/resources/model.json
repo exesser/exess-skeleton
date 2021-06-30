@@ -1,6 +1,6 @@
 {
-  "recordTypeOfRecordId": "ExEss\\Cms\\Entity\\ListDynamic",
-  "baseModule": "ExEss\\Cms\\Entity\\ListDynamic",
+  "recordTypeOfRecordId": "ExEss\\Bundle\\CmsBundle\\Entity\\ListDynamic",
+  "baseModule": "ExEss\\Bundle\\CmsBundle\\Entity\\ListDynamic",
   "description": "bla blah",
   "cellLinks|order": 10,
   "cellLinks|cell|line1": "line 1 expression"

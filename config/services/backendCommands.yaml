@@ -2,11 +2,11 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\Component\Flow\Action\BackendCommandExecutor:
+  ExEss\Bundle\CmsBundle\Component\Flow\Action\BackendCommandExecutor:
     arguments:
       - !tagged { tag: 'backend.command', index_by: 'alias' }
 
-  ExEss\Cms\CRUD\BackendCommand\CrudDeleteRelationshipCommand:
+  ExEss\Bundle\CmsBundle\CRUD\BackendCommand\CrudDeleteRelationshipCommand:
     autowire: true
     tags: [{ name: 'backend.command', alias: 'crudDeleteRelationship' }]
 

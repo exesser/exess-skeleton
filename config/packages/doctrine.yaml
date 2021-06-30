@@ -8,29 +8,29 @@ doctrine:
         types:
             datetime_immutable_microseconds: ExEss\Bundle\DoctrineExtensionsBundle\Type\DateTimeImmutableMicroseconds
             enum_audit_operation: ExEss\Bundle\DoctrineExtensionsBundle\Type\AuditOperationEnumType
-            enum_user_status: ExEss\Cms\Doctrine\Type\UserStatus
-            enum_flow_field_type: ExEss\Cms\Doctrine\Type\FlowFieldType
-            enum_order: ExEss\Cms\Doctrine\Type\Order
-            enum_action_type: ExEss\Cms\Doctrine\Type\ActionType
-            enum_flow_type: ExEss\Cms\Doctrine\Type\FlowType
-            enum_link_to: ExEss\Cms\Doctrine\Type\LinkTo
-            enum_filter_field_type: ExEss\Cms\Doctrine\Type\FilterFieldType
-            enum_dashboard_type: ExEss\Cms\Doctrine\Type\DashboardType
-            enum_flow_action: ExEss\Cms\Doctrine\Type\FlowAction
-            enum_cell_type: ExEss\Cms\Doctrine\Type\CellType
-            enum_cell_visibility: ExEss\Cms\Doctrine\Type\CellVisibility
-            enum_flow_step_type: ExEss\Cms\Doctrine\Type\FlowStepType
-            enum_field_orientation: ExEss\Cms\Doctrine\Type\FieldOrientation
-            enum_generated_field_type: ExEss\Cms\Doctrine\Type\GeneratedFieldType
-            enum_security_group_type: ExEss\Cms\Doctrine\Type\SecurityGroupType
-            enum_grid_type: ExEss\Cms\Doctrine\Type\GridType
-            enum_http_method: ExEss\Cms\Doctrine\Type\HttpMethod
-            enum_locale: ExEss\Cms\Doctrine\Type\Locale
-            enum_message_domain: ExEss\Cms\Doctrine\Type\MessageDomain
-            enum_translation_domain: ExEss\Cms\Doctrine\Type\TranslationDomain
-            enum_validator_type: ExEss\Cms\Doctrine\Type\ValidatorType
-            enum_validator_mutator: ExEss\Cms\Doctrine\Type\ValidatorMutator
-            enum_validator: ExEss\Cms\Doctrine\Type\Validator
+            enum_user_status: ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus
+            enum_flow_field_type: ExEss\Bundle\CmsBundle\Doctrine\Type\FlowFieldType
+            enum_order: ExEss\Bundle\CmsBundle\Doctrine\Type\Order
+            enum_action_type: ExEss\Bundle\CmsBundle\Doctrine\Type\ActionType
+            enum_flow_type: ExEss\Bundle\CmsBundle\Doctrine\Type\FlowType
+            enum_link_to: ExEss\Bundle\CmsBundle\Doctrine\Type\LinkTo
+            enum_filter_field_type: ExEss\Bundle\CmsBundle\Doctrine\Type\FilterFieldType
+            enum_dashboard_type: ExEss\Bundle\CmsBundle\Doctrine\Type\DashboardType
+            enum_flow_action: ExEss\Bundle\CmsBundle\Doctrine\Type\FlowAction
+            enum_cell_type: ExEss\Bundle\CmsBundle\Doctrine\Type\CellType
+            enum_cell_visibility: ExEss\Bundle\CmsBundle\Doctrine\Type\CellVisibility
+            enum_flow_step_type: ExEss\Bundle\CmsBundle\Doctrine\Type\FlowStepType
+            enum_field_orientation: ExEss\Bundle\CmsBundle\Doctrine\Type\FieldOrientation
+            enum_generated_field_type: ExEss\Bundle\CmsBundle\Doctrine\Type\GeneratedFieldType
+            enum_security_group_type: ExEss\Bundle\CmsBundle\Doctrine\Type\SecurityGroupType
+            enum_grid_type: ExEss\Bundle\CmsBundle\Doctrine\Type\GridType
+            enum_http_method: ExEss\Bundle\CmsBundle\Doctrine\Type\HttpMethod
+            enum_locale: ExEss\Bundle\CmsBundle\Doctrine\Type\Locale
+            enum_message_domain: ExEss\Bundle\CmsBundle\Doctrine\Type\MessageDomain
+            enum_translation_domain: ExEss\Bundle\CmsBundle\Doctrine\Type\TranslationDomain
+            enum_validator_type: ExEss\Bundle\CmsBundle\Doctrine\Type\ValidatorType
+            enum_validator_mutator: ExEss\Bundle\CmsBundle\Doctrine\Type\ValidatorMutator
+            enum_validator: ExEss\Bundle\CmsBundle\Doctrine\Type\Validator
         mapping_types:
             enum: string
 
@@ -42,8 +42,8 @@ doctrine:
             ExEss:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/ExEss/Cms/Entity'
-                prefix: 'ExEss\Cms\Entity'
+                dir: '%kernel.project_dir%/src/ExEss/Bundle/CmsBundle/Entity'
+                prefix: 'ExEss\Bundle\CmsBundle\Entity'
                 alias: App
 
         # enable functions as needed in DQL

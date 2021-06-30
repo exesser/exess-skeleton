@@ -6,7 +6,7 @@ services:
     monolog.formatter.dashed:
         class: Monolog\Formatter\LineFormatter
         arguments:
-            - !php/const ExEss\Cms\Logger\Logger::LOGGER
+            - !php/const ExEss\Bundle\CmsBundle\Logger\Logger::LOGGER
             - "Y-m-d H:i:s.u"
 
     Monolog\Processor\WebProcessor:
@@ -19,19 +19,19 @@ services:
         tags:
             - { name: monolog.processor }
 
-    ExEss\Cms\Component\Logger\Processor\EnvironmentProcessor:
+    ExEss\Bundle\CmsBundle\Component\Logger\Processor\EnvironmentProcessor:
         arguments:  ['%logger_tag%']
         tags:
             - { name: monolog.processor }
 
-    ExEss\Cms\Logger\Processor\NeededHeadersProcessor:
+    ExEss\Bundle\CmsBundle\Logger\Processor\NeededHeadersProcessor:
         arguments:
-            - '@ExEss\Cms\Component\Session\Headers'
-            - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+            - '@ExEss\Bundle\CmsBundle\Component\Session\Headers'
+            - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\Security'
         tags:
             - { name: monolog.processor }
 
-    ExEss\Cms\Component\Logger\Processor\XLogIdProcessor:
-        arguments:  ['@ExEss\Cms\Component\Session\Headers']
+    ExEss\Bundle\CmsBundle\Component\Logger\Processor\XLogIdProcessor:
+        arguments:  ['@ExEss\Bundle\CmsBundle\Component\Session\Headers']
         tags:
             - { name: monolog.processor }

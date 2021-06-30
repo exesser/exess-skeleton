@@ -2,10 +2,10 @@
 
 namespace Test\Functional\ExEss\Cms\Service;
 
-use ExEss\Cms\Doctrine\Type\UserStatus;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Service\SelectWithSearchService;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Service\SelectWithSearchService;
 use Helper\Testcase\FunctionalTestCase;
 
 class SelectWithSearchServiceTest extends FunctionalTestCase

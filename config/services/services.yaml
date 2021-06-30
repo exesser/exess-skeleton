@@ -16,21 +16,21 @@ services:
       $fallbackLocale: '%default_locale%'
       $siteUrl: '%env_url%'
 
-  ExEss\Cms\Component\Session\Headers:
-    class: ExEss\Cms\Component\Session\Headers
-    factory: [ 'ExEss\Cms\Component\Session\Headers', 'create' ]
+  ExEss\Bundle\CmsBundle\Component\Session\Headers:
+    class: ExEss\Bundle\CmsBundle\Component\Session\Headers
+    factory: [ 'ExEss\Bundle\CmsBundle\Component\Session\Headers', 'create' ]
 
-  ExEss\Cms\Logger\Logger:
+  ExEss\Bundle\CmsBundle\Logger\Logger:
     arguments:
       - '@monolog.logger'
 
-  ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer:
     lazy: true
-    factory: [ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer, get]
+    factory: [ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer, get]
 
   Symfony\Component\EventDispatcher\EventDispatcher:
     class: Symfony\Component\EventDispatcher\EventDispatcher
-    factory: [ExEss\Cms\Api\V8_Custom\Service\EventDispatcherFactory, getEventDispatcher]
+    factory: [ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\EventDispatcherFactory, getEventDispatcher]
     arguments:
       - '@service_container'
       - !tagged { tag: 'crm.subscriber', index_by: 'key' }
@@ -38,137 +38,137 @@ services:
   Symfony\Component\EventDispatcher\EventDispatcherInterface: '@Symfony\Component\EventDispatcher\EventDispatcher'
   event_dispatcher: '@Symfony\Component\EventDispatcher\EventDispatcher'
 
-  ExEss\Cms\Component\Flow\Event\FlowEventDispatcher:
+  ExEss\Bundle\CmsBundle\Component\Flow\Event\FlowEventDispatcher:
     arguments:
       - '@Symfony\Component\EventDispatcher\EventDispatcher'
-      - '@ExEss\Cms\Component\Flow\Action\BackendCommandExecutor'
+      - '@ExEss\Bundle\CmsBundle\Component\Flow\Action\BackendCommandExecutor'
 
-  ExEss\Cms\Component\Flow\Validator:
-    class: ExEss\Cms\Component\Flow\Validator
+  ExEss\Bundle\CmsBundle\Component\Flow\Validator:
+    class: ExEss\Bundle\CmsBundle\Component\Flow\Validator
     lazy: true
     arguments:
       - '@Symfony\Component\Validator\Validator\ValidatorInterface'
-      - '@ExEss\Cms\Validators\Factory\ConstraintFactory'
-      - '@ExEss\Cms\Logger\Logger'
-      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
+      - '@ExEss\Bundle\CmsBundle\Validators\Factory\ConstraintFactory'
+      - '@ExEss\Bundle\CmsBundle\Logger\Logger'
+      - '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService'
       - '@Symfony\Component\Translation\Translator'
-      - '@ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer'
 
-  ExEss\Cms\Component\Flow\FlowValidator:
+  ExEss\Bundle\CmsBundle\Component\Flow\FlowValidator:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Component\Flow\Validator'
-      - '@ExEss\Cms\Service\GridService'
+      - '@ExEss\Bundle\CmsBundle\Component\Flow\Validator'
+      - '@ExEss\Bundle\CmsBundle\Service\GridService'
 
-  ExEss\Cms\Component\Health\PingService: ~
+  ExEss\Bundle\CmsBundle\Component\Health\PingService: ~
 
-  ExEss\Cms\Config\Cache\ConfigCacheFactory:
+  ExEss\Bundle\CmsBundle\Config\Cache\ConfigCacheFactory:
     arguments:
       - '%config_cache%'
       - '@=service(constant("ExEss\\Bundle\\CmsBundle\\Component\\Cache\\Dictionary::CONFIG"))'
-      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+      - '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\Security'
 
-  ExEss\Cms\Users\Service\GuidanceRecoveryService:
+  ExEss\Bundle\CmsBundle\Users\Service\GuidanceRecoveryService:
     arguments:
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\Security'
       - '@doctrine.orm.entity_manager'
 
-  ExEss\Cms\Api\V8_Custom\Service\Security:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\Security:
     lazy: true
     arguments:
       - '@security.token_storage'
       - '%default_locale%'
 
-  ExEss\Cms\Component\Flow\DefaultValueService:
+  ExEss\Bundle\CmsBundle\Component\Flow\DefaultValueService:
     arguments:
-      - '@ExEss\Cms\MultiLevelTemplate\TextFunctionHandler'
+      - '@ExEss\Bundle\CmsBundle\MultiLevelTemplate\TextFunctionHandler'
 
-  ExEss\Cms\Cleaner\HtmlCleaner:
+  ExEss\Bundle\CmsBundle\Cleaner\HtmlCleaner:
     arguments:
       - '%env_url%'
       - '%kernel.cache_dir%/htmlcleaner'
 
   JsonMapper:
     class: JsonMapper
-    factory: [ExEss\Cms\Factory\JsonMapperFactory, create]
+    factory: [ExEss\Bundle\CmsBundle\Factory\JsonMapperFactory, create]
 
-  ExEss\Cms\Component\Flow\Builder\FormBuilder:
+  ExEss\Bundle\CmsBundle\Component\Flow\Builder\FormBuilder:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Component\Flow\Builder\EnumFieldBuilder'
-      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
-      - '@ExEss\Cms\Service\SelectWithSearchService'
+      - '@ExEss\Bundle\CmsBundle\Component\Flow\Builder\EnumFieldBuilder'
+      - '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService'
+      - '@ExEss\Bundle\CmsBundle\Service\SelectWithSearchService'
       - '@Symfony\Component\Translation\Translator'
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
-      - '@ExEss\Cms\Component\Flow\Field'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\Security'
+      - '@ExEss\Bundle\CmsBundle\Component\Flow\Field'
 
-  ExEss\Cms\Component\Flow\Field:
+  ExEss\Bundle\CmsBundle\Component\Flow\Field:
     arguments:
       - '%max_upload_file_size_mb%'
 
-  ExEss\Cms\Component\Flow\Builder\EnumFieldBuilder:
+  ExEss\Bundle\CmsBundle\Component\Flow\Builder\EnumFieldBuilder:
     lazy: true
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Logger\Logger'
-      - '@ExEss\Cms\Api\V8_Custom\Repository\ListHandler'
-      - '@ExEss\Cms\Component\Flow\EnumRecordFactory'
-      - '@ExEss\Cms\Service\SelectWithSearchService'
+      - '@ExEss\Bundle\CmsBundle\Logger\Logger'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\ListHandler'
+      - '@ExEss\Bundle\CmsBundle\Component\Flow\EnumRecordFactory'
+      - '@ExEss\Bundle\CmsBundle\Service\SelectWithSearchService'
 
-  ExEss\Cms\Component\Sidebar\Factory\SidebarFactory: ~
+  ExEss\Bundle\CmsBundle\Component\Sidebar\Factory\SidebarFactory: ~
 
-  ExEss\Cms\Api\V8_Custom\Service\User\CommandService:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\CommandService:
     arguments:
-      - '@ExEss\Cms\Api\V8_Custom\Service\SimpleActionFactory'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\SimpleActionFactory'
 
-  ExEss\Cms\FieldFormatter\VatNumberFormatter: ~
+  ExEss\Bundle\CmsBundle\FieldFormatter\VatNumberFormatter: ~
 
   libphonenumber\PhoneNumberUtil:
     class: libphonenumber\PhoneNumberUtil
     factory: [libphonenumber\PhoneNumberUtil, getInstance]
 
-  ExEss\Cms\FieldFormatter\PhoneNumberFormatter:
+  ExEss\Bundle\CmsBundle\FieldFormatter\PhoneNumberFormatter:
     arguments:
       - 'BE'
       - '@libphonenumber\PhoneNumberUtil'
 
-  ExEss\Cms\FieldFormatter\IbanFormatter: ~
+  ExEss\Bundle\CmsBundle\FieldFormatter\IbanFormatter: ~
 
-  ExEss\Cms\Api\V8_Custom\Service\SimpleActionFactory:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\SimpleActionFactory:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Logger\Logger'
-      - '@ExEss\Cms\Users\Service\GuidanceRecoveryService'
+      - '@ExEss\Bundle\CmsBundle\Logger\Logger'
+      - '@ExEss\Bundle\CmsBundle\Users\Service\GuidanceRecoveryService'
 
-  ExEss\Cms\Component\Flow\ActionFactory:
+  ExEss\Bundle\CmsBundle\Component\Flow\ActionFactory:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Component\Flow\Event\FlowEventDispatcher'
-      - '@ExEss\Cms\Logger\Logger'
-      - '@ExEss\Cms\Users\Service\GuidanceRecoveryService'
+      - '@ExEss\Bundle\CmsBundle\Component\Flow\Event\FlowEventDispatcher'
+      - '@ExEss\Bundle\CmsBundle\Logger\Logger'
+      - '@ExEss\Bundle\CmsBundle\Users\Service\GuidanceRecoveryService'
       - '@Symfony\Component\Translation\Translator'
 
-  ExEss\Cms\Component\Flow\EnumRecordFactory:
+  ExEss\Bundle\CmsBundle\Component\Flow\EnumRecordFactory:
     arguments:
       - '@Symfony\Component\Translation\Translator'
-      - '@ExEss\Cms\Api\V8_Custom\Service\Security'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\Security'
 
-  ExEss\Cms\MultiLevelTemplate\TextFunctionHandler:
+  ExEss\Bundle\CmsBundle\MultiLevelTemplate\TextFunctionHandler:
     arguments:
-      - '@ExEss\Cms\Logger\Logger'
+      - '@ExEss\Bundle\CmsBundle\Logger\Logger'
       - '@Symfony\Component\Translation\Translator'
 
-  ExEss\Cms\Http\Factory\PsrFactory: ~
+  ExEss\Bundle\CmsBundle\Http\Factory\PsrFactory: ~
 
-  ExEss\Cms\Http\Factory\JsonBodyFactory:
+  ExEss\Bundle\CmsBundle\Http\Factory\JsonBodyFactory:
     autowire: true
 
   # Autowired Service directory
-  ExEss\Cms\Service\:
+  ExEss\Bundle\CmsBundle\Service\:
     public: true
     autowire: true
-    resource: '../../src/ExEss/Cms/Service/'
+    resource: '../../src/ExEss/Bundle/CmsBundle/Service/'
 
 imports:
   - { resource: 'api_client_external.yaml' }

@@ -4,13 +4,13 @@ namespace Test\Functional\ExEss\Cms\Service;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
-use ExEss\Cms\Doctrine\Type\SecurityGroupType;
-use ExEss\Cms\Doctrine\Type\UserStatus;
-use ExEss\Cms\Entity\FilterField;
-use ExEss\Cms\Entity\ListDynamic;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Helper\DataCleaner;
-use ExEss\Cms\Service\FilterService;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\SecurityGroupType;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus;
+use ExEss\Bundle\CmsBundle\Entity\FilterField;
+use ExEss\Bundle\CmsBundle\Entity\ListDynamic;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Service\FilterService;
 use Helper\Testcase\FunctionalTestCase;
 
 class FilterServiceTest extends FunctionalTestCase

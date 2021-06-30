@@ -3,11 +3,11 @@
 namespace Test\Functional\ExEss\Cms\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
-use ExEss\Cms\Doctrine\Type\Locale;
-use ExEss\Cms\Doctrine\Type\UserStatus;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Helper\DataCleaner;
-use ExEss\Cms\Service\UserService;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Service\UserService;
 use Helper\Testcase\FunctionalTestCase;
 
 class UserServiceTest extends FunctionalTestCase

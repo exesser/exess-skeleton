@@ -2,7 +2,7 @@
 
 namespace ExEss\Cms;
 
-use ExEss\Cms\DependencyInjection\Container;
+use ExEss\Bundle\CmsBundle\DependencyInjection\Container;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
