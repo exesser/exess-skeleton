@@ -3,8 +3,8 @@
 namespace Test\Api\Api\Log;
 
 use ApiTester;
-use ExEss\Cms\Helper\DataCleaner;
-use ExEss\Cms\Http\SuccessResponse;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Http\SuccessResponse;
 
 class ErrorCest
 {

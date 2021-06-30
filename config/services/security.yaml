@@ -7,38 +7,38 @@ services:
     public: true
     autowire: true
 
-  ExEss\Cms\Api\V8_Custom\Service\User\TokenService:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\TokenService:
     bind:
       $timeout: '%api_token_timeout%'
       $secret: '%app_secret%'
 
-  ExEss\Cms\Security\JsonLoginAuthenticator: ~
+  ExEss\Bundle\CmsBundle\Security\JsonLoginAuthenticator: ~
 
-  ExEss\Cms\Security\JwtTokenAuthenticator: ~
+  ExEss\Bundle\CmsBundle\Security\JwtTokenAuthenticator: ~
 
-  ExEss\Cms\Security\Listener\LogoutSuccessSubscriber:
+  ExEss\Bundle\CmsBundle\Security\Listener\LogoutSuccessSubscriber:
     tags:
       - name: kernel.event_subscriber
         dispatcher: security.event_dispatcher.api
 
-  ExEss\Cms\Api\V8_Custom\Service\User\DefaultUser: ~
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\DefaultUser: ~
 
-  ExEss\Cms\Acl\AclService: ~
+  ExEss\Bundle\CmsBundle\Acl\AclService: ~
 
-  ExEss\Cms\Users\Security\DecisionManager:
+  ExEss\Bundle\CmsBundle\Users\Security\DecisionManager:
     bind:
       $voters: !tagged_iterator user.voter
 
-  ExEss\Cms\Security\Route\DecisionManager:
+  ExEss\Bundle\CmsBundle\Security\Route\DecisionManager:
     bind:
       $voters: !tagged_iterator route.voter
 
   # Route voters
 
-  ExEss\Cms\Security\Route\Voter\RouteVoter:
+  ExEss\Bundle\CmsBundle\Security\Route\Voter\RouteVoter:
     autowire: true
     tags: ['route.voter']
 
   # CRUD
 
-  ExEss\Cms\CRUD\Helpers\SecurityService: ~
+  ExEss\Bundle\CmsBundle\CRUD\Helpers\SecurityService: ~

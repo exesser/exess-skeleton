@@ -1,6 +1,6 @@
 <?php
 
-use ExEss\Cms\Dictionary\Format;
+use ExEss\Bundle\CmsBundle\Dictionary\Format;
 use ExEss\Cms\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;

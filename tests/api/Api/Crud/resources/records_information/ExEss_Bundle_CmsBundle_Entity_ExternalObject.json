@@ -1,0 +1,59 @@
+{
+    "recordName": "ExEss\\Bundle\\CmsBundle\\Entity\\ExternalObject",
+    "relations": [
+        {
+            "name": "linkFields",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\ExternalObjectLink"
+        },
+        {
+            "name": "lists",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\ListDynamic"
+        },
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        }
+    ],
+    "fields": [
+        {
+            "name": "classHandler",
+            "type": "string"
+        },
+        {
+            "name": "moduleName",
+            "type": "string"
+        },
+        {
+            "name": "listOnly",
+            "type": "boolean"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

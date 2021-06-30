@@ -2,7 +2,7 @@
 
 namespace ExEss\Bundle\CmsBundle\Component\Core\Flow\Action;
 
-use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
 
 interface BackendCommandInterface
 {

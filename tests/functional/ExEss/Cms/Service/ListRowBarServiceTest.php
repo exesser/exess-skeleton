@@ -2,10 +2,10 @@
 
 namespace Test\Functional\ExEss\Cms\Service;
 
-use ExEss\Cms\Doctrine\Type\CellType;
-use ExEss\Cms\Entity\ListDynamic;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Service\ListRowBarService;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\CellType;
+use ExEss\Bundle\CmsBundle\Entity\ListDynamic;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Service\ListRowBarService;
 use Helper\Testcase\FunctionalTestCase;
 
 class ListRowBarServiceTest extends FunctionalTestCase

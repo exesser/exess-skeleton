@@ -3,10 +3,10 @@ services:
     autowire: true
     autoconfigure: true
 
-  ExEss\Cms\Controller\:
+  ExEss\Bundle\CmsBundle\Controller\:
     public: true
     autowire: true
-    resource: '../src/ExEss/Cms/Controller/'
+    resource: '../src/ExEss/Bundle/CmsBundle/Controller/'
 
 imports:
   - { resource: 'services/services.yaml' }

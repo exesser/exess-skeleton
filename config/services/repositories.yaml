@@ -2,55 +2,55 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\Api\V8_Custom\Repository\RelationsRepository:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\RelationsRepository:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Service\FilterService'
+      - '@ExEss\Bundle\CmsBundle\Service\FilterService'
     tags: [{ name: 'handler.list', alias: 'relationsHandler' }]
 
   # External repositories
-  ExEss\Cms\Api\V8_Custom\Repository\AuditRepository:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\AuditRepository:
     arguments:
       - '@doctrine.orm.entity_manager'
     tags: [{ name: 'handler.list', alias: 'auditHandler' }]
 
-  ExEss\Cms\Api\V8_Custom\Repository\ExternalObjectRepository:
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\ExternalObjectRepository:
     arguments:
-      - '@ExEss\Cms\Servicemix\ExternalObjectHandler'
-      - '@ExEss\Cms\Api\V8_Custom\Repository\ListHandler'
-      - '@ExEss\Cms\Component\ExpressionParser\ParserService'
+      - '@ExEss\Bundle\CmsBundle\Servicemix\ExternalObjectHandler'
+      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Repository\ListHandler'
+      - '@ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService'
 
   # Crud related repositories
-  ExEss\Cms\CRUD\Handlers\CrudAllBeansRepository:
+  ExEss\Bundle\CmsBundle\CRUD\Handlers\CrudAllBeansRepository:
     arguments:
-      - '@ExEss\Cms\CRUD\Helpers\SecurityService'
+      - '@ExEss\Bundle\CmsBundle\CRUD\Helpers\SecurityService'
     tags: [ { name: 'handler.list', alias: 'CrudAllBeansHandler' } ]
 
-  ExEss\Cms\CRUD\Handlers\CrudRecordsRepository:
+  ExEss\Bundle\CmsBundle\CRUD\Handlers\CrudRecordsRepository:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Service\FilterService'
-      - '@ExEss\Cms\CRUD\Helpers\SecurityService'
+      - '@ExEss\Bundle\CmsBundle\Service\FilterService'
+      - '@ExEss\Bundle\CmsBundle\CRUD\Helpers\SecurityService'
     tags:
       - { name: 'handler.list', alias: 'CrudRecordsRepository' }
       - { name: 'handler.flow', alias: 'CrudRecordsRepository' }
 
-  ExEss\Cms\CRUD\Handlers\CrudRecordRelationsRepository:
+  ExEss\Bundle\CmsBundle\CRUD\Handlers\CrudRecordRelationsRepository:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Service\FilterService'
+      - '@ExEss\Bundle\CmsBundle\Service\FilterService'
     tags:
       - { name: 'handler.list', alias: 'CrudRecordRelationsRepository' }
       - { name: 'handler.flow', alias: 'CrudRecordRelationsRepository' }
 
-  ExEss\Cms\CRUD\Handlers\CrudSelectRelationsRepository:
+  ExEss\Bundle\CmsBundle\CRUD\Handlers\CrudSelectRelationsRepository:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Service\FilterService'
+      - '@ExEss\Bundle\CmsBundle\Service\FilterService'
     tags: [{ name: 'handler.list', alias: 'CrudSelectRelationsRepository' }]
 
   # Auto-wired repositories
-  ExEss\Cms\Repository\:
+  ExEss\Bundle\CmsBundle\Repository\:
     autowire: true
     autoconfigure: true
-    resource: '../../src/ExEss/Cms/Repository'
+    resource: '../../src/ExEss/Bundle/CmsBundle/Repository'

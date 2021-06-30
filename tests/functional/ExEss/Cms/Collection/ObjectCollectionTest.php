@@ -2,8 +2,8 @@
 
 namespace Test\Functional\ExEss\Cms\Collection;
 
-use ExEss\Cms\Collection\ObjectCollection;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Collection\ObjectCollection;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Helper\Testcase\FunctionalTestCase;
 
 class ObjectCollectionTest extends FunctionalTestCase

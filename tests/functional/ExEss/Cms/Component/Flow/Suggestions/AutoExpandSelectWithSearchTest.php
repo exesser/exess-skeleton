@@ -2,12 +2,12 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow\Suggestions;
 
-use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\Component\Flow\Request\FlowAction;
-use ExEss\Cms\Component\Flow\Response;
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\Flow\Suggestions\AutoExpandSelectWithSearch;
-use ExEss\Cms\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Entity\Flow;
+use ExEss\Bundle\CmsBundle\Component\Flow\Request\FlowAction;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\Flow\Suggestions\AutoExpandSelectWithSearch;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
 use Helper\Testcase\FunctionalTestCase;
 
 class AutoExpandSelectWithSearchTest extends FunctionalTestCase

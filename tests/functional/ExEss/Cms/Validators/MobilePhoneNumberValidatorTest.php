@@ -3,7 +3,7 @@
 namespace Test\Functional\ExEss\Cms\Validators;
 
 use Helper\Testcase\FunctionalTestCase;
-use ExEss\Cms\Validators\MobilePhoneNumber;
+use ExEss\Bundle\CmsBundle\Validators\MobilePhoneNumber;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class MobilePhoneNumberValidatorTest extends FunctionalTestCase

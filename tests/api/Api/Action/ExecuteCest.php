@@ -3,8 +3,8 @@
 namespace Test\Api\Api\Action;
 
 use ApiTester;
-use ExEss\Cms\Helper\DataCleaner;
-use ExEss\Cms\Http\ErrorResponse;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Http\ErrorResponse;
 
 class ExecuteCest
 {

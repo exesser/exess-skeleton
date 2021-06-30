@@ -6,7 +6,7 @@
       "date_entered" : "2017-09-07 09:00:30",
       "created_by" : "1",
       "description" : "test",
-      "base_object" : "ExEss\\Cms\\Entity\\AclRole",
+      "base_object" : "ExEss\\Bundle\\CmsBundle\\Entity\\AclRole",
       "filters" : "JOIN sws.groups g WHERE g.id = '%SecurityGroups|id%'",
       "items_on_page" : "10",
       "order_by" : "sws.name",

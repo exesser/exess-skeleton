@@ -1,26 +1,26 @@
 services:
-  ExEss\Cms\EventListener\:
+  ExEss\Bundle\CmsBundle\EventListener\:
     public: true
-    resource: '../../src/ExEss/Cms/EventListener/'
+    resource: '../../src/ExEss/Bundle/CmsBundle/EventListener/'
 
   #
   # Global listeners for ALL entities
   # see https://symfony.com/doc/current/doctrine/events.html#doctrine-lifecycle-listeners
   #
 
-  ExEss\Cms\EventListener\EnumValueListener:
+  ExEss\Bundle\CmsBundle\EventListener\EnumValueListener:
     tags:
       - { name: 'doctrine.event_listener', event: 'prePersist' }
 
-  ExEss\Cms\EventListener\DateModifiedListener:
+  ExEss\Bundle\CmsBundle\EventListener\DateModifiedListener:
     tags:
       - { name: 'doctrine.event_listener', event: 'preUpdate' }
 
-  ExEss\Cms\EventListener\DateEnteredListener:
+  ExEss\Bundle\CmsBundle\EventListener\DateEnteredListener:
     tags:
       - { name: 'doctrine.event_listener', event: 'preFlush' }
 
-  ExEss\Cms\EventListener\HtmlPurifierListener:
+  ExEss\Bundle\CmsBundle\EventListener\HtmlPurifierListener:
     autowire: true
     tags:
       - { name: 'doctrine.event_listener', event: 'preFlush' }
@@ -30,30 +30,30 @@ services:
   # see https://symfony.com/doc/current/doctrine/events.html#doctrine-entity-listeners
   #
 
-  ExEss\Cms\EventListener\NormaliseTranslationListener:
+  ExEss\Bundle\CmsBundle\EventListener\NormaliseTranslationListener:
     tags:
-      - { name: 'doctrine.orm.entity_listener', event: 'preFlush', entity: 'ExEss\Cms\Entity\Translation' }
+      - { name: 'doctrine.orm.entity_listener', event: 'preFlush', entity: 'ExEss\Bundle\CmsBundle\Entity\Translation' }
 
-  ExEss\Cms\EventListener\PropertyUpdateListener:
+  ExEss\Bundle\CmsBundle\EventListener\PropertyUpdateListener:
     autowire: true
     tags:
-      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Cms\Entity\Dashboard' }
-      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Cms\Entity\FlowStep' }
-      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Cms\Entity\Dashboard' }
-      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Cms\Entity\FlowStep' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Bundle\CmsBundle\Entity\Dashboard' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Bundle\CmsBundle\Entity\FlowStep' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Bundle\CmsBundle\Entity\Dashboard' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Bundle\CmsBundle\Entity\FlowStep' }
 
-  ExEss\Cms\EventListener\DefaultFilterJsonListener:
+  ExEss\Bundle\CmsBundle\EventListener\DefaultFilterJsonListener:
     autowire: true
     tags:
-      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Cms\Entity\FilterField' }
-      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Cms\Entity\FilterFieldGroup' }
-      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Cms\Entity\FilterField' }
-      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Cms\Entity\FilterFieldGroup' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Bundle\CmsBundle\Entity\FilterField' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postPersist', entity: 'ExEss\Bundle\CmsBundle\Entity\FilterFieldGroup' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Bundle\CmsBundle\Entity\FilterField' }
+      - { name: 'doctrine.orm.entity_listener', event: 'postUpdate', entity: 'ExEss\Bundle\CmsBundle\Entity\FilterFieldGroup' }
 
-  ExEss\Cms\EventListener\DefaultRoleListener:
+  ExEss\Bundle\CmsBundle\EventListener\DefaultRoleListener:
     tags:
-      - { name: 'doctrine.orm.entity_listener', event: 'prePersist', entity: 'ExEss\Cms\Entity\User' }
-     
-  ExEss\Cms\EventListener\PrimaryGroupListener:
+      - { name: 'doctrine.orm.entity_listener', event: 'prePersist', entity: 'ExEss\Bundle\CmsBundle\Entity\User' }
+
+  ExEss\Bundle\CmsBundle\EventListener\PrimaryGroupListener:
     tags:
-      - { name: 'doctrine.orm.entity_listener', event: 'preFlush', entity: 'ExEss\Cms\Entity\User' }    
+      - { name: 'doctrine.orm.entity_listener', event: 'preFlush', entity: 'ExEss\Bundle\CmsBundle\Entity\User' }

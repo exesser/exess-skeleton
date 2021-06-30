@@ -2,7 +2,7 @@
 
 namespace Test\Functional\ExEss\Cms\FieldFormatter;
 
-use ExEss\Cms\FieldFormatter\VatNumberFormatter;
+use ExEss\Bundle\CmsBundle\FieldFormatter\VatNumberFormatter;
 use Helper\Testcase\FunctionalTestCase;
 
 class VatNumberFormatterTest extends FunctionalTestCase

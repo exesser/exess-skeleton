@@ -2,8 +2,8 @@
 
 namespace Test\Unit\ExEss\Cms\Component\Session;
 
-use ExEss\Cms\Component\Session\Headers;
-use ExEss\Cms\Component\Session\User\UserInterface;
+use ExEss\Bundle\CmsBundle\Component\Session\Headers;
+use ExEss\Bundle\CmsBundle\Component\Session\User\UserInterface;
 use Ramsey\Uuid\Uuid;
 use Helper\Testcase\UnitTestCase;
 

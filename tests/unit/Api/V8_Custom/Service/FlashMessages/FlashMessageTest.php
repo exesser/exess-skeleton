@@ -3,7 +3,7 @@
 namespace Test\Unit\Api\V8_Custom\Service\FlashMessages;
 
 use Helper\Testcase\UnitTestCase;
-use ExEss\Cms\Api\V8_Custom\Service\FlashMessages\FlashMessage;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessage;
 
 class FlashMessageTest extends UnitTestCase
 {

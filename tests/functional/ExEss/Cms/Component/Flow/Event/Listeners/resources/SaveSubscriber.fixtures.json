@@ -10,7 +10,7 @@
     {
       "id": "whatEvahDude",
       "key_c": "flowForDefault",
-      "base_object_c": "ExEss\\Cms\\Entity\\ListCellLink",
+      "base_object_c": "ExEss\\Bundle\\CmsBundle\\Entity\\ListCellLink",
       "action_id": "a",
       "created_by": "1"
     }

@@ -3,9 +3,9 @@
 namespace Test\Unit\ExEss\Cms\Component\Logger\Processor;
 
 use Mockery\MockInterface;
-use ExEss\Cms\Component\Logger\Processor\NeededHeadersProcessor;
-use ExEss\Cms\Component\Session\Headers;
-use ExEss\Cms\Component\Session\User\UserInterface;
+use ExEss\Bundle\CmsBundle\Component\Logger\Processor\NeededHeadersProcessor;
+use ExEss\Bundle\CmsBundle\Component\Session\Headers;
+use ExEss\Bundle\CmsBundle\Component\Session\User\UserInterface;
 use Helper\Testcase\UnitTestCase;
 
 class NeededHeadersProcessorTest extends UnitTestCase

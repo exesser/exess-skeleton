@@ -3,8 +3,8 @@
 namespace Test\Api\Api\Filter;
 
 use ApiTester;
-use ExEss\Cms\Doctrine\Type\FilterFieldType;
-use ExEss\Cms\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\FilterFieldType;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
 
 class ViewCest
 {

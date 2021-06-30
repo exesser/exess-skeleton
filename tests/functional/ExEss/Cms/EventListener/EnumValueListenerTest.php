@@ -3,8 +3,8 @@
 namespace Test\Functional\ExEss\Cms\EventListener;
 
 use Doctrine\ORM\EntityManager;
-use ExEss\Cms\Doctrine\Type\FlowFieldType;
-use ExEss\Cms\Entity\FlowField;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\FlowFieldType;
+use ExEss\Bundle\CmsBundle\Entity\FlowField;
 use Helper\Testcase\FunctionalTestCase;
 
 /**

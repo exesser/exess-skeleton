@@ -3,8 +3,8 @@
 namespace Test\Unit\ExEss\Cms\Validators;
 
 use Helper\Testcase\UnitTestCase;
-use ExEss\Cms\Validators\PhoneNumber;
-use ExEss\Cms\Validators\PhoneNumberValidator;
+use ExEss\Bundle\CmsBundle\Validators\PhoneNumber;
+use ExEss\Bundle\CmsBundle\Validators\PhoneNumberValidator;
 use Symfony\Component\Validator\Constraint;
 
 class PhoneNumberConstraintTest extends UnitTestCase

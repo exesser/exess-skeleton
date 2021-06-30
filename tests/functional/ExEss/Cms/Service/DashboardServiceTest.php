@@ -2,14 +2,14 @@
 
 namespace Test\Functional\ExEss\Cms\Service;
 
-use ExEss\Cms\Doctrine\Type\GridType;
-use ExEss\Cms\Entity\Dashboard;
-use ExEss\Cms\Entity\DashboardMenuAction;
-use ExEss\Cms\Entity\GridPanel;
-use ExEss\Cms\Entity\ListDynamic;
-use ExEss\Cms\Entity\Property;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Service\DashboardService;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\GridType;
+use ExEss\Bundle\CmsBundle\Entity\Dashboard;
+use ExEss\Bundle\CmsBundle\Entity\DashboardMenuAction;
+use ExEss\Bundle\CmsBundle\Entity\GridPanel;
+use ExEss\Bundle\CmsBundle\Entity\ListDynamic;
+use ExEss\Bundle\CmsBundle\Entity\Property;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Service\DashboardService;
 use Helper\Testcase\FunctionalTestCase;
 
 class DashboardServiceTest extends FunctionalTestCase

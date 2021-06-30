@@ -3,9 +3,9 @@
 namespace Test\Functional\ExEss\Cms\Service;
 
 use Doctrine\ORM\EntityManager;
-use ExEss\Cms\Doctrine\Type\TranslationDomain;
-use ExEss\Cms\Entity\Menu;
-use ExEss\Cms\Service\MenuService;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\TranslationDomain;
+use ExEss\Bundle\CmsBundle\Entity\Menu;
+use ExEss\Bundle\CmsBundle\Service\MenuService;
 use Helper\Testcase\FunctionalTestCase;
 use Symfony\Component\Translation\Translator;
 

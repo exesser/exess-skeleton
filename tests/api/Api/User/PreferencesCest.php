@@ -3,8 +3,8 @@
 namespace Test\Api\Api\User;
 
 use ApiTester;
-use ExEss\Cms\Doctrine\Type\Locale;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
 class PreferencesCest
@@ -52,7 +52,7 @@ class PreferencesCest
         // Given
         $userName = $this->user->getUserName();
         $I->linkUserToRole($this->user->getId(), User::ROLE_ADMIN);
-        $I->generateUserGuidanceRecovery($this->user->getId(), ["linkTo" => "flowId", "params" => ["p1"=>"v1"]]);
+        $I->generateUserGuidanceRecovery($this->user->getId(), ["linkTo" => "flowId", "params" => ["p1"=> "v1"]]);
         $I->getAnApiTokenFor($userName, $this->user->getPassword());
 
         // When

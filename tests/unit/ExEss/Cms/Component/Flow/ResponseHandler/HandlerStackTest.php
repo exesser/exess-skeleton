@@ -2,9 +2,9 @@
 
 namespace Test\Unit\ExEss\Cms\Component\Flow\ResponseHandler;
 
-use ExEss\Cms\Component\Flow\Event\FlowEvent;
-use ExEss\Cms\Component\Flow\ResponseHandler\Handler;
-use ExEss\Cms\Component\Flow\ResponseHandler\HandlerStack;
+use ExEss\Bundle\CmsBundle\Component\Flow\Event\FlowEvent;
+use ExEss\Bundle\CmsBundle\Component\Flow\ResponseHandler\Handler;
+use ExEss\Bundle\CmsBundle\Component\Flow\ResponseHandler\HandlerStack;
 use Helper\Testcase\UnitTestCase;
 
 class HandlerStackTest extends UnitTestCase

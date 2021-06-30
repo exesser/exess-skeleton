@@ -1,0 +1,16 @@
+{
+    "recordName": "ExEss\\Bundle\\CmsBundle\\Entity\\UserGuidanceRecovery",
+    "relations": [
+        {
+            "name": "id",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        }
+    ],
+    "fields": [
+        {
+            "name": "recoveryData",
+            "type": "json"
+        }
+    ]
+}

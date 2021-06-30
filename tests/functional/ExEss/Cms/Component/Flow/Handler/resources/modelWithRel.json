@@ -1,6 +1,6 @@
 {
-  "recordTypeOfRecordId": "ExEss\\Cms\\Entity\\ListDynamic",
-  "baseModule": "ExEss\\Cms\\Entity\\ListDynamic",
+  "recordTypeOfRecordId": "ExEss\\Bundle\\CmsBundle\\Entity\\ListDynamic",
+  "baseModule": "ExEss\\Bundle\\CmsBundle\\Entity\\ListDynamic",
   "id": "{{list_id}}",
   "rel|cellLinks": "{{link_cell_id}}"
 }

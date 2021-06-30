@@ -2,9 +2,9 @@
 
 namespace Test\Api\V8_Custom\Crud;
 
-use ExEss\Cms\Doctrine\Type\Locale;
-use ExEss\Cms\Doctrine\Type\UserStatus;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus;
+use ExEss\Bundle\CmsBundle\Entity\User;
 
 class CrudTestUser
 {

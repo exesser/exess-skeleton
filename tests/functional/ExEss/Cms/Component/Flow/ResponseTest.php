@@ -2,12 +2,12 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow;
 
-use ExEss\Cms\Entity\FlowStep;
+use ExEss\Bundle\CmsBundle\Entity\FlowStep;
 use stdClass;
-use ExEss\Cms\Collection\ObjectCollection;
-use ExEss\Cms\Component\Flow\Action\Arguments;
-use ExEss\Cms\Component\Flow\Action\Command;
-use ExEss\Cms\Component\Flow\Response;
+use ExEss\Bundle\CmsBundle\Collection\ObjectCollection;
+use ExEss\Bundle\CmsBundle\Component\Flow\Action\Arguments;
+use ExEss\Bundle\CmsBundle\Component\Flow\Action\Command;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response;
 use Helper\Testcase\FunctionalTestCase;
 
 class ResponseTest extends FunctionalTestCase

@@ -2,11 +2,11 @@
 
 namespace Test\Functional\ExEss\Cms\Service;
 
-use ExEss\Cms\ListFunctions\HelperClasses\DynamicListHeader;
-use ExEss\Cms\ListFunctions\HelperClasses\DynamicListResponse;
-use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRow;
-use ExEss\Cms\ListFunctions\HelperClasses\DynamicListRowCell;
-use ExEss\Cms\Service\ListExportService;
+use ExEss\Bundle\CmsBundle\ListFunctions\HelperClasses\DynamicListHeader;
+use ExEss\Bundle\CmsBundle\ListFunctions\HelperClasses\DynamicListResponse;
+use ExEss\Bundle\CmsBundle\ListFunctions\HelperClasses\DynamicListRow;
+use ExEss\Bundle\CmsBundle\ListFunctions\HelperClasses\DynamicListRowCell;
+use ExEss\Bundle\CmsBundle\Service\ListExportService;
 use Helper\Testcase\FunctionalTestCase;
 
 class ListExportServiceTest extends FunctionalTestCase

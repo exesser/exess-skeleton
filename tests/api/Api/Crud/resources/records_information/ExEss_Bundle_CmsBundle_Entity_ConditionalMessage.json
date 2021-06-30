@@ -1,0 +1,86 @@
+{
+    "recordName": "ExEss\\Bundle\\CmsBundle\\Entity\\ConditionalMessage",
+    "relations": [
+        {
+            "name": "assignedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        },
+        {
+            "name": "conditions",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\Validator"
+        },
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        },
+        {
+            "name": "securityGroups",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\SecurityGroup"
+        }
+    ],
+    "fields": [
+        {
+            "name": "domain",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "sidebar",
+                    "value": "sidebar"
+                }
+            ]
+        },
+        {
+            "name": "action",
+            "type": "string"
+        },
+        {
+            "name": "icon",
+            "type": "string"
+        },
+        {
+            "name": "recordType",
+            "type": "string"
+        },
+        {
+            "name": "recordId",
+            "type": "string"
+        },
+        {
+            "name": "priority",
+            "type": "integer"
+        },
+        {
+            "name": "descriptionParams",
+            "type": "json"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

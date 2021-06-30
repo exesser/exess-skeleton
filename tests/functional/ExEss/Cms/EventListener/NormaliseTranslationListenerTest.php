@@ -3,10 +3,10 @@
 namespace Test\Functional\ExEss\Cms\EventListener;
 
 use Doctrine\ORM\EntityManager;
-use ExEss\Cms\Doctrine\Type\Locale;
-use ExEss\Cms\Doctrine\Type\TranslationDomain;
-use ExEss\Cms\Entity\Translation;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\TranslationDomain;
+use ExEss\Bundle\CmsBundle\Entity\Translation;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Helper\Testcase\FunctionalTestCase;
 
 /**

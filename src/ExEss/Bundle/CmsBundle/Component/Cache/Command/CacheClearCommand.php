@@ -4,7 +4,7 @@ namespace ExEss\Bundle\CmsBundle\Component\Cache\Command;
 
 use ExEss\Bundle\CmsBundle\Component\Cache\CacheAdapterFactory;
 use ExEss\Bundle\CmsBundle\Component\Cache\Dictionary;
-use ExEss\Cms\Command\AbstractAdminCommand;
+use ExEss\Bundle\CmsBundle\Command\AbstractAdminCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

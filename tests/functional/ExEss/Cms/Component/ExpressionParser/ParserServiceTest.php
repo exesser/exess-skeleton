@@ -3,21 +3,21 @@
 namespace Test\Functional\ExEss\Cms\Component\ExpressionParser;
 
 use Doctrine\ORM\EntityManager;
-use ExEss\Cms\Dictionary\Format;
-use ExEss\Cms\Doctrine\Type\FlowType;
-use ExEss\Cms\Doctrine\Type\TranslationDomain;
-use ExEss\Cms\Doctrine\Type\UserStatus;
-use ExEss\Cms\Entity\ConditionalMessage;
-use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\Entity\ListCellLink;
-use ExEss\Cms\Entity\ListDynamic;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Exception\ConfigInvalidException;
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\ExpressionParser\ParserService;
-use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionGroup;
-use ExEss\Cms\Component\ExpressionParser\Parser\ExpressionParserOptions;
-use ExEss\Cms\Component\ExpressionParser\Parser\PathResolverOptions;
+use ExEss\Bundle\CmsBundle\Dictionary\Format;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\FlowType;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\TranslationDomain;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus;
+use ExEss\Bundle\CmsBundle\Entity\ConditionalMessage;
+use ExEss\Bundle\CmsBundle\Entity\Flow;
+use ExEss\Bundle\CmsBundle\Entity\ListCellLink;
+use ExEss\Bundle\CmsBundle\Entity\ListDynamic;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Exception\ConfigInvalidException;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\ParserService;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\ExpressionGroup;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\ExpressionParserOptions;
+use ExEss\Bundle\CmsBundle\Component\ExpressionParser\Parser\PathResolverOptions;
 use Helper\Testcase\FunctionalTestCase;
 use JsonMapper;
 

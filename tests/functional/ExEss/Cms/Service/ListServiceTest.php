@@ -3,21 +3,21 @@
 namespace Test\Functional\ExEss\Cms\Service;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use ExEss\Cms\Controller\ListDynamic\Body\ListBody;
-use ExEss\Cms\Doctrine\Type\CellType;
-use ExEss\Cms\Doctrine\Type\Locale;
-use ExEss\Cms\Doctrine\Type\SecurityGroupType;
-use ExEss\Cms\Doctrine\Type\TranslationDomain;
-use ExEss\Cms\Entity\ListDynamic;
-use ExEss\Cms\Entity\ListSortingOption;
-use ExEss\Cms\Entity\ListTopAction;
-use ExEss\Cms\Entity\ListTopBar;
-use ExEss\Cms\Entity\Translation;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Helper\DataCleaner;
-use ExEss\Cms\Http\Factory\JsonBodyFactory;
-use ExEss\Cms\ListFunctions\HelperClasses\DynamicListResponse;
-use ExEss\Cms\Service\ListService;
+use ExEss\Bundle\CmsBundle\Controller\ListDynamic\Body\ListBody;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\CellType;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\SecurityGroupType;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\TranslationDomain;
+use ExEss\Bundle\CmsBundle\Entity\ListDynamic;
+use ExEss\Bundle\CmsBundle\Entity\ListSortingOption;
+use ExEss\Bundle\CmsBundle\Entity\ListTopAction;
+use ExEss\Bundle\CmsBundle\Entity\ListTopBar;
+use ExEss\Bundle\CmsBundle\Entity\Translation;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Http\Factory\JsonBodyFactory;
+use ExEss\Bundle\CmsBundle\ListFunctions\HelperClasses\DynamicListResponse;
+use ExEss\Bundle\CmsBundle\Service\ListService;
 use Helper\Testcase\FunctionalTestCase;
 
 class ListServiceTest extends FunctionalTestCase

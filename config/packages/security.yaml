@@ -6,15 +6,15 @@ security:
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     encoders:
-        ExEss\Cms\Entity\User:
+        ExEss\Bundle\CmsBundle\Entity\User:
             algorithm: auto
 
     providers:
         doctrine_user_provider:
             entity:
-                class: ExEss\Cms\Entity\User
-                property: userName      
-    
+                class: ExEss\Bundle\CmsBundle\Entity\User
+                property: userName
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -25,19 +25,19 @@ security:
             #login_throttling:
             #    max_attempts: 5
             json_login:
-                check_path: exesscms_login   
-                success_handler: ExEss\Cms\Security\JsonLoginAuthenticator
+                check_path: exesscms_login
+                success_handler: ExEss\Bundle\CmsBundle\Security\JsonLoginAuthenticator
         api:
             stateless: true
             pattern: ^/Api
             provider: doctrine_user_provider
-            entry_point: ExEss\Cms\Security\JwtTokenAuthenticator
+            entry_point: ExEss\Bundle\CmsBundle\Security\JwtTokenAuthenticator
             guard:
                 authenticators:
-                    - ExEss\Cms\Security\JwtTokenAuthenticator
+                    - ExEss\Bundle\CmsBundle\Security\JwtTokenAuthenticator
             logout:
-                path: exesscms_logout   
- 
+                path: exesscms_logout
+
     access_control:
         - { path: ^/Api/login, roles: PUBLIC_ACCESS }
         - { path: ^/Api/V8_Custom/check/ping, roles: PUBLIC_ACCESS }

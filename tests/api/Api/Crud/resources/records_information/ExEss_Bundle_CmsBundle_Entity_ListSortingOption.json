@@ -1,0 +1,65 @@
+{
+    "recordName": "ExEss\\Bundle\\CmsBundle\\Entity\\ListSortingOption",
+    "relations": [
+        {
+            "name": "topBars",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\ListTopBar"
+        },
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        },
+        {
+            "name": "securityGroups",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\SecurityGroup"
+        }
+    ],
+    "fields": [
+        {
+            "name": "sortKey",
+            "type": "string"
+        },
+        {
+            "name": "orderBy",
+            "type": "enum",
+            "enumValues": [
+                {
+                    "key": "ASC",
+                    "value": "Ascending"
+                },
+                {
+                    "key": "DESC",
+                    "value": "Descending"
+                }
+            ]
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

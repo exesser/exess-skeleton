@@ -6,7 +6,7 @@ if (!\class_exists('FunctionalTester')) {
 }
 
 use Codeception\TestCase\Test;
-use ExEss\Cms\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
 /**

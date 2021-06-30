@@ -2,39 +2,39 @@ services:
   _defaults:
     public: true
 
-  ExEss\Cms\Component\Flow\SaveFlow:
+  ExEss\Bundle\CmsBundle\Component\Flow\SaveFlow:
     arguments:
       - '@service_container'
       -
         # pre processors: before fatentity are saved
-        - ExEss\Cms\CRUD\Handlers\SaveHandlers\RecordTypeHandler
-        - ExEss\Cms\CRUD\Handlers\SaveHandlers\SaveSelectWithSearchHandler
+        - ExEss\Bundle\CmsBundle\CRUD\Handlers\SaveHandlers\RecordTypeHandler
+        - ExEss\Bundle\CmsBundle\CRUD\Handlers\SaveHandlers\SaveSelectWithSearchHandler
         # here add a class
-        - ExEss\Cms\Component\Flow\Handler\ModelConverter # converts model to a more readable format
+        - ExEss\Bundle\CmsBundle\Component\Flow\Handler\ModelConverter # converts model to a more readable format
         # convert the input to fat entities
-        - ExEss\Cms\Component\Flow\Handler\DataConverter
+        - ExEss\Bundle\CmsBundle\Component\Flow\Handler\DataConverter
         # post processors: after the fatentity are saved
-        - ExEss\Cms\CRUD\Handlers\SaveHandlers\SaveRelationHandler
+        - ExEss\Bundle\CmsBundle\CRUD\Handlers\SaveHandlers\SaveRelationHandler
 
-  ExEss\Cms\Component\Flow\MultiLineFlowSaver:
+  ExEss\Bundle\CmsBundle\Component\Flow\MultiLineFlowSaver:
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@ExEss\Cms\Service\GridService'
-      - '@ExEss\Cms\Component\Flow\SaveFlow'
+      - '@ExEss\Bundle\CmsBundle\Service\GridService'
+      - '@ExEss\Bundle\CmsBundle\Component\Flow\SaveFlow'
 
   # Handlers
-  ExEss\Cms\Component\Flow\Handler\DataConverter:
+  ExEss\Bundle\CmsBundle\Component\Flow\Handler\DataConverter:
     arguments:
       - '@doctrine.orm.entity_manager'
 
-  ExEss\Cms\Component\Flow\Handler\ModelConverter:
+  ExEss\Bundle\CmsBundle\Component\Flow\Handler\ModelConverter:
     arguments:
       - '@doctrine.orm.entity_manager'
 
   # Config handlers
-  ExEss\Cms\CRUD\Handlers\SaveHandlers\SaveSelectWithSearchHandler: ~
-  ExEss\Cms\CRUD\Handlers\SaveHandlers\RecordTypeHandler: ~
+  ExEss\Bundle\CmsBundle\CRUD\Handlers\SaveHandlers\SaveSelectWithSearchHandler: ~
+  ExEss\Bundle\CmsBundle\CRUD\Handlers\SaveHandlers\RecordTypeHandler: ~
 
-  ExEss\Cms\CRUD\Handlers\SaveHandlers\SaveRelationHandler:
+  ExEss\Bundle\CmsBundle\CRUD\Handlers\SaveHandlers\SaveRelationHandler:
     arguments:
       - '@doctrine.orm.entity_manager'

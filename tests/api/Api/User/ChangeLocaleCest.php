@@ -3,9 +3,9 @@
 namespace Test\Api\Api\User;
 
 use ApiTester;
-use ExEss\Cms\Doctrine\Type\Locale;
-use ExEss\Cms\Doctrine\Type\SecurityGroupType;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\SecurityGroupType;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
 class ChangeLocaleCest

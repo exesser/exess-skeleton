@@ -2,10 +2,10 @@
 
 namespace Test\Functional\ExEss\Cms\Users\Service;
 
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Entity\UserGuidanceRecovery;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Entity\UserGuidanceRecovery;
 use Helper\Testcase\FunctionalTestCase;
-use ExEss\Cms\Users\Service\GuidanceRecoveryService;
+use ExEss\Bundle\CmsBundle\Users\Service\GuidanceRecoveryService;
 
 class GuidanceRecoveryServiceTest extends FunctionalTestCase
 {

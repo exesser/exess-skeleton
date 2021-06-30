@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 // This is global bootstrap for autoloading
-use ExEss\Cms\Dictionary\Format;
+use ExEss\Bundle\CmsBundle\Dictionary\Format;
 
 \umask(0);
 // disable wsdl caching during tests

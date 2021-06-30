@@ -2,8 +2,8 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow\Services;
 
-use ExEss\Cms\Component\Flow\DefaultValueService;
-use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\Flow\DefaultValueService;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
 use Helper\Testcase\FunctionalTestCase;
 
 class DefaultValueServiceTest extends FunctionalTestCase

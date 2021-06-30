@@ -4,10 +4,10 @@ namespace Test\Functional\ExEss\Cms\EventListener;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManager;
-use ExEss\Cms\Entity\Dashboard;
-use ExEss\Cms\Entity\FlowStep;
-use ExEss\Cms\Entity\GridTemplate;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Entity\Dashboard;
+use ExEss\Bundle\CmsBundle\Entity\FlowStep;
+use ExEss\Bundle\CmsBundle\Entity\GridTemplate;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Helper\Testcase\FunctionalTestCase;
 
 /**

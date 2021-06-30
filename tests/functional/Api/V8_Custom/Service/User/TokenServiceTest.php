@@ -2,7 +2,7 @@
 
 namespace Test\Functional\Api\V8_Custom\Service\User;
 
-use ExEss\Cms\Api\V8_Custom\Service\User\TokenService;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\TokenService;
 use Helper\Testcase\FunctionalTestCase;
 
 class TokenServiceTest extends FunctionalTestCase

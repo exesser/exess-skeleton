@@ -5,11 +5,11 @@ namespace Helper;
 use Codeception\Module\Doctrine2;
 use Codeception\Module\Symfony;
 use Codeception\TestInterface;
-use ExEss\Cms\Acl\AclService;
-use ExEss\Cms\Api\V8_Custom\Service\User\DefaultUser;
-use ExEss\Cms\Command\Traits\LoginTrait;
-use ExEss\Cms\Entity\AclRole;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Acl\AclService;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\DefaultUser;
+use ExEss\Bundle\CmsBundle\Command\Traits\LoginTrait;
+use ExEss\Bundle\CmsBundle\Entity\AclRole;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Helper\Module\Db;
 

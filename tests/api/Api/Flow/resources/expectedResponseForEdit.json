@@ -119,7 +119,7 @@
             "addResultsButtonTitle": "Add one or more records",
             "multiple": false,
             "params": {
-              "baseObject": "ExEss\\Cms\\Entity\\GridTemplate"
+              "baseObject": "ExEss\\Bundle\\CmsBundle\\Entity\\GridTemplate"
             },
             "id": "gridTemplate|id",
             "label": "GridTemplate",
@@ -138,7 +138,7 @@
             "addResultsButtonTitle": "Add one or more records",
             "multiple": false,
             "params": {
-              "baseObject": "ExEss\\Cms\\Entity\\DashboardMenu"
+              "baseObject": "ExEss\\Bundle\\CmsBundle\\Entity\\DashboardMenu"
             },
             "id": "dashboardMenu|id",
             "label": "DashboardMenu",
@@ -157,7 +157,7 @@
             "addResultsButtonTitle": "Add one or more records",
             "multiple": false,
             "params": {
-              "baseObject": "ExEss\\Cms\\Entity\\FindSearch"
+              "baseObject": "ExEss\\Bundle\\CmsBundle\\Entity\\FindSearch"
             },
             "id": "search|id",
             "label": "Search",
@@ -176,7 +176,7 @@
             "addResultsButtonTitle": "Add one or more records",
             "multiple": false,
             "params": {
-              "baseObject": "ExEss\\Cms\\Entity\\Filter"
+              "baseObject": "ExEss\\Bundle\\CmsBundle\\Entity\\Filter"
             },
             "id": "filter|id",
             "label": "Filter",
@@ -278,8 +278,8 @@
       ]
     },
     "model": {
-      "recordTypeOfRecordId": "ExEss\\Cms\\Entity\\Dashboard",
-      "baseModule": "ExEss\\Cms\\Entity\\Dashboard",
+      "recordTypeOfRecordId": "ExEss\\Bundle\\CmsBundle\\Entity\\Dashboard",
+      "baseModule": "ExEss\\Bundle\\CmsBundle\\Entity\\Dashboard",
       "dwp|dynamicRelation": null,
       "id": "{{dashboardId}}",
       "gridTemplate|id": [

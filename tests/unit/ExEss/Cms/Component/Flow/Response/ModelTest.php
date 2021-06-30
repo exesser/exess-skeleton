@@ -2,7 +2,7 @@
 
 namespace Test\Unit\ExEss\Cms\Component\Flow\Response;
 
-use ExEss\Cms\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
 use Helper\Testcase\UnitTestCase;
 
 class ModelTest extends UnitTestCase

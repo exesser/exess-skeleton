@@ -2,12 +2,12 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow\Suggestions;
 
-use ExEss\Cms\Doctrine\Type\FlowFieldType;
-use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\Entity\User;
-use ExEss\Cms\Component\Flow\Request\FlowAction;
-use ExEss\Cms\Component\Flow\Response;
-use ExEss\Cms\Component\Flow\Suggestions\SelectWithSearchLabelHandler;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\FlowFieldType;
+use ExEss\Bundle\CmsBundle\Entity\Flow;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use ExEss\Bundle\CmsBundle\Component\Flow\Request\FlowAction;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response;
+use ExEss\Bundle\CmsBundle\Component\Flow\Suggestions\SelectWithSearchLabelHandler;
 use Helper\Testcase\FunctionalTestCase;
 
 class SelectWithSearchLabelHandlerTest extends FunctionalTestCase

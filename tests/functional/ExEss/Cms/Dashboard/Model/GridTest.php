@@ -3,7 +3,7 @@
 namespace Test\Functional\ExEss\Cms\Dashboard\Model;
 
 use Helper\Testcase\FunctionalTestCase;
-use ExEss\Cms\Dashboard\Model\Grid;
+use ExEss\Bundle\CmsBundle\Dashboard\Model\Grid;
 
 class GridTest extends FunctionalTestCase
 {

@@ -2,8 +2,8 @@
 
 namespace Test\Unit\ExEss\Cms\Component\Flow\Response\Suggestion;
 
-use ExEss\Cms\Component\Flow\Response\Suggestion\SuggestionInterface;
-use ExEss\Cms\Component\Flow\Response\Suggestion\ValueSuggestion;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Suggestion\SuggestionInterface;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Suggestion\ValueSuggestion;
 use Helper\Testcase\UnitTestCase;
 use JsonSerializable;
 

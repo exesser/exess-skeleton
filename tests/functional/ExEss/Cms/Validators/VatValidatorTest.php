@@ -4,7 +4,7 @@ namespace Test\Functional\ExEss\Cms\Validators;
 
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Helper\Testcase\FunctionalTestCase;
-use ExEss\Cms\Validators\Vat;
+use ExEss\Bundle\CmsBundle\Validators\Vat;
 
 class VatValidatorTest extends FunctionalTestCase
 {

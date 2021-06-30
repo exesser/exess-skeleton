@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Entity\User;
 
 \Codeception\Util\Fixtures::add('adminUser', [
     'username' =>

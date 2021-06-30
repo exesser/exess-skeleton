@@ -3,8 +3,8 @@
 namespace Test\Unit\ExEss\Cms\Validators\Factory;
 
 use Helper\Testcase\UnitTestCase;
-use ExEss\Cms\Validators\Exception\ConstraintNotFoundException;
-use ExEss\Cms\Validators\Factory\ConstraintFactory;
+use ExEss\Bundle\CmsBundle\Validators\Exception\ConstraintNotFoundException;
+use ExEss\Bundle\CmsBundle\Validators\Factory\ConstraintFactory;
 use Symfony\Component\Validator\Constraints\EqualTo;
 
 class ConstraintFactoryTest extends UnitTestCase

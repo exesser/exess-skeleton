@@ -3,8 +3,9 @@
 namespace Test\Api\Api\Flow;
 
 use ApiTester;
-use ExEss\Cms\Component\Flow\SaveFlow;
-use ExEss\Cms\Helper\DataCleaner;
+use ExEss\Bundle\CmsBundle\Component\Flow\SaveFlow;
+use ExEss\Bundle\CmsBundle\Entity\Dashboard;
+use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
 class FlowCest
@@ -12,8 +13,8 @@ class FlowCest
     private string $gridId;
     private string $id;
     private string $dashboardMenuId;
-
     private CrudTestUser $user;
+    private string $recordType;
 
     public function _before(ApiTester $I): void
     {
@@ -27,6 +28,7 @@ class FlowCest
         ]);
 
         $this->user = new CrudTestUser($I);
+        $this->recordType = \urlencode(Dashboard::class);
     }
 
     public function _after(ApiTester $I): void
@@ -41,7 +43,7 @@ class FlowCest
 
         // When
         $I->sendPost(
-            '/Api/flow/ExEss%5CCms%5CEntity%5CDashboard/' . SaveFlow::CRUD_RECORD_DETAILS . '/' . $this->id
+            '/Api/flow/' . $this->recordType . '/' . SaveFlow::CRUD_RECORD_DETAILS . '/' . $this->id
         );
 
         // Then
@@ -56,7 +58,7 @@ class FlowCest
 
         // When
         $I->sendPost(
-            '/Api/flow/ExEss%5CCms%5CEntity%5CDashboard/' . SaveFlow::CRUD_RECORD_DETAILS . '/' . $this->id
+            '/Api/flow/' . $this->recordType . '/' . SaveFlow::CRUD_RECORD_DETAILS . '/' . $this->id
         );
 
         // Then
@@ -73,7 +75,7 @@ class FlowCest
 
         // When
         $I->sendPost(
-            '/Api/flow/ExEss%5CCms%5CEntity%5CDashboard/' . SaveFlow::CRUD_EDIT . '/' . $this->id
+            '/Api/flow/' . $this->recordType . '/' . SaveFlow::CRUD_EDIT . '/' . $this->id
         );
 
         // Then
@@ -89,7 +91,7 @@ class FlowCest
 
         // When
         $I->sendPost(
-            '/Api/flow/ExEss%5CCms%5CEntity%5CDashboard/' . SaveFlow::CRUD_EDIT . '/' . $this->id
+            '/Api/flow/' . $this->recordType . '/' . SaveFlow::CRUD_EDIT . '/' . $this->id
         );
 
         // Then

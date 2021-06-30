@@ -1,0 +1,49 @@
+{
+    "recordName": "ExEss\\Bundle\\CmsBundle\\Entity\\ConfDefaults",
+    "relations": [
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        }
+    ],
+    "fields": [
+        {
+            "name": "systemId",
+            "type": "string"
+        },
+        {
+            "name": "parameter",
+            "type": "string"
+        },
+        {
+            "name": "value",
+            "type": "text"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

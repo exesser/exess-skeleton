@@ -4,8 +4,8 @@ namespace Test\Api\Api;
 
 use ApiTester;
 use Codeception\Example;
-use ExEss\Cms\Doctrine\Type\HttpMethod;
-use ExEss\Cms\Doctrine\Type\SecurityGroupType;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\HttpMethod;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\SecurityGroupType;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
 class SecurityCest

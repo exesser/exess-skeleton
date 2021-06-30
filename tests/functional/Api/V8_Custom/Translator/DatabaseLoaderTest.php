@@ -2,10 +2,10 @@
 
 namespace Test\Functional\Api\V8_Custom\Translator;
 
-use ExEss\Cms\Api\V8_Custom\Translator\DatabaseLoader;
-use ExEss\Cms\Doctrine\Type\Locale;
-use ExEss\Cms\Doctrine\Type\TranslationDomain;
-use ExEss\Cms\Entity\Translation;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Translator\DatabaseLoader;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\TranslationDomain;
+use ExEss\Bundle\CmsBundle\Entity\Translation;
 use Helper\Testcase\FunctionalTestCase;
 
 class DatabaseLoaderTest extends FunctionalTestCase

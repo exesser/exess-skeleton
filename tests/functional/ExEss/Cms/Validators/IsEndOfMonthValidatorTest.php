@@ -3,7 +3,7 @@
 namespace Test\Functional\ExEss\Cms\Validators;
 
 use Helper\Testcase\FunctionalTestCase;
-use ExEss\Cms\Validators\IsEndOfMonth;
+use ExEss\Bundle\CmsBundle\Validators\IsEndOfMonth;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class IsEndOfMonthValidatorTest extends FunctionalTestCase

@@ -2,10 +2,10 @@
 
 namespace Test\Functional\ExEss\Cms\Api\Service;
 
-use ExEss\Cms\Api\V8_Custom\Service\Security;
-use ExEss\Cms\Doctrine\Type\SecurityGroupType;
-use ExEss\Cms\Entity\SecurityGroup;
-use ExEss\Cms\Entity\User;
+use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\Security;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\SecurityGroupType;
+use ExEss\Bundle\CmsBundle\Entity\SecurityGroup;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Helper\Testcase\FunctionalTestCase;
 
 class SecurityTest extends FunctionalTestCase

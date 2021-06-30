@@ -1,0 +1,116 @@
+{
+    "recordName": "ExEss\\Bundle\\CmsBundle\\Entity\\ListDynamic",
+    "relations": [
+        {
+            "name": "gridPanels",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\GridPanel"
+        },
+        {
+            "name": "cellLinks",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\ListCellLink"
+        },
+        {
+            "name": "linkFields",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\ExternalObjectLink"
+        },
+        {
+            "name": "filter",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\Filter"
+        },
+        {
+            "name": "topBar",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\ListTopBar"
+        },
+        {
+            "name": "externalObject",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\ExternalObject"
+        },
+        {
+            "name": "createdBy",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        },
+        {
+            "name": "modifiedUser",
+            "multiRelation": false,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\User"
+        },
+        {
+            "name": "securityGroups",
+            "multiRelation": true,
+            "record": "ExEss\\Bundle\\CmsBundle\\Entity\\SecurityGroup"
+        }
+    ],
+    "fields": [
+        {
+            "name": "displayFooter",
+            "type": "boolean"
+        },
+        {
+            "name": "baseObject",
+            "type": "string"
+        },
+        {
+            "name": "standardFilter",
+            "type": "json"
+        },
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "itemsPerPage",
+            "type": "integer"
+        },
+        {
+            "name": "defaultFilterValues",
+            "type": "json"
+        },
+        {
+            "name": "filtersHaveChanged",
+            "type": "boolean"
+        },
+        {
+            "name": "combined",
+            "type": "boolean"
+        },
+        {
+            "name": "responsive",
+            "type": "boolean"
+        },
+        {
+            "name": "fixPagination",
+            "type": "boolean"
+        },
+        {
+            "name": "quickSearch",
+            "type": "boolean"
+        },
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "dateEntered",
+            "type": "datetime"
+        },
+        {
+            "name": "dateModified",
+            "type": "datetime"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ]
+}

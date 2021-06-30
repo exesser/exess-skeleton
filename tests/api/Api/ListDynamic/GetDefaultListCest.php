@@ -3,8 +3,8 @@
 namespace Test\Api\Api\ListDynamic;
 
 use ApiTester;
-use ExEss\Cms\Doctrine\Type\FilterFieldType;
-use ExEss\Cms\Entity\ListCellLink;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\FilterFieldType;
+use ExEss\Bundle\CmsBundle\Entity\ListCellLink;
 use Helper\TestRepository;
 
 class GetDefaultListCest

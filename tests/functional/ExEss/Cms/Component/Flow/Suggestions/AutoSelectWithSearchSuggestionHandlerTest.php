@@ -2,14 +2,14 @@
 
 namespace Test\Functional\ExEss\Cms\Component\Flow\Suggestions;
 
-use ExEss\Cms\Doctrine\Type\FlowFieldType;
-use ExEss\Cms\Entity\Flow;
-use ExEss\Cms\Service\SelectWithSearchService;
+use ExEss\Bundle\CmsBundle\Doctrine\Type\FlowFieldType;
+use ExEss\Bundle\CmsBundle\Entity\Flow;
+use ExEss\Bundle\CmsBundle\Service\SelectWithSearchService;
 use Mockery\Mock;
-use ExEss\Cms\Component\Flow\Request\FlowAction;
-use ExEss\Cms\Component\Flow\Response;
-use ExEss\Cms\Component\Flow\Response\Model;
-use ExEss\Cms\Component\Flow\Suggestions\AutoSelectWithSearchSuggestionHandler;
+use ExEss\Bundle\CmsBundle\Component\Flow\Request\FlowAction;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response;
+use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
+use ExEss\Bundle\CmsBundle\Component\Flow\Suggestions\AutoSelectWithSearchSuggestionHandler;
 use Helper\Testcase\FunctionalTestCase;
 
 class AutoSelectWithSearchSuggestionHandlerTest extends FunctionalTestCase
