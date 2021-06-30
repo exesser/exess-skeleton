@@ -113,6 +113,8 @@ JSON;
 {
     "command": {
         "command": "foo",
+        "confirmMessage": null,
+        "confirmTitle": null,
         "arguments": {
             "stepId": "bar"
         },
