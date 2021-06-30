@@ -120,7 +120,7 @@ services:
 
   ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\CommandService:
     arguments:
-      - '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\SimpleActionFactory'
+      - '@ExEss\Bundle\CmsBundle\Users\Service\GuidanceRecoveryService'
 
   ExEss\Bundle\CmsBundle\FieldFormatter\VatNumberFormatter: ~
 
@@ -139,14 +139,12 @@ services:
     arguments:
       - '@doctrine.orm.entity_manager'
       - '@ExEss\Bundle\CmsBundle\Logger\Logger'
-      - '@ExEss\Bundle\CmsBundle\Users\Service\GuidanceRecoveryService'
 
   ExEss\Bundle\CmsBundle\Component\Flow\ActionFactory:
     arguments:
       - '@doctrine.orm.entity_manager'
       - '@ExEss\Bundle\CmsBundle\Component\Flow\Event\FlowEventDispatcher'
       - '@ExEss\Bundle\CmsBundle\Logger\Logger'
-      - '@ExEss\Bundle\CmsBundle\Users\Service\GuidanceRecoveryService'
       - '@Symfony\Component\Translation\Translator'
 
   ExEss\Bundle\CmsBundle\Component\Flow\EnumRecordFactory:

@@ -11,7 +11,6 @@ use ExEss\Bundle\CmsBundle\Component\Flow\Request\FlowAction;
 use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
 use ExEss\Bundle\CmsBundle\Logger\Logger;
 use ExEss\Bundle\CmsBundle\Service\GridService;
-use ExEss\Bundle\CmsBundle\Users\Service\GuidanceRecoveryService;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ActionFactory extends SimpleActionFactory
@@ -24,10 +23,9 @@ class ActionFactory extends SimpleActionFactory
         EntityManager $em,
         FlowEventDispatcher $flowEventDispatcher,
         Logger $logger,
-        GuidanceRecoveryService $guidanceRecoveryService,
         TranslatorInterface $translator
     ) {
-        parent::__construct($em, $logger, $guidanceRecoveryService);
+        parent::__construct($em, $logger);
         $this->flowEventDispatcher = $flowEventDispatcher;
         $this->translator = $translator;
     }

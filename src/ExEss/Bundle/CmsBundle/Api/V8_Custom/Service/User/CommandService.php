@@ -2,24 +2,23 @@
 
 namespace ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User;
 
-use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\SimpleActionFactory;
-use ExEss\Bundle\CmsBundle\Entity\FlowAction;
 use ExEss\Bundle\CmsBundle\Entity\User;
 use ExEss\Bundle\CmsBundle\Component\Flow\Action\Command;
+use ExEss\Bundle\CmsBundle\Users\Service\GuidanceRecoveryService;
 
 class CommandService
 {
-    private SimpleActionFactory $actionFactory;
+    private GuidanceRecoveryService $guidanceRecoveryService;
 
-    public function __construct(SimpleActionFactory $actionFactory)
+    public function __construct(GuidanceRecoveryService $guidanceRecoveryService)
     {
-        $this->actionFactory = $actionFactory;
+        $this->guidanceRecoveryService = $guidanceRecoveryService;
     }
 
     public function getRedirectCommandForUser(User $user): ?Command
     {
         if (($user->isAgent() || $user->isAdmin()) && $user->hasRecoveryData()) {
-            return $this->actionFactory->getCommand(FlowAction::ACTION_MODAL_TO_GF_RECOVERY);
+            return $this->guidanceRecoveryService->getCommand();
         }
 
         return null;

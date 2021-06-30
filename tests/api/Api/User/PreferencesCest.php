@@ -4,6 +4,7 @@ namespace Test\Api\Api\User;
 
 use ApiTester;
 use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
+use ExEss\Bundle\CmsBundle\Entity\User;
 use Test\Api\V8_Custom\Crud\CrudTestUser;
 
 class PreferencesCest
@@ -50,7 +51,8 @@ class PreferencesCest
     {
         // Given
         $userName = $this->user->getUserName();
-        $I->generateUserGuidanceRecovery($this->user->getId(), ["data" => "recoveryData"]);
+        $I->linkUserToRole($this->user->getId(), User::ROLE_ADMIN);
+        $I->generateUserGuidanceRecovery($this->user->getId(), ["linkTo" => "flowId", "params" => ["p1"=> "v1"]]);
         $I->getAnApiTokenFor($userName, $this->user->getPassword());
 
         // When
@@ -60,8 +62,19 @@ class PreferencesCest
         $I->seeResponseIsDwpResponse(200);
         $I->seeAssertPathsInJson([
             '$.data.preferredLanguage' => Locale::EN,
-            // @todo add this modal to CRUD
-            //'$.data.command.arguments.flowId' => 'gf_ask_guidance_recovery_modal',
+            '$.data.command' => [
+                "command" => "navigate",
+                "arguments" => [
+                    "linkTo" => "flowId",
+                    "params" => [
+                        "p1" => "v1"
+                    ]
+                ],
+                "relatedBeans" => [],
+                "params" => [],
+                "confirmTitle" => "Guidance recovery",
+                "confirmMessage" => "You have unfinished guidance, do you want to recover it?"
+            ],
         ]);
     }
 

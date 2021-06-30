@@ -55,9 +55,13 @@ angular.module('digitalWorkplaceApp')
        */
       guidanceModalObserver.resetModal();
 
-      $timeout(function () {
-        command(commandObject.arguments);
-      }, 1);
+      if (!_.isEmpty(_.get(commandObject, 'confirmMessage', null))) {
+        openConfirmModal(commandObject);
+      } else {
+        $timeout(function () {
+          command(commandObject.arguments);
+        }, 1);
+      }
     }
 
     /**
@@ -266,6 +270,34 @@ angular.module('digitalWorkplaceApp')
       );
     }
 
+    function openConfirmModal(commandObject) {
+      let newCommand = angular.copy(commandObject);
+      _.unset(newCommand, 'confirmMessage');
+
+      openModal({
+        "title": _.get(commandObject, 'confirmTitle', ''),
+        "extraActions": [
+          {
+            "label": "Yes",
+            "command": newCommand,
+          }
+        ],
+        "grid": {
+          "columns": [
+            {
+              "rows": [
+                {
+                  "type": "paragraph",
+                  "options": {
+                    "text": commandObject.confirmMessage
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      });
+    }
 
     function generateKey(idLength) {
       let text = "";

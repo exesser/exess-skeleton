@@ -4,7 +4,7 @@ angular.module('digitalWorkplaceApp')
   .component('guidanceModal', {
     templateUrl: 'es6/guidance-mode/guidance-component/presenters/modal/guidance-modal.component.html',
     controllerAs: 'guidanceModalController',
-    controller: function (guidanceModalObserver, guidanceFormObserverFactory, $q, CONFIRM_ACTION,
+    controller: function (guidanceModalObserver, guidanceFormObserverFactory, $q, CONFIRM_ACTION, commandHandler,
                           $timeout, guidanceGuardian, guidanceModeBackendState, actionDatasource, $log, hotkeys) {
 
       const guidanceModalController = this;
@@ -131,6 +131,14 @@ angular.module('digitalWorkplaceApp')
        */
       guidanceModalController.hasWarning = function () {
         return _.isEmpty(guidanceModalController.originalModalData.warningText) === false;
+      };
+
+      guidanceModalController.getExtraAction = function () {
+        return _.get(guidanceModalController, "originalModalData.extraActions", []);
+      };
+
+      guidanceModalController.performAction = function (command) {
+        commandHandler.handle(command);
       };
 
       function resetModal() {

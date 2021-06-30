@@ -33,7 +33,12 @@
            ng-click="guidanceModalController.cancel()">
             {{ guidanceModalController.originalModalData.cancelLabel }}
         </a>
-
+        <a class="button"
+           style="margin-right: 4px"
+           ng-repeat="action in guidanceModalController.getExtraAction()"
+           ng-click="guidanceModalController.performAction(action.command)">
+            {{ action.label }}
+        </a>
         <div class="badge badge-position loading" ng-show="guidanceModalController.loading">
           <img src="images/loading@2x.gif"/>
           <h5 class="pink" translate>LOADING</h5>

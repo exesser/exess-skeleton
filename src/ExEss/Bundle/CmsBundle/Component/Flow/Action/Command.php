@@ -23,6 +23,10 @@ class Command implements \JsonSerializable
 
     protected array $params;
 
+    protected ?string $confirmTitle = null;
+
+    protected ?string $confirmMessage = null;
+
     public function __construct(
         string $command,
         Arguments $arguments,
@@ -62,6 +66,12 @@ class Command implements \JsonSerializable
         $this->relatedBeans = $relatedBeans;
     }
 
+    public function setConfirmCommand(string $confirmTitle, string $confirmMessage): void
+    {
+        $this->confirmTitle = $confirmTitle;
+        $this->confirmMessage = $confirmMessage;
+    }
+
     public function jsonSerialize(): array
     {
         return [
@@ -69,6 +79,8 @@ class Command implements \JsonSerializable
             'arguments' => $this->arguments->toArray(),
             'relatedBeans' => $this->relatedBeans,
             'params' => $this->params,
+            'confirmTitle' => $this->confirmTitle,
+            'confirmMessage' => $this->confirmMessage,
         ];
     }
 }

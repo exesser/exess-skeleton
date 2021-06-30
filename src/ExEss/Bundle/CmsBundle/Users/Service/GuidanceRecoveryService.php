@@ -5,6 +5,8 @@ namespace ExEss\Bundle\CmsBundle\Users\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use DomainException;
 use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\Security;
+use ExEss\Bundle\CmsBundle\Component\Flow\Action\Arguments;
+use ExEss\Bundle\CmsBundle\Component\Flow\Action\Command;
 use ExEss\Bundle\CmsBundle\Dictionary\Model\Dwp;
 use ExEss\Bundle\CmsBundle\Doctrine\Type\SecurityGroupType;
 use ExEss\Bundle\CmsBundle\Entity\UserGuidanceRecovery;
@@ -77,5 +79,28 @@ class GuidanceRecoveryService
         $recoveryData->setRecoveryData($data);
         $this->entityManager->persist($recoveryData);
         $this->entityManager->flush();
+    }
+
+    public function getCommand(): Command
+    {
+        $data = $this->getNavigateArguments();
+        if (!isset($data->linkTo, $data->params)) {
+            throw new DomainException(
+                'The guidance route doesn`t have the correct structure. `linkTo` and `params` are mandatory!'
+            );
+        };
+
+        $arguments = new Arguments();
+        $arguments->linkTo = $data->linkTo;
+        $arguments->params = $data->params;
+
+        $command = new Command(Command::COMMAND_TYPE_NAVIGATE, $arguments);
+
+        $command->setConfirmCommand(
+            "Guidance recovery",
+            "You have unfinished guidance, do you want to recover it?",
+        );
+
+        return $command;
     }
 }
