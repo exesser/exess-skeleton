@@ -1,5 +1,6 @@
-<?php
-namespace ExEss\Cms\Cache;
+<?php declare(strict_types=1);
+
+namespace ExEss\Bundle\CmsBundle\Component\Cache;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
@@ -8,7 +9,7 @@ use Symfony\Component\Cache\Adapter\RedisAdapter;
 
 class CacheAdapterFactory
 {
-    private const NAMESPACE_PREFIX = 'crm_cache';
+    private const NAMESPACE_PREFIX = 'exess_cms_cache';
 
     private LoggerInterface $logger;
 
@@ -16,9 +17,9 @@ class CacheAdapterFactory
 
     private string $host;
 
-    private string $port;
+    private int $port;
 
-    public function __construct(LoggerInterface $logger, bool $disabled, string $host, string $port)
+    public function __construct(LoggerInterface $logger, bool $disabled, string $host, int $port)
     {
         $this->disabled = $disabled;
         $this->host = $host;
@@ -26,8 +27,10 @@ class CacheAdapterFactory
         $this->logger = $logger;
     }
 
-    public function create(string $namespace = Cache::DEFAULT, int $lifetime = Cache::TTL_DEFAULT): AdapterInterface
-    {
+    public function create(
+        string $namespace = Dictionary::DEFAULT,
+        int $lifetime = Dictionary::TTL_DEFAULT
+    ): AdapterInterface {
         if ($this->disabled) {
             return new NullAdapter();
         }
@@ -37,6 +40,7 @@ class CacheAdapterFactory
 
         $adapter = new RedisAdapter($redis, self::NAMESPACE_PREFIX . '.' . $namespace, $lifetime);
         $adapter->setLogger($this->logger);
+
         return $adapter;
     }
 }

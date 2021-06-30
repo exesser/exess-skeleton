@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace ExEss\Cms\Command;
+namespace ExEss\Bundle\CmsBundle\Component\Cache\Command;
 
-use ExEss\Cms\Cache\Cache;
-use ExEss\Cms\Cache\CacheAdapterFactory;
+use ExEss\Bundle\CmsBundle\Component\Cache\CacheAdapterFactory;
+use ExEss\Bundle\CmsBundle\Component\Cache\Dictionary;
+use ExEss\Cms\Command\AbstractAdminCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -37,8 +38,8 @@ class CacheClearCommand extends AbstractAdminCommand
         $this->io->title(\sprintf('Flushing caches'));
 
         $hasErrors = false;
-        foreach (Cache::CACHE_POOLS as $pool => $ttl) {
-            $cacheAdapter = $this->cacheAdapterFactory->create($pool, Cache::getTtl($ttl));
+        foreach (Dictionary::CACHE_POOLS as $pool => $ttl) {
+            $cacheAdapter = $this->cacheAdapterFactory->create($pool, $ttl);
 
             if ($cacheAdapter->clear()) {
                 $this->io->success(\sprintf('Flushed all \'%s\' entries', $pool));

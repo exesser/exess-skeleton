@@ -2,18 +2,18 @@
 
 namespace ExEss\Cms\Component\Flow\Action;
 
-use ExEss\Cms\Component\Flow\Action\BackendCommand\BackendCommand;
+use ExEss\Bundle\CmsBundle\Component\Core\Flow\Action\BackendCommandInterface;
 use ExEss\Cms\Component\Flow\Response\Model;
 
 class BackendCommandExecutor
 {
     /**
-     * @var BackendCommand[]
+     * @var BackendCommandInterface[]
      */
     private array $commands;
 
     /**
-     * @param array|BackendCommand[] $commands
+     * @param array|BackendCommandInterface[] $commands
      */
     public function __construct(iterable $commands)
     {
@@ -41,10 +41,10 @@ class BackendCommandExecutor
             ));
         }
 
-        /** @var BackendCommand $backendCommand */
+        /** @var BackendCommandInterface $backendCommand */
         $backendCommand = $this->commands[$alias];
 
-        if (!$backendCommand instanceof BackendCommand) {
+        if (!$backendCommand instanceof BackendCommandInterface) {
             throw new \InvalidArgumentException(\sprintf(
                 'Expected a BackendCommand, got a %s in command %s',
                 \get_class($backendCommand),
