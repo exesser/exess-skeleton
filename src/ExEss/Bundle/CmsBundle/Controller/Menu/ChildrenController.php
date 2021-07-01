@@ -18,7 +18,7 @@ class ChildrenController
     }
 
     /**
-     * @Route("/Api/menu/{name}", methods={"GET"})
+     * @Route("/menu/{name}", methods={"GET"})
      */
     public function __invoke(Menu $menu): SuccessResponse
     {

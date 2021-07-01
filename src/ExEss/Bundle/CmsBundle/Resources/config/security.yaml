@@ -1,20 +1,20 @@
-parameters:
-  app_secret: '%env(string:APP_SECRET)%'
-  api_token_timeout: 3600
+#parameters:
+#  app_secret: '%env(string:APP_SECRET)%'
+#  api_token_timeout: 3600
 
 services:
   _defaults:
     public: true
     autowire: true
 
-  ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\TokenService:
-    bind:
-      $timeout: '%api_token_timeout%'
-      $secret: '%app_secret%'
+#  ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\TokenService:
+#    bind:
+#      $timeout: '%api_token_timeout%'
+#      $secret: '%app_secret%'
 
-  ExEss\Bundle\CmsBundle\Security\JsonLoginAuthenticator: ~
-
-  ExEss\Bundle\CmsBundle\Security\JwtTokenAuthenticator: ~
+#  ExEss\Bundle\CmsBundle\Security\JsonLoginAuthenticator: ~
+#
+#  ExEss\Bundle\CmsBundle\Security\JwtTokenAuthenticator: ~
 
   ExEss\Bundle\CmsBundle\Security\Listener\LogoutSuccessSubscriber:
     tags:

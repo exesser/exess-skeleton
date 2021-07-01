@@ -6,7 +6,7 @@ use Helper\Testcase\FunctionalTestCase;
 
 class ContainerTest extends FunctionalTestCase
 {
-    public function testConstructAllServices(): void
+    public function testGrabAllServices(): void
     {
         foreach ($this->tester->getContainerKeys() as $serviceName) {
             try {

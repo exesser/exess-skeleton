@@ -19,7 +19,7 @@ class RowGridController
     }
 
     /**
-     * @Route("/Api/list/{list_name}/row/grid/{grid_key}/{recordId}", methods={"POST"})
+     * @Route("/list/{list_name}/row/grid/{grid_key}/{recordId}", methods={"POST"})
      * @ParamConverter("jsonBody")
      * @ParamConverter("list", options={"mapping": {"list_name": "name"}})
      * @ParamConverter("grid", options={"mapping": {"grid_key": "key"}})

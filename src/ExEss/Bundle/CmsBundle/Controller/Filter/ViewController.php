@@ -17,7 +17,7 @@ class ViewController
     }
 
     /**
-     * @Route("/Api/filter/{name}", methods={"GET"})
+     * @Route("/filter/{name}", methods={"GET"})
      */
     public function __invoke(ListDynamic $list): SuccessResponse
     {

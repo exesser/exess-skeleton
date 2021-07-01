@@ -3,7 +3,6 @@
 namespace ExEss\Bundle\CmsBundle;
 
 use ExEss\Bundle\CmsBundle\Component\Cache\DependencyInjection\Compiler\CachePass;
-use ExEss\Bundle\CmsBundle\DependencyInjection\CmsExtension;
 use ExEss\Bundle\CmsBundle\DependencyInjection\Compiler\GuzzleClientPass;
 use ExEss\Bundle\CmsBundle\DependencyInjection\Compiler\SoapServicesClientPass;
 use ExEss\Bundle\CmsBundle\DependencyInjection\Compiler\SoapServicesPass;
@@ -20,10 +19,5 @@ class CmsBundle extends Bundle
         $container->addCompilerPass(new SoapServicesPass());
         $container->addCompilerPass(new SoapServicesClientPass());
         $container->addCompilerPass(new GuzzleClientPass());
-    }
-
-    public function getContainerExtension(): CmsExtension
-    {
-        return new CmsExtension();
     }
 }

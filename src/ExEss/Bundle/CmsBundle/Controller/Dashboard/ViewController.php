@@ -19,7 +19,7 @@ class ViewController
     }
 
     /**
-     * @Route("/Api/dashboard/{key}/{recordId}", methods={"GET"})
+     * @Route("/dashboard/{key}/{recordId}", methods={"GET"})
      */
     public function __invoke(Request $request, Dashboard $dashboard, ?string $recordId = null): SuccessResponse
     {

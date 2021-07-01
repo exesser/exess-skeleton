@@ -16,7 +16,7 @@ class RecordInformationController
     }
 
     /**
-     * @Route("/Api/crud/record/information", methods={"GET"})
+     * @Route("/crud/record/information", methods={"GET"})
      */
     public function __invoke(): SuccessResponse
     {

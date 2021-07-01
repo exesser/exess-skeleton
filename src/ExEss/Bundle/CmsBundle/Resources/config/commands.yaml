@@ -1,0 +1,11 @@
+# At the moment these commands are public since we're calling them directly,
+# but at some point in time we should be able to all make them private
+services:
+  _defaults:
+    autowire: true
+
+  # General CRM commands
+  ExEss\Bundle\CmsBundle\Command\AbstractAdminCommand:
+    abstract: true
+    calls:
+      - login: ['@security.token_storage', '@ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\DefaultUser']

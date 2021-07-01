@@ -4,15 +4,15 @@ namespace ExEss\Bundle\CmsBundle\Component\Flow\Event;
 use ExEss\Bundle\CmsBundle\Component\Flow\Action\BackendCommandExecutor;
 use ExEss\Bundle\CmsBundle\Component\Flow\Request\FlowAction;
 use ExEss\Bundle\CmsBundle\Component\Flow\Response\Model;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class FlowEventDispatcher
 {
-    private EventDispatcher $eventDispatcher;
+    private EventDispatcherInterface $eventDispatcher;
 
     private BackendCommandExecutor $commandExecutor;
 
-    public function __construct(EventDispatcher $eventDispatcher, BackendCommandExecutor $commandExecutor)
+    public function __construct(EventDispatcherInterface $eventDispatcher, BackendCommandExecutor $commandExecutor)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->commandExecutor = $commandExecutor;

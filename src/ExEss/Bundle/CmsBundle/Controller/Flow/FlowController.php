@@ -28,10 +28,10 @@ class FlowController
     }
 
     /**
-     * @Route("/Api/flow/{key}", methods={"POST"})
-     * @Route("/Api/flow/{key}/{recordId}", methods={"POST", "GET"})
-     * @Route("/Api/flow/{recordType}/{key}/{recordId}", methods={"POST"})
-     * @Route("/Api/flow/{recordType}/{key}/{recordId}/{guidanceAction}", methods={"POST"})
+     * @Route("/flow/{key}", methods={"POST"})
+     * @Route("/flow/{key}/{recordId}", methods={"POST", "GET"})
+     * @Route("/flow/{recordType}/{key}/{recordId}", methods={"POST"})
+     * @Route("/flow/{recordType}/{key}/{recordId}/{guidanceAction}", methods={"POST"})
      * @ParamConverter("jsonBody")
      *
      * @param string|int|null $recordId

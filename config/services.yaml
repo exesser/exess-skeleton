@@ -1,12 +1,23 @@
+parameters:
+  app_secret: '%env(string:APP_SECRET)%'
+  api_token_timeout: 3600
+
 services:
   _defaults:
     autowire: true
     autoconfigure: true
 
-  ExEss\Bundle\CmsBundle\Controller\:
-    public: true
-    autowire: true
-    resource: '../src/ExEss/Bundle/CmsBundle/Controller/'
+  monolog.formatter.dashed:
+    class: Monolog\Formatter\LineFormatter
+    arguments:
+      - !php/const ExEss\Bundle\CmsBundle\Logger\Logger::LOGGER
+      - "Y-m-d H:i:s.u"
 
-imports:
-  - { resource: 'services/services.yaml' }
+  ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\User\TokenService:
+    bind:
+      $timeout: '%api_token_timeout%'
+      $secret: '%app_secret%'
+
+  ExEss\Bundle\CmsBundle\Security\JsonLoginAuthenticator: ~
+
+  ExEss\Bundle\CmsBundle\Security\JwtTokenAuthenticator: ~

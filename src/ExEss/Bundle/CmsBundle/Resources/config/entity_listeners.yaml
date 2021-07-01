@@ -1,7 +1,6 @@
 services:
-  ExEss\Bundle\CmsBundle\EventListener\:
+  _defaults:
     public: true
-    resource: '../../src/ExEss/Bundle/CmsBundle/EventListener/'
 
   #
   # Global listeners for ALL entities

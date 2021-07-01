@@ -20,7 +20,7 @@ class LoginController
     }
 
     /**
-     * @Route("/Api/login", name="exesscms_login", methods={"POST"})
+     * @Route("/login", name="exess_cms_login", methods={"POST"})
      */
     public function __invoke(): SuccessResponse
     {

@@ -49,8 +49,3 @@ services:
       - '@ExEss\Bundle\CmsBundle\Service\FilterService'
     tags: [{ name: 'handler.list', alias: 'CrudSelectRelationsRepository' }]
 
-  # Auto-wired repositories
-  ExEss\Bundle\CmsBundle\Repository\:
-    autowire: true
-    autoconfigure: true
-    resource: '../../src/ExEss/Bundle/CmsBundle/Repository'

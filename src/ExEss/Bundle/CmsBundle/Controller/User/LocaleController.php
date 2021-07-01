@@ -20,7 +20,7 @@ class LocaleController
     }
 
     /**
-     * @Route("/Api/user/change-locale/{locale}", methods={"POST"})
+     * @Route("/user/change-locale/{locale}", methods={"POST"})
      */
     public function __invoke(string $locale): SuccessResponse
     {

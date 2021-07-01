@@ -6,7 +6,6 @@ use ExEss\Bundle\CmsBundle\Robo\Task\Db\Release\Exporter;
 use ExEss\Bundle\CmsBundle\Robo\Task\Db\Release\Importer;
 use ExEss\Bundle\CmsBundle\Robo\Task\Db\Remove\Audits;
 use ExEss\Bundle\CmsBundle\Robo\Task\Db\TableSizes;
-use ExEss\Bundle\CmsBundle\Robo\Task\Debug\Events;
 use ExEss\Bundle\CmsBundle\Robo\Task\Generate\SoapProxies;
 use Robo\Result;
 
@@ -83,14 +82,6 @@ class RoboFile extends \Robo\Tasks
                 . \implode(self::ENVIRONMENTS)
             );
         }
-    }
-
-    /**
-     * @param string|null $filter Filter on event, class or method name.
-     */
-    public function debugEvents(?string $filter = null): Result
-    {
-        return (new Events($this->io(), $filter))->run();
     }
 
     private function removeAndRecreate(string $dir, bool $onlySubfolders = false): void

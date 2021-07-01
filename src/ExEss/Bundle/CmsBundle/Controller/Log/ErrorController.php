@@ -17,7 +17,7 @@ class ErrorController
     }
 
     /**
-     * @Route("/Api/log/error")
+     * @Route("/log/error")
      * @ParamConverter("jsonBody")
      */
     public function __invoke(Body\ErrorBody $jsonBody): SuccessResponse

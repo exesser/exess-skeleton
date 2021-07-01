@@ -1,0 +1,6 @@
+cms_bundle_routes:
+  resource: "@CmsBundle/Controller/"
+  type: annotation
+  prefix: /Api
+  defaults:
+    stateless: true

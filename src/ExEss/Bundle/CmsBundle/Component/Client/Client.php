@@ -9,14 +9,13 @@ use ExEss\Bundle\CmsBundle\Component\Client\Event\ResponseEvent;
 use ExEss\Bundle\CmsBundle\Component\Client\Exception\ClientRequestException;
 use ExEss\Bundle\CmsBundle\Component\Client\Request\RequestInterface;
 use ExEss\Bundle\CmsBundle\Component\Client\Response\ResponseInterface;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class Client implements ClientAdapterInterface
 {
     private ClientAdapterInterface $client;
 
-    private EventDispatcher $dispatcher;
+    private EventDispatcherInterface $dispatcher;
 
     public function __construct(ClientAdapterInterface $client, EventDispatcherInterface $dispatcher)
     {

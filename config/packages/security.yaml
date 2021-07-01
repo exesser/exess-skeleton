@@ -25,7 +25,7 @@ security:
             #login_throttling:
             #    max_attempts: 5
             json_login:
-                check_path: exesscms_login
+                check_path: exess_cms_login
                 success_handler: ExEss\Bundle\CmsBundle\Security\JsonLoginAuthenticator
         api:
             stateless: true
@@ -36,7 +36,7 @@ security:
                 authenticators:
                     - ExEss\Bundle\CmsBundle\Security\JwtTokenAuthenticator
             logout:
-                path: exesscms_logout
+                path: exess_cms_logout
 
     access_control:
         - { path: ^/Api/login, roles: PUBLIC_ACCESS }

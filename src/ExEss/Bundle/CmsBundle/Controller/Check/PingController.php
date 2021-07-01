@@ -16,7 +16,7 @@ class PingController
     }
 
     /**
-     * @Route("/Api/check/ping", methods={"GET"})
+     * @Route("/check/ping", methods={"GET"})
      */
     public function __invoke(): SuccessResponse
     {
