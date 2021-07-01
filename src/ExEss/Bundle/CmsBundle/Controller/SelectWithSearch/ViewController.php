@@ -19,7 +19,7 @@ class ViewController
     }
 
     /**
-     * @Route("/Api/select-with-search/{name}", methods={"POST"})
+     * @Route("/select-with-search/{name}", methods={"POST"})
      * @ParamConverter("jsonBody")
      */
     public function __invoke(SelectWithSearch $selectWithSearch, Body\ViewBody $jsonBody): SuccessResponse

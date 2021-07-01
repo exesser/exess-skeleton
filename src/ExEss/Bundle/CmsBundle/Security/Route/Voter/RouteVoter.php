@@ -10,7 +10,7 @@ use ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\Security;
 class RouteVoter implements VoterInterface
 {
     public const WHITELISTED_ROUTES = [
-        'exesscms_login',
+        'exess_cms_login',
         'exess_cms_user_preferences__invoke',
     ];
 

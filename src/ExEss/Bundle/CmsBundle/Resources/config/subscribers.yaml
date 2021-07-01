@@ -5,15 +5,6 @@ parameters:
 services:
   _defaults:
     public: true
-    bind:
-      $debug: '%verbose_errors%'
-      $requestLogger: '@monolog.logger.request'
-
-  # Auto-wired and auto-configured http event subscribers
-  ExEss\Bundle\CmsBundle\Http\EventSubscriber\:
-    autowire: true
-    autoconfigure: true
-    resource: '../../src/ExEss/Bundle/CmsBundle/Http/EventSubscriber'
 
   ExEss\Bundle\CmsBundle\Api\V8_Custom\Events\Listeners\EnhanceHeadersSubscriber:
     lazy: true

@@ -18,7 +18,7 @@ class ViewController
     }
 
     /**
-     * @Route("/Api/sidebar/{record_type}/{record_id}", methods={"GET"})
+     * @Route("/sidebar/{record_type}/{record_id}", methods={"GET"})
      * @ParamConverter("baseEntity")
      */
     public function __invoke(object $baseEntity): SuccessResponse

@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LogoutController
 {
     /**
-     * @Route("/Api/logout", name="exesscms_logout", methods={"GET"})
+     * @Route("/logout", name="exess_cms_logout", methods={"GET"})
      */
     public function __invoke(): void
     {

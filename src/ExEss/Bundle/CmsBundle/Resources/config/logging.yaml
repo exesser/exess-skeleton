@@ -3,11 +3,11 @@ parameters:
     logger_tag: '%env(string:LOGGER_TAG)%'
 
 services:
-    monolog.formatter.dashed:
-        class: Monolog\Formatter\LineFormatter
-        arguments:
-            - !php/const ExEss\Bundle\CmsBundle\Logger\Logger::LOGGER
-            - "Y-m-d H:i:s.u"
+#    monolog.formatter.dashed:
+#        class: Monolog\Formatter\LineFormatter
+#        arguments:
+#            - !php/const ExEss\Bundle\CmsBundle\Logger\Logger::LOGGER
+#            - "Y-m-d H:i:s.u"
 
     Monolog\Processor\WebProcessor:
       class: Monolog\Processor\WebProcessor

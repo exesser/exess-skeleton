@@ -13,7 +13,7 @@ class CmsExtension extends Extension
     {
         $loader = new YamlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../Resources/Config')
+            new FileLocator([__DIR__.'/../', __DIR__.'/../Resources/config'])
         );
         $loader->load('services.yaml');
     }

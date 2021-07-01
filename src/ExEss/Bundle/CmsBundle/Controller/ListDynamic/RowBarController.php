@@ -19,7 +19,7 @@ class RowBarController
     }
 
     /**
-     * @Route("/Api/list/{name}/row/bar/{recordId}", methods={"POST"})
+     * @Route("/list/{name}/row/bar/{recordId}", methods={"POST"})
      * @ParamConverter("jsonBody")
      */
     public function __invoke(ListDynamic $list, string $recordId, Body\RowBarBody $jsonBody): SuccessResponse

@@ -7,7 +7,7 @@ use ExEss\Bundle\CmsBundle\Entity\User;
 use ExEss\Bundle\CmsBundle\Entity\SecurityGroupUser;
 
 /**
- * @see \ExEss\Bundle\CmsBundle\EvenListener\PrimaryGroupListener
+ * @see PrimaryGroupListener
  */
 class PrimaryGroupTest extends FunctionalTestCase
 {

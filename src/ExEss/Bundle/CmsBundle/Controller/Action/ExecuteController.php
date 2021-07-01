@@ -19,7 +19,7 @@ class ExecuteController
     }
 
     /**
-     * @Route("/Api/action/{guid}", methods={"POST"})
+     * @Route("/action/{guid}", methods={"POST"})
      * @ParamConverter("jsonBody")
      */
     public function __invoke(FlowAction $action, Body\ExecuteBody $jsonBody): SuccessResponse

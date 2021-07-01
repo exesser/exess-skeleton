@@ -24,7 +24,7 @@ class ExportController
     }
 
     /**
-     * @Route("/Api/list/{name}/export/csv", methods={"POST"})
+     * @Route("/list/{name}/export/csv", methods={"POST"})
      * @ParamConverter("jsonBody")
      */
     public function __invoke(ListDynamic $list, Body\ListBody $jsonBody): SuccessResponse

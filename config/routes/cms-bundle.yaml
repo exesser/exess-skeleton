@@ -1,0 +1,2 @@
+_cms_bundle:
+  resource: "@CmsBundle/Resources/config/routes.yaml"

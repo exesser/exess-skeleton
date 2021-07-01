@@ -15,9 +15,10 @@ services:
     bind:
       $fallbackLocale: '%default_locale%'
       $siteUrl: '%env_url%'
+      $debug: '%verbose_errors%'
+      $requestLogger: '@monolog.logger.request'
 
   ExEss\Bundle\CmsBundle\Component\Session\Headers:
-    class: ExEss\Bundle\CmsBundle\Component\Session\Headers
     factory: [ 'ExEss\Bundle\CmsBundle\Component\Session\Headers', 'create' ]
 
   ExEss\Bundle\CmsBundle\Logger\Logger:
@@ -29,7 +30,6 @@ services:
     factory: [ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\FlashMessages\FlashMessageContainer, get]
 
   Symfony\Component\EventDispatcher\EventDispatcher:
-    class: Symfony\Component\EventDispatcher\EventDispatcher
     factory: [ExEss\Bundle\CmsBundle\Api\V8_Custom\Service\EventDispatcherFactory, getEventDispatcher]
     arguments:
       - '@service_container'
@@ -39,12 +39,9 @@ services:
   event_dispatcher: '@Symfony\Component\EventDispatcher\EventDispatcher'
 
   ExEss\Bundle\CmsBundle\Component\Flow\Event\FlowEventDispatcher:
-    arguments:
-      - '@Symfony\Component\EventDispatcher\EventDispatcher'
-      - '@ExEss\Bundle\CmsBundle\Component\Flow\Action\BackendCommandExecutor'
+    autowire: true
 
   ExEss\Bundle\CmsBundle\Component\Flow\Validator:
-    class: ExEss\Bundle\CmsBundle\Component\Flow\Validator
     lazy: true
     arguments:
       - '@Symfony\Component\Validator\Validator\ValidatorInterface'
@@ -162,11 +159,39 @@ services:
   ExEss\Bundle\CmsBundle\Http\Factory\JsonBodyFactory:
     autowire: true
 
-  # Autowired Service directory
+  # Autowired Service and Controller directory
   ExEss\Bundle\CmsBundle\Service\:
     public: true
     autowire: true
-    resource: '../../src/ExEss/Bundle/CmsBundle/Service/'
+    resource: "Service/"
+
+  ExEss\Bundle\CmsBundle\Controller\:
+    public: true
+    autowire: true
+    resource: "Controller/"
+
+  ExEss\Bundle\CmsBundle\Command\:
+    public: true
+    autowire: true
+    autoconfigure: true
+    parent: ExEss\Bundle\CmsBundle\Command\AbstractAdminCommand
+    resource: "Command/"
+
+  ExEss\Bundle\CmsBundle\Component\PhpCS\Command\:
+    public: true
+    autowire: true
+    autoconfigure: true
+    resource: "Component/PhpCS/Command/"
+
+  ExEss\Bundle\CmsBundle\Repository\:
+    autowire: true
+    autoconfigure: true
+    resource: "Repository/"
+
+  ExEss\Bundle\CmsBundle\Http\EventSubscriber\:
+    autowire: true
+    autoconfigure: true
+    resource: "Http/EventSubscriber"
 
 imports:
   - { resource: 'api_client_external.yaml' }
@@ -186,3 +211,4 @@ imports:
   - { resource: 'validation.yaml' }
   - { resource: 'entity_listeners.yaml' }
   - { resource: 'component/expression_parser.yaml' }
+  - { resource: 'component/cache.yaml' }

@@ -19,7 +19,7 @@ class ViewController
     }
 
     /**
-     * @Route("/Api/list/{name}", methods={"POST"})
+     * @Route("/list/{name}", methods={"POST"})
      * @ParamConverter("jsonBody")
      */
     public function __invoke(ListDynamic $list, Body\ListBody $jsonBody): SuccessResponse

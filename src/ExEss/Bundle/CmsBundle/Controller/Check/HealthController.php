@@ -16,7 +16,7 @@ class HealthController
     }
 
     /**
-     * @Route("/Api/check/health", methods={"GET"})
+     * @Route("/check/health", methods={"GET"})
      */
     public function __invoke(): SuccessResponse
     {

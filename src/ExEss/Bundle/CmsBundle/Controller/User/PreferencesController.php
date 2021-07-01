@@ -21,7 +21,7 @@ class PreferencesController
     }
 
     /**
-     * @Route("/Api/user/preferences", methods={"GET"})
+     * @Route("/user/preferences", methods={"GET"})
      */
     public function __invoke(): SuccessResponse
     {

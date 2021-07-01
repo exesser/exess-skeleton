@@ -1,5 +1,5 @@
 controllers:
-  resource: ../../src/ExEss/Bundle/CmsBundle/Controller/
+  resource: ../../src/App/Controller/
   type: annotation
   defaults:
     stateless: true
