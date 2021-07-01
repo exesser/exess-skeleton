@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f858ecd370edd09a5a941f02818db663",
+    "content-hash": "f9d5dfa0cce145005291c026223f5d68",
     "packages": [
         {
             "name": "beberlei/doctrineextensions",
@@ -2614,6 +2614,48 @@
                 "source": "https://github.com/elastic/elasticsearch-php/tree/5.0"
             },
             "time": "2019-07-18T15:11:30+00:00"
+        },
+        {
+            "name": "exesser/exess",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/exesser/exess.git",
+                "reference": "df87d087637dd83bb83d36e559e16187259cd856"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/exesser/exess/zipball/df87d087637dd83bb83d36e559e16187259cd856",
+                "reference": "df87d087637dd83bb83d36e559e16187259cd856",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-migrations-bundle": "^2 || ^3"
+            },
+            "replace": {
+                "exesser/doctrine-extensions-bundle": "self.version"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "symplify/monorepo-builder": "^9.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ExEss\\Bundle\\DoctrineExtensionsBundle\\": "src/Bundle/doctrine-extensions-bundle/",
+                    "Exess\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/exesser/exess/issues",
+                "source": "https://github.com/exesser/exess/tree/main"
+            },
+            "time": "2021-07-01T13:44:53+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -13122,6 +13164,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "exesser/exess": 20,
         "patrickallaert/xhprof": 20,
         "roave/security-advisories": 20
     },
@@ -13143,5 +13186,5 @@
         "ext-soap": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

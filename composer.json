@@ -33,6 +33,7 @@
         "doctrine/doctrine-migrations-bundle": "^2 || ^3",
         "doctrine/orm": "^2",
         "elasticsearch/elasticsearch": "^5.2",
+        "exesser/exess": "dev-main",
         "ezyang/htmlpurifier": "^4.12",
         "firebase/php-jwt": "^5.4",
         "giggsey/libphonenumber-for-php": "^8",
