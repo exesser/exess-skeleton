@@ -2621,18 +2621,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/exesser/exess.git",
-                "reference": "df87d087637dd83bb83d36e559e16187259cd856"
+                "reference": "61ef1bcc14771c1bf7298f171a25df71a527ca96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/exesser/exess/zipball/df87d087637dd83bb83d36e559e16187259cd856",
-                "reference": "df87d087637dd83bb83d36e559e16187259cd856",
+                "url": "https://api.github.com/repos/exesser/exess/zipball/61ef1bcc14771c1bf7298f171a25df71a527ca96",
+                "reference": "61ef1bcc14771c1bf7298f171a25df71a527ca96",
                 "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-migrations-bundle": "^2 || ^3"
             },
             "replace": {
+                "exesser/cms-bundle": "self.version",
                 "exesser/doctrine-extensions-bundle": "self.version"
             },
             "require-dev": {
@@ -2643,6 +2644,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
+                    "ExEss\\Bundle\\CmsBundle\\": "src/Bundle/cms-bundle/",
                     "ExEss\\Bundle\\DoctrineExtensionsBundle\\": "src/Bundle/doctrine-extensions-bundle/",
                     "Exess\\": "src/"
                 }
@@ -2655,7 +2657,7 @@
                 "issues": "https://github.com/exesser/exess/issues",
                 "source": "https://github.com/exesser/exess/tree/main"
             },
-            "time": "2021-07-01T13:44:53+00:00"
+            "time": "2021-07-01T14:26:49+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
