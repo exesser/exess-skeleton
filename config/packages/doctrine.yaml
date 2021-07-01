@@ -42,7 +42,7 @@ doctrine:
             ExEss:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/ExEss/Bundle/CmsBundle/Entity'
+                dir: '%kernel.project_dir%/vendor/exesser/exess/src/Bundle/cms-bundle/Entity'
                 prefix: 'ExEss\Bundle\CmsBundle\Entity'
                 alias: App
 
