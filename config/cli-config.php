@@ -5,8 +5,8 @@
  *
  * @todo remove when we use Symfony Framework exclusivly
  */
+use App\Kernel;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use ExEss\Cms\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 
 require dirname(__DIR__).'/vendor/autoload.php';

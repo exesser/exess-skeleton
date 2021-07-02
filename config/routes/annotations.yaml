@@ -1,9 +1,9 @@
 controllers:
-  resource: ../../src/App/Controller/
+  resource: ../../src/Controller/
   type: annotation
   defaults:
     stateless: true
 
 kernel:
-  resource: ../../src/ExEss/Cms/Kernel.php
+  resource: ../../src/Kernel.php
   type: annotation

@@ -50,7 +50,6 @@
         "symfony/dotenv": "^5.2",
         "symfony/event-dispatcher": "^5.2",
         "symfony/expression-language": "^5.2",
-        "symfony/filesystem": "^5.2",
         "symfony/finder": "^5.2",
         "symfony/flex": "^1.11",
         "symfony/framework-bundle": "^5.2",
@@ -81,8 +80,7 @@
         "patrickallaert/xhprof": "dev-php7#5b5f90e34513681ab45fd246f1462c73b4c6bc60",
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "^7.0",
-        "squizlabs/php_codesniffer": "^3.6",
-        "symfony/maker-bundle": "^1.30"
+        "squizlabs/php_codesniffer": "^3.6"
     },
     "repositories": [
         {
@@ -98,8 +96,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ExternalApi\\": "src/ExternalApi/",
-            "ExEss\\": "src/ExEss/"
+            "App\\": "src/"
         },
         "classmap": [
             "src/"

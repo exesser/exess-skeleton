@@ -41,9 +41,3 @@ modules:
             # whether the dump should be reloaded before each test
             cleanup: false
             reconnect: true
-        ExEss\Cms\Test\Codeception\Module\Vcr:
-            cassettePath: 'tests/_vcr'
-            # record: record all calls to external systems
-            record: '%CODECEPTION_VCR_RECORD%'
-            # playback: playback previously recorded calls
-            playback: '%CODECEPTION_VCR_PLAYBACK%'

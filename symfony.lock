@@ -488,7 +488,7 @@
         "version": "v4.4.4"
     },
     "symfony/dotenv": {
-        "version": "v4.4.1"
+        "version": "v5.2.10"
     },
     "symfony/error-handler": {
         "version": "v4.4.18"
@@ -549,15 +549,6 @@
     },
     "symfony/http-kernel": {
         "version": "v4.4.18"
-    },
-    "symfony/maker-bundle": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.0",
-            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
-        }
     },
     "symfony/monolog-bridge": {
         "version": "v5.2.1"

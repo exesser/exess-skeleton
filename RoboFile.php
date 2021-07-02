@@ -1,11 +1,11 @@
 <?php
 
-use ExEss\Cms\Robo\CRUD\ConfigurationTask;
-use ExEss\Cms\Robo\Task\Db\LoadTestDump;
-use ExEss\Cms\Robo\Task\Db\Release\Exporter;
-use ExEss\Cms\Robo\Task\Db\Release\Importer;
-use ExEss\Cms\Robo\Task\Db\Remove\Audits;
-use ExEss\Cms\Robo\Task\Generate\SoapProxies;
+use App\Robo\CRUD\ConfigurationTask;
+use App\Robo\Task\Db\LoadTestDump;
+use App\Robo\Task\Db\Release\Exporter;
+use App\Robo\Task\Db\Release\Importer;
+use App\Robo\Task\Db\Remove\Audits;
+use App\Robo\Task\Generate\SoapProxies;
 use Robo\Result;
 
 /**

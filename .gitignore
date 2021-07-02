@@ -1,6 +1,3 @@
-# Custom configuration should also be ignored.
-vagrantpath
-
 # PhpStorm - VSCode
 .vscode/
 .idea/
@@ -14,17 +11,12 @@ Desktop.ini
 #xdebug
 webgrind
 
-dev/database/releases/translations/x-businessTranslations.sql.done*
 tests/_output/*
 
 public/dwp
 dev/bin
 
-dev/data/config-changes
-
-src/LightEntity/*
-!src/LightEntity/Properties
-src/ExternalApi/*
+src/App/ExternalApi/*
 dev/phpcs/windowsvagrantpath
 .tmp_staging
 public/Api/open-api.yml
