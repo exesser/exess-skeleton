@@ -1,7 +1,7 @@
 <?php
 
+use App\Kernel;
 use ExEss\Bundle\CmsBundle\Dictionary\Format;
-use ExEss\Cms\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
