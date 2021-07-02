@@ -5,7 +5,7 @@ use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
 
 trait CrudAware
 {
-    protected static string $recordsPath = 'src/ExEss/Bundle/CmsBundle/CRUD/Config/records';
+    protected static string $recordsPath = 'vendor/exesser/exess/src/Bundle/cms-bundle/CRUD/Config/records';
 
     protected function yieldCrudRecords(): \Generator
     {

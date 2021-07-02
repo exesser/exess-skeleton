@@ -1,9 +1,0 @@
-services:
-  _defaults:
-    public: true
-    autowire: true
-    autoconfigure: true
-
-  ExEss\Bundle\CmsBundle\Http\ParamConverter\BaseEntityConverter: ~
-  ExEss\Bundle\CmsBundle\Http\ParamConverter\JsonBodyConverter: ~
-
