@@ -1,12 +1,11 @@
 <?php
 
-use ExEss\Bundle\CmsBundle\CRUD\Config\ConfigurationTask;
-use ExEss\Bundle\CmsBundle\Robo\Task\Db\LoadTestDump;
-use ExEss\Bundle\CmsBundle\Robo\Task\Db\Release\Exporter;
-use ExEss\Bundle\CmsBundle\Robo\Task\Db\Release\Importer;
-use ExEss\Bundle\CmsBundle\Robo\Task\Db\Remove\Audits;
-use ExEss\Bundle\CmsBundle\Robo\Task\Db\TableSizes;
-use ExEss\Bundle\CmsBundle\Robo\Task\Generate\SoapProxies;
+use ExEss\Cms\Robo\CRUD\ConfigurationTask;
+use ExEss\Cms\Robo\Task\Db\LoadTestDump;
+use ExEss\Cms\Robo\Task\Db\Release\Exporter;
+use ExEss\Cms\Robo\Task\Db\Release\Importer;
+use ExEss\Cms\Robo\Task\Db\Remove\Audits;
+use ExEss\Cms\Robo\Task\Generate\SoapProxies;
 use Robo\Result;
 
 /**
@@ -118,17 +117,6 @@ class RoboFile extends \Robo\Tasks
     public function dbAuditsRemove(): Result
     {
         return (new Audits($this->io()))->run();
-    }
-
-    /**
-     * Display table sizes, hides tables <10MB by default
-     *
-     * @option $a Display all tables, including <10MB
-     * @option $b Display only really big tables, >100MB
-     */
-    public function dbTableSizes(array $opts = ['all' => false, 'big' => false]): Result
-    {
-        return (new TableSizes($this->io(), $opts['all'], $opts['big']))->run();
     }
 
     /**
