@@ -5,10 +5,8 @@
 # NEVER EVER add a framework module here!
 
 class_name: UnitTester
-bootstrap: _bootstrap.php
 modules:
     enabled:
         - \Helper\JsonHelper
         - \Helper\AssertHelper
         - Asserts
-        - Mockery

@@ -13,9 +13,6 @@ webgrind
 
 tests/_output/*
 
-public/dwp
-dev/bin
-
 src/App/ExternalApi/*
 dev/phpcs/windowsvagrantpath
 .tmp_staging

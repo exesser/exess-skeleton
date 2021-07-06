@@ -1,2 +1,0 @@
-<?xml version="1.0"?>
-<checkResponse><checkResults><checkDomain>CRM</checkDomain><subDomain>test1</subDomain><result>true</result><message>OK</message></checkResults><checkResults><checkDomain>CRM</checkDomain><subDomain>test2</subDomain><result>false</result><message>error error</message></checkResults><result>false</result><msg>error error</msg></checkResponse>
