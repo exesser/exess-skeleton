@@ -134,8 +134,7 @@
         "init-db": [
            "bin/console doctrine:database:drop --force --if-exists",
 	       "bin/console doctrine:database:create",
-	       "bin/console doctrine:migrations:migrate --no-interaction",
-	       "bin/robo db:load-test-dump"
+	       "bin/console doctrine:migrations:migrate --no-interaction"
         ],
         "post-install-cmd": "@set-up",
         "post-update-cmd": "@set-up",

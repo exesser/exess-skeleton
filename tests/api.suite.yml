@@ -1,5 +1,8 @@
+# Codeception Test Suite Configuration
+#
+# Suite for api tests
+
 class_name: ApiTester
-bootstrap: _bootstrap.php
 modules:
     enabled:
         - Symfony: # Make sure this is before te Db module until we stop using it otherwise some functions will use Doctrine
@@ -9,14 +12,8 @@ modules:
         - Doctrine2:
               depends: Symfony
               cleanup: true
-        - \Helper\DbHelper
-        - \Helper\FixturesHelper
-        - \Helper\JsonHelper
-        - \Helper\RecordGeneratorHelper
-        - \Helper\AssertHelper
-        - Asserts
-        - Helper\Module\Db
         - REST:
-           depends: Symfony
+              depends: Symfony
+        - Asserts
         - Filesystem
         - Mockery
