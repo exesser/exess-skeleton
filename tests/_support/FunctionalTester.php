@@ -1,7 +1,5 @@
 <?php declare(strict_types=1);
 
-use ExEss\Bundle\CmsBundle\Component\Codeception\Traits\ServiceActions;
-
 /**
  * Inherited Methods
  * @method void wantToTest($text)
@@ -20,7 +18,6 @@ use ExEss\Bundle\CmsBundle\Component\Codeception\Traits\ServiceActions;
 class FunctionalTester extends \Codeception\Actor
 {
     use _generated\FunctionalTesterActions;
-    use ServiceActions;
 
     /**
      * @return string[]

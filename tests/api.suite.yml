@@ -1,3 +1,7 @@
+# Codeception Test Suite Configuration
+#
+# Suite for api tests
+
 class_name: ApiTester
 bootstrap: _bootstrap.php
 modules:
@@ -9,14 +13,8 @@ modules:
         - Doctrine2:
               depends: Symfony
               cleanup: true
-        - \Helper\DbHelper
-        - \Helper\FixturesHelper
-        - \Helper\JsonHelper
-        - \Helper\RecordGeneratorHelper
-        - \Helper\AssertHelper
-        - Asserts
-        - Helper\Module\Db
         - REST:
-           depends: Symfony
+              depends: Symfony
+        - Asserts
         - Filesystem
         - Mockery
