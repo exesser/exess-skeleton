@@ -3,7 +3,6 @@
 # Suite for api tests
 
 class_name: ApiTester
-bootstrap: _bootstrap.php
 modules:
     enabled:
         - Symfony: # Make sure this is before te Db module until we stop using it otherwise some functions will use Doctrine
