@@ -5,7 +5,7 @@ namespace Test\Api\Api\ListDynamic;
 use ApiTester;
 use ExEss\Bundle\CmsBundle\Entity\Dashboard;
 use ExEss\Bundle\CmsBundle\Entity\Property;
-use Test\Api\V8_Custom\Crud\CrudTestUser;
+use Test\Api\CrudTestUser;
 
 class CrudCest
 {

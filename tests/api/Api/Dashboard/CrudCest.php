@@ -3,9 +3,9 @@
 namespace Test\Api\Api\Dashboard;
 
 use ApiTester;
-use ExEss\Bundle\CmsBundle\Entity\User;
 use ExEss\Bundle\CmsBundle\Component\Flow\SaveFlow;
-use Test\Api\V8_Custom\Crud\CrudTestUser;
+use ExEss\Bundle\CmsBundle\Entity\User;
+use Test\Api\CrudTestUser;
 
 class CrudCest
 {
