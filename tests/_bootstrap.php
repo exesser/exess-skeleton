@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-// This is global bootstrap for autoloading
+
 use ExEss\Bundle\CmsBundle\Dictionary\Format;
 
 \umask(0);

@@ -4,7 +4,7 @@ namespace Test\Api\Api\Check;
 
 use ApiTester;
 use ExEss\Bundle\CmsBundle\Component\Health\Model\HealthCheckResult;
-use Test\Api\V8_Custom\Crud\CrudTestUser;
+use Test\Api\CrudTestUser;
 
 class HealthCest
 {

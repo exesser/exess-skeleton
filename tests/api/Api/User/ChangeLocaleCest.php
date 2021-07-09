@@ -6,7 +6,7 @@ use ApiTester;
 use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
 use ExEss\Bundle\CmsBundle\Doctrine\Type\SecurityGroupType;
 use ExEss\Bundle\CmsBundle\Entity\User;
-use Test\Api\V8_Custom\Crud\CrudTestUser;
+use Test\Api\CrudTestUser;
 
 class ChangeLocaleCest
 {

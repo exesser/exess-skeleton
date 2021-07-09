@@ -4,7 +4,7 @@ namespace Test\Api\Api\Login;
 
 use ApiTester;
 use ExEss\Bundle\CmsBundle\Entity\UserLogin;
-use Test\Api\V8_Custom\Crud\CrudTestUser;
+use Test\Api\CrudTestUser;
 
 class SuccessCest
 {

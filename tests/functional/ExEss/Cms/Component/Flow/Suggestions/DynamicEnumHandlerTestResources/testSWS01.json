@@ -1,7 +1,0 @@
-{
-  "_description": "basic case",
-  "givenModel": {},
-  "givenAction": {
-    "event": "INIT"
-  }
-}

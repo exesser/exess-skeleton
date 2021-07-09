@@ -3,7 +3,7 @@
 namespace Test\Api\Api\Login;
 
 use ApiTester;
-use Test\Api\V8_Custom\Crud\CrudTestUser;
+use Test\Api\CrudTestUser;
 
 class FailureCest
 {

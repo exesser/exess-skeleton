@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Test\Api\V8_Custom\Crud;
+namespace Test\Api;
 
 use ExEss\Bundle\CmsBundle\Doctrine\Type\Locale;
 use ExEss\Bundle\CmsBundle\Doctrine\Type\UserStatus;

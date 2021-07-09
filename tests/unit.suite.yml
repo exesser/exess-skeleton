@@ -7,6 +7,4 @@
 class_name: UnitTester
 modules:
     enabled:
-        - \Helper\JsonHelper
-        - \Helper\AssertHelper
         - Asserts

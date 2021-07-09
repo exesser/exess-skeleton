@@ -6,7 +6,7 @@ use ApiTester;
 use Codeception\Example;
 use ExEss\Bundle\CmsBundle\Doctrine\Type\HttpMethod;
 use ExEss\Bundle\CmsBundle\Doctrine\Type\SecurityGroupType;
-use Test\Api\V8_Custom\Crud\CrudTestUser;
+use Test\Api\CrudTestUser;
 
 class SecurityCest
 {

@@ -52,7 +52,6 @@ class DbHelper extends \Codeception\Module
 
     public function deleteFromDatabase(string $table, array $criteria = []): bool
     {
-
         $dbh = $this->getDbModule()->_getDbh();
         $query = 'DELETE FROM %s WHERE %s';
         $where = ['1=1'];
@@ -72,40 +71,6 @@ class DbHelper extends \Codeception\Module
         $sth = $dbh->prepare($query);
 
         return $sth->execute($paramValues);
-    }
-
-    public function updateFromDatabase(string $table, array $data, array $criteria = []): bool
-    {
-        $dbh = $this->getDbModule()->_getDbh();
-        $query = 'update %s set %s' . (!empty($criteria)? ' where %s' : '');
-        $params = $dataset =[];
-        foreach ($criteria as $k => $v) {
-            $params[] = "$k = ?";
-        }
-        $params = \implode(' AND ', $params);
-        foreach ($data as $c => $d) {
-            if ($d === null) {
-                $dataset[] = "$c = NULL";
-                unset($data[$c]);
-            } else {
-                $dataset[] = "$c = ?";
-            }
-        }
-        $dataset = \implode(' , ', $dataset);
-        $query = \sprintf($query, $table, $dataset, $params);
-        $this->debugSection('Query', $query . ' with ' . \json_encode($data) . \json_encode($criteria));
-        $sth = $dbh->prepare($query);
-
-        return $sth->execute(\array_values(\array_merge($data, $criteria)));
-    }
-
-    public function executeOnDatabase(string $sql): bool
-    {
-        $dbh = $this->getDbModule()->_getDbh();
-        $this->debugSection('Query', $sql);
-        $sth = $dbh->prepare($sql);
-
-        return $sth->execute();
     }
 
     public function grabAllFromDatabase(string $tableName, string $columnName = '*', array $criteria = []): array
@@ -132,19 +97,6 @@ class DbHelper extends \Codeception\Module
         return ' WHERE ' . $whereClause . ' = ?';
     }
 
-    public function assertNumRecords(
-        int $expectedRecords,
-        string $table,
-        array $criteria = [],
-        string $message = ''
-    ): void {
-        $this->assertEquals(
-            $expectedRecords,
-            $this->getDbModule()->grabNumRecords($table, $criteria),
-            $message
-        );
-    }
-
     public function assertTableExists(string $tableName): void
     {
         $dbh = $this->getDbModule()->_getDbh();
@@ -154,18 +106,5 @@ class DbHelper extends \Codeception\Module
         $sth->execute();
 
         $this->assertEquals(1, $sth->rowCount(), \sprintf('Table %s not found', $tableName));
-    }
-
-    public function emptyTable(string $table): bool
-    {
-        return $this->deleteFromDatabase($table);
-    }
-
-    /**
-     * Truncates a table, which resets auto increment counters as well
-     */
-    public function truncateTable(string $table): bool
-    {
-        return $this->executeOnDatabase(" TRUNCATE TABLE $table");
     }
 }

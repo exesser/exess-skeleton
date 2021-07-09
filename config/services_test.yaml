@@ -5,8 +5,5 @@ services:
   _defaults:
     public: true
 
-  test.monolog.logger: '@monolog.logger'
-
   Helper\TestRepository:
     tags: [{ name: 'handler.list', alias: !php/const Helper\TestRepository::NAME }]
-

@@ -6,7 +6,7 @@ use ApiTester;
 use ExEss\Bundle\CmsBundle\Component\Flow\SaveFlow;
 use ExEss\Bundle\CmsBundle\Entity\Dashboard;
 use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
-use Test\Api\V8_Custom\Crud\CrudTestUser;
+use Test\Api\CrudTestUser;
 
 class FlowCest
 {
