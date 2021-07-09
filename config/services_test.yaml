@@ -4,6 +4,3 @@ parameters:
 services:
   _defaults:
     public: true
-
-  Helper\TestRepository:
-    tags: [{ name: 'handler.list', alias: !php/const Helper\TestRepository::NAME }]
