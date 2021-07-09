@@ -1,11 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Test\Functional\ExEss\Cms;
+namespace Test\Functional;
 
 use Helper\Testcase\FunctionalTestCase;
 
 class ContainerTest extends FunctionalTestCase
 {
+    /**
+     * Simple functional test that asserts all services in the container can be initialized
+     */
     public function testGrabAllServices(): void
     {
         foreach ($this->tester->getContainerKeys() as $serviceName) {

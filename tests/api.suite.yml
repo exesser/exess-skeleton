@@ -14,8 +14,6 @@ modules:
         - \Helper\JsonHelper
         - \Helper\RecordGeneratorHelper
         - \Helper\AssertHelper
-        - \Helper\CleanupHelper
-        - \Helper\XmlHelper
         - Asserts
         - Helper\Module\Db
         - REST:

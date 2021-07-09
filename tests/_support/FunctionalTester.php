@@ -26,21 +26,6 @@ class FunctionalTester extends \Codeception\Actor
     use _generated\FunctionalTesterActions;
     use ServiceActions;
 
-   /**
-    * Define custom actions here
-    */
-
-    /**
-     * Executes a command from the container
-     */
-    public function executeCommand(string $alias, array $arguments, array $model = []): void
-    {
-        $executor = $this->grabService(BackendCommandExecutor::class);
-        $command = new Command($alias, new Arguments(), $alias);
-
-        $executor->execute($command, $arguments, new Model($model));
-    }
-
     /**
      * @return string[]
      */
@@ -48,4 +33,8 @@ class FunctionalTester extends \Codeception\Actor
     {
         return $this->grabService('service_container')->getServiceIds();
     }
+
+   /**
+    * Define custom actions here
+    */
 }

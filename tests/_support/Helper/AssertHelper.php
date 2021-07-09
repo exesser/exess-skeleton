@@ -1,8 +1,6 @@
 <?php declare(strict_types=1);
-namespace Helper;
 
-use ExEss\Bundle\CmsBundle\Helper\DataCleaner;
-use Helper\Constraint\ArraySubset;
+namespace Helper;
 
 class AssertHelper extends \Codeception\Module
 {
@@ -36,60 +34,5 @@ class AssertHelper extends \Codeception\Module
                 );
             }
         }
-    }
-
-    public function assertJsonEquals(string $expected, string $actual): void
-    {
-        $this->assertArrayEqual(
-            DataCleaner::jsonDecode($expected),
-            DataCleaner::jsonDecode($actual)
-        );
-    }
-
-    public function assertValidGuid(string $guid): void
-    {
-        $this->assertRegExp(
-            '~^[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}$~',
-            $guid
-        );
-    }
-
-    // @codingStandardsIgnoreStart
-    /**
-     * @param array  $subset
-     * @param array  $array
-     * @param bool   $strict
-     * @param string $message
-    */
-    public function assertArraySubset($subset, $array, $strict = false, $message = ''): void
-    {
-        // @codingStandardsIgnoreEnd
-        if (!(\is_array($subset) || $subset instanceof \ArrayAccess)) {
-            throw new \InvalidArgumentException(
-                'array or ArrayAccess',
-                1
-            );
-        }
-
-        if (!(\is_array($array) || $array instanceof \ArrayAccess)) {
-            throw new \InvalidArgumentException(
-                'array or ArrayAccess',
-                1
-            );
-        }
-
-        $constraint = new ArraySubset($subset, $strict);
-
-        $this->assertThat($array, $constraint, $message);
-    }
-
-    public function assertAlmostNow(\DateTimeInterface $value): void
-    {
-        $this->assertEqualsWithDelta(
-            new \DateTime('now'),
-            $value,
-            // Allows up to 10 second difference
-            10
-        );
     }
 }

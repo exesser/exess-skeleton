@@ -22,13 +22,4 @@ class UnitTester extends \Codeception\Actor
     /**
      * Define custom actions here
      */
-
-    public function assertValidGuid(string $testString, string $message = 'invalid GUID'): void
-    {
-        $this->assertRegExp(
-            '~^[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}$~',
-            $testString,
-            $message
-        );
-    }
 }

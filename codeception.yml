@@ -17,7 +17,7 @@ settings:
     backup_globals: false
     lint: false
 extensions:
-    enabled
+    enabled:
         - Codeception\Extension\RunFailed
 coverage:
     enabled: true
@@ -36,7 +36,7 @@ modules:
             user: '%DBCONFIG_DB_USER_NAME%'
             password: '%DBCONFIG_DB_PASSWORD%'
             # populate: whether the the dump should be loaded before the test suite is started
-            populate: '%CODECEPTION_DB_POPULATE%'
+            populate: true
             populator: 'APP_ENV=test php /usr/local/bin/composer run init-db'
             # whether the dump should be reloaded before each test
             cleanup: false

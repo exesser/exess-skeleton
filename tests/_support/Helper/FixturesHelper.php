@@ -14,8 +14,6 @@ class FixturesHelper extends \Codeception\Module
 {
     private string $jsonSuffix = 'fixtures.json';
 
-    private string $arraySuffix = 'fixtures.php';
-
     /**
      * @var array
      */
