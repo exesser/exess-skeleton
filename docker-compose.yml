@@ -22,24 +22,16 @@ services:
       - "4306:3306"   
 
   php:
-    build: docker/php
+    build: 
+      context: docker/php
+      args:
+          - XDEBUG=1
     container_name: cms-php
     working_dir: /exesscms-api
     volumes:
       - .:/exesscms-api
       - ./docker/php/overrides.ini:/usr/local/etc/php/conf.d/zz-overrides.ini
-
-  php-debug:
-    extends:
-      service: php
-    container_name: cms-php-debug  
-    build: 
-      args:
-          - XDEBUG=1
-    volumes:
-      - .:/exesscms-api
-      - ./docker/php/overrides.ini:/usr/local/etc/php/conf.d/zz-overrides.ini
-      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/zz-xdebug.ini  
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/zz-xdebug.ini 
 
   webserver:
     image: nginx:alpine

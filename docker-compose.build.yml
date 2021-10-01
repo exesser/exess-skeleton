@@ -16,6 +16,9 @@ services:
     extends:
       file: docker-compose.yml
       service: php
+    build: 
+      args:
+          - XDEBUG=0  
     links:
       - mysql-test  
 
