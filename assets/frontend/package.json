@@ -41,7 +41,7 @@
     "grunt-usemin": "3.1.1",
     "grunt-wiredep": "3.0.1",
     "jasmine-core": "2.8.0",
-    "karma": "1.7.1",
+    "karma": "6.3.14",
     "karma-babel-preprocessor": "6.0.1",
     "karma-coverage": "1.1.1",
     "karma-jasmine": "1.1.0",
